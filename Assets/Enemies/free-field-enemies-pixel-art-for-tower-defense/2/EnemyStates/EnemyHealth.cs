@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     private EnemyAI enemyAI;
     private SpriteRenderer spriteRenderer;
 
+    private bool isDead;
+
     private int currentHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         enemyAI = gameObject.GetComponent<EnemyAI>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -30,8 +33,9 @@ public class EnemyHealth : MonoBehaviour
         StartCoroutine(FlashRed());
 
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
+            isDead = true;
             Die();
         }
     }

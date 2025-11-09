@@ -19,9 +19,12 @@ public class EnemyAttackState : EnemyState
         // After attacking, return to chase
         if (timer >= attackCooldown)
         {
+            timer = 0f;
             if (distance > enemy.attackRange)
                 enemy.SetState(new EnemyChaseState());
+
             else
+                enemy.GetAnimator().SetTrigger("Attacking");
                 EnterState(enemy); // re-attack if still close
         }
     }
