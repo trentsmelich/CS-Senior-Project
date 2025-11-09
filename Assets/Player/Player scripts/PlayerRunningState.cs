@@ -9,14 +9,15 @@ public class PlayerRunningState : PlayerState
         var anim = player.GetAnimator();
         anim.SetBool("isRunning", true);
         timer = 0f;
+        UpdateDirection(player, player.moveInput.normalized);
     }
 
     public override void UpdateState(PlayerStateController player)
     {
         player.moveInput.x = Input.GetAxisRaw("Horizontal");
         player.moveInput.y = Input.GetAxisRaw("Vertical");
-        
-        if (player.moveInput.sqrMagnitude < 0.01f)
+
+        if (player.moveInput.sqrMagnitude < 0.005f)
         {
             timer += Time.deltaTime;
             if (timer >= 0.2f)
@@ -24,8 +25,13 @@ public class PlayerRunningState : PlayerState
                 player.SetState(new PlayerIdleState());
                 return;
             }
-            
-    }
+            return;
+
+        }
+        else
+        {
+            timer = 0f;
+        }
 
         if (Input.GetMouseButton(0))
         {
@@ -37,24 +43,29 @@ public class PlayerRunningState : PlayerState
         Vector2 moveDir = player.moveInput.normalized;
         UpdateDirection(player, moveDir);
         player.GetRigidbody().linearVelocity = moveDir * player.moveSpeed;
+        
+        
 
 
     }
 
     void UpdateDirection(PlayerStateController player, Vector2 dir)
     {
+        
         var anim = player.GetAnimator();
         anim.SetBool("isUp", false);
         anim.SetBool("isDown", false);
         anim.SetBool("isLeft", false);
         anim.SetBool("isRight", false);
-
+        
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
         {
+            
             anim.SetBool(dir.x > 0 ? "isRight" : "isLeft", true);
         }
         else
         {
+            
             anim.SetBool(dir.y > 0 ? "isUp" : "isDown", true);
         }
     }

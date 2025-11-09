@@ -31,5 +31,6 @@ public class PlayerIdleState : PlayerState
     public override void ExitState(PlayerStateController player)
     {
         player.GetAnimator().SetBool("isIdle", false);
+        
     }
 }
