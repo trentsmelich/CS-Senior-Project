@@ -33,4 +33,6 @@ public class PlayerStateController : MonoBehaviour
 
     public Animator GetAnimator() => anim;
     public Rigidbody2D GetRigidbody() => rb;
+
+    public GameObject GetGameObject() => gameObject;
 }

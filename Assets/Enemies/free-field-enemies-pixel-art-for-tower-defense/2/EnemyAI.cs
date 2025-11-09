@@ -33,4 +33,9 @@ public class EnemyAI : MonoBehaviour
 
     public Animator GetAnimator() => anim;
     public Rigidbody2D GetRigidbody() => rb;
+
+    public void EnemyDie()
+    {
+        SetState(new EnemyDeadState());
+    }
 }
