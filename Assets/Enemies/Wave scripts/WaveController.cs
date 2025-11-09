@@ -77,18 +77,18 @@ public class WaveController : MonoBehaviour
     // Generate a random position around the player base within the specified radius
     //this is where the enemy will spawn
     private Vector2 GetRandomSpawnPosition()
-{
-    // Random distance between min and max spawn radius
-    float spawnRadius = Random.Range(minSpawnRadius, maxSpawnRadius);
+    {
+        // Random distance between min and max spawn radius
+        float spawnRadius = Random.Range(minSpawnRadius, maxSpawnRadius);
 
-    // Random angle in radians
-    float angle = Random.Range(0f, Mathf.PI * 2f);
+        // Random angle in radians
+        float angle = Random.Range(0f, Mathf.PI * 2f);
 
-    // Convert polar coordinates (radius + angle) to Cartesian (x, y)
-    float x = Mathf.Cos(angle) * spawnRadius;
-    float y = Mathf.Sin(angle) * spawnRadius;
+        // Convert polar coordinates (radius + angle) to Cartesian (x, y)
+        float x = Mathf.Cos(angle) * spawnRadius;
+        float y = Mathf.Sin(angle) * spawnRadius;
 
-    // Return position relative to the player base
-    return new Vector2(playerBase.position.x + x, playerBase.position.y + y);
-}
+        // Return position relative to the player base
+        return new Vector2(playerBase.position.x + x, playerBase.position.y + y);
+    }
 }
