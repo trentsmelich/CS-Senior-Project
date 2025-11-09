@@ -1,23 +1,31 @@
+using System.Threading;
 using UnityEngine;
 
 public class PlayerRunningState : PlayerState
 {
+    private float timer;
     public override void EnterState(PlayerStateController player)
     {
         var anim = player.GetAnimator();
         anim.SetBool("isRunning", true);
+        timer = 0f;
     }
 
     public override void UpdateState(PlayerStateController player)
     {
         player.moveInput.x = Input.GetAxisRaw("Horizontal");
         player.moveInput.y = Input.GetAxisRaw("Vertical");
-
+        
         if (player.moveInput.sqrMagnitude < 0.01f)
         {
-            player.SetState(new PlayerIdleState());
-            return;
-        }
+            timer += Time.deltaTime;
+            if (timer >= 0.2f)
+            {
+                player.SetState(new PlayerIdleState());
+                return;
+            }
+            
+    }
 
         if (Input.GetMouseButton(0))
         {
