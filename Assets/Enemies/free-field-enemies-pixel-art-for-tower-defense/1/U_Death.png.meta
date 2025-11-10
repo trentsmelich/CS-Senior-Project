@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -135,7 +135,7 @@ TextureImporter:
         width: 18
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -152,10 +152,10 @@ TextureImporter:
       name: U_Death_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 10
-        width: 14
-        height: 17
+        x: 61
+        y: 11
+        width: 23
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: U_Death_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 19
-        width: 8
-        height: 9
+        x: 107
+        y: 13
+        width: 28
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +196,10 @@ TextureImporter:
       name: U_Death_3
       rect:
         serializedVersion: 2
-        x: 73
-        y: 12
-        width: 12
-        height: 10
+        x: 153
+        y: 14
+        width: 31
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,9 +218,9 @@ TextureImporter:
       name: U_Death_4
       rect:
         serializedVersion: 2
-        x: 107
-        y: 13
-        width: 14
+        x: 198
+        y: 14
+        width: 37
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: U_Death_5
       rect:
         serializedVersion: 2
-        x: 123
-        y: 22
-        width: 7
-        height: 7
+        x: 245
+        y: 13
+        width: 34
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,99 +258,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: U_Death_6
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 15
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10291ad0208af3510800000000000000
-      internalID: 1531127125101351425
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: U_Death_7
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 14
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6231fe4ca9378ac0800000000000000
-      internalID: -3853047543970581906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: U_Death_8
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 15
-        width: 20
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9057e43092bfcb590800000000000000
-      internalID: -7656969112868981495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: U_Death_9
-      rect:
-        serializedVersion: 2
-        x: 198
-        y: 14
-        width: 81
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 40493314d566880b0800000000000000
-      internalID: -5726214375489694716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7a155a42cbfb3744e95995894ed270ff
     internalID: 0
     vertices: []
     indices: 
