@@ -1,8 +1,25 @@
 using UnityEngine;
+using TMPro;
 
 public class GameStateController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Wave Settings")]
+    public Transform playerBase; // Reference to the player base position
+    public int enemiesPerWave = 10; // Number of enemies to spawn per wave
+    public float waveTimer = 30f; // Time between waves in seconds
+    private float waveCountdown; // Countdown timer for the next wave
+    public GameObject[] enemyPrefab; // Enemy prefab to spawn
+
+    [Header("Spawn Settings")]
+    public float minSpawnRadius = 5f; // Minimum spawn radius
+    public float maxSpawnRadius = 15f; // Maximum spawn radius
+    public float spawnInterval = 1f; // Time between enemy spawns
+
+    [Header("UI Elements")]
+    public TextMeshProUGUI countdownText; // UI Text to display wave countdown
+
+
 
     private GameState currentState;
     private GameState waveManager;
@@ -19,7 +36,17 @@ public class GameStateController : MonoBehaviour
 
     void Start()
     {
-        waveManager = new WavesState();
+        waveManager = new WavesState(
+            playerBase,
+            enemiesPerWave,
+            waveTimer,
+            enemyPrefab,
+            minSpawnRadius,
+            maxSpawnRadius,
+            spawnInterval,
+            countdownText
+        );
+        
         SetState(new gameIdleState());
     }
 

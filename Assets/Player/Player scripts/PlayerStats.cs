@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     public float profitMultiplier = 1f;
 
     public float experienceMultiplier = 1f;
+    public int enemiesDefeated = 0;
 
     public float GetMoveSpeed()
     {
@@ -44,6 +45,11 @@ public class PlayerStats : MonoBehaviour
     public float GetExperienceMultiplier()
     {
         return experienceMultiplier;
+    }
+
+    public int GetEnemiesDefeated()
+    {
+        return enemiesDefeated;
     }
 
     public void ModifyStat(String statName, float amount)
