@@ -54,9 +54,13 @@ public class GameStateController : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
-        if (Input.GetKeyDown(KeyCode.Escape)) // press Esc key
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState)) // press Esc key
         {
             SetState(new PauseState());
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && (currentState is PauseState)) // press Esc key
+        {
+            SetState(new gameIdleState());
         }
     }
 

@@ -23,7 +23,7 @@ public class PauseState : GameState
         //resume
         resumeButton.onClick.AddListener(() =>
         {
-            PauseProcess();
+            Game.SetState(new gameIdleState());
             Debug.Log("resume Button Clicked");
         });
 
@@ -36,8 +36,8 @@ public class PauseState : GameState
         //quit
         quitButton.onClick.AddListener(() =>
         {
-            PauseProcess();
-            Application.Quit();
+            
+            
             Debug.Log("quit Button Clicked");
         });
 
@@ -52,38 +52,14 @@ public class PauseState : GameState
     {
         //close pause UI
         //resume time
-        PauseProcess();
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        
         // Implementation for exiting the pause state
     }
 
 
-    public void PauseProcess()
-    {
-        if (pauseMenu.activeInHierarchy)
-        {
-            //if the game is already paused, then resume
-            //healthBar.SetActive(true);
-            PauseGame(false);
-        }
-        else
-        {
-            //if game is resume, then pause
-            //healthBar.SetActive(false);
-            PauseGame(true);
-        }
-    }
+    
 
-    public void PauseGame(bool status)
-    {
-        pauseMenu.SetActive(status); // Show the pause menu
-
-        if (status)
-        {
-            Time.timeScale = 0; // Time stops
-        }
-        else
-        {
-            Time.timeScale = 1; // Time moves normal speed
-        }
-    }
+   
 }
