@@ -6,7 +6,7 @@ public class PlayerAttackState : PlayerState
 
 
 
-    public float attackRange = 0.3f;
+    public float attackRange = 0.7f;
     Vector2 attackPosition;
     public float attackDistance = 0.2f; // how far from player the attack originates when no AttackPoint is present
     public LayerMask enemyLayers = LayerMask.GetMask("Enemy");

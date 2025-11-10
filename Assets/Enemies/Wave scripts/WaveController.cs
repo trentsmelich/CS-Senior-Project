@@ -8,7 +8,7 @@ public class WaveController : MonoBehaviour
     public int enemiesPerWave = 10; // Number of enemies to spawn per wave
     public float waveTimer = 30f; // Time between waves in seconds
     private float waveCountdown; // Countdown timer for the next wave
-    public GameObject enemyPrefab; // Enemy prefab to spawn
+    public GameObject[] enemyPrefab; // Enemy prefab to spawn
 
     [Header("Spawn Settings")]
     public float minSpawnRadius = 5f; // Minimum spawn radius
@@ -71,7 +71,7 @@ public class WaveController : MonoBehaviour
     {
         // Get a random spawn position
         Vector2 spawnPosition = GetRandomSpawnPosition();
-        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPosition, Quaternion.identity);
     }
 
     // Generate a random position around the player base within the specified radius
