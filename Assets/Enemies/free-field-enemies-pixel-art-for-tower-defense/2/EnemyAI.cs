@@ -38,4 +38,9 @@ public class EnemyAI : MonoBehaviour
     {
         SetState(new EnemyDeadState());
     }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }
