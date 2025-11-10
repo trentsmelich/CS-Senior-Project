@@ -6,6 +6,17 @@ public class GameStateController : MonoBehaviour
 
     private GameState currentState;
     private GameState waveManager;
+
+    //Screen Panel GameObjects
+    private PauseState pause;
+    //pause
+    public GameObject pauseMenu;
+    public GameObject pauseOptions;
+    //shop
+    public GameObject shopScreen;
+    //upgrade
+    public GameObject upgradeScreen;
+
     void Start()
     {
         waveManager = new WavesState();
@@ -16,6 +27,10 @@ public class GameStateController : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
+        if (Input.GetKeyDown(KeyCode.Escape)) // press Esc key
+        {
+            SetState(new PauseState());
+        }
     }
 
     public void SetState(GameState newState)
@@ -31,6 +46,22 @@ public class GameStateController : MonoBehaviour
     public GameState GetWaveManager()
     {
         return waveManager;
+    }
+
+    //Get Pause, Shop, and upgrade screens
+    public GameObject GetPauseMenu()
+    {
+        return pauseMenu;
+    }
+
+    public GameObject GetShopScreen()
+    {
+        return shopScreen;
+    }
+
+    public GameObject GetUpgradeScreen()
+    {
+        return upgradeScreen;
     }
     
     
