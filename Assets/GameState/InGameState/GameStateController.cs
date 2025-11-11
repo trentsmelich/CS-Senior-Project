@@ -19,16 +19,12 @@ public class GameStateController : MonoBehaviour
     [Header("UI Elements")]
     public TextMeshProUGUI countdownText; // UI Text to display wave countdown
 
-
-
     private GameState currentState;
     private GameState waveManager;
 
     //Screen Panel GameObjects
-    private PauseState pause;
     //pause
     public GameObject pauseMenu;
-    public GameObject pauseOptions;
     //shop
     public GameObject shopScreen;
     //upgrade

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseState : GameState
 {
@@ -11,6 +12,7 @@ public class PauseState : GameState
 
         //open pause UI
         pauseMenu.SetActive(true);
+        pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(false);
         //pause time
         Time.timeScale = 0; 
 
@@ -19,6 +21,8 @@ public class PauseState : GameState
         Button resumeButton = pauseMenu.transform.Find("Resume_Button").GetComponent<Button>();
         Button optionsButton = pauseMenu.transform.Find("Options_Button").GetComponent<Button>();
         Button quitButton = pauseMenu.transform.Find("Quit_Button").GetComponent<Button>();
+        //find X button in options panel and set its listener
+        Button optionsXButton = pauseMenu.transform.Find("Options_Panel").Find("Options_XButton").GetComponent<Button>();
 
         //resume
         resumeButton.onClick.AddListener(() =>
@@ -30,15 +34,23 @@ public class PauseState : GameState
         //options
         optionsButton.onClick.AddListener(() =>
         {
+            pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(true);
             Debug.Log("options Button Clicked");
         });
-        
+
         //quit
         quitButton.onClick.AddListener(() =>
         {
-            
-            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            Game.SetState(new gameIdleState());
             Debug.Log("quit Button Clicked");
+        });
+        
+        //options X button (close the options panel)
+        optionsXButton.onClick.AddListener(() =>
+        {
+            pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(false);
+            Debug.Log("options X Button Clicked");
         });
 
     }
