@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -135,7 +135,7 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,7 +157,7 @@ TextureImporter:
         width: 19
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,7 +179,7 @@ TextureImporter:
         width: 27
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,7 +201,7 @@ TextureImporter:
         width: 29
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,7 +221,7 @@ TextureImporter:
         x: 210
         y: 14
         width: 29
-        height: 14
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,34 +240,12 @@ TextureImporter:
       name: death_spear_right_up_5
       rect:
         serializedVersion: 2
-        x: 211
-        y: 20
-        width: 18
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 82afce5f13b0d8ea0800000000000000
-      internalID: -5869022430186636760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_spear_right_up_6
-      rect:
-        serializedVersion: 2
         x: 259
         y: 15
         width: 29
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -281,7 +259,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_spear_right_up_7
+      name: death_spear_right_up_6
       rect:
         serializedVersion: 2
         x: 308
@@ -289,7 +267,7 @@ TextureImporter:
         width: 29
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -303,45 +281,23 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_spear_right_up_8
+      name: death_spear_right_up_7
       rect:
         serializedVersion: 2
         x: 356
         y: 15
         width: 28
-        height: 8
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2d68f3368742b1e80800000000000000
-      internalID: -8206925796472813870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_spear_right_up_9
-      rect:
-        serializedVersion: 2
-        x: 358
-        y: 20
-        width: 24
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 175802382e100b680800000000000000
-      internalID: -8741484804351949455
+      spriteID: ec927189eeee6084c9ab87fb71fefcc8
+      internalID: -114221629
       vertices: []
       indices: 
       edges: []
@@ -350,7 +306,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4894c75bec037c241b405051977aa64c
     internalID: 0
     vertices: []
     indices: 
@@ -365,9 +321,9 @@ TextureImporter:
       death_spear_right_up_2: 3082357766872603125
       death_spear_right_up_3: -730065521382627257
       death_spear_right_up_4: -8175106356807295899
-      death_spear_right_up_5: -5869022430186636760
-      death_spear_right_up_6: -5003414821752314565
-      death_spear_right_up_7: 8373733248004403976
+      death_spear_right_up_5: -5003414821752314565
+      death_spear_right_up_6: 8373733248004403976
+      death_spear_right_up_7: -114221629
       death_spear_right_up_8: -8206925796472813870
       death_spear_right_up_9: -8741484804351949455
   mipmapLimitGroupName: 

@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -135,7 +135,7 @@ TextureImporter:
         width: 17
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,7 +157,7 @@ TextureImporter:
         width: 17
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,7 +179,7 @@ TextureImporter:
         width: 27
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,7 +201,7 @@ TextureImporter:
         width: 30
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -219,9 +219,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 9
+        y: 8
         width: 29
-        height: 14
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: death_spear_right_down_5
       rect:
         serializedVersion: 2
-        x: 211
-        y: 20
-        width: 15
-        height: 21
+        x: 257
+        y: 10
+        width: 29
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,56 +262,12 @@ TextureImporter:
       name: death_spear_right_down_6
       rect:
         serializedVersion: 2
-        x: 257
-        y: 10
-        width: 29
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 046727e794940e7d0800000000000000
-      internalID: -2891230380768987584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_spear_right_down_7
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 19
-        width: 18
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b2bd772655b1b9fb0800000000000000
-      internalID: -4640084937536971989
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_spear_right_down_8
-      rect:
-        serializedVersion: 2
         x: 305
         y: 9
         width: 29
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -325,7 +281,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_spear_right_down_9
+      name: death_spear_right_down_7
       rect:
         serializedVersion: 2
         x: 353
@@ -333,7 +289,7 @@ TextureImporter:
         width: 29
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,7 +306,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 25148cacd9b1659408bff2cb0a319930
     internalID: 0
     vertices: []
     indices: 
@@ -366,10 +322,8 @@ TextureImporter:
       death_spear_right_down_3: -4491346098666593199
       death_spear_right_down_4: -76972058910745407
       death_spear_right_down_5: 2470438500820308164
-      death_spear_right_down_6: -2891230380768987584
-      death_spear_right_down_7: -4640084937536971989
-      death_spear_right_down_8: 4176953456494960038
-      death_spear_right_down_9: -2492021077498737251
+      death_spear_right_down_6: 4176953456494960038
+      death_spear_right_down_7: -2492021077498737251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

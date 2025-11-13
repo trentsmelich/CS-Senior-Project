@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -132,7 +132,7 @@ TextureImporter:
         width: 19
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -154,7 +154,7 @@ TextureImporter:
         width: 20
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -176,7 +176,7 @@ TextureImporter:
         width: 18
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -198,7 +198,7 @@ TextureImporter:
         width: 16
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,10 +215,10 @@ TextureImporter:
       name: death_Gun_right_down_4
       rect:
         serializedVersion: 2
-        x: 208
+        x: 207
         y: 10
-        width: 16
-        height: 10
+        width: 19
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,34 +237,12 @@ TextureImporter:
       name: death_Gun_right_down_5
       rect:
         serializedVersion: 2
-        x: 211
-        y: 20
-        width: 15
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb407e2eba940e3c0800000000000000
-      internalID: -4332381838935391044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_Gun_right_down_6
-      rect:
-        serializedVersion: 2
         x: 257
         y: 11
         width: 21
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,7 +256,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_Gun_right_down_7
+      name: death_Gun_right_down_6
       rect:
         serializedVersion: 2
         x: 306
@@ -286,7 +264,7 @@ TextureImporter:
         width: 25
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_Gun_right_down_8
+      name: death_Gun_right_down_7
       rect:
         serializedVersion: 2
         x: 354
@@ -308,7 +286,7 @@ TextureImporter:
         width: 25
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -325,7 +303,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a4851029158a0f3469f70c6176dd3ee0
     internalID: 0
     vertices: []
     indices: 
@@ -340,10 +318,9 @@ TextureImporter:
       death_Gun_right_down_2: 4074710247488705054
       death_Gun_right_down_3: -6258593402213250441
       death_Gun_right_down_4: -6694236923266584792
-      death_Gun_right_down_5: -4332381838935391044
-      death_Gun_right_down_6: 3929510085923193532
-      death_Gun_right_down_7: -8823637308816346226
-      death_Gun_right_down_8: -6417704915010718385
+      death_Gun_right_down_5: 3929510085923193532
+      death_Gun_right_down_6: -8823637308816346226
+      death_Gun_right_down_7: -6417704915010718385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
