@@ -3,9 +3,6 @@ using UnityEngine;
 public class PlayerAttackState : PlayerState
 {
     private float attackCooldown = 0.5f;
-
-
-
     public float attackRange = 0.7f;
     Vector2 attackPosition;
     public float attackDistance = 0.2f; // how far from player the attack originates when no AttackPoint is present
@@ -14,7 +11,10 @@ public class PlayerAttackState : PlayerState
 
     public override void EnterState(PlayerStateController player)
     {
-        player.GetAnimator().SetTrigger("isAttacking");
+        //Update direction to last known direction
+        player.UpdateDirection(player.lastDir);
+
+        player.GetAnimator().SetTrigger("Attacking");
         Attack(player);
 
         timer = 0f;
@@ -40,10 +40,9 @@ public class PlayerAttackState : PlayerState
         // if it exists on the player; otherwise compute an offset from the player's position based
         // on animator direction booleans (isUp/isDown/isLeft/isRight).
 
+        Vector2 dir = player.lastDir;
         
-        
-            Vector2 dir = GetFacingDirection(player);
-            attackPosition = (Vector2)player.GetGameObject().transform.position + dir * attackDistance;
+        attackPosition = (Vector2)player.GetGameObject().transform.position + dir * attackDistance;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
             attackPosition,
@@ -61,19 +60,6 @@ public class PlayerAttackState : PlayerState
 
         Debug.Log("Player Attack executed.");
     }
-
-
-        // Read animator booleans to determine which direction the player is facing.
-        Vector2 GetFacingDirection(PlayerStateController player)
-        {
-            var anim = player.GetAnimator();
-            if (anim.GetBool("isUp")) return Vector2.up;
-            if (anim.GetBool("isDown")) return Vector2.down;
-            if (anim.GetBool("isLeft")) return Vector2.left;
-            // Default to right if nothing else matches.
-            return Vector2.right;
-        }
-
 
     void OnDrawGizmosSelected()
     {

@@ -1,4 +1,3 @@
-using System.Threading;
 using UnityEngine;
 
 public class PlayerRunningState : PlayerState
@@ -6,17 +5,20 @@ public class PlayerRunningState : PlayerState
     private float timer;
     public override void EnterState(PlayerStateController player)
     {
+        // Set animator to running by setting isMoving to true
         var anim = player.GetAnimator();
-        anim.SetBool("isRunning", true);
+        anim.SetBool("isMoving", true);
+        
         timer = 0f;
-        UpdateDirection(player, player.moveInput.normalized);
     }
 
     public override void UpdateState(PlayerStateController player)
     {
+        // Check for input
         player.moveInput.x = Input.GetAxisRaw("Horizontal");
         player.moveInput.y = Input.GetAxisRaw("Vertical");
 
+        // Transition to Idle state if there's no movement input for a short duration
         if (player.moveInput.sqrMagnitude < 0.005f)
         {
             timer += Time.deltaTime;
@@ -33,6 +35,7 @@ public class PlayerRunningState : PlayerState
             timer = 0f;
         }
 
+        // Transition to Attacking state if left click is detected
         if (Input.GetMouseButton(0))
         {
             player.SetState(new PlayerAttackState());
@@ -41,37 +44,12 @@ public class PlayerRunningState : PlayerState
 
         // Move player
         Vector2 moveDir = player.moveInput.normalized;
-        UpdateDirection(player, moveDir);
+        player.UpdateDirection(moveDir);
         player.GetRigidbody().linearVelocity = moveDir * player.moveSpeed;
-        
-        
-
-
-    }
-
-    void UpdateDirection(PlayerStateController player, Vector2 dir)
-    {
-        
-        var anim = player.GetAnimator();
-        anim.SetBool("isUp", false);
-        anim.SetBool("isDown", false);
-        anim.SetBool("isLeft", false);
-        anim.SetBool("isRight", false);
-        
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-        {
-            
-            anim.SetBool(dir.x > 0 ? "isRight" : "isLeft", true);
-        }
-        else
-        {
-            
-            anim.SetBool(dir.y > 0 ? "isUp" : "isDown", true);
-        }
     }
 
     public override void ExitState(PlayerStateController player)
     {
-        player.GetAnimator().SetBool("isRunning", false);
+        player.GetAnimator().SetBool("isMoving", false);
     }
 }
