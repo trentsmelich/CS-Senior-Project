@@ -55,7 +55,7 @@ public class PlayerAttackState : PlayerState
             EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(20);
+                enemyHealth.TakeDamage((int)player.GetGameObject().GetComponent<PlayerStats>().GetDamage());
             }
         }
 

@@ -6,7 +6,9 @@ public class PlayerStats : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public float moveSpeed = 5f;
-    public float health = 100f;
+    public float currentHealth = 100f;
+
+    public float maxHealth = 100f;
 
     public float damage = 10f;
 
@@ -15,7 +17,17 @@ public class PlayerStats : MonoBehaviour
     public float profitMultiplier = 1f;
 
     public float experienceMultiplier = 1f;
+    public float currentExperience = 0f;
+    public float experienceToNextLevel = 1f;
     public int enemiesDefeated = 0;
+
+    public GameObject game;
+    private GameStateController gameStateController;
+    void Start()
+    {
+        gameStateController = game.GetComponent<GameStateController>();
+        currentHealth = maxHealth;
+    }
 
     public float GetMoveSpeed()
     {
@@ -24,7 +36,7 @@ public class PlayerStats : MonoBehaviour
 
     public float GetHealth()
     {
-        return health;
+        return currentHealth;
     }
 
     public float GetDamage()
@@ -47,31 +59,53 @@ public class PlayerStats : MonoBehaviour
         return experienceMultiplier;
     }
 
+    public float GetCurrentExperience()
+    {
+        return currentExperience;
+    }
+
+    public float GetExperienceToNextLevel()
+    {
+        return experienceToNextLevel;
+    }
+
     public int GetEnemiesDefeated()
     {
         return enemiesDefeated;
+    }
+    public void AddExperience()
+    {
+        currentExperience += 1 * experienceMultiplier;
+        if (currentExperience >= experienceToNextLevel)
+        {
+            // Level up
+            gameStateController.SetState(new LevelUpState());
+            currentExperience -= experienceToNextLevel;
+            experienceToNextLevel *= 2.0f; // Increase the threshold for next level
+            // Trigger level-up state in the game (implementation depends on your game structure)
+        }
     }
 
     public void ModifyStat(String statName, float amount)
     {
         switch (statName)
         {
-            case "moveSpeed":
+            case "Speed":
                 moveSpeed += amount;
                 break;
-            case "health":
-                health += amount;
+            case "Health":
+                maxHealth += amount;
                 break;
-            case "damage":
+            case "Damage":
                 damage += amount;
                 break;
-            case "attackSpeed":
+            case "Attack Speed":
                 attackSpeed += amount;
                 break;
-            case "profitMultiplier":
+            case "Profit Multiplier":
                 profitMultiplier += amount;
                 break;
-            case "experienceMultiplier":
+            case "Experience Multiplier":
                 experienceMultiplier += amount;
                 break;
             default:

@@ -14,13 +14,13 @@ public class PlayerHealthBar : MonoBehaviour
     {
         darkHealthBarFill.fillAmount = 1f;
         currentHealthBarFill.fillAmount = (float)playerHealth.currentHealth / playerHealth.maxHealth;
-        displayCounter.text = playerHealth.currentHealth.ToString() + "/100";
+        displayCounter.text = playerHealth.currentHealth.ToString() + "/" + playerHealth.maxHealth.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
         currentHealthBarFill.fillAmount = (float)playerHealth.currentHealth / playerHealth.maxHealth;
-        displayCounter.text = playerHealth.currentHealth.ToString() + "/100";
+        displayCounter.text = playerHealth.currentHealth.ToString() + "/" + playerHealth.maxHealth.ToString();
     }
 }

@@ -7,6 +7,9 @@ public class EnemyDeadState : EnemyState
         enemy.GetAnimator().SetTrigger("Dying");
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         Object.Destroy(enemy.gameObject, 1.0f); // Destroy after 1 second to allow death animation to play
+        enemy.player.GetComponent<PlayerStats>().AddExperience();
+        Debug.Log("Enemy defeated. Experience added to player.");
+        
     }
 
     public override void UpdateState(EnemyAI enemy) { }
