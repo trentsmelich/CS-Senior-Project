@@ -514,6 +514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: player
       value: 
@@ -524,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: attackRange
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3618,7 +3622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d5f013dcbae104ea982523df2b786e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthBar
-  playerHealth: {fileID: 1491037479}
+  player: {fileID: 1491037472}
   darkHealthBarFill: {fileID: 393084638}
   currentHealthBarFill: {fileID: 65155585}
   displayCounter: {fileID: 484829141}
@@ -5367,6 +5371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: player
       value: 
@@ -5377,7 +5385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: attackRange
-      value: 1.2
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

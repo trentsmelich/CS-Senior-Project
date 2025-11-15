@@ -51,10 +51,10 @@ public class EnemyAttackState : EnemyState
 
         Debug.Log("Enemy is attacking!");
 
-        PlayerHealth playerHealth = enemy.player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+        PlayerStats playerStats = enemy.player.GetComponent<PlayerStats>();
+        if (playerStats != null)
         {
-            playerHealth.TakeDamage(damage);
+            playerStats.TakeDamage(damage);
         }
     }
 

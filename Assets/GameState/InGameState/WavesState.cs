@@ -97,12 +97,14 @@ public class WavesState : GameState
     {
         // Select a random enemy prefab from the array
         GameObject enemyToSpawn = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
+        
 
         // Get a random spawn position around the player base
         Vector2 spawnPosition = GetRandomSpawnPosition();
 
         // Instantiate the enemy at the spawn position
-        GameObject.Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        GameObject instantiatedEnemy = GameObject.Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        instantiatedEnemy.SetActive(true);
     }
 
     private Vector2 GetRandomSpawnPosition()

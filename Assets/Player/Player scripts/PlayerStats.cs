@@ -114,4 +114,29 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Handle player death (e.g., trigger death animation, respawn, game over)
+        Debug.Log("Player has died.");
+    }
+
+    public float getCurrentHealth()
+    {
+        //Debug.Log("Current Health: " + currentHealth);
+        return currentHealth;
+    }
+    public float getMaxHealth()
+    {
+        //Debug.Log("Max Health: " + maxHealth);
+        return maxHealth;
+    }
 }

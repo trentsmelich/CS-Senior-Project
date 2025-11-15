@@ -4,7 +4,8 @@ using TMPro;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public GameObject player;
+    private PlayerStats playerStats;
     public Image darkHealthBarFill;
     public Image currentHealthBarFill;
     public TextMeshProUGUI displayCounter;
@@ -12,15 +13,18 @@ public class PlayerHealthBar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerStats = player.GetComponent<PlayerStats>();
         darkHealthBarFill.fillAmount = 1f;
-        currentHealthBarFill.fillAmount = (float)playerHealth.currentHealth / playerHealth.maxHealth;
-        displayCounter.text = playerHealth.currentHealth.ToString() + "/" + playerHealth.maxHealth.ToString();
+        currentHealthBarFill.fillAmount = (float)playerStats.getCurrentHealth() / playerStats.getMaxHealth();
+        displayCounter.text = playerStats.getCurrentHealth().ToString() + "/" + playerStats.getMaxHealth().ToString();
+        
+        Debug.Log("Player Health Bar Initialized");
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentHealthBarFill.fillAmount = (float)playerHealth.currentHealth / playerHealth.maxHealth;
-        displayCounter.text = playerHealth.currentHealth.ToString() + "/" + playerHealth.maxHealth.ToString();
+        currentHealthBarFill.fillAmount = (float)playerStats.getCurrentHealth() / playerStats.getMaxHealth();
+        displayCounter.text = playerStats.getCurrentHealth().ToString() + "/" + playerStats.getMaxHealth().ToString();
     }
 }
