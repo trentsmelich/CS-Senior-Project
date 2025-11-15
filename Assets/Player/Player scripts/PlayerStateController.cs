@@ -1,4 +1,3 @@
-//using System.Numerics;
 using UnityEngine;
 
 public class PlayerStateController : MonoBehaviour
@@ -11,6 +10,9 @@ public class PlayerStateController : MonoBehaviour
     public float moveSpeed = 5f;
     public Vector2 moveInput; // Current frame's movement input
     public Vector2 lastDir; // Last movement direction
+
+    public Transform firePoint; // Point from which projectiles are fired
+    public GameObject projectilePrefab; // Projectile prefab to instantiate
 
     void Start()
     {
@@ -47,13 +49,14 @@ public class PlayerStateController : MonoBehaviour
     // Update the player's facing direction based on input
     public void UpdateDirection(Vector2 dir)
     {
-        // Only update lastDir if there's significant input
+        // Update last direction if there is movement
         if (dir.sqrMagnitude > 0.1f)
         {
             lastDir = dir.normalized;
         }
 
-        // Update animator parameters
+        // Update animator parameters so the animator can decide which way 
+        // to make the player face
         anim.SetFloat("Horizontal", lastDir.x);
         anim.SetFloat("Vertical", lastDir.y);
         anim.SetBool("isMoving", moveInput.sqrMagnitude > 0.1f);

@@ -3,69 +3,89 @@ using UnityEngine;
 public class PlayerAttackState : PlayerState
 {
     private float attackCooldown = 0.5f;
-    public float attackRange = 0.7f;
-    Vector2 attackPosition;
-    public float attackDistance = 0.2f; // how far from player the attack originates when no AttackPoint is present
-    public LayerMask enemyLayers = LayerMask.GetMask("Enemy");
-    private float timer;
+    private float projectileDelay = 0.3f;
+    private float timer = 0f;
+
+    private bool projectileFired = false;
+    private Vector2 faceDir;
 
     public override void EnterState(PlayerStateController player)
     {
-        //Update direction to last known direction
-        player.UpdateDirection(player.lastDir);
-
+        // Face towards mouse direction at the start of the attack
+        faceDir = GetMouseDirection(player.transform.position);
+        player.UpdateDirection(faceDir);
         player.GetAnimator().SetTrigger("Attacking");
-        Attack(player);
 
         timer = 0f;
+        projectileFired = false;
     }
 
     public override void UpdateState(PlayerStateController player)
     {
         timer += Time.deltaTime;
 
-        if (timer >= attackCooldown)
+        // Allow movement while attacking otherwise player doesnt move when attacking and moving
+        player.moveInput.x = Input.GetAxisRaw("Horizontal");
+        player.moveInput.y = Input.GetAxisRaw("Vertical");
+        Vector2 moveDir = player.moveInput.normalized;
+
+        // Move player
+        player.GetRigidbody().linearVelocity = moveDir * player.moveSpeed;
+
+        // Update movement animation
+        player.GetAnimator().SetBool("isMoving", moveDir.sqrMagnitude > 0.01f);
+
+        // Update facing to where the mouse is
+        if (!projectileFired)
         {
-            player.SetState(new PlayerIdleState());
+            faceDir = GetMouseDirection(player.transform.position);
+            player.UpdateDirection(faceDir);
 
-
-        }
-    }
-
-    public override void ExitState(PlayerStateController player) { }
-
-    public void Attack(PlayerStateController player)
-    {
-        // Determine the world position to use for the attack. Prefer a dedicated AttackPoint transform
-        // if it exists on the player; otherwise compute an offset from the player's position based
-        // on animator direction booleans (isUp/isDown/isLeft/isRight).
-
-        Vector2 dir = player.lastDir;
-        
-        attackPosition = (Vector2)player.GetGameObject().transform.position + dir * attackDistance;
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
-            attackPosition,
-            attackRange,
-            enemyLayers
-        );
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
+            // Shoot the projectile after delay so it syncs with animation
+            if (!projectileFired && timer >= projectileDelay)
             {
-                enemyHealth.TakeDamage(20);
+                ShootProjectile(player);
+                projectileFired = true;
             }
         }
 
-        Debug.Log("Player Attack executed.");
+        // Return to idle state after attack cooldown since it means attack is finished
+        // and player is not attacking again
+        if (timer >= attackCooldown)
+        {
+            player.SetState(new PlayerIdleState());
+        }
     }
 
-    void OnDrawGizmosSelected()
+    public override void ExitState(PlayerStateController player) 
     {
-        if (attackPosition == null)
-            return;
+        // Make isMoving false on exit for the animator
+        player.GetAnimator().SetBool("isMoving", false);
+    }
 
-        Gizmos.DrawWireSphere(attackPosition, attackRange);
+    //Get the mouse direction relative to a start position
+    private Vector2 GetMouseDirection(Vector3 startPosition)
+    {
+        // Get mouse position in world space
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0; // Set z to 0 since we're in 2D
+
+        // Return normalized direction from start position to mouse position
+        return ((Vector2)(mousePos - startPosition)).normalized;
+    }
+
+    //Shoot a projectile in the given direction
+    private void ShootProjectile(PlayerStateController player)
+    {
+        // Calculate angle based on mouse position
+        Vector2 dir = GetMouseDirection(player.firePoint.position);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        // Instantiate projectile at fire point
+        Object.Instantiate(
+            player.projectilePrefab,
+            player.firePoint.position,
+            Quaternion.Euler(0, 0, angle)
+        );
     }
 }
