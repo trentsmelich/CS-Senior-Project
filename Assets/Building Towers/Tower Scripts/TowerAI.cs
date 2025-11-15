@@ -11,6 +11,9 @@ public class TowerAI : MonoBehaviour
     private Rigidbody rb;
     private TowerState currentState;
 
+    public float attackRange = 5f;
+    public LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +23,7 @@ public class TowerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        currentState.UpdateState(this);
     }
     
     public void SetState(TowerState newState)

@@ -3,6 +3,7 @@ using UnityEngine;
 public class TowerIdleState : TowerState
 {
     
+
     public override void EnterState(TowerAI tower)
     {
         // Initialize idle state
@@ -13,10 +14,10 @@ public class TowerIdleState : TowerState
     public override void UpdateState(TowerAI tower)
     {
         // Check for nearby enemies to switch to attack state
-        if (tower.targetEnemy != null)
+        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(tower.transform.position, tower.attackRange, tower.enemyLayer);
+        if (enemiesInRange.Length > 0)
         {
-            Debug.Log("Enemy detected, switching to Attack State.");
-            // Here you would typically switch to the attack state
+            tower.targetEnemy = enemiesInRange[0].transform;
             tower.SetState(new TowerAttackState());
         }
     }
