@@ -4,6 +4,8 @@ public class TowerAI : MonoBehaviour
 {
     public Transform targetEnemy;
 
+    private TowerParent towerParent;
+
     public int towerCost = 100;
 
     //private variables
@@ -12,11 +14,14 @@ public class TowerAI : MonoBehaviour
     private TowerState currentState;
 
     public float attackRange = 5f;
-    public LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+    public LayerMask enemyLayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    
     {
+        towerParent = GetComponent<TowerParent>();
+        enemyLayer = LayerMask.GetMask("Enemy");
         SetState(new TowerIdleState());
     }
 
@@ -34,5 +39,10 @@ public class TowerAI : MonoBehaviour
         }
         currentState = newState;
         currentState.EnterState(this);
+    }
+
+    public TowerParent GetTowerParent()
+    {
+        return towerParent;
     }
 }
