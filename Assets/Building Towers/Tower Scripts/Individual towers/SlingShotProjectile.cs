@@ -17,7 +17,7 @@ public class SlingShotProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
     //on collision with enemy make enemy take damage and ball dissapear
