@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6483672908381144660}
   - component: {fileID: 5114509037579036325}
   - component: {fileID: 4398725196679859153}
-  - component: {fileID: 6435824194052401344}
   - component: {fileID: 2083818797768562997}
+  - component: {fileID: 3857289305775525368}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -115,21 +115,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6435824194052401344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8532625290915986904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3555093727b680e4a892d69f1de8ca3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
-  speed: 10
-  lifetime: 3
-  damageAmount: 20
 --- !u!58 &2083818797768562997
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,3 +151,15 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.045
+--- !u!114 &3857289305775525368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532625290915986904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3555093727b680e4a892d69f1de8ca3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile

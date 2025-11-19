@@ -23,10 +23,13 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject game;
     private GameStateController gameStateController;
+
+    private Animator anim;
     void Start()
     {
         gameStateController = game.GetComponent<GameStateController>();
         currentHealth = maxHealth;
+        anim = GetComponent<Animator>();
     }
 
     public float GetMoveSpeed()
@@ -95,6 +98,7 @@ public class PlayerStats : MonoBehaviour
                 break;
             case "Health":
                 maxHealth += amount;
+                currentHealth += amount;
                 break;
             case "Damage":
                 damage += amount;
@@ -116,17 +120,28 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            Die();
+            currentHealth -= damageAmount;
+            Debug.Log("Player took " + damageAmount + " damage, current health: " + currentHealth);
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                Die();
+            }
         }
+        return;
     }
 
     private void Die()
     {
         // Handle player death (e.g., trigger death animation, respawn, game over)
         Debug.Log("Player has died.");
+
+        anim.SetTrigger("isDead");
+        PlayerStateController player = GetComponent<PlayerStateController>();
+        player.enabled = false;
+        player.GetRigidbody().linearVelocity = Vector2.zero;
     }
 
     public float getCurrentHealth()

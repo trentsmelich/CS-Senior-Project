@@ -7,17 +7,18 @@ public class PlayerStateController : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Movement")]
-    public float moveSpeed = 5f;
     public Vector2 moveInput; // Current frame's movement input
     public Vector2 lastDir; // Last movement direction
 
     public Transform firePoint; // Point from which projectiles are fired
     public GameObject projectilePrefab; // Projectile prefab to instantiate
+    public PlayerStats playerStats; // Reference to player stats
 
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
 
         // Start in Idle state
         SetState(new PlayerIdleState());

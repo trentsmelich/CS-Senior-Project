@@ -4,14 +4,14 @@ using UnityEngine.Rendering;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 30;
+    public float maxHealth = 30;
 
     private EnemyAI enemyAI;
     private SpriteRenderer spriteRenderer;
 
     private bool isDead;
 
-    private int currentHealth;
+    private float currentHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,9 +27,10 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        Debug.Log("Enemy took " + damage + " damage, current health: " + currentHealth);
         StartCoroutine(FlashRed());
 
 

@@ -400,11 +400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a91a15c602f324ebff75aecfa6d8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateController
-  moveSpeed: 5
   moveInput: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
   firePoint: {fileID: 1999628104}
   projectilePrefab: {fileID: 8532625290915986904, guid: 941ab17ff60f57c43baeb5005459913f, type: 3}
+  playerStats: {fileID: 98333661}
 --- !u!61 &98333659
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ MonoBehaviour:
   moveSpeed: 5
   currentHealth: 100
   maxHealth: 100
-  damage: 100
+  damage: 10
   attackSpeed: 1
   profitMultiplier: 1
   experienceMultiplier: 1
@@ -4209,7 +4209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
-  CameraDistance: 10
+  CameraDistance: 50
   DeadZoneDepth: 0
   Composition:
     ScreenPosition: {x: 0, y: 0}
@@ -4253,7 +4253,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 5.665048
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4280,7 +4280,7 @@ Transform:
   m_GameObject: {fileID: 979828037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.336, y: 6.417, z: -10}
+  m_LocalPosition: {x: -15.336, y: 6.417, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5464,7 +5464,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.665048
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5489,7 +5489,7 @@ Transform:
   m_GameObject: {fileID: 1284601082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.336, y: 6.417, z: -10}
+  m_LocalPosition: {x: -15.336, y: 6.417, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6062,11 +6062,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a91a15c602f324ebff75aecfa6d8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateController
-  moveSpeed: 5
   moveInput: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
   firePoint: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  playerStats: {fileID: 0}
 --- !u!95 &1491037478
 Animator:
   serializedVersion: 7
