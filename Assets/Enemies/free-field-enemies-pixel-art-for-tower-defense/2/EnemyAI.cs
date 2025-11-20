@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private EnemyState currentState;
+    public GameObject coinPrefab;
 
     void Start()
     {
@@ -43,4 +44,9 @@ public class EnemyAI : MonoBehaviour
     {
         return gameObject;
     }
+    public GameObject GetCoinPrefab()
+    {
+        return coinPrefab;
+    }
+
 }

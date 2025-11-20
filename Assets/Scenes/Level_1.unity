@@ -500,6 +500,7 @@ MonoBehaviour:
   currentExperience: 0
   experienceToNextLevel: 1
   enemiesDefeated: 0
+  coins: 0
   game: {fileID: 1046596825}
 --- !u!1 &118692049
 GameObject:
@@ -972,6 +973,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: attackRange
       value: 0.8
@@ -6794,6 +6799,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: attackRange
       value: 0.8

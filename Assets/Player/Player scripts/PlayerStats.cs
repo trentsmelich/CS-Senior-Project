@@ -21,6 +21,8 @@ public class PlayerStats : MonoBehaviour
     public float experienceToNextLevel = 1f;
     public int enemiesDefeated = 0;
 
+    public int coins = 0;
+
     public GameObject game;
     private GameStateController gameStateController;
     void Start()
@@ -84,6 +86,10 @@ public class PlayerStats : MonoBehaviour
             experienceToNextLevel *= 2.0f; // Increase the threshold for next level
             // Trigger level-up state in the game (implementation depends on your game structure)
         }
+    }
+    public void AddCoins(int amount)
+    {
+        coins += (int)(amount * profitMultiplier);
     }
 
     public void ModifyStat(String statName, float amount)

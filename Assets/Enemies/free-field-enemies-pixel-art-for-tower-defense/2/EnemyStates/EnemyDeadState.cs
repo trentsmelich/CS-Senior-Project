@@ -8,6 +8,8 @@ public class EnemyDeadState : EnemyState
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         Object.Destroy(enemy.gameObject, 1.0f); // Destroy after 1 second to allow death animation to play
         enemy.player.GetComponent<PlayerStats>().AddExperience();
+        //initialize coin prefab at enemy position
+        Object.Instantiate(enemy.GetCoinPrefab(), enemy.transform.position, Quaternion.identity);
         Debug.Log("Enemy defeated. Experience added to player.");
         
     }
