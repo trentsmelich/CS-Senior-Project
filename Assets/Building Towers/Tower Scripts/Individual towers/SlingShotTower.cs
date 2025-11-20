@@ -17,7 +17,7 @@ public class SlingShotTower : TowerParent
         anim = slingShotArm.GetComponent<Animator>();
         towerDamage = 15f * level;
         towerRange = 7f * level;
-        attackCooldown = 1.5f;
+        attackCooldown = 1.5f / level;
         attackTimer = 0f;
         speed = 20f * level;
 

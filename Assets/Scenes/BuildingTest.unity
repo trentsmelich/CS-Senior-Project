@@ -195,6 +195,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30058524}
   m_CullTransparentMesh: 1
+--- !u!1 &33561464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4128535638539065229, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+  m_PrefabInstance: {fileID: 2103776237181037043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &33561468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33561464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bc42b1e00e3af42937ca04f3ec489b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlingShotProjectile
+  speed: 0
+  damage: 0
+--- !u!61 &33561469
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33561464}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.05}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.1, y: 0.1}
+    newSize: {x: 0.1, y: 0.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.1, y: 0.1}
+  m_EdgeRadius: 0
 --- !u!1 &65155583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1208,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393084636}
   m_CullTransparentMesh: 1
+--- !u!1 &404847814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8240854923354363853, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+  m_PrefabInstance: {fileID: 7750022589151689571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &404847818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404847814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bc42b1e00e3af42937ca04f3ec489b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlingShotProjectile
+  speed: 0
+  damage: 0
+--- !u!61 &404847819
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404847814}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.05}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.1, y: 0.1}
+    newSize: {x: 0.1, y: 0.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.1, y: 0.1}
+  m_EdgeRadius: 0
 --- !u!1 &427056814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +2880,46 @@ Transform:
   - {fileID: 2116943265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &760311398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5953740014677702177, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+  m_PrefabInstance: {fileID: 2103776237181037043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &760311401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760311398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6106ed7e8f1bda4baabb8f690618943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAI
+  targetEnemy: {fileID: 0}
+  attackRange: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &760311402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760311398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1737ebfdd88a7e40b9ee723d77a76ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlingShotTower
+  level: 3
+  towerRange: 0
+  towerDamage: 0
+  attackCooldown: 0
+  attackTimer: 0
+  speed: 0
 --- !u!1 &776545671
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,6 +4096,46 @@ MonoBehaviour:
   pauseMenu: {fileID: 793006480}
   shopScreen: {fileID: 1637112455}
   upgradeScreen: {fileID: 1388531967}
+--- !u!1 &1051006762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524322450949247104, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+  m_PrefabInstance: {fileID: 7750022589151689571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1051006765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051006762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6106ed7e8f1bda4baabb8f690618943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAI
+  targetEnemy: {fileID: 0}
+  attackRange: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1051006766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051006762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1737ebfdd88a7e40b9ee723d77a76ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlingShotTower
+  level: 2
+  towerRange: 0
+  towerDamage: 0
+  attackCooldown: 0
+  attackTimer: 0
+  speed: 0
 --- !u!1 &1154302757
 GameObject:
   m_ObjectHideFlags: 0
@@ -45122,6 +45332,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3502400016679711802, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5bd918359beb0584481470a97c886526, type: 2}
+    - target: {fileID: 4128535638539065229, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      propertyPath: m_Name
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627748566559272602, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      propertyPath: m_Name
+      value: SlingShotArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608365009430185727, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5634517357619077483, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.82
@@ -45169,7 +45395,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5953740014677702177, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 760311402}
+    - targetCorrespondingSourceObject: {fileID: 5953740014677702177, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 760311401}
+    - targetCorrespondingSourceObject: {fileID: 4128535638539065229, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 33561469}
+    - targetCorrespondingSourceObject: {fileID: 4128535638539065229, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 33561468}
   m_SourcePrefab: {fileID: 100100000, guid: 8ed02a965c3382f438a5343597c083ed, type: 3}
 --- !u!1001 &4864160163080118414
 PrefabInstance:
@@ -45311,6 +45549,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 25603461651421919, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_Name
+      value: SlingShotArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 988272635740123834, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.183
+      objectReference: {fileID: 0}
     - target: {fileID: 3424617678879351186, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.51
@@ -45355,10 +45601,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower 03_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8140503412330610815, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1bd3c95338cf7b34c8cf501cef5c3157, type: 2}
+    - target: {fileID: 8240854923354363853, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_Name
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240854923354363853, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201029322882121640, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0012
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201029322882121640, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1719
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6524322450949247104, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1051006766}
+    - targetCorrespondingSourceObject: {fileID: 6524322450949247104, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1051006765}
+    - targetCorrespondingSourceObject: {fileID: 8240854923354363853, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 404847818}
+    - targetCorrespondingSourceObject: {fileID: 8240854923354363853, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 404847819}
   m_SourcePrefab: {fileID: 100100000, guid: 1d09b5f5b2b413c48b910a216f107127, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
