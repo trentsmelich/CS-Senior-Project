@@ -6,8 +6,6 @@ public class TowerAI : MonoBehaviour
 
     private TowerParent towerParent;
 
-    public int towerCost = 100;
-
     //private variables
     private Animator anim;
     private Rigidbody rb;

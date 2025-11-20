@@ -8,12 +8,20 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected float attackTimer;
 
+    [SerializeField]protected float speed;
+    protected int level;
+    
+
     public float TowerRange => towerRange;
     public float TowerDamage => towerDamage;
     public float AttackCooldown => attackCooldown;
     public float AttackTimer => attackTimer;
-    public abstract void Attack(Transform enemy);
+    public float Speed => speed;
+    public int Level => level;
     
+
+    public abstract void UpdateTower(Transform enemy);
+    public abstract void setLevel(int level);
 
     
 }

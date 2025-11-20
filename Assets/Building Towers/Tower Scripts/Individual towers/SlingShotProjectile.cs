@@ -4,7 +4,8 @@ using UnityEngine;
 public class SlingShotProjectile : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float speed = 10f;
+    public float speed;
+    public float damage;
     private Vector2 direction;
 
     private EnemyHealth enemyTarget;
@@ -25,8 +26,16 @@ public class SlingShotProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemyTarget.TakeDamage(15); // Assuming a fixed damage value for demonstration
+            enemyTarget.TakeDamage((int)damage); // Assuming a fixed damage value for demonstration
             Destroy(gameObject);
         }
     }
+
+    public void setStats(float speed, float damage)
+    {
+        this.speed = speed;
+        this.damage = damage;
+
+    }
+    
 }

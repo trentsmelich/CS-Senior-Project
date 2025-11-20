@@ -17,7 +17,7 @@ public class TowerAttackState : TowerState
         {
             
                 // Attack the enemy
-                tower.GetTowerParent().Attack(tower.targetEnemy);
+                tower.GetTowerParent().UpdateTower(tower.targetEnemy);
                 
             
         }

@@ -1236,7 +1236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAI
   targetEnemy: {fileID: 0}
-  towerCost: 100
   attackRange: 5
   enemyLayer:
     serializedVersion: 2
@@ -1257,6 +1256,53 @@ MonoBehaviour:
   towerDamage: 15
   attackCooldown: 1
   attackTimer: 0
+  speed: 0
+--- !u!61 &480735191
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480735184}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.12672377}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.97}
+    newSize: {x: 0.64, y: 0.97}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.64, y: 0.7165525}
+  m_EdgeRadius: 0
 --- !u!1 &484829139
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingShotProjectile
   speed: 10
+  damage: 0
 --- !u!61 &1488231585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45167,13 +45214,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3697229788555690637, guid: 72429ec067cab174aae26d116927c0df, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4117113813861979928, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 4117113813861979928, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4957508895906217812, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45223,6 +45274,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.166
       objectReference: {fileID: 0}
+    - target: {fileID: 7681204768809051774, guid: 72429ec067cab174aae26d116927c0df, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dcc98d0862cae024081f993a8e72732f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45233,6 +45288,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6645658171186048047, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       insertIndex: -1
       addedObject: {fileID: 480735188}
+    - targetCorrespondingSourceObject: {fileID: 6645658171186048047, guid: 72429ec067cab174aae26d116927c0df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 480735191}
     - targetCorrespondingSourceObject: {fileID: 4117113813861979928, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1488231584}
