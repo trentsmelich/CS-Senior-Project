@@ -5,6 +5,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public float moveSpeed = 4f;
     public float attackRange = 1.2f;
+    public float damage = 10f;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -42,5 +43,25 @@ public class EnemyAI : MonoBehaviour
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
+    public void SetMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
     }
 }

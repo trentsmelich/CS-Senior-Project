@@ -5,7 +5,6 @@ public class EnemyAttackState : EnemyState
 {
     private float attackCooldown = 1f;
     private float timer;
-    private float damage = 10f;
     private float attackRange = 0.7f;
     private LayerMask playerLayers = LayerMask.GetMask("Player");
     private float attackDistance = 0.2f; 
@@ -54,7 +53,7 @@ public class EnemyAttackState : EnemyState
         PlayerStats playerStats = enemy.player.GetComponent<PlayerStats>();
         if (playerStats != null)
         {
-            playerStats.TakeDamage(damage);
+            playerStats.TakeDamage(enemy.damage);
         }
     }
 
@@ -79,5 +78,4 @@ public class EnemyAttackState : EnemyState
 
         return Vector2.right; // Default direction
     }
-
 }

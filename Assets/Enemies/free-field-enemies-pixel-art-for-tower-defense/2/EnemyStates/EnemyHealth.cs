@@ -12,6 +12,9 @@ public class EnemyHealth : MonoBehaviour
     private bool isDead;
 
     private float currentHealth;
+    private static int waveEnemies = 0;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,6 +54,29 @@ public class EnemyHealth : MonoBehaviour
     
     void Die()
     {
+        waveEnemies--;
         enemyAI.EnemyDie();
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void SetMaxHealth(float newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        currentHealth = maxHealth; // Reset current health to new max health
+    }
+
+    public void increaseEnemies()
+    {
+        waveEnemies++;
+        
+    }
+
+    public static int GetWaveEnemies()
+    {
+        return waveEnemies;
     }
 }

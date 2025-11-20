@@ -15,7 +15,10 @@ public class WavesState : GameState
     private TextMeshProUGUI countdownText; // UI Text to display wave countdown
     private bool spawning = false; // Flag to check if currently spawning a wave
 
-    private PlayerStats playerStats;
+    private int waveNumber = 1;
+    private float numEnemiesMultiplier = 1.0f;
+    private float enemyDifficultyMultiplier = 1.0f;
+    private EnemyHealth enemyHealth;
    
     public WavesState(
         Transform playerBase,
@@ -50,13 +53,20 @@ public class WavesState : GameState
 
     public override void UpdateState(GameStateController Game)
     {
+        if (!spawning && EnemyHealth.GetWaveEnemies() > 0)
+        {
+            countdownText.text = "Enemies Remaining: " + EnemyHealth.GetWaveEnemies();
+            return;
+        }
+
         if (!spawning)
         {
             // Countdown to the next wave
             waveCountdown -= Time.deltaTime;
 
             // Update the countdown UI
-            countdownText.text = "Next Wave In: " + Mathf.Ceil(waveCountdown).ToString() + "s";
+
+            countdownText.text = "Wave " + waveNumber + " In: " + Mathf.Ceil(waveCountdown).ToString() + "s";
 
             // If the countdown reaches zero and not already spawning, 
             // start spawning a new wave
@@ -80,8 +90,13 @@ public class WavesState : GameState
     {   
         Debug.Log("Spawning Wave!");
 
+
         spawning = true;
+        waveNumber++;
+        enemiesPerWave = Mathf.RoundToInt(enemiesPerWave * numEnemiesMultiplier);
         countdownText.text = "Spawning Wave!";
+
+        Debug.Log("Enemies This Wave: " + enemiesPerWave);
 
         for (int i = 0; i < enemiesPerWave; i++)
         {
@@ -91,6 +106,8 @@ public class WavesState : GameState
 
         waveCountdown = waveTimer;
         spawning = false;
+        numEnemiesMultiplier += 0.1f;
+        enemyDifficultyMultiplier += 0.2f;
     }
 
     private void SpawnEnemy()
@@ -104,7 +121,18 @@ public class WavesState : GameState
 
         // Instantiate the enemy at the spawn position
         GameObject instantiatedEnemy = GameObject.Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        EnemyHealth enemyHealth = instantiatedEnemy.GetComponent<EnemyHealth>();
+        EnemyAI enemyAI = instantiatedEnemy.GetComponent<EnemyAI>();
+
+        if (enemyHealth != null && enemyAI != null)
+        {
+            enemyHealth.SetMaxHealth(enemyHealth.GetMaxHealth() * enemyDifficultyMultiplier);
+            enemyAI.SetDamage(enemyAI.GetDamage() * enemyDifficultyMultiplier);
+            enemyAI.SetMoveSpeed(enemyAI.GetMoveSpeed() * enemyDifficultyMultiplier);
+        }
+
         instantiatedEnemy.SetActive(true);
+        enemyHealth.increaseEnemies();
     }
 
     private Vector2 GetRandomSpawnPosition()
