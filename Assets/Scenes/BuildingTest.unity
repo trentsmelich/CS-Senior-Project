@@ -1252,6 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1737ebfdd88a7e40b9ee723d77a76ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingShotTower
+  level: 1
   towerRange: 0
   towerDamage: 15
   attackCooldown: 1
@@ -45188,7 +45189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2523002083895026280, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3491606016521177833, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_Name
@@ -45221,6 +45222,10 @@ PrefabInstance:
     - target: {fileID: 4117113813861979928, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_Name
       value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117113813861979928, guid: 72429ec067cab174aae26d116927c0df, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4117113813861979928, guid: 72429ec067cab174aae26d116927c0df, type: 3}
       propertyPath: m_IsActive

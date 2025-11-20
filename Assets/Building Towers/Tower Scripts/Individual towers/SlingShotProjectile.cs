@@ -26,7 +26,7 @@ public class SlingShotProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemyTarget.TakeDamage((int)damage); // Assuming a fixed damage value for demonstration
+            enemyTarget.TakeDamage((int)damage);
             Destroy(gameObject);
         }
     }

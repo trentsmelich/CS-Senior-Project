@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class TowerParent : MonoBehaviour
 {
+    [SerializeField]protected int level;
     [SerializeField] protected float towerRange;
     [SerializeField] protected float towerDamage;
 
@@ -9,7 +10,7 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected float attackTimer;
 
     [SerializeField]protected float speed;
-    protected int level;
+    
     
 
     public float TowerRange => towerRange;
