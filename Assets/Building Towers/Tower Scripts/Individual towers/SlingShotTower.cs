@@ -25,7 +25,8 @@ public class SlingShotTower : TowerParent
     public override void UpdateTower(Transform enemy)
     {
         // Implementation of attack logic for SlingShotTower
-        Vector2 direction = enemy.position - transform.position;
+        //create offset for enemy position y by .2
+        Vector2 direction = (enemy.position - new Vector3(0, 1f, 0)) - transform.position;
         slingShotArm.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
         if(attackTimer < attackCooldown)
         {
@@ -43,7 +44,7 @@ public class SlingShotTower : TowerParent
         // Implement firing logic here
         
         GameObject projectile = Instantiate(projectilePrefab, slingShotArm.transform.position, slingShotArm.transform.rotation);
-        projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - transform.position).normalized, enemy);
+        projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - new Vector3(0, 1f, 0) - transform.position).normalized, enemy);
         projectile.GetComponent<SlingShotProjectile>().setStats(speed, towerDamage);
         projectile.transform.localScale = new Vector3(3, 3, 3);
         projectile.SetActive(true);
