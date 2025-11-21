@@ -92,6 +92,11 @@ public class PlayerStats : MonoBehaviour
         coins += (int)(amount * profitMultiplier);
     }
 
+    public int GetCoins()
+    {
+        return coins;
+    }
+
     public void ModifyStat(String statName, float amount)
     {
         switch (statName)
