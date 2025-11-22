@@ -16,6 +16,7 @@ public class MainMenu : MainMenuState
         //find main mneu buttons in main mneu panel
         Button playButton = mainMenuPanel.transform.Find("Play_Button").GetComponent<Button>();
         Button settingsButton = mainMenuPanel.transform.Find("Settings_Button").GetComponent<Button>();
+        Button unlocksButton = mainMenuPanel.transform.Find("Unlocks_Button").GetComponent<Button>();
         Button exitButton = mainMenuPanel.transform.Find("Exit_Button").GetComponent<Button>();
 
         playButton.onClick.AddListener(() =>
@@ -26,8 +27,14 @@ public class MainMenu : MainMenuState
 
         settingsButton.onClick.AddListener(() =>
         {
-            //m.SetState(new SettingsMenuState());
+            m.SetState(new Settings());
             Debug.Log("Settings Button Clicked");
+        });
+
+        unlocksButton.onClick.AddListener(() =>
+        {
+            m.SetState(new Unlocks());
+            Debug.Log("Unlocks Button Clicked");
         });
         
         exitButton.onClick.AddListener(() =>

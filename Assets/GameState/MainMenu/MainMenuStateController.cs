@@ -3,10 +3,9 @@ using UnityEngine;
 public class MainMenuStateController : MonoBehaviour
 {
     public GameObject mainMenuPanel;
-
     public GameObject levelSelectPanel;
-    //public GameObject level;
-    //public GameObject settingsMenu;
+    public GameObject settingsPanel;
+    public GameObject unlocksPanel;
 
     private MainMenuState currentState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,13 +33,19 @@ public class MainMenuStateController : MonoBehaviour
         return mainMenuPanel;
     }
 
+    public GameObject GetSettingsPanel()
+    {
+        return settingsPanel;
+    }
+
     public GameObject GetLevel()
     {
         return levelSelectPanel;
     }
 
-    /*public GameObject GetSettingsMenu()
+    public GameObject GetUnlocksPanel()
     {
-        //return settingsMenu;
-    }*/
+        return unlocksPanel;
+    }
+    
 }
