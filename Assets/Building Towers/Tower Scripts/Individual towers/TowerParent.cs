@@ -22,7 +22,6 @@ public abstract class TowerParent : MonoBehaviour
     
 
     public abstract void UpdateTower(Transform enemy);
-    public abstract void setLevel(int level);
 
     
 }

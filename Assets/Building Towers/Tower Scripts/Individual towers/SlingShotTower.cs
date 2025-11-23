@@ -51,10 +51,4 @@ public class SlingShotTower : TowerParent
 
     }
 
-    public override void setLevel(int level)
-    {
-        this.level = level;
-        towerDamage = 15f * level;
-        towerRange = 7f * level;
-    }
 }
