@@ -9,20 +9,20 @@ public class EnemyChaseState : EnemyState
 
     public override void UpdateState(EnemyAI enemy)
     {
-        if (enemy == null || enemy.player == null) return;
+        if (enemy == null || enemy.GetPlayer() == null) return;
 
-        Vector2 direction = (enemy.player.position - enemy.transform.position).normalized;
-        float distance = Vector2.Distance(enemy.player.position, enemy.transform.position);
+        Vector2 direction = (enemy.GetPlayer().position - enemy.transform.position).normalized;
+        float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
 
         // Move toward player
         enemy.GetRigidbody().MovePosition(
-            enemy.GetRigidbody().position + direction * enemy.moveSpeed * Time.deltaTime
+            enemy.GetRigidbody().position + direction * enemy.GetMoveSpeed() * Time.deltaTime
         );
 
         // Update direction animation
         UpdateDirection(enemy, direction);
 
-        if (distance < enemy.attackRange)
+        if (distance < enemy.GetAttackRange())
         {
             enemy.SetState(new EnemyAttackState());
         }

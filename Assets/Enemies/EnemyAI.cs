@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
-    public float moveSpeed = 4f;
-    public float attackRange = 1.2f;
+    private Transform player;
+    private float moveSpeed;
+    private float attackRange;
 
     private Animator anim;
     private Rigidbody2D rb;
     private EnemyState currentState;
     public GameObject coinPrefab;
+    private EnemyParent enemyParent;
 
     void Start()
     {
+        enemyParent = GetComponent<EnemyParent>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        moveSpeed = enemyParent.Speed;
+        attackRange = enemyParent.EnemyRange;
 
         // Start in Idle or Chase
         SetState(new EnemyChaseState());
@@ -47,6 +52,23 @@ public class EnemyAI : MonoBehaviour
     public GameObject GetCoinPrefab()
     {
         return coinPrefab;
+    }
+    public Transform GetPlayer()
+    {
+        
+        return player;
+    }
+    public EnemyParent GetEnemyParent()
+    {
+        return enemyParent;
+    }
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+    public float GetAttackRange()
+    {
+        return attackRange;
     }
 
 }
