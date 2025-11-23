@@ -27,23 +27,8 @@ public class Bee : EnemyParent
 
     Vector2 GetFacingDirection(EnemyAI enemy)
     {
-        var anim = enemy.GetAnimator();
-        if (anim.GetBool("isUp")) return Vector2.up;
-        if (anim.GetBool("isDown")) return Vector2.down;
-
-
-        if (anim.GetBool("isSide"))
-        {
-            if (enemy.GetGameObject().transform.localScale.x > 0)
-            {
-                return Vector2.right;
-            }
-            else
-            {
-                return Vector2.left;
-            }
-        }
-        return Vector2.right; // Default direction
+        Transform player = enemy.GetPlayer().transform;
+        return (player.position - enemy.GetGameObject().transform.position).normalized;
     }
 
     IEnumerator AttackDelay(EnemyAI enemy, float delay)
