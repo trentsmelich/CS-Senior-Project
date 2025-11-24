@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7329518713686850040}
@@ -63,8 +63,8 @@ Transform:
   m_GameObject: {fileID: 919114048276854430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.936153, y: 8.889323, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: -8.236057, y: 6.6635413, z: 0}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3657069481471231675}
@@ -117,12 +117,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -7945270389654465922, guid: f578c13ad9c154a43ba10ff73a149393, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 85ed32e5cdb17274e9642984e03c780c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.23, y: 0.24}
+  m_Size: {x: 0.17, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -138,7 +138,7 @@ Animator:
   m_GameObject: {fileID: 919114048276854430}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b2d4c4478852c5e4ca82d1dca36f9a44, type: 2}
+  m_Controller: {fileID: 9100000, guid: b75c77d71e86128419e25ba49e9ae527, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d388f9fa9ee0f3245961f83f92a0fed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
+  coinPrefab: {fileID: 0}
 --- !u!50 &6908139809449696950
 Rigidbody2D:
   serializedVersion: 5
@@ -178,7 +178,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -237,17 +237,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.018098563, y: -0.05130399}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.23, y: 0.24}
-    newSize: {x: 0.23, y: 0.24}
+    oldSize: {x: 0.17, y: 0.23}
+    newSize: {x: 0.17, y: 0.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.1230526, y: 0.122583374}
+  m_Size: {x: 0.155, y: 0.213}
   m_EdgeRadius: 0
 --- !u!114 &3365009410153105108
 MonoBehaviour:
@@ -261,11 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dbe60117f00c94f83d4c6b448d300e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Archer
-  enemyRange: 10
-  enemyDamage: 10
-  attackCooldown: 1
-  attackTimer: 2
-  attackDistance: 5
-  speed: 10
+  enemyRange: 7
+  enemyDamage: 5
+  attackCooldown: 3
+  attackTimer: 0
+  attackDistance: 0
+  speed: 6
   firePoint: {fileID: 3657069481471231675}
   projectilePrefab: {fileID: 8511129841158349827, guid: 722926cdf37b3324690eb212b3606eba, type: 3}

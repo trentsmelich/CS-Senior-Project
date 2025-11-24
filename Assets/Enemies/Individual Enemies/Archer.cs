@@ -10,18 +10,12 @@ public class Archer : EnemyParent
     void Start()
     {
         playerLayer = LayerMask.GetMask("Player");
-
-        enemyRange = 5f;
-        enemyDamage = 5f;
-        speed = 2f;
-        attackCooldown = 2f;
-        attackTimer = 0f;
     }
 
     public override void Attack(EnemyAI enemy)
     {
         enemy.GetAnimator().SetTrigger("Attacking");
-        enemy.StartCoroutine(ShootAfterDelay(enemy, 0.4f));
+        enemy.StartCoroutine(ShootAfterDelay(enemy, 0.75f));
     }
 
     // Delay shooting the projectile to match animation
