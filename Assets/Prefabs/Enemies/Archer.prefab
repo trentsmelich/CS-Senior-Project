@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d388f9fa9ee0f3245961f83f92a0fed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
 --- !u!50 &6908139809449696950
 Rigidbody2D:
   serializedVersion: 5
