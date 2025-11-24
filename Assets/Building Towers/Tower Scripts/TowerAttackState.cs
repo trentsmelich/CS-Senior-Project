@@ -2,43 +2,28 @@ using UnityEngine;
 
 public class TowerAttackState : TowerState
 {
-    private float towerDamage = 10f;
-    private float attackRange = 5f;
-    private float attackCooldown = 1f;
-    private float attackTimer = 0f;
+    //all tower attack params should go to TowerAI and be accessed from there will fix later
+   
 
     public override void EnterState(TowerAI tower)
     {
         // Initialize attack state
-        attackTimer = 0f;
+        
     }
 
     public override void UpdateState(TowerAI tower)
     {
         if (tower.targetEnemy != null)
         {
-            attackTimer += Time.deltaTime;
-            float distanceToEnemy = Vector3.Distance(tower.transform.position, tower.targetEnemy.position);
-
-            if (distanceToEnemy <= attackRange)
-            {
-                if (attackTimer >= attackCooldown)
-                {
-                    // Attack the enemy
-                    Debug.Log("Tower attacks the enemy for " + towerDamage + " damage.");
-                    attackTimer = 0f;
-                }
-            }
-            else
-            {
-                // Target is out of range, switch to another state if needed
-                Debug.Log("Target out of range, switching state.");
-            }
+            
+                // Attack the enemy
+                tower.GetTowerParent().UpdateTower(tower.targetEnemy);
+                
+            
         }
         else
         {
-            // No target, switch to another state if needed
-            Debug.Log("No target enemy, switching state.");
+            tower.SetState(new TowerIdleState());
         }
     }
 
@@ -50,5 +35,9 @@ public class TowerAttackState : TowerState
     private void AttackEnemy(Transform enemy)
     {
         // Implement attack logic here
+
+        
+
+        Debug.Log("Tower attacking enemy: " + enemy.name);
     }
 }
