@@ -8,12 +8,6 @@ public class Wolf : EnemyParent
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        attackCooldown = 2.5f;
-        attackTimer = 0f;
-        attackDistance = 1.5f;
-        enemyRange = 1.5f;
-        enemyDamage = 10.0f;
-        speed = 25f;
         playerLayers = LayerMask.GetMask("Player");
     }
 
@@ -26,8 +20,8 @@ public class Wolf : EnemyParent
     public override void Attack(EnemyAI enemy)
     {
         enemy.GetAnimator().SetTrigger("Attacking");
-        enemy.StartCoroutine(AttackDelay(enemy, 0.5f));
-        //enemy.StartCoroutine(LungeAttack(enemy, 50f, 2f, 0.3f));
+        enemy.StartCoroutine(LungeCharge(enemy, 50f, 2.75f, 0.3f));
+        enemy.StartCoroutine(AttackDelay(enemy, 0f));
     }
 
     Vector2 GetFacingDirection(EnemyAI enemy)
@@ -68,7 +62,7 @@ public class Wolf : EnemyParent
 
         Debug.Log("Wolf is attacking!");
 
-        //normal attack
+        // Normal attack
         if (hitEnemies.Length > 0)
         {
             PlayerStats playerStats = enemy.GetPlayer().GetComponent<PlayerStats>();
@@ -83,10 +77,22 @@ public class Wolf : EnemyParent
         
     }
 
-    // Lunge attack coroutine
-    /*IEnumerator LungeAttack(EnemyAI enemy, float lungeSpeed, float lungeDistance, float duration)
+    IEnumerator LungeCharge(EnemyAI enemy, float lungeSpeed, float lungeDistance, float duration)
     {
-        
-    }*/
+        Transform wolf = enemy.GetGameObject().transform;
+        Transform player = enemy.GetPlayer().transform;
+
+        Vector2 startPosition = wolf.position;
+        Vector2 endPosition = startPosition + (Vector2)(player.position - wolf.position).normalized * lungeDistance;
+
+        float time = 0f;
+
+        while (time < 1f)
+        {
+            time += Time.deltaTime / duration; 
+            wolf.position = Vector2.Lerp(startPosition, endPosition, time); // Lerp helps the calulate between start and end based on time
+            yield return null;
+        }
+    }
 
 }

@@ -29,7 +29,7 @@ public class InShopState : GameState
         //In shop upgrade filter buttons
         Button damageButton = shopScreen.transform.Find("Filter/Damage_Button").GetComponent<Button>();
         Button farmButton = shopScreen.transform.Find("Filter/Farm_Button").GetComponent<Button>();
-        Button healthButton = shopScreen.transform.Find("Filter/Health_Button").GetComponent<Button>();
+        Button statButton = shopScreen.transform.Find("Filter/Stat_Button").GetComponent<Button>();
 
         damageButton.onClick.AddListener(() =>
         {
@@ -46,7 +46,7 @@ public class InShopState : GameState
             //shopScreen.GetComponent<Shop>().FilterUpgrades("Farm");
         });
 
-        healthButton.onClick.AddListener(() =>
+        statButton.onClick.AddListener(() =>
         {
             //Filter to show only health upgrades
             FilterButton(2);
@@ -63,21 +63,21 @@ public class InShopState : GameState
             //Filter to show only damage upgrades
             shopScreen.transform.Find("Filter/Damage_Items").gameObject.SetActive(true);
             shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Health_Items").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(false);
         }
         else if(index == 1)
         {
             //Filter to show only farm upgrades
             shopScreen.transform.Find("Filter/Damage_Items").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(true);
-            shopScreen.transform.Find("Filter/Health_Items").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(false);
         }
         else if(index == 2)
         {
             //Filter to show only health upgrades
             shopScreen.transform.Find("Filter/Damage_Items").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Health_Items").gameObject.SetActive(true);
+            shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(true);
         }
         
     }
