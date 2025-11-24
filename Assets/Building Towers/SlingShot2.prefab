@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4498577946106753235}
   - component: {fileID: 8518478704672100773}
   - component: {fileID: 996062315310669796}
-  - component: {fileID: 3645671734008795978}
   m_Layer: 0
   m_Name: SlingShot2
   m_TagString: Untagged
@@ -116,6 +115,7 @@ MonoBehaviour:
   attackCooldown: 0
   attackTimer: 0
   speed: 0
+  towerImage: {fileID: -7282244306614514909, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
 --- !u!114 &996062315310669796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,26 +133,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &3645671734008795978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045634263418035838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: 120
-  m_PreferredHeight: 120
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
 --- !u!1001 &3562523696081863128
 PrefabInstance:
   m_ObjectHideFlags: 0

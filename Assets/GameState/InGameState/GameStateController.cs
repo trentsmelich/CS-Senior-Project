@@ -36,7 +36,10 @@ public class GameStateController : MonoBehaviour
     public GameObject coinCounter;
     public GameObject waveCounter;
 
+    private GameObject placeTower;
+
     [SerializeField] GameObject[] towers;
+    [SerializeField] GameObject towerButtonPrefab;
 
     void Start()
     {
@@ -119,6 +122,18 @@ public class GameStateController : MonoBehaviour
         playerXPBar.SetActive(show);
         coinCounter.SetActive(show);
         waveCounter.SetActive(show);
+    }
+    public GameObject GetTowerButtonPrefab()
+    {
+        return towerButtonPrefab;
+    }
+    public void SetPlaceTower(GameObject tower)
+    {
+        placeTower = tower;
+    }
+    public GameObject GetPlaceTower()
+    {
+        return placeTower;
     }
 
 }

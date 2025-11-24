@@ -1,24 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InShopState : GameState
 {
     private GameObject shopScreen;
-    //private GameObject[] towers;
+    private GameObject[] towers;
     //private RectTransform listParent;
+    private String towerType;
 
     public override void EnterState(GameStateController Game)
     {
         //towers = Game.GetTowers();
         shopScreen = Game.GetShopScreen();
+        towers = Game.GetTowers();
         
-        //listParent = shopScreen.transform.Find("ListParent").gameObject.GetComponent<RectTransform>();
 
-        /*foreach (GameObject tower in towers)
-        {
-            GameObject towerIcon = GameObject.Instantiate(tower, listParent);
-            
-        }*/
+        
 
         // Implementation for entering the in-shop state
         Game.ShowPlayerUI(false);
@@ -46,7 +44,8 @@ public class InShopState : GameState
         {
             //Filter to show only damage upgrades
             FilterButton(0);
-            
+            towerType = "Damage";
+            MakeLists(Game);
             //shopScreen.GetComponent<Shop>().FilterUpgrades("Damage");
         });
 
@@ -54,6 +53,8 @@ public class InShopState : GameState
         {
             //Filter to show only farm upgrades
             FilterButton(1);
+            towerType = "Farm";
+            MakeLists(Game);
             //shopScreen.GetComponent<Shop>().FilterUpgrades("Farm");
         });
 
@@ -61,11 +62,14 @@ public class InShopState : GameState
         {
             //Filter to show only stat upgrades
             FilterButton(2);
+            towerType = "Stat";
+            MakeLists(Game);
             //shopScreen.GetComponent<Shop>().FilterUpgrades("Stat");
         });
+        
 
     }
-
+    
     private void FilterButton(int index)
     {
         
@@ -95,9 +99,40 @@ public class InShopState : GameState
         
     }
 
-    private void MakeLists()
+    private void MakeLists(GameStateController Game)
     {
+        //loop thropugh list of towers instantiate buttons for all the towers with listeners then assign image of tower to button
+        PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+
+        foreach (GameObject tower in towers)
+        {
+            //instantiate button prefab under farm scroll view, content
+            GameObject button = GameObject.Instantiate(Game.GetTowerButtonPrefab(), shopScreen.transform.Find("Filter/Farm_ScrollView/Viewport/Content"));
+            //set button image to tower image
+            button.GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
+            //add listener to button to open tower upgrade screen
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
+                {
+                    playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
+                    Game.SetPlaceTower(tower);
+                }
+                
+
+
+            });
+
+            
+        }
+
+
+
         
+
+
+
+
     }
 
     public override void UpdateState(GameStateController Game)

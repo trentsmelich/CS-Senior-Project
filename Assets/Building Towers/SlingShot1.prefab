@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 517976835983212327}
   - component: {fileID: 2559753331453439839}
   - component: {fileID: 5159145958060091897}
-  - component: {fileID: 1514429842694025790}
   m_Layer: 0
   m_Name: SlingShot1
   m_TagString: Untagged
@@ -423,6 +422,7 @@ MonoBehaviour:
   attackCooldown: 1
   attackTimer: 0
   speed: 0
+  towerImage: {fileID: 8214975810637141180, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
 --- !u!61 &5159145958060091897
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -469,23 +469,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.64, y: 0.7165525}
   m_EdgeRadius: 0
---- !u!114 &1514429842694025790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7700592830201623609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: 120
-  m_PreferredHeight: 120
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1

@@ -10,6 +10,11 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected float attackTimer;
 
     [SerializeField]protected float speed;
+    //have image of the full tower
+    [SerializeField] protected Sprite towerImage;
+    [SerializeField]protected int towerCost;
+
+
     
     
 
@@ -19,6 +24,8 @@ public abstract class TowerParent : MonoBehaviour
     public float AttackTimer => attackTimer;
     public float Speed => speed;
     public int Level => level;
+    public Sprite TowerImage => towerImage;
+    public int TowerCost => towerCost;
     
 
     public abstract void UpdateTower(Transform enemy);
