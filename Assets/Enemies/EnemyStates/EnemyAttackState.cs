@@ -20,6 +20,8 @@ public class EnemyAttackState : EnemyState
         timer += Time.deltaTime;
         float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
 
+        enemy.UpdateDirection(enemy, (enemy.GetPlayer().position - enemy.transform.position).normalized);
+
         // After attacking, return to chase
         if (timer >= attackCooldown)
         {
@@ -34,9 +36,5 @@ public class EnemyAttackState : EnemyState
     }
 
     public override void ExitState(EnemyAI enemy) { }
-
-    
-
-    
 
 }

@@ -71,4 +71,24 @@ public class EnemyAI : MonoBehaviour
         return attackRange;
     }
 
+    public void UpdateDirection(EnemyAI enemy, Vector2 dir)
+    {
+        var anim = enemy.GetAnimator();
+        anim.SetBool("isDown", false);
+        anim.SetBool("isUp", false);
+        anim.SetBool("isSide", false);
+
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            anim.SetBool("isSide", true);
+            Vector3 scale = enemy.transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * (dir.x > 0 ? -1 : 1);
+            enemy.transform.localScale = scale;
+        }
+        else if (dir.y > 0)
+            anim.SetBool("isUp", true);
+        else
+            anim.SetBool("isDown", true);
+    }
+
 }
