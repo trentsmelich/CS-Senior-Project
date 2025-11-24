@@ -3,11 +3,23 @@ using UnityEngine.UI;
 
 public class InShopState : GameState
 {
-    GameObject shopScreen;
+    private GameObject shopScreen;
+    private GameObject[] towers;
+    private RectTransform listParent;
+
     public override void EnterState(GameStateController Game)
     {
-        
+        towers = Game.GetTowers();
         shopScreen = Game.GetShopScreen();
+        
+        listParent = shopScreen.transform.Find("ListParent").gameObject.GetComponent<RectTransform>();
+
+        foreach (GameObject tower in towers)
+        {
+            GameObject towerIcon = GameObject.Instantiate(tower, listParent);
+            
+        }
+
 
         // Implementation for entering the in-shop state
         Game.ShowPlayerUI(false);
@@ -79,6 +91,11 @@ public class InShopState : GameState
             shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(true);
         }
+        
+    }
+
+    private void MakeLists()
+    {
         
     }
 

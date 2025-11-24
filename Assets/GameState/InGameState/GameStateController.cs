@@ -36,6 +36,8 @@ public class GameStateController : MonoBehaviour
     public GameObject coinCounter;
     public GameObject waveCounter;
 
+    [SerializeField] GameObject[] towers;
+
     void Start()
     {
         waveManager = new WavesState(
@@ -104,6 +106,11 @@ public class GameStateController : MonoBehaviour
     public GameObject GetUpgradeScreen()
     {
         return upgradeScreen;
+    }
+
+    public GameObject[] GetTowers()
+    {
+        return towers;
     }
 
     public void ShowPlayerUI(bool show)
