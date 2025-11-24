@@ -10,12 +10,12 @@ public class PlayerCoinCounter : MonoBehaviour
     void Start()
     {
         playerStats = player.GetComponent<PlayerStats>();
-        displayCounter.text = "Coins: " + playerStats.GetCoins().ToString(); 
+        displayCounter.text = playerStats.GetCoins().ToString(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        displayCounter.text = "Coins: " + playerStats.GetCoins().ToString(); 
+        displayCounter.text = playerStats.GetCoins().ToString(); 
     }
 }

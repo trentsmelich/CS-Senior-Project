@@ -10,6 +10,8 @@ public class PauseState : GameState
     {
         pauseMenu = Game.GetPauseMenu();
 
+        Game.ShowPlayerUI(false);
+
         //open pause UI
         pauseMenu.SetActive(true);
         pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(false);
@@ -28,6 +30,7 @@ public class PauseState : GameState
         resumeButton.onClick.AddListener(() =>
         {
             Game.SetState(new gameIdleState());
+            Game.ShowPlayerUI(true);
             Debug.Log("resume Button Clicked");
         });
 
@@ -43,6 +46,7 @@ public class PauseState : GameState
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Game.SetState(new gameIdleState());
+            Game.ShowPlayerUI(true);
             Debug.Log("quit Button Clicked");
         });
         
@@ -65,6 +69,7 @@ public class PauseState : GameState
         //close pause UI
         //resume time
         pauseMenu.SetActive(false);
+        Game.ShowPlayerUI(true);
         Time.timeScale = 1;
         
         // Implementation for exiting the pause state

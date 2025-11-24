@@ -30,6 +30,12 @@ public class GameStateController : MonoBehaviour
     //upgrade
     public GameObject upgradeScreen;
 
+    [Header("Player UI Display Elements")]
+    public GameObject playerHealthBar;
+    public GameObject playerXPBar;
+    public GameObject coinCounter;
+    public GameObject waveCounter;
+
     void Start()
     {
         waveManager = new WavesState(
@@ -55,6 +61,15 @@ public class GameStateController : MonoBehaviour
             SetState(new PauseState());
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && (currentState is PauseState)) // press Esc key
+        {
+            SetState(new gameIdleState());
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState)) // press S key to enter shop
+        {
+            SetState(new InShopState());
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && (currentState is InShopState)) // press S key to exit shop
         {
             SetState(new gameIdleState());
         }
@@ -90,7 +105,13 @@ public class GameStateController : MonoBehaviour
     {
         return upgradeScreen;
     }
-    
-    
+
+    public void ShowPlayerUI(bool show)
+    {
+        playerHealthBar.SetActive(show);
+        playerXPBar.SetActive(show);
+        coinCounter.SetActive(show);
+        waveCounter.SetActive(show);
+    }
 
 }
