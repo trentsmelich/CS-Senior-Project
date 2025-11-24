@@ -4886,8 +4886,11 @@ MonoBehaviour:
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 10
   waveTimer: 5
-  enemyPrefab:
+  waveCountdown: 0
+  enemyList:
   - {fileID: 2059445915}
+  bossList:
+  - {fileID: 0}
   minSpawnRadius: 30
   maxSpawnRadius: 50
   spawnInterval: 1
