@@ -4,22 +4,21 @@ using UnityEngine.UI;
 public class InShopState : GameState
 {
     private GameObject shopScreen;
-    private GameObject[] towers;
-    private RectTransform listParent;
+    //private GameObject[] towers;
+    //private RectTransform listParent;
 
     public override void EnterState(GameStateController Game)
     {
-        towers = Game.GetTowers();
+        //towers = Game.GetTowers();
         shopScreen = Game.GetShopScreen();
         
-        listParent = shopScreen.transform.Find("ListParent").gameObject.GetComponent<RectTransform>();
+        //listParent = shopScreen.transform.Find("ListParent").gameObject.GetComponent<RectTransform>();
 
-        foreach (GameObject tower in towers)
+        /*foreach (GameObject tower in towers)
         {
             GameObject towerIcon = GameObject.Instantiate(tower, listParent);
             
-        }
-
+        }*/
 
         // Implementation for entering the in-shop state
         Game.ShowPlayerUI(false);
@@ -27,8 +26,8 @@ public class InShopState : GameState
         shopScreen.SetActive(true);
         // pause time
         Time.timeScale = 0;
-        // Default to damage upgrades panel
-        FilterButton(0); 
+        // Default to farm upgrades panel
+        FilterButton(1); 
 
         //Exit shop button
         Button xButton = shopScreen.transform.Find("Shop_XButton").GetComponent<Button>();
@@ -60,9 +59,9 @@ public class InShopState : GameState
 
         statButton.onClick.AddListener(() =>
         {
-            //Filter to show only health upgrades
+            //Filter to show only stat upgrades
             FilterButton(2);
-            //shopScreen.GetComponent<Shop>().FilterUpgrades("Health");
+            //shopScreen.GetComponent<Shop>().FilterUpgrades("Stat");
         });
 
     }
@@ -73,23 +72,25 @@ public class InShopState : GameState
         if(index == 0)
         {
             //Filter to show only damage upgrades
-            shopScreen.transform.Find("Filter/Damage_Items").gameObject.SetActive(true);
-            shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(true);
+            shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(false);
         }
         else if(index == 1)
         {
             //Filter to show only farm upgrades
-            shopScreen.transform.Find("Filter/Damage_Items").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(true);
-            shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(true);
+            shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(false);
+            
         }
         else if(index == 2)
         {
-            //Filter to show only health upgrades
-            shopScreen.transform.Find("Filter/Damage_Items").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Farm_Items").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Stat_Items").gameObject.SetActive(true);
+            //Filter to show only stat upgrades
+            shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(false);
+            shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(true);
+            
         }
         
     }
