@@ -16,11 +16,18 @@ public class WavesState : GameState
     private TextMeshProUGUI countdownText; // UI Text to display wave countdown
     private bool spawning = false; // Flag to check if currently spawning a wave
 
-    private int waveNumber = 1;
-    private int currentBossNum = 0;
-    private float numEnemiesMultiplier = 1.0f;
-    private float enemyDifficultyMultiplier = 1.0f;
-    private EnemyHealth enemyHealth;
+    private int waveNumber = 1;     //Current wave number
+    private int currentBossNum = 0; // Index to decide which boss to spawn
+    private float numEnemiesMultiplier = 1.0f;  // Multiplier to increase number of enemies (incresed after each wave)
+    private float enemyDifficultyMultiplier = 1.0f; // How much enemies should scale (increased after each wave)
+
+    // Normal spawn settings
+    private float normalSpawnTimer = 0f;
+    private float normalSpawnInterval = 5f; // base interval
+    private float normalSpawnScaling = 0.95f; // reduce interval per wave
+    private bool allowNormalSpawning = true;
+
+    private bool waveSpawned = false;
    
    // Constructor to initialize the WavesState
     public WavesState(
@@ -61,20 +68,32 @@ public class WavesState : GameState
     //This method manages the wave countdown and spawning logic
     public override void UpdateState(GameStateController Game)
     {
+        // Spawn normal enemies between waves
+        if (!spawning && EnemyHealth.GetWaveEnemies() == 0)
+        {
+            normalSpawnTimer -= Time.deltaTime;
+
+            if (normalSpawnTimer <= 0f)
+            {
+                SpawnNormalEnemy();
+                normalSpawnTimer = normalSpawnInterval;
+            }
+        }
+
         // If there are still enemies alive, update the UI and return
-        if (!spawning && EnemyHealth.GetWaveEnemies() > 0)
+        if (waveSpawned && EnemyHealth.GetWaveEnemies() > 0)
         {
             countdownText.text = "Enemies Remaining: " + EnemyHealth.GetWaveEnemies();
             return;
         }
 
+        // If no wave is spawning currently, countinue counting down
         if (!spawning)
         {
             // Countdown to the next wave
             waveCountdown -= Time.deltaTime;
 
             // Update the countdown UI
-
             countdownText.text = "Wave " + waveNumber + " In: " + Mathf.Ceil(waveCountdown).ToString() + "s";
 
             // If the countdown reaches zero and not already spawning, 
@@ -101,6 +120,7 @@ public class WavesState : GameState
         Debug.Log("Spawning Wave!");
 
         // Set spawning flag to true and increment wave number
+        waveSpawned = false;
         spawning = true;
 
         // Calculate the number of enemies to spawn for this wave which depends on the multiplier
@@ -125,8 +145,15 @@ public class WavesState : GameState
         waveNumber++;
         waveCountdown = waveTimer;
         spawning = false;
+        waveSpawned = true;
+
+        // Increase difficulty for next wave
         numEnemiesMultiplier += 0.1f;
         enemyDifficultyMultiplier += 0.2f;
+
+        // normal spawns get slightly faster after each wave
+        normalSpawnInterval *= normalSpawnScaling;
+        normalSpawnInterval = Mathf.Max(1f, normalSpawnInterval); // hard limit for normal spawn speed
     }
 
     private void SpawnEnemy()
@@ -134,7 +161,6 @@ public class WavesState : GameState
         // Select a random enemy prefab from the array
         GameObject enemyToSpawn = enemyList[Random.Range(0, enemyList.Length)];
         
-
         // Get a random spawn position around the player base
         Vector2 spawnPosition = GetRandomSpawnPosition();
 
@@ -155,18 +181,20 @@ public class WavesState : GameState
     }
 
     private void SpawnBoss()
-{
-    GameObject bossToSpawn = bossList[currentBossNum % bossList.Length];
-    Vector2 spawnPosition = GetRandomSpawnPosition();
+    {
+        GameObject bossToSpawn = bossList[currentBossNum % bossList.Length];
+        Vector2 spawnPosition = GetRandomSpawnPosition();
 
-    GameObject instantiatedBoss = GameObject.Instantiate(bossToSpawn, spawnPosition, Quaternion.identity);
-    EnemyHealth bossHealth = instantiatedBoss.GetComponent<EnemyHealth>();
-    instantiatedBoss.SetActive(true);
+        GameObject instantiatedBoss = GameObject.Instantiate(bossToSpawn, spawnPosition, Quaternion.identity);
+        EnemyHealth bossHealth = instantiatedBoss.GetComponent<EnemyHealth>();
+        instantiatedBoss.SetActive(true);
 
-    bossHealth.increaseEnemies();
-    currentBossNum++;
-}
+        bossHealth.increaseEnemies();
+        currentBossNum++;
+    }
 
+    // This function will get a random position using the min and max radius from the base
+    // this position is where the enemy will spawn
     private Vector2 GetRandomSpawnPosition()
     {
         // Random distance between min and max spawn radius
@@ -180,5 +208,20 @@ public class WavesState : GameState
         float y = playerBase.position.y + spawnRadius * Mathf.Sin(angle);
 
         return new Vector2(x, y);
+    }
+
+    // Function to normally spawn enemies between waves, not counted towards wave enemies
+    private void SpawnNormalEnemy()
+    {
+        if (!allowNormalSpawning) return;
+
+        GameObject enemyToSpawn = enemyList[Random.Range(0, enemyList.Length)];
+        Vector2 spawnPosition = GetRandomSpawnPosition();
+
+        GameObject instantiatedEnemy = GameObject.Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        EnemyHealth enemyHealth = instantiatedEnemy.GetComponent<EnemyHealth>();
+
+        enemyHealth.increaseEnemies();
+        instantiatedEnemy.SetActive(true);
     }
 }
