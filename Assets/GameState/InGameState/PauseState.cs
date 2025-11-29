@@ -46,7 +46,6 @@ public class PauseState : GameState
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Game.SetState(new gameIdleState());
-            Game.ShowPlayerUI(true);
             Debug.Log("quit Button Clicked");
         });
         
@@ -69,14 +68,9 @@ public class PauseState : GameState
         //close pause UI
         //resume time
         pauseMenu.SetActive(false);
-        Game.ShowPlayerUI(true);
         Time.timeScale = 1;
         
         // Implementation for exiting the pause state
     }
 
-
-    
-
-   
 }

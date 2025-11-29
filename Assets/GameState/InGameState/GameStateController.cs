@@ -3,6 +3,11 @@ using TMPro;
 
 public class GameStateController : MonoBehaviour
 {
+    [Header("Player Settings")]
+    public GameObject player;
+    private PlayerStats playerStats;
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Wave Settings")]
     public Transform playerBase; // Reference to the player base position
@@ -23,12 +28,14 @@ public class GameStateController : MonoBehaviour
     private GameState waveManager;
 
     //Screen Panel GameObjects
-    //pause
+    // Pause
     public GameObject pauseMenu;
-    //shop
+    // Shop
     public GameObject shopScreen;
-    //upgrade
+    // Upgrade
     public GameObject upgradeScreen;
+    // Game Over Screen
+    public GameObject gameOverScreen;
 
     [Header("Player UI Display Elements")]
     public GameObject playerHealthBar;
@@ -36,6 +43,7 @@ public class GameStateController : MonoBehaviour
     public GameObject coinCounter;
     public GameObject enemyDefeatCounter;
     public GameObject waveCounter;
+    public GameObject timer;
 
     private GameObject placeTower;
 
@@ -56,12 +64,18 @@ public class GameStateController : MonoBehaviour
         );
         
         SetState(new gameIdleState());
+
+        //Get the Player information
+        playerStats = player.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Update the current state
         currentState.UpdateState(this);
+
+        // paused state transitions
         if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState)) // press Esc key
         {
             SetState(new PauseState());
@@ -71,11 +85,26 @@ public class GameStateController : MonoBehaviour
             SetState(new gameIdleState());
         }
 
+        // Shop State Transitions
         if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState)) // press S key to enter shop
         {
             SetState(new InShopState());
         }
         else if (Input.GetKeyDown(KeyCode.F) && (currentState is InShopState)) // press S key to exit shop
+        {
+            SetState(new gameIdleState());
+        }
+        
+        //Game Over State Transition
+        //Get Player Health and stop the timer if health is 0
+        float playerCurrentHealth = playerStats.GetHealth();
+        Timer timerScript = timer.GetComponent<Timer>();
+        if (playerCurrentHealth <= 0 && !(currentState is GameOverState))
+        {
+            timerScript.StopTimer();
+            SetState(new GameOverState());
+        } 
+        else if (playerCurrentHealth > 0 && (currentState is GameOverState))
         {
             SetState(new gameIdleState());
         }
@@ -112,6 +141,11 @@ public class GameStateController : MonoBehaviour
         return upgradeScreen;
     }
 
+    public GameObject GetGameOverScreen()
+    {
+        return gameOverScreen;
+    }
+
     public GameObject[] GetTowers()
     {
         return towers;
@@ -124,6 +158,7 @@ public class GameStateController : MonoBehaviour
         coinCounter.SetActive(show);
         enemyDefeatCounter.SetActive(show);
         waveCounter.SetActive(show);
+        timer.SetActive(show);
     }
     public GameObject GetTowerButtonPrefab()
     {
