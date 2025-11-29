@@ -11,6 +11,13 @@ public class EnemyDeadState : EnemyState
         //initialize coin prefab at enemy position
         Object.Instantiate(enemy.GetCoinPrefab(), enemy.transform.position, Quaternion.identity);
         Debug.Log("Enemy defeated. Experience added to player.");
+
+        // 5% chance to drop a powerup
+        if(Random.value <= 0.05f)
+        {
+            Object.Instantiate(enemy.GetHealPrefab(), enemy.transform.position, Quaternion.identity);
+        }
+        
         //Add a defeated enemy count to the player's stats
         enemy.GetPlayer().GetComponent<PlayerStats>().AddDefeatedEnemyCount();
         
