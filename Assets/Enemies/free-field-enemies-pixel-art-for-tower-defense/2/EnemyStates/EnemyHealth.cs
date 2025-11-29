@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -12,7 +11,11 @@ public class EnemyHealth : MonoBehaviour
     private bool isDead;
 
     private float currentHealth;
+
+    private bool isWaveEnemy = false;
+    private bool isNormal = false;
     private static int waveEnemies = 0;
+    private static int normalEnemies = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,7 +57,15 @@ public class EnemyHealth : MonoBehaviour
     
     void Die()
     {
-        waveEnemies--;
+        if (isWaveEnemy)
+        {
+            waveEnemies--;
+        }
+        else
+        {
+            normalEnemies--;
+        }
+
         enemyAI.EnemyDie();
     }
 
@@ -69,14 +80,45 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth; // Reset current health to new max health
     }
 
-    public void increaseEnemies()
-    {
-        waveEnemies++;
-        
-    }
-
     public static int GetWaveEnemies()
     {
         return waveEnemies;
     }
+
+    public static int GetNormalEnemies()
+    {
+        return normalEnemies;
+    }
+
+    public void normalToWaveEnemy()
+    {
+        if (!isWaveEnemy && isNormal)
+        {
+            isNormal = false;
+            isWaveEnemy = true;
+            waveEnemies++;
+            normalEnemies--;
+        }
+    }
+
+    public void normalCount()
+    {
+        isNormal = true;
+        isWaveEnemy = false;
+        normalEnemies++;
+    }
+
+    public void waveCount()
+    {
+        isWaveEnemy = true;
+        isNormal = false;
+        waveEnemies++;
+    }
+
+    public bool IsNormalEnemy()
+    {
+        return isNormal;
+    }
+
+
 }
