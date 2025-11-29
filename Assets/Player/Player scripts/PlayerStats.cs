@@ -150,4 +150,9 @@ public class PlayerStats : MonoBehaviour
         //Debug.Log("Max Health: " + maxHealth);
         return maxHealth;
     }
+
+    public void AddDefeatedEnemyCount()
+    {
+        enemiesDefeated += 1;
+    }
 }

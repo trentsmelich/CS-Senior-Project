@@ -34,6 +34,7 @@ public class GameStateController : MonoBehaviour
     public GameObject playerHealthBar;
     public GameObject playerXPBar;
     public GameObject coinCounter;
+    public GameObject enemyDefeatCounter;
     public GameObject waveCounter;
 
     private GameObject placeTower;
@@ -121,6 +122,7 @@ public class GameStateController : MonoBehaviour
         playerHealthBar.SetActive(show);
         playerXPBar.SetActive(show);
         coinCounter.SetActive(show);
+        enemyDefeatCounter.SetActive(show);
         waveCounter.SetActive(show);
     }
     public GameObject GetTowerButtonPrefab()
