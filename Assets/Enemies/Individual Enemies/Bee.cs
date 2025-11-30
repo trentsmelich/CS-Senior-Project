@@ -3,14 +3,12 @@ using System.Collections;
 
 public class Bee : EnemyParent
 {
-    private LayerMask playerLayers;
     private float poisonDamage = 3f; // damage per tick
     private int ticksNum = 3; // number of poison ticks
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerLayers = LayerMask.GetMask("Player");
         enemyRange = 0.8f;
         enemyDamage = 5f;
         speed = 7f;
