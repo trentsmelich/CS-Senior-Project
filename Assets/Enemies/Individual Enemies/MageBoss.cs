@@ -6,14 +6,22 @@ public class MageBoss : EnemyParent
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
 
-    [Header("Special Attack")]
-    [SerializeField] float specialAttackCooldown = 5f;
-    [SerializeField] int specialPrjCount = 10;
+    [Header("Burst Attack")]
+    [SerializeField] private float specialAttackCooldown = 5f;
+    [SerializeField] private int specialPrjCount = 10;
+
+    [Header("Spin Attack")]
+    [SerializeField] private float spinDuration = 2f;
+    [SerializeField] private float spinSpeed = 5f;
+
     private float angle;
+    private bool specialActive = false;
+    private Animator anim;
 
     // As soon as the boss is created, start doing the special attacks
     private void Start()
     {
+        anim = GetComponent<Animator>();
         angle = 360 / specialPrjCount;
         StartCoroutine(SpecialAttackController());
     }
@@ -21,8 +29,10 @@ public class MageBoss : EnemyParent
     // Normal attack of the boss
     public override void Attack(EnemyAI enemy)
     {
-        enemy.GetAnimator().SetTrigger("Attacking");
-        enemy.StartCoroutine(NormalAttack(enemy));
+        if (!specialActive)
+        {
+            enemy.StartCoroutine(NormalAttack(enemy));
+        }
     }
 
     // This coroutine handles when to call the special attack
@@ -31,43 +41,77 @@ public class MageBoss : EnemyParent
         while(true)
         {
             yield return new WaitForSeconds(specialAttackCooldown);
-            StartCoroutine(SpecialAttack());
+            StartCoroutine(BurstAttack());
+
+            yield return new WaitForSeconds(specialAttackCooldown);
+            StartCoroutine(SpiralAttack(spinDuration, spinSpeed));
         }
     }
 
     // This coroutine controls the timing between the attack bursts of the special attack
-    IEnumerator SpecialAttack()
+    IEnumerator BurstAttack()
     {
         if (!firePoint || projectilePrefab == null)
         {
             yield break;
         }
 
-        FireBurst(0f, angle);
+        specialActive = true;
+
+
+        anim.SetTrigger("Special");
+        FireProjectiles(0f, angle);
 
         yield return new WaitForSeconds(0.3f);
-
-        FireBurst(angle * 0.5f, angle);
+        FireProjectiles(angle * 0.5f, angle);
 
         yield return new WaitForSeconds(0.3f);
+        FireProjectiles(0f, angle);
 
-        FireBurst(0f, angle);
+        specialActive = false;
     }
 
-    // This function fires all the projectiles of the special attack on the right angles
-    void FireBurst(float startAngle, float angleStep)
+    // This coroutine makes a spiral of projectiles
+    IEnumerator SpiralAttack(float duration, float spinSpeed)
+    {
+        if (!firePoint || projectilePrefab == null)
+        {
+            yield break;
+        }
+
+        specialActive = true;
+
+        float startAngle = 0f;
+        float timer = 0f;
+
+        anim.SetTrigger("Special");
+
+        while (timer < duration)
+        {
+            FireProjectiles(startAngle, angle);
+
+            startAngle += spinSpeed;
+            timer += 0.15f;
+
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        specialActive = false;
+    }
+
+    // This function fires all the projectiles of the special attacks on the corresponding angles
+    void FireProjectiles(float startAngle, float angleStep)
     {
         for (int i = 0; i < specialPrjCount; i++)
         {
             float prjAngle = startAngle + i * angleStep;
             Vector2 dir = new Vector2(Mathf.Cos(prjAngle * Mathf.Deg2Rad), Mathf.Sin(prjAngle * Mathf.Deg2Rad)).normalized;
 
-            GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-            proj.GetComponent<EnemyProjectile>().SetProjectile(dir, enemyDamage);
+            SpawnProjectile(dir);
         }
     }
 
-    // Instantiate the projectile with the right parameters, projectile goes towards player pos
+    // Instantiate the projectile with the right parameters, projectile goes towards player position
     IEnumerator NormalAttack(EnemyAI enemy)
     {
         if (!firePoint || projectilePrefab == null) {
@@ -75,8 +119,7 @@ public class MageBoss : EnemyParent
         }
 
         Vector2 dir = GetFacingDirection(enemy);
-        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<EnemyProjectile>().SetProjectile(dir, enemyDamage);
+        SpawnProjectile(dir);
     }
 
     // Get the direction of the player to make the enemy face the right direction
@@ -84,5 +127,12 @@ public class MageBoss : EnemyParent
     {
         Transform player = enemy.GetPlayer().transform;
         return (player.position - enemy.GetGameObject().transform.position).normalized;
+    }
+
+    // Helper function, only creates the projectile
+    void SpawnProjectile(Vector2 direction)
+    {
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        proj.GetComponent<EnemyProjectile>().SetProjectile(direction, enemyDamage);
     }
 }
