@@ -44,7 +44,14 @@ public class LevelUpState : GameState
 
             stats.ModifyStat(selectedStats[0], statIncreases[0]);
             //exit level-up state
-            Game.SetState(new gameIdleState());
+            if(Game.GetPlaceTower() != null)
+            {
+                Game.SetState(new BuildingState());
+            }
+            else
+            {
+                Game.SetState(new gameIdleState());
+            }
             Debug.Log("Offer 1 Selected");
         });
         offer2.onClick.AddListener(() =>
@@ -53,7 +60,14 @@ public class LevelUpState : GameState
 
             stats.ModifyStat(selectedStats[1], statIncreases[1]);
             //exit level-up state
-            Game.SetState(new gameIdleState());
+            if(Game.GetPlaceTower() != null)
+            {
+                Game.SetState(new BuildingState());
+            }
+            else
+            {
+                Game.SetState(new gameIdleState());
+            }
             Debug.Log("Offer 2 Selected");
         });
         offer3.onClick.AddListener(() =>
@@ -62,11 +76,19 @@ public class LevelUpState : GameState
 
             stats.ModifyStat(selectedStats[2], statIncreases[2]);
             //exit level-up state
-            Game.SetState(new gameIdleState());
+            if(Game.GetPlaceTower() != null)
+            {
+                Game.SetState(new BuildingState());
+            }
+            else
+            {
+                Game.SetState(new gameIdleState());
+            }
             Debug.Log("Offer 3 Selected");
         });
         
         Time.timeScale = 0;
+        
             
         //pause time
         

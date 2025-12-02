@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using TMPro;
 
 public class GameStateController : MonoBehaviour
@@ -6,7 +7,10 @@ public class GameStateController : MonoBehaviour
     [Header("Player Settings")]
     public GameObject player;
     private PlayerStats playerStats;
-    
+    [SerializeField] private Grid grid;
+    [SerializeField] private Grid grid2;
+    [SerializeField] private Tilemap grassTilemap;
+    [SerializeField] private Tilemap grassTilemap2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Wave Settings")]
@@ -172,5 +176,21 @@ public class GameStateController : MonoBehaviour
     {
         return placeTower;
     }
+    public Grid GetGrid()
+    {
+        return grid;
+    }
+    public Tilemap GetGrassTilemap()
+    {
+        return grassTilemap;
+    }
 
+    public Tilemap GetGrassTilemap2()
+    {
+        return grassTilemap2;
+    }
+    public Grid GetGrid2()
+    {
+        return grid2;
+    }
 }

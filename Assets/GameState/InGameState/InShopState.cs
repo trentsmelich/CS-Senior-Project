@@ -103,6 +103,12 @@ public class InShopState : GameState
     {
         //loop thropugh list of towers instantiate buttons for all the towers with listeners then assign image of tower to button
         PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        //remove all childs of content under farm scroll view
+        Transform contentTransform = shopScreen.transform.Find("Filter/Farm_ScrollView/Viewport/Content");
+        foreach (Transform child in contentTransform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
 
         foreach (GameObject tower in towers)
         {
@@ -113,10 +119,13 @@ public class InShopState : GameState
             //add listener to button to open tower upgrade screen
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
+                Debug.Log("Tower Button Clicked: ");
                 if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
                 {
+                    Debug.Log("Purchasing tower: ");
                     playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
                     Game.SetPlaceTower(tower);
+                    Game.SetState(new BuildingState());
                 }
                 
 

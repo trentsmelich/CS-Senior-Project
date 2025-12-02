@@ -21725,7 +21725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: m_TagString
@@ -39892,6 +39892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateController
   player: {fileID: 98333653}
+  grid: {fileID: 741622584}
+  grid2: {fileID: 938274880}
+  grassTilemap: {fileID: 2116943267}
+  grassTilemap2: {fileID: 407236789}
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 10
   waveTimer: 5

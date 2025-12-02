@@ -1,20 +1,82 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
 
 public class BuildingState : GameState
 {
+    private GameObject towerToPlace;
+    private Tilemap tilemap;
+    private GameObject previewTower;
+    private Grid grid;
+    private Grid grid2;
+    private Tilemap grassTilemap;
+    private Tilemap grassTilemap2;
     public override void EnterState(GameStateController Game)
     {
-        // Implementation for entering the building state
-        
+        towerToPlace = Game.GetPlaceTower();
+        previewTower = GameObject.Instantiate(towerToPlace);
+        previewTower.GetComponent<Collider2D>().enabled = false;
+        SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            Color color = renderer.color;
+            color.a = 0.5f; // Set alpha to 50%
+            renderer.color = color;
+        }
+        grid = Game.GetGrid();
+        grid2 = Game.GetGrid();
+        grassTilemap = Game.GetGrassTilemap();
+        grassTilemap2 = Game.GetGrassTilemap2();
+
     }
 
     public override void UpdateState(GameStateController Game)
     {
         // Implementation for updating the building state
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int cell = grid.WorldToCell(mousePosition);
+        Vector3 cellCenterPos = grid.GetCellCenterWorld(cell);
+        previewTower.transform.position = cellCenterPos;
+
+
+        bool canBuild = grassTilemap.HasTile(cell) || grassTilemap2.HasTile(cell);
+        SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            Color color = renderer.color;
+            color.a = 0.5f; // Set alpha to 50%
+            if (canBuild)
+            {
+                color.g = 1f;
+                color.r = 0f;
+            }
+            else
+            {
+                color.g = 0f;
+                color.r = 1f;
+            }
+            renderer.color = color;
+        }
+
+        if (Input.GetMouseButtonDown(0) && canBuild)
+        {
+            // Place tower
+            GameObject placedTower = GameObject.Instantiate(towerToPlace, cellCenterPos, Quaternion.identity);
+            
+
+            Game.SetState(new gameIdleState());
+        }
+        else if (Input.GetMouseButtonDown(1) )
+        {
+            // Cancel placement
+            
+            Game.SetState(new gameIdleState());
+        }
     }
 
     public override void ExitState(GameStateController Game)
     {
         // Implementation for exiting the building state
+        GameObject.Destroy(previewTower);
     }
 }
