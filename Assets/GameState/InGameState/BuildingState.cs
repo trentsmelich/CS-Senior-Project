@@ -16,6 +16,7 @@ public class BuildingState : GameState
         towerToPlace = Game.GetPlaceTower();
         previewTower = GameObject.Instantiate(towerToPlace);
         previewTower.GetComponent<Collider2D>().enabled = false;
+        previewTower.GetComponent<TowerAI>().enabled = false;
         SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer renderer in renderers)
         {
@@ -63,13 +64,13 @@ public class BuildingState : GameState
             // Place tower
             GameObject placedTower = GameObject.Instantiate(towerToPlace, cellCenterPos, Quaternion.identity);
             
-
+            Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
         else if (Input.GetMouseButtonDown(1) )
         {
             // Cancel placement
-            
+            Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
     }
@@ -78,5 +79,6 @@ public class BuildingState : GameState
     {
         // Implementation for exiting the building state
         GameObject.Destroy(previewTower);
+        
     }
 }
