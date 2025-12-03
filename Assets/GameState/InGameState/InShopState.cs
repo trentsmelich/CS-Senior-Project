@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InShopState : GameState
 {
@@ -15,8 +16,8 @@ public class InShopState : GameState
         shopScreen = Game.GetShopScreen();
         towers = Game.GetTowers();
         
-
-        
+        // Set The Twoer UI Panels to inactive since the player is not viewing them yet
+        shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
 
         // Implementation for entering the in-shop state
         Game.ShowPlayerUI(false);
@@ -24,8 +25,6 @@ public class InShopState : GameState
         shopScreen.SetActive(true);
         // pause time
         Time.timeScale = 0;
-        // Default to farm upgrades panel
-        FilterButton(1); 
 
         //Exit shop button
         Button xButton = shopScreen.transform.Find("Shop_XButton").GetComponent<Button>();
@@ -75,22 +74,23 @@ public class InShopState : GameState
         
         if(index == 0)
         {
-            //Filter to show only damage upgrades
+            // Filter to show only damage upgrades
             shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(true);
             shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(false);
         }
         else if(index == 1)
         {
-            //Filter to show only farm upgrades
+            // Filter to show only farm upgrades
             shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(true);
             shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(false);
             
+            
         }
         else if(index == 2)
         {
-            //Filter to show only stat upgrades
+            // Filter to show only stat upgrades
             shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(false);
             shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(true);
@@ -117,29 +117,55 @@ public class InShopState : GameState
             //set button image to tower image
             button.GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
             //add listener to button to open tower upgrade screen
+
+
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
-                Debug.Log("Tower Button Clicked: ");
-                if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
-                {
-                    Debug.Log("Purchasing tower: ");
-                    playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
-                    Game.SetPlaceTower(tower);
-                    Game.SetState(new BuildingState());
-                }
-                
 
+                Debug.Log("Tower Button Clicked: ");
+
+                // Open tower info screen
+                shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
+                shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
+
+                // Set tower info screen texts to tower info
+                // ShopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/TowerName_Text").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().TowerName;
+                shopScreen.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
+                
+                Button xButton = shopScreen.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
+                Button buyButton = shopScreen.transform.Find("Tower_Info_Screen/Buy_Button").GetComponent<Button>();
+
+                // Close tower info screen
+                xButton.onClick.AddListener(() =>
+                {
+                    shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
+                });
+
+                // When buy button is clicked
+                buyButton.onClick.AddListener(() =>
+                {
+                    //check if player has enough coins to purchase tower
+                    if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
+                    {
+                        Debug.Log("Purchasing tower: ");
+                        playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
+
+                        //If the building is purchased, set the tower to be placed and change state to building state
+                        Game.SetPlaceTower(tower);
+                        Game.SetState(new BuildingState());
+
+                    }
+                    else
+                    {
+                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(true);
+                    }
+                });
+                
 
             });
 
             
         }
-
-
-
-        
-
-
 
 
     }
