@@ -85,10 +85,12 @@ public class EnemyAI : MonoBehaviour
             scale.x = Mathf.Abs(scale.x) * (dir.x > 0 ? -1 : 1);
             enemy.transform.localScale = scale;
         }
-        else if (dir.y > 0)
+        else if (dir.y > 0) {
             anim.SetBool("isUp", true);
-        else
+        }
+        else {  
             anim.SetBool("isDown", true);
+        }
     }
 
 }

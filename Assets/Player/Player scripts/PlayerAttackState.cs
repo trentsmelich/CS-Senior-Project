@@ -68,7 +68,6 @@ public class PlayerAttackState : PlayerState
     {
         // Get mouse position in world space
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0; // Set z to 0 since we're in 2D
 
         // Return normalized direction from start position to mouse position
         return ((Vector2)(mousePos - startPosition)).normalized;

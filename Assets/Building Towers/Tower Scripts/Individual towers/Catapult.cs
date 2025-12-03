@@ -18,6 +18,7 @@ public class Catapult : TowerParent
         attackCooldown = 5f / level;
         attackTimer = 0f;
         speed = 10f * level;
+        towerType = "Catapult";
 
     }
     public override void UpdateTower(Transform enemy)

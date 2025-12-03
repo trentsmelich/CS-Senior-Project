@@ -14,7 +14,6 @@ public class Archer : EnemyParent
 
     public override void Attack(EnemyAI enemy)
     {
-        enemy.GetAnimator().SetTrigger("Attacking");
         enemy.StartCoroutine(ShootAfterDelay(enemy, 0.75f));
     }
 
@@ -23,7 +22,9 @@ public class Archer : EnemyParent
     {
         yield return new WaitForSeconds(delay);
 
-        if (!firePoint || projectilePrefab == null) yield break;
+        if (!firePoint || projectilePrefab == null) {
+            yield break;
+        }
 
         Vector2 dir = GetFacingDirection(enemy);
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
