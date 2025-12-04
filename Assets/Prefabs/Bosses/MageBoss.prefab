@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
+  healPrefab: {fileID: 2356374451528525618, guid: 44630273a6424dd47b9ff2d434887cc7, type: 3}
 --- !u!114 &1761100838458973620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7718652438645872543, guid: eeaff4e9b1fbc9e43899dce6df66ac2c, type: 3}
   specialAttackCooldown: 5
   specialPrjCount: 10
+  spinDuration: 2
+  spinSpeed: 5
 --- !u!1 &8761363084815990581
 GameObject:
   m_ObjectHideFlags: 0
