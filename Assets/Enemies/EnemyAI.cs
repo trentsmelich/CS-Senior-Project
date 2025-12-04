@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyState currentState;
     public GameObject coinPrefab;
+    public GameObject healPrefab;
     private EnemyParent enemyParent;
 
     void Start()
@@ -54,6 +55,11 @@ public class EnemyAI : MonoBehaviour
     public GameObject GetCoinPrefab()
     {
         return coinPrefab;
+    }
+
+    public GameObject GetHealPrefab()
+    {
+        return healPrefab;
     }
     public Transform GetPlayer()
     {
