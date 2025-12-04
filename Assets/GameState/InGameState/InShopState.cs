@@ -16,7 +16,7 @@ public class InShopState : GameState
         shopScreen = Game.GetShopScreen();
         towers = Game.GetTowers();
         
-        // Set The Twoer UI Panels to inactive since the player is not viewing them yet
+        // Set The Tower UI Panels to inactive since the player is not viewing them yet
         shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
 
         // Implementation for entering the in-shop state
@@ -66,34 +66,30 @@ public class InShopState : GameState
             //shopScreen.GetComponent<Shop>().FilterUpgrades("Stat");
         });
         
-
     }
     
+
     private void FilterButton(int index)
     {
+        shopScreen.transform.Find("Filter/ScrollView").gameObject.SetActive(true);
         
         if(index == 0)
         {
             // Filter to show only damage upgrades
-            shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(true);
-            shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(false);
+
+            
         }
         else if(index == 1)
         {
             // Filter to show only farm upgrades
-            shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(true);
-            shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(false);
+            
             
             
         }
         else if(index == 2)
         {
             // Filter to show only stat upgrades
-            shopScreen.transform.Find("Filter/Damage_ScrollView").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Farm_ScrollView").gameObject.SetActive(false);
-            shopScreen.transform.Find("Filter/Stat_ScrollView").gameObject.SetActive(true);
+            
             
         }
         
@@ -103,8 +99,8 @@ public class InShopState : GameState
     {
         //loop thropugh list of towers instantiate buttons for all the towers with listeners then assign image of tower to button
         PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        //remove all childs of content under farm scroll view
-        Transform contentTransform = shopScreen.transform.Find("Filter/Farm_ScrollView/Viewport/Content");
+        //remove all childs of content under the scroll view
+        Transform contentTransform = shopScreen.transform.Find("Filter/ScrollView/Viewport/Content");
         foreach (Transform child in contentTransform)
         {
             GameObject.Destroy(child.gameObject);
@@ -112,8 +108,8 @@ public class InShopState : GameState
 
         foreach (GameObject tower in towers)
         {
-            //instantiate button prefab under farm scroll view, content
-            GameObject button = GameObject.Instantiate(Game.GetTowerButtonPrefab(), shopScreen.transform.Find("Filter/Farm_ScrollView/Viewport/Content"));
+            //instantiate button prefab under the scroll view, content
+            GameObject button = GameObject.Instantiate(Game.GetTowerButtonPrefab(), shopScreen.transform.Find("Filter/ScrollView/Viewport/Content"));
             //set button image to tower image
             button.GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
             //add listener to button to open tower upgrade screen
