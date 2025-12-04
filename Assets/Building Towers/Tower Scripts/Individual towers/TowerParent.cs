@@ -14,8 +14,7 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected Sprite towerImage;
     [SerializeField]protected int towerCost;
 
-
-    
+    [SerializeField] protected string towerType;
     
 
     public float TowerRange => towerRange;
@@ -26,9 +25,15 @@ public abstract class TowerParent : MonoBehaviour
     public int Level => level;
     public Sprite TowerImage => towerImage;
     public int TowerCost => towerCost;
+    public string TowerType => towerType;
     
 
     public abstract void UpdateTower(Transform enemy);
 
+    public void increaseCount ()
+    {
+        UnlockController unlockController = FindFirstObjectByType<UnlockController>();
+        unlockController.IncreaseTowerCount(this, level);
+    }
     
 }

@@ -20,6 +20,7 @@ public class SlingShotTower : TowerParent
         attackCooldown = 1.5f / level;
         attackTimer = 0f;
         speed = 20f * level;
+        towerType = "SlingShot";
 
     }
     public override void UpdateTower(Transform enemy)

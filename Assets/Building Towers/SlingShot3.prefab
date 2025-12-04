@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 956391657909458103}
   - component: {fileID: 5672652092366848523}
   - component: {fileID: 4632220169891554721}
-  - component: {fileID: 5063664244728934527}
+  - component: {fileID: 7510275869217372887}
   m_Layer: 0
   m_Name: SlingShot3
   m_TagString: Untagged
@@ -118,6 +118,7 @@ MonoBehaviour:
   speed: 0
   towerImage: {fileID: -3178151490746570464, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
   towerCost: 0
+  towerType: 
 --- !u!114 &4632220169891554721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!61 &5063664244728934527
+--- !u!61 &7510275869217372887
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +170,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.27402353}
+  m_Offset: {x: 0, y: -0.16666663}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -179,7 +180,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.64, y: 0.7219529}
+  m_Size: {x: 0.64, y: 0.5066667}
   m_EdgeRadius: 0
 --- !u!1001 &2840724824281314363
 PrefabInstance:

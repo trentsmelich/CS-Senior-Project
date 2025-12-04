@@ -54,6 +54,8 @@ public class GameStateController : MonoBehaviour
     [SerializeField] GameObject[] towers;
     [SerializeField] GameObject towerButtonPrefab;
 
+    [SerializeField] private UnlockController unlockController;
+
     void Start()
     {
         waveManager = new WavesState(
@@ -192,5 +194,10 @@ public class GameStateController : MonoBehaviour
     public Grid GetGrid2()
     {
         return grid2;
+    }
+
+    public UnlockController GetUnlockController()
+    {
+        return unlockController;
     }
 }
