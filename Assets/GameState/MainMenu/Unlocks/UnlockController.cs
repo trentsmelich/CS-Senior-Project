@@ -3,15 +3,15 @@ using UnityEngine;
 public class UnlockController : MonoBehaviour
 {
     [SerializeField] private UnlockParent[] unlocks;
-    [SerializeField] private GameObject[] towers;
+    //[SerializeField] private GameObject[] towers;
 
      
-    protected static int numSlingshot1 = 0;
-    protected static int numSlingshot2 = 0;
-    protected static int numSlingshot3 = 0;
-    protected static int numCatapult1 = 0;
-    protected static int numCatapult2 = 0;
-    protected static int numCatapult3 = 0;
+    private static int numSlingshot1 = 0;
+    private static int numSlingshot2 = 0;
+    private static int numSlingshot3 = 0;
+    private static int numCatapult1 = 0;
+    private static int numCatapult2 = 0;
+    private static int numCatapult3 = 0;
 
     // void setUnlocks()
     // {
@@ -33,6 +33,11 @@ public class UnlockController : MonoBehaviour
     //     }
     // }
 
+    private void Start()
+    {
+        LoadSavedUnlocks();
+    }
+
     public void CheckUnlocks()
     {
         foreach (UnlockParent unlock in unlocks)
@@ -41,7 +46,15 @@ public class UnlockController : MonoBehaviour
         }
     }
 
-    public void increaseTowerCount (TowerParent towerParent, int level)
+    public void LoadSavedUnlocks()
+    {
+        foreach (UnlockParent unlock in unlocks)
+        {
+            unlock.LoadUnlockState();
+        }
+    }
+
+    public void IncreaseTowerCount (TowerParent towerParent, int level)
     {   
         if (towerParent is SlingShotTower)
         {

@@ -25,4 +25,5 @@ public abstract class UnlockParent : MonoBehaviour
     // }
 
     public abstract void Unlock(UnlockController unlockController);
+    public abstract void LoadUnlockState();
 }

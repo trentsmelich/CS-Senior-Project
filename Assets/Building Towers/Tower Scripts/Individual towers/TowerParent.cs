@@ -33,7 +33,7 @@ public abstract class TowerParent : MonoBehaviour
     public void increaseCount ()
     {
         UnlockController unlockController = FindFirstObjectByType<UnlockController>();
-        unlockController.increaseTowerCount(this, level);
+        unlockController.IncreaseTowerCount(this, level);
     }
     
 }

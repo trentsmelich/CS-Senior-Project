@@ -6,37 +6,41 @@ public class SlingshotUnlock : UnlockParent
     private const string slingLvl2 = "unlock_slingshot_lvl2";
     private const string slingLvl3 = "unlock_slingshot_lvl3";
 
-    public bool lvl1Unlocked => PlayerPrefs.GetInt(slingLvl1, 0) == 1;
-    public bool lvl2Unlocked => PlayerPrefs.GetInt(slingLvl2, 0) == 1;
-    public bool lvl3Unlocked => PlayerPrefs.GetInt(slingLvl3, 0) == 1;
+    public bool lvl1Unlocked;
+    public bool lvl2Unlocked;
+    public bool lvl3Unlocked;
+
+    public bool Lvl1Unlocked => lvl1Unlocked;
+    public bool Lvl2Unlocked => lvl2Unlocked;
+    public bool Lvl3Unlocked => lvl3Unlocked;
+
+    public override void LoadUnlockState()
+    {
+        lvl1Unlocked = PlayerPrefs.GetInt(slingLvl1, 0) == 1;
+        lvl2Unlocked = PlayerPrefs.GetInt(slingLvl2, 0) == 1;
+        lvl3Unlocked = PlayerPrefs.GetInt(slingLvl3, 0) == 1;
+    }
 
     public override void Unlock(UnlockController UnlockController)
     {
-        if (UnlockController.GetNumTowers("SlingShot", 1) >= 3)
+        if (!lvl1Unlocked && UnlockController.GetNumTowers("SlingShot", 1) >= 10)
         {
-            if (!lvl1Unlocked)
-            {
-                PlayerPrefs.SetInt(slingLvl1, 1);
-                PlayerPrefs.Save();
-            }
+            PlayerPrefs.SetInt(slingLvl1, 1);
+            lvl1Unlocked = true;
         }
 
-        if (UnlockController.GetNumTowers("SlingShot", 2) >= 3)
+        if (!lvl2Unlocked && UnlockController.GetNumTowers("SlingShot", 2) >= 10)
         {
-            if (!lvl2Unlocked)
-            {
-                PlayerPrefs.SetInt(slingLvl2, 1);
-                PlayerPrefs.Save();
-            }
+            PlayerPrefs.SetInt(slingLvl2, 1);
+            lvl2Unlocked = true;
         }
 
-        if (UnlockController.GetNumTowers("SlingShot", 3) >= 3)
+        if (!lvl3Unlocked && UnlockController.GetNumTowers("SlingShot", 3) >= 10)
         {
-            if (!lvl3Unlocked)
-            {
-                PlayerPrefs.SetInt(slingLvl3, 1);
-                PlayerPrefs.Save();
-            }
+            PlayerPrefs.SetInt(slingLvl3, 1);
+            lvl3Unlocked = true;
         }
+
+        PlayerPrefs.Save();
     }
 }

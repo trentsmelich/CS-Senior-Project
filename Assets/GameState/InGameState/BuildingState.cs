@@ -69,21 +69,21 @@ public class BuildingState : GameState
             {
                 Debug.Log("Youre stupid");
             }
-            Game.GetUnlockController().CheckUnlocks();
+            //Game.GetUnlockController().CheckUnlocks();
 
             // Debug unlock status
 
-            foreach (UnlockParent unlock in Game.GetUnlockController().GetUnlocks())
-            {
-                if (unlock is SlingshotUnlock sling)
-                {
-                    Debug.Log($"Slingshot Unlocks: L1={sling.lvl1Unlocked}, L2={sling.lvl2Unlocked}, L3={sling.lvl3Unlocked}");
-                }
-                else if (unlock is CatapultUnlock catapult)
-                {
-                    Debug.Log($"Catapult Unlocks: L1={catapult.lvl1Unlocked}, L2={catapult.lvl2Unlocked}, L3={catapult.lvl3Unlocked}");
-                }
-            }
+            // foreach (UnlockParent unlock in Game.GetUnlockController().GetUnlocks())
+            // {
+            //     if (unlock is SlingshotUnlock sling)
+            //     {
+            //         Debug.Log($"Slingshot Unlocks: L1={sling.lvl1Unlocked}, L2={sling.lvl2Unlocked}, L3={sling.lvl3Unlocked}");
+            //     }
+            //     else if (unlock is CatapultUnlock catapult)
+            //     {
+            //         Debug.Log($"Catapult Unlocks: L1={catapult.lvl1Unlocked}, L2={catapult.lvl2Unlocked}, L3={catapult.lvl3Unlocked}");
+            //     }
+            // }
 
             // end of debug
 

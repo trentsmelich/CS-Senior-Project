@@ -8,6 +8,7 @@ public class GameOverState : GameState
 
     public override void EnterState(GameStateController Game)
     {
+        Game.GetUnlockController().CheckUnlocks();
         gameOverScreen = Game.GetGameOverScreen();
         Game.ShowPlayerUI(false);
 
