@@ -280,6 +280,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1880835690044112201, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
   m_PrefabInstance: {fileID: 8567782265317867915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &98333656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+  m_PrefabInstance: {fileID: 8567782265317867915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98333653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2d86153de6e8440866c2796d0f25aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
 --- !u!1 &111882260
 GameObject:
   m_ObjectHideFlags: 0
@@ -21754,6 +21765,53 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &365902748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 365902750}
+  - component: {fileID: 365902749}
+  m_Layer: 0
+  m_Name: CatapultUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &365902749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365902748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4456b15cb1a59034bbc0a1d6ee647577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CatapultUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &365902750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365902748}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781292269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372910857
 GameObject:
   m_ObjectHideFlags: 0
@@ -37833,7 +37891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
-  CameraDistance: 10
+  CameraDistance: 50
   DeadZoneDepth: 0
   Composition:
     ScreenPosition: {x: 0, y: 0}
@@ -37877,7 +37935,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 5.665048
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -37904,7 +37962,7 @@ Transform:
   m_GameObject: {fileID: 979828037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.38, y: 6.417, z: -10}
+  m_LocalPosition: {x: -17.38, y: 6.417, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38914,8 +38972,11 @@ MonoBehaviour:
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 10
   waveTimer: 5
-  enemyPrefab:
+  waveCountdown: 0
+  enemyList:
   - {fileID: 2059445915}
+  bossList:
+  - {fileID: 919114048276854430, guid: eac7a6065a2c393419ccb73a29264b27, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
   spawnInterval: 1
@@ -38935,6 +38996,7 @@ MonoBehaviour:
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
   - {fileID: 146517596455405730, guid: 12e913355c624564ba7c81915b79231d, type: 3}
   towerButtonPrefab: {fileID: 4440208757228867778, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
+  unlockController: {fileID: 1781292268}
 --- !u!1 &1061840065
 GameObject:
   m_ObjectHideFlags: 0
@@ -40041,7 +40103,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.665048
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -40066,7 +40128,7 @@ Transform:
   m_GameObject: {fileID: 1284601082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.38, y: 6.417, z: -10}
+  m_LocalPosition: {x: -17.38, y: 6.417, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58925,6 +58987,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766739585}
   m_CullTransparentMesh: 1
+--- !u!1 &1781292267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1781292269}
+  - component: {fileID: 1781292268}
+  m_Layer: 0
+  m_Name: UnlockController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1781292268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781292267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d95d6c2f74ec324f9fa39be57429003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnlockController
+  unlocks:
+  - {fileID: 1860758941}
+  - {fileID: 365902749}
+--- !u!4 &1781292269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781292267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.46594, y: 6.39978, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1860758942}
+  - {fileID: 365902750}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808388387
 GameObject:
   m_ObjectHideFlags: 0
@@ -59067,6 +59178,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCoinCounter
   player: {fileID: 98333653}
   displayCounter: {fileID: 1927343314}
+--- !u!1 &1860758940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860758942}
+  - component: {fileID: 1860758941}
+  m_Layer: 0
+  m_Name: SlingshotUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1860758941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860758940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5bfbfc891ef6b44bdb5a47d7262d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlingshotUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &1860758942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860758940}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781292269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1874511481
 GameObject:
   m_ObjectHideFlags: 0
@@ -76541,6 +76699,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1046596825}
+    - target: {fileID: 9182151922662137091, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 98333656}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76564,3 +76726,4 @@ SceneRoots:
   - {fileID: 1392279737}
   - {fileID: 8567782265317867915}
   - {fileID: 507897602}
+  - {fileID: 1781292269}

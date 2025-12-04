@@ -8,9 +8,15 @@ public class PlayerAttackState : PlayerState
 
     private bool projectileFired = false;
     private Vector2 faceDir;
+    private int damageAmount;
 
     public override void EnterState(PlayerStateController player)
     {
+        // Cooldown depends on attackSpeed
+        attackCooldown = 1f / player.playerStats.GetAttackSpeed();
+
+        projectileDelay = Mathf.Min(projectileDelay, attackCooldown * 0.5f);
+
         // Face towards mouse direction at the start of the attack
         faceDir = GetMouseDirection(player.transform.position);
         player.UpdateDirection(faceDir);
@@ -30,7 +36,7 @@ public class PlayerAttackState : PlayerState
         Vector2 moveDir = player.moveInput.normalized;
 
         // Move player
-        player.GetRigidbody().linearVelocity = moveDir * player.moveSpeed;
+        player.GetRigidbody().linearVelocity = moveDir * player.playerStats.GetMoveSpeed();
 
         // Update movement animation
         player.GetAnimator().SetBool("isMoving", moveDir.sqrMagnitude > 0.01f);
@@ -53,7 +59,16 @@ public class PlayerAttackState : PlayerState
         // and player is not attacking again
         if (timer >= attackCooldown)
         {
-            player.SetState(new PlayerIdleState());
+            //Only stay attacking if mouse is still held
+            if (Input.GetMouseButton(0))
+            {
+                // Restart attack
+                player.SetState(new PlayerAttackState());
+            }
+            else
+            {
+                player.SetState(new PlayerIdleState());
+            }
         }
     }
 
@@ -81,10 +96,17 @@ public class PlayerAttackState : PlayerState
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         // Instantiate projectile at fire point
-        Object.Instantiate(
+        GameObject projectile = GameObject.Instantiate(
             player.projectilePrefab,
             player.firePoint.position,
             Quaternion.Euler(0, 0, angle)
         );
+
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            projectileScript.SetDamage(player.playerStats.GetDamage());
+        }
     }
+
 }

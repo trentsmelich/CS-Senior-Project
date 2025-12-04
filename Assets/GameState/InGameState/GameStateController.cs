@@ -14,19 +14,20 @@ public class GameStateController : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Wave Settings")]
-    public Transform playerBase; // Reference to the player base position
-    public int enemiesPerWave = 10; // Number of enemies to spawn per wave
-    public float waveTimer = 30f; // Time between waves in seconds
-    private float waveCountdown; // Countdown timer for the next wave
-    public GameObject[] enemyPrefab; // Enemy prefab to spawn
+    [SerializeField] Transform playerBase; // Reference to the player base position
+    [SerializeField]  int enemiesPerWave = 10; // Number of enemies to spawn per wave
+    [SerializeField]  float waveTimer = 30f; // Time between waves in seconds
+    [SerializeField]  float waveCountdown; // Countdown timer for the next wave
+    [SerializeField]  GameObject[] enemyList; // Enemy prefab to spawn
+    [SerializeField]  GameObject[] bossList; // Enemy prefab to spawn
 
     [Header("Spawn Settings")]
-    public float minSpawnRadius = 5f; // Minimum spawn radius
-    public float maxSpawnRadius = 15f; // Maximum spawn radius
-    public float spawnInterval = 1f; // Time between enemy spawns
+    [SerializeField] float minSpawnRadius = 5f; // Minimum spawn radius
+    [SerializeField] float maxSpawnRadius = 15f; // Maximum spawn radius
+    [SerializeField] float spawnInterval = 1f; // Time between enemy spawns
 
-    [Header("UI Elements")]
-    public TextMeshProUGUI countdownText; // UI Text to display wave countdown
+    [Header("Wave UI Settings")]
+    [SerializeField] TextMeshProUGUI countdownText; // UI Text to display wave countdown
 
     private GameState currentState;
     private GameState waveManager;
@@ -62,7 +63,8 @@ public class GameStateController : MonoBehaviour
             playerBase,
             enemiesPerWave,
             waveTimer,
-            enemyPrefab,
+            enemyList,
+            bossList,
             minSpawnRadius,
             maxSpawnRadius,
             spawnInterval,

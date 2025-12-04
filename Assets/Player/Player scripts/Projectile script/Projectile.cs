@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [Header("Projectile Settings")]
-    public float speed = 10f;
-    public float lifetime = 3f;
-    public int damageAmount = 20;
+    private float speed = 10f;
+    private float lifetime = 3f;
+    private float damage;
 
     void Start()
     {
@@ -27,9 +27,17 @@ public class PlayerProjectile : MonoBehaviour
 
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(damageAmount);
+                enemyHealth.TakeDamage(damage);
                 Destroy(gameObject);
+                Debug.Log("Projectile hit enemy for " + damage + " damage.");
             }
         }
     }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
+
 }

@@ -5,6 +5,7 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     private float moveSpeed;
     private float attackRange;
+    private float damage;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -20,6 +21,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         moveSpeed = enemyParent.Speed;
         attackRange = enemyParent.EnemyRange;
+        damage = enemyParent.EnemyDamage;
 
         // Start in Idle or Chase
         SetState(new EnemyChaseState());
@@ -91,6 +93,21 @@ public class EnemyAI : MonoBehaviour
         else {  
             anim.SetBool("isDown", true);
         }
+    }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    public void SetMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
     }
 
 }

@@ -45,7 +45,7 @@ public class PlayerRunningState : PlayerState
         // Move player
         Vector2 moveDir = player.moveInput.normalized;
         player.UpdateDirection(moveDir);
-        player.GetRigidbody().linearVelocity = moveDir * player.moveSpeed;
+        player.GetRigidbody().linearVelocity = moveDir * player.playerStats.GetMoveSpeed();    
     }
 
     public override void ExitState(PlayerStateController player)
