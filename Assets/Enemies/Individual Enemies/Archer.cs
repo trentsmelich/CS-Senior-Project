@@ -3,14 +3,8 @@ using System.Collections;
 
 public class Archer : EnemyParent
 {
-    private LayerMask playerLayer;
-    [SerializeField] Transform firePoint;
-    [SerializeField] GameObject projectilePrefab;
-
-    void Start()
-    {
-        playerLayer = LayerMask.GetMask("Player");
-    }
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject projectilePrefab;
 
     public override void Attack(EnemyAI enemy)
     {
