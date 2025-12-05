@@ -7,6 +7,10 @@ public class MainMenuStateController : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject unlocksPanel;
 
+    [SerializeField] GameObject[] towers;
+    [SerializeField] GameObject towerButtonPrefab;
+    [SerializeField] private UnlockController unlockController;
+
     private MainMenuState currentState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,6 +50,21 @@ public class MainMenuStateController : MonoBehaviour
     public GameObject GetUnlocksPanel()
     {
         return unlocksPanel;
+    }
+
+    public GameObject[] GetTowers()
+    {
+        return towers;
+    }
+
+    public GameObject GetTowerButtonPrefab()
+    {
+        return towerButtonPrefab;
+    }
+
+    public UnlockController GetUnlockController()
+    {
+        return unlockController;
     }
     
 }

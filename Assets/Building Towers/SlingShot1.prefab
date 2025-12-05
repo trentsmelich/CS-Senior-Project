@@ -417,12 +417,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingShotTower
   level: 1
-  towerRange: 0
+  towerRange: 7
   towerDamage: 15
-  attackCooldown: 1
+  attackCooldown: 1.5
   attackTimer: 0
-  speed: 0
+  speed: 20
   towerImage: {fileID: 8214975810637141180, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
+  towerCost: 0
+  towerType: Damage
 --- !u!61 &5159145958060091897
 BoxCollider2D:
   m_ObjectHideFlags: 0

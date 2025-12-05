@@ -111,14 +111,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingShotTower
   level: 3
-  towerRange: 0
-  towerDamage: 0
-  attackCooldown: 0
+  towerRange: 21
+  towerDamage: 45
+  attackCooldown: 0.5
   attackTimer: 0
-  speed: 0
+  speed: 60
   towerImage: {fileID: -3178151490746570464, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
   towerCost: 0
-  towerType: 
+  towerType: Damage
 --- !u!114 &4632220169891554721
 MonoBehaviour:
   m_ObjectHideFlags: 0

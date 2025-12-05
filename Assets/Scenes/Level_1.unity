@@ -37781,6 +37781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
+  healPrefab: {fileID: 0}
 --- !u!95 &943069309
 Animator:
   serializedVersion: 7
