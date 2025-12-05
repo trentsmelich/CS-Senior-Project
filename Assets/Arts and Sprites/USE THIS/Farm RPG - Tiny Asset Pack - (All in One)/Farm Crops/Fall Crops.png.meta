@@ -88,7 +88,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -159,7 +159,7 @@ TextureImporter:
         width: 10
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,7 +181,7 @@ TextureImporter:
         width: 10
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,7 +203,7 @@ TextureImporter:
         width: 9
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,7 +225,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,7 +247,7 @@ TextureImporter:
         width: 11
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,7 +269,7 @@ TextureImporter:
         width: 13
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,7 +291,7 @@ TextureImporter:
         width: 13
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -305,15 +305,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_7
+      name: Fall Crops_14
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 15
-        height: 36
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -327,7 +327,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_8
+      name: Fall Crops_9
       rect:
         serializedVersion: 2
         x: 34
@@ -335,7 +335,7 @@ TextureImporter:
         width: 11
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -349,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_9
+      name: Fall Crops_10
       rect:
         serializedVersion: 2
         x: 49
@@ -357,7 +357,7 @@ TextureImporter:
         width: 14
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -371,7 +371,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_10
+      name: Fall Crops_11
       rect:
         serializedVersion: 2
         x: 65
@@ -379,7 +379,7 @@ TextureImporter:
         width: 14
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -393,7 +393,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_11
+      name: Fall Crops_12
       rect:
         serializedVersion: 2
         x: 79
@@ -401,7 +401,7 @@ TextureImporter:
         width: 17
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -415,7 +415,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_12
+      name: Fall Crops_13
       rect:
         serializedVersion: 2
         x: 112
@@ -423,7 +423,7 @@ TextureImporter:
         width: 16
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -437,7 +437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_13
+      name: Fall Crops_15
       rect:
         serializedVersion: 2
         x: 33
@@ -445,7 +445,7 @@ TextureImporter:
         width: 14
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -459,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_14
+      name: Fall Crops_16
       rect:
         serializedVersion: 2
         x: 48
@@ -467,7 +467,7 @@ TextureImporter:
         width: 15
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -481,7 +481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_15
+      name: Fall Crops_17
       rect:
         serializedVersion: 2
         x: 64
@@ -489,7 +489,7 @@ TextureImporter:
         width: 15
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -503,7 +503,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_16
+      name: Fall Crops_18
       rect:
         serializedVersion: 2
         x: 80
@@ -511,7 +511,7 @@ TextureImporter:
         width: 15
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -525,7 +525,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall Crops_17
+      name: Fall Crops_19
       rect:
         serializedVersion: 2
         x: 112
@@ -533,7 +533,7 @@ TextureImporter:
         width: 15
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -546,11 +546,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fall Crops_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 30
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1226fa75329102c47a3c676ab8a743ee
+      internalID: -684312874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e92e2b62eaf17bc44b5c5e560caffcde
     internalID: 0
     vertices: []
     indices: 
@@ -562,22 +584,23 @@ TextureImporter:
     nameFileIdTable:
       Fall Crops_0: -6872885925235255564
       Fall Crops_1: -5443696529636611499
-      Fall Crops_10: -947235995091800484
-      Fall Crops_11: -8825925044421547618
-      Fall Crops_12: 1469558383211399275
-      Fall Crops_13: 8734673158662201913
-      Fall Crops_14: 7543655215680742355
-      Fall Crops_15: 747682596419790742
-      Fall Crops_16: 9076028267254314330
-      Fall Crops_17: -2956533416947612169
+      Fall Crops_10: 5116258781507889207
+      Fall Crops_11: -947235995091800484
+      Fall Crops_12: -8825925044421547618
+      Fall Crops_13: 1469558383211399275
+      Fall Crops_14: 7339756071683433264
+      Fall Crops_15: 8734673158662201913
+      Fall Crops_16: 7543655215680742355
+      Fall Crops_17: 747682596419790742
+      Fall Crops_18: 9076028267254314330
+      Fall Crops_19: -2956533416947612169
       Fall Crops_2: 1363135059010746888
       Fall Crops_3: 3709120659357073907
       Fall Crops_4: -4456109506574838401
       Fall Crops_5: 1939107451894485502
       Fall Crops_6: -8978098082627641021
-      Fall Crops_7: 7339756071683433264
-      Fall Crops_8: -622596351242404530
-      Fall Crops_9: 5116258781507889207
+      Fall Crops_7: -684312874
+      Fall Crops_9: -622596351242404530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
