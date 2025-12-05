@@ -13,7 +13,7 @@ public class TowerAttackState : TowerState
 
     public override void UpdateState(TowerAI tower)
     {
-        if (tower.targetEnemy != null)
+        if (tower.targetEnemy != null || tower.GetTowerParent().TowerType == "Farm")
         {
             
                 // Attack the enemy
