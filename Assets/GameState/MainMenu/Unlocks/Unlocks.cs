@@ -34,57 +34,26 @@ public class Unlocks : MainMenuState
         damageButton.onClick.AddListener(() =>
         {
             //Filter to show only damage upgrades
-            FilterButton(0);
             towerType = "Damage";
             MakeLists(Main);
-            //shopScreen.GetComponent<Shop>().FilterUpgrades("Damage");
         });
 
         farmButton.onClick.AddListener(() =>
         {
             //Filter to show only farm upgrades
-            FilterButton(1);
             towerType = "Farm";
             MakeLists(Main);
-            //shopScreen.GetComponent<Shop>().FilterUpgrades("Farm");
         });
 
         statButton.onClick.AddListener(() =>
         {
             //Filter to show only stat upgrades
-            FilterButton(2);
             towerType = "Stat";
             MakeLists(Main);
-            //shopScreen.GetComponent<Shop>().FilterUpgrades("Stat");
         });
 
     }
 
-
-    private void FilterButton(int index)
-    {
-        
-        if(index == 0)
-        {
-            // Filter to show only damage upgrades
-
-            
-        }
-        else if(index == 1)
-        {
-            // Filter to show only farm upgrades
-            
-            
-            
-        }
-        else if(index == 2)
-        {
-            // Filter to show only stat upgrades
-            
-            
-        }
-        
-    }
 
     private void MakeLists(MainMenuStateController Main)
     {
@@ -107,6 +76,7 @@ public class Unlocks : MainMenuState
 
                 // Set button image to tower image
                 button.GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
+                button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Level " + tower.GetComponent<TowerParent>().Level.ToString();
 
                 // If the tower is locked, show locked color dark grey
                 // if ()
@@ -126,15 +96,40 @@ public class Unlocks : MainMenuState
                     // Set tower info screen texts to tower info
                     unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
 
-                    // Set the tower attack attributes
-                    unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                    "Attack Attributes\n" +
-                    "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                    "Damage:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerDamage.ToString() + "</pos>\n" + "\n" +
-                    "Range:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerRange.ToString() + "</pos>\n" + "\n" +
-                    "Speed:" + "<pos=125>" + tower.GetComponent<TowerParent>().Speed.ToString() + "</pos>\n" + "\n" +
-                    "Cooldown:" + "<pos=125>" + tower.GetComponent<TowerParent>().AttackCooldown.ToString() + "</pos>\n" + "\n" +
-                    "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                    // set the attribute text box differently depending on its tower type
+                    if(tower.GetComponent<TowerParent>().TowerType == "Damage")
+                    {
+                        // Set the tower attack attributes
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
+                        "Attack Attributes\n" +
+                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
+                        "Damage:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerDamage.ToString() + "</pos>\n" + "\n" +
+                        "Range:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerRange.ToString() + "</pos>\n" + "\n" +
+                        "Speed:" + "<pos=125>" + tower.GetComponent<TowerParent>().Speed.ToString() + "</pos>\n" + "\n" +
+                        "Cooldown:" + "<pos=125>" + tower.GetComponent<TowerParent>().AttackCooldown.ToString() + "</pos>\n" + "\n" +
+                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                    }
+                    else if (tower.GetComponent<TowerParent>().TowerType == "Farm")
+                    {
+                        // Set the farm attributes
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
+                        "Farming Attributes\n" +
+                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
+                        "Profit:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
+                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                    }
+                    else
+                    {
+                        // Set the stat modifier attributes
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
+                        "Stat Attributes\n" +
+                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
+                        "Modify:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
+                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                        
+                    }
+
+                    
 
                     // Close tower info screen
                     Button xButton = unlocksPanel.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();

@@ -707,7 +707,7 @@ MonoBehaviour:
   attackCooldown: 10
   attackTimer: 0
   speed: 0
-  towerImage: {fileID: 3706471016571915744, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  towerImage: {fileID: 8849037320410730604, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   towerCost: 0
   towerType: Farm
   profit: 0

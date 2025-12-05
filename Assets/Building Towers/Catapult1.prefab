@@ -130,7 +130,7 @@ MonoBehaviour:
   speed: 0
   towerImage: {fileID: 0}
   towerCost: 0
-  towerType: Catapult
+  towerType: Damage
 --- !u!1001 &3487649082833341338
 PrefabInstance:
   m_ObjectHideFlags: 0

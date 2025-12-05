@@ -2510,6 +2510,10 @@ MonoBehaviour:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
   - {fileID: 146517596455405730, guid: 12e913355c624564ba7c81915b79231d, type: 3}
+  - {fileID: 965917807470210177, guid: bf1017a18eefa2c428229fb2bb30d129, type: 3}
+  - {fileID: 6770428916232597138, guid: c9b568dd9c0315e499ed6234cfa12a35, type: 3}
+  - {fileID: 4659362562171334871, guid: 5b8a82dd627167c44bea9e0ef267aed6, type: 3}
+  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
   towerButtonPrefab: {fileID: 4440208757228867778, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
   unlockController: {fileID: 1074728678}
 --- !u!1 &938146120
@@ -3136,6 +3140,7 @@ MonoBehaviour:
   unlocks:
   - {fileID: 1852070737}
   - {fileID: 679858299}
+  towers: []
 --- !u!4 &1074728679
 Transform:
   m_ObjectHideFlags: 0
