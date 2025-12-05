@@ -1,9 +1,12 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class CatapultProjectile : MonoBehaviour
 {
     public float speed;
     public float damage;
+
+    [SerializeField] float explosionRadius;
     private Vector2 direction;
     private Animator anim;
 
@@ -31,6 +34,7 @@ public class CatapultProjectile : MonoBehaviour
             //wait .3 seconds then destroy projectile
             //velocity = Vector2.zero;
             speed = 0;
+            ExplodeBall();
             Destroy(gameObject, 0.3f);
         }
     }
@@ -40,5 +44,17 @@ public class CatapultProjectile : MonoBehaviour
         this.speed = speed;
         this.damage = damage;
 
+    }
+    public void ExplodeBall()
+    {
+        //create area around ball that damages all enemies
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach(Collider2D hit in hitColliders)
+        {
+            if (hit.CompareTag("Enemy")){
+                EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
+                enemy.TakeDamage(damage);
+            }
+        }
     }
 }
