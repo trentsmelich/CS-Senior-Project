@@ -15,6 +15,7 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField]protected int towerCost;
 
     [SerializeField] protected string towerType;
+
     
 
     public float TowerRange => towerRange;

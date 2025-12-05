@@ -15,7 +15,6 @@ public class CatapultUnlock : UnlockParent
 
     public override void LoadUnlockState()
 {
-    // loads from PlayerPrefs, no tower count needed
     lvl1Unlocked = PlayerPrefs.GetInt(catapultLvl1, 0) == 1;
     lvl2Unlocked = PlayerPrefs.GetInt(catapultLvl2, 0) == 1;
     lvl3Unlocked = PlayerPrefs.GetInt(catapultLvl3, 0) == 1;
