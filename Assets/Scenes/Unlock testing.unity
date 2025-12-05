@@ -280,6 +280,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1880835690044112201, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
   m_PrefabInstance: {fileID: 8567782265317867915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &98333656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+  m_PrefabInstance: {fileID: 8567782265317867915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98333653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2d86153de6e8440866c2796d0f25aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
 --- !u!1 &111882260
 GameObject:
   m_ObjectHideFlags: 0
@@ -21704,20 +21715,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: m_BodyType
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: m_Name
@@ -21731,33 +21730,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7619410868979515203, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 98333655}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
       propertyPath: coinPrefab
       value: 
       objectReference: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
     - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: attackRange
-      value: 0.8
-      objectReference: {fileID: 0}
+      propertyPath: healPrefab
+      value: 
+      objectReference: {fileID: 2356374451528525618, guid: 44630273a6424dd47b9ff2d434887cc7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2059445916}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
 --- !u!1 &360609912
 GameObject:
@@ -35374,15 +35358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0359270d6f89f49aa45120682e7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveController
-  playerBase: {fileID: 1188910855}
-  enemiesPerWave: 10
-  waveTimer: 5
-  enemyPrefab:
-  - {fileID: 2059445915}
-  minSpawnRadius: 30
-  maxSpawnRadius: 70
-  spawnInterval: 1
-  countdownText: {fileID: 981819080}
 --- !u!4 &732643878
 Transform:
   m_ObjectHideFlags: 0
@@ -38777,6 +38752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
+  healPrefab: {fileID: 0}
 --- !u!95 &943069309
 Animator:
   serializedVersion: 7
@@ -39704,6 +39680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4456b15cb1a59034bbc0a1d6ee647577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatapultUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
 --- !u!4 &1025719098
 Transform:
   m_ObjectHideFlags: 0
@@ -39943,8 +39922,14 @@ MonoBehaviour:
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 10
   waveTimer: 5
-  enemyPrefab:
-  - {fileID: 2059445915}
+  waveCountdown: 0
+  enemyList:
+  - {fileID: 919114048276854430, guid: eac7a6065a2c393419ccb73a29264b27, type: 3}
+  - {fileID: 1550629060444859054, guid: ab0825a40ef1cf948ba0d7d89e52db99, type: 3}
+  - {fileID: 1474639053942944605, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+  - {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
+  bossList:
+  - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
   spawnInterval: 1
@@ -61189,6 +61174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5bfbfc891ef6b44bdb5a47d7262d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingshotUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
 --- !u!4 &1962147815
 Transform:
   m_ObjectHideFlags: 0
@@ -61639,29 +61627,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2059445915 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-  m_PrefabInstance: {fileID: 350834644}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2059445916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059445915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 958dea10a8e8cc744ab090d1f1791c5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Goblin
-  enemyRange: 0.8
-  enemyDamage: 10
-  attackCooldown: 1
-  attackTimer: 0
-  attackDistance: 0.3
-  speed: 5
 --- !u!1 &2060659894
 GameObject:
   m_ObjectHideFlags: 0
@@ -77650,6 +77615,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1046596825}
+    - target: {fileID: 9182151922662137091, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 98333656}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -102,26 +102,28 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyStat(String statName, float amount)
     {
+        float multiplier = 1f + (amount / 100f);
+
         switch (statName)
         {
             case "Speed":
-                moveSpeed += amount;
+                moveSpeed *= multiplier;
                 break;
             case "Health":
-                maxHealth += amount;
-                currentHealth += amount;
+                maxHealth *= multiplier;
+                currentHealth *= multiplier;
                 break;
             case "Damage":
-                damage += amount;
+                damage *= multiplier;
                 break;
             case "Attack Speed":
-                attackSpeed += amount;
+                attackSpeed *= multiplier;
                 break;
             case "Profit Multiplier":
-                profitMultiplier += amount;
+                profitMultiplier *= multiplier;
                 break;
             case "Experience Multiplier":
-                experienceMultiplier += amount;
+                experienceMultiplier *= multiplier;
                 break;
             default:
                 Debug.LogWarning("Stat name not recognized: " + statName);

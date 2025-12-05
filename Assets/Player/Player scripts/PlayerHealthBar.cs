@@ -16,7 +16,7 @@ public class PlayerHealthBar : MonoBehaviour
         playerStats = player.GetComponent<PlayerStats>();
         darkHealthBarFill.fillAmount = 1f;
         currentHealthBarFill.fillAmount = (float)playerStats.getCurrentHealth() / playerStats.getMaxHealth();
-        displayCounter.text = playerStats.getCurrentHealth().ToString() + "/" + playerStats.getMaxHealth().ToString();
+        displayCounter.text = playerStats.getCurrentHealth().ToString("F2") + "/" + playerStats.getMaxHealth().ToString("F2");
         
         Debug.Log("Player Health Bar Initialized");
     }
@@ -25,6 +25,6 @@ public class PlayerHealthBar : MonoBehaviour
     void Update()
     {
         currentHealthBarFill.fillAmount = (float)playerStats.getCurrentHealth() / playerStats.getMaxHealth();
-        displayCounter.text = playerStats.getCurrentHealth().ToString() + "/" + playerStats.getMaxHealth().ToString();
+        displayCounter.text = playerStats.getCurrentHealth().ToString("F2") + "/" + playerStats.getMaxHealth().ToString("F2");
     }
 }

@@ -153,8 +153,8 @@ public class WavesState : GameState
         waveInProgress = true;
 
         // Increase difficulty for next wave
-        numEnemiesMultiplier += 0.1f;
-        enemyDifficultyMultiplier += 0.2f;
+        numEnemiesMultiplier += 0.5f;
+        enemyDifficultyMultiplier += 0.4f;
 
         // normal spawns get slightly faster after each wave
         normalSpawnInterval *= normalSpawnScaling;

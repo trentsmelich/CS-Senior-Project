@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 6800590198088273001}
   - component: {fileID: 1295806653960072736}
   - component: {fileID: 1801675020621945310}
+  - component: {fileID: 1874324313775655314}
   m_Layer: 6
   m_Name: Goblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2900365800747980514
 Transform:
   m_ObjectHideFlags: 0
@@ -129,9 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d388f9fa9ee0f3245961f83f92a0fed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  player: {fileID: 0}
-  moveSpeed: 7
-  attackRange: 0.5
+  coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
+  healPrefab: {fileID: 2356374451528525618, guid: 44630273a6424dd47b9ff2d434887cc7, type: 3}
 --- !u!50 &6800590198088273001
 Rigidbody2D:
   serializedVersion: 5
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6883571558850643441}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e749b879af474599d7bc239fd9758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
+  maxHealth: 30
 --- !u!61 &1801675020621945310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.018098563, y: -0.004524477}
+  m_Offset: {x: 0.018098563, y: -0.05130399}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -216,5 +216,23 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.1230526, y: 0.2161424}
+  m_Size: {x: 0.1230526, y: 0.122583374}
   m_EdgeRadius: 0
+--- !u!114 &1874324313775655314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6883571558850643441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958dea10a8e8cc744ab090d1f1791c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Goblin
+  enemyRange: 0.8
+  enemyDamage: 10
+  attackCooldown: 1
+  attackTimer: 0
+  attackDistance: 0.3
+  speed: 5

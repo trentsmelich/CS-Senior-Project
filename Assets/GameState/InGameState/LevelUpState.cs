@@ -34,9 +34,9 @@ public class LevelUpState : GameState
         TMP_Text offer1text = offer1.GetComponentInChildren<TMP_Text>();
         TMP_Text offer2text = offer2.GetComponentInChildren<TMP_Text>();   
         TMP_Text offer3text = offer3.GetComponentInChildren<TMP_Text>();
-        offer1text.text = $"{selectedStats[0]} +{statIncreases[0].ToString("F2")}";
-        offer2text.text = $"{selectedStats[1]} +{statIncreases[1].ToString("F2")}";
-        offer3text.text = $"{selectedStats[2]} +{statIncreases[2].ToString("F2")}";
+        offer1text.text = $"{selectedStats[0]} +{statIncreases[0].ToString("F2")}%";
+        offer2text.text = $"{selectedStats[1]} +{statIncreases[1].ToString("F2")}%";
+        offer3text.text = $"{selectedStats[2]} +{statIncreases[2].ToString("F2")}%";
         
         offer1.onClick.AddListener(() =>
         {
