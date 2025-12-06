@@ -484,7 +484,7 @@ MonoBehaviour:
   towerImage: {fileID: 9212631399393004326, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   towerCost: 0
   towerType: Farm
-  towerName: 
+  towerName: Cauliflower
   unlocked: 0
   profit: 0
 --- !u!61 &3015480187094581413

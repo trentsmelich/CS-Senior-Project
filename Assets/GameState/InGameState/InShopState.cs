@@ -101,83 +101,48 @@ public class InShopState : GameState
                 
                         Debug.Log("Tower Button Clicked: ");
 
-                    // Open tower info screen
-                    shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
-                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
+                        // Open tower info screen
+                        shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
+                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
 
-                    // Set tower info screen texts to tower info
-                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
-
-                    // set the attribute text box differently depending on its tower type
-                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                    tower.GetComponent<TowerParent>().GetAttributes();
-                    /*
-                    if(tower.GetComponent<TowerParent>().TowerType == "Damage")
-                    {
-                        // Set the tower attack attributes
-                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        "Attack Attributes\n" +
-                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                        "Damage:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerDamage.ToString() + "</pos>\n" + "\n" +
-                        "Range:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerRange.ToString() + "</pos>\n" + "\n" +
-                        "Speed:" + "<pos=125>" + tower.GetComponent<TowerParent>().Speed.ToString() + "</pos>\n" + "\n" +
-                        "Cooldown:" + "<pos=125>" + tower.GetComponent<TowerParent>().AttackCooldown.ToString() + "</pos>\n" + "\n" +
-                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
-                    }
-                    else if (tower.GetComponent<TowerParent>().TowerType == "Farm")
-                    {
-                        // Set the farm attributes
-                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        "Farming Attributes\n" +
-                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                        "Profit:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
-                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
-                    }
-                    else
-                    {
-                        // Set the stat modifier attributes
-                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        "Stat Attributes\n" +
-                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                        "Modify:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
-                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                        // Set tower info screen texts to tower info
+                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
+                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Tower_Name").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().GetName();
+                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().GetAttributes();
+                        shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_Tower_Description").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().GetDescription(); 
                         
-                    }*/
-                    Button xButton = shopScreen.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
-                    Button buyButton = shopScreen.transform.Find("Tower_Info_Screen/Buy_Button").GetComponent<Button>();
+                        // Set the buttons functionlity
+                        Button xButton = shopScreen.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
+                        Button buyButton = shopScreen.transform.Find("Tower_Info_Screen/Buy_Button").GetComponent<Button>();
 
-                    // Close tower info screen
-                    xButton.onClick.AddListener(() =>
-                    {
-                        shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
+                        // Close tower info screen
+                        xButton.onClick.AddListener(() =>
+                        {
+                            shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
+                        });
+
+                        // When buy button is clicked
+                        buyButton.onClick.AddListener(() =>
+                        {
+                            //check if player has enough coins to purchase tower
+                            if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
+                            {
+                                Debug.Log("Purchasing tower");
+                                shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
+                                playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
+
+                                //If the building is purchased, set the tower to be placed and change state to building state
+                                Game.SetPlaceTower(tower);
+                                Game.SetState(new BuildingState());
+                            }
+                            else
+                            {
+                                shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(true);
+                            }
+                        });  
+                    
                     });
 
-                    // When buy button is clicked
-                    buyButton.onClick.AddListener(() =>
-                    {
-                        //check if player has enough coins to purchase tower
-                        if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
-                        {
-                            Debug.Log("Purchasing tower");
-                            shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
-                            playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
-
-                            //If the building is purchased, set the tower to be placed and change state to building state
-                            Game.SetPlaceTower(tower);
-                            Game.SetState(new BuildingState());
-
-                        }
-                        else
-                        {
-                            shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(true);
-                        }
-                    });  
-                    
-                    
-                    
-                    
-
-                    });
                 }
                 else
                 {

@@ -82,64 +82,42 @@ public class Unlocks : MainMenuState
                 button.GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
                 button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Level " + tower.GetComponent<TowerParent>().Level.ToString();
 
-                // If the tower is locked, show locked color dark grey
-                // if ()
-                /*Color32 darkGrey = new Color32(50, 50, 50, 255); //color32 means RGBA color in a 32 bits format
-                button.GetComponent<Image>().color = darkGrey;*/
-
-                // When the tower button with image is clicked
-                button.GetComponent<Button>().onClick.AddListener(() =>
+                if (tower.GetComponent<TowerParent>().Unlocked)
                 {
-                    
-                    // If the tower is locked, do nothing and return
-                    // if () return;
+                    // When the tower button with image is clicked
+                    button.GetComponent<Button>().onClick.AddListener(() =>
+                    {
 
-                    // Open tower info screen
-                    unlocksPanel.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
+                        // Open tower info screen
+                        unlocksPanel.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
 
-                    // Set tower info screen texts to tower info
-                    unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
-                    unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                    tower.GetComponent<TowerParent>().GetAttributes();
-                    // set the attribute text box differently depending on its tower type
-                    /*
-                    if(tower.GetComponent<TowerParent>().TowerType == "Damage")
-                    {
-                        // Set the tower attack attributes
-                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        tower.GetComponent<TowerParent>().GetAttributes();
-                    }
-                    else if (tower.GetComponent<TowerParent>().TowerType == "Farm")
-                    {
-                        // Set the farm attributes
-                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        "Farming Attributes\n" +
-                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                        "Profit:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
-                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
-                    }
-                    else
-                    {
-                        // Set the stat modifier attributes
-                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        "Stat Attributes\n" +
-                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                        "Modify:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
-                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                        // Set tower info screen texts to tower info
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Tower_Name").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().GetName();
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().GetAttributes();
+                        unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Text_Tower_Description").GetComponent<TextMeshProUGUI>().text = tower.GetComponent<TowerParent>().GetDescription();                  
+
+                        // Close tower info screen
+                        Button xButton = unlocksPanel.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
+                        xButton.onClick.AddListener(() =>
+                        {
+                            unlocksPanel.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
+                        });
                         
-                    }*/
 
-                    
-
-                    // Close tower info screen
-                    Button xButton = unlocksPanel.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
-                    xButton.onClick.AddListener(() =>
-                    {
-                        unlocksPanel.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
                     });
-                    
+                }
+                else
+                {
+                    //modify tower image to make it dark dark dark grey out to show its locked
+                    ColorBlock cb = button.GetComponent<Button>().colors;
+                    cb.normalColor = new Color(0.2f, 0.2f, 0.2f);
+                    cb.highlightedColor = new Color(0.2f, 0.2f, 0.2f);
+                    cb.pressedColor = new Color(0.2f, 0.2f, 0.2f);
+                    cb.selectedColor = new Color(0.2f, 0.2f, 0.2f);
+                    button.GetComponent<Button>().colors = cb;
+                }
 
-                });
                 
             }
             

@@ -167,7 +167,7 @@ MonoBehaviour:
   towerImage: {fileID: 3706471016571915744, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   towerCost: 0
   towerType: Farm
-  towerName: 
+  towerName: StrawBerry
   unlocked: 0
   profit: 0
 --- !u!61 &7349635794155834066

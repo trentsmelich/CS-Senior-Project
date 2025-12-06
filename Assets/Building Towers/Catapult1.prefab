@@ -132,7 +132,7 @@ MonoBehaviour:
   towerImage: {fileID: 0}
   towerCost: 0
   towerType: Damage
-  towerName: Catapult
+  towerName: Catapult 1
   unlocked: 0
 --- !u!61 &2405878848270733641
 BoxCollider2D:

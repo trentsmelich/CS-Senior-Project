@@ -53,6 +53,7 @@ public abstract class TowerParent : MonoBehaviour
         UnlockController unlockController = FindFirstObjectByType<UnlockController>();
         unlockController.IncreaseTowerCount(this, level);
     }
+    public abstract string GetName();
     public abstract string GetDescription();
     public abstract string GetAttributes();
     

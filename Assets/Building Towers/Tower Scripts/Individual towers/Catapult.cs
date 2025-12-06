@@ -56,6 +56,12 @@ public class Catapult : TowerParent
         projectile.SetActive(true);
 
     }
+
+    public override string GetName()
+    {
+        return towerName.ToString();
+    }
+
     public override string GetDescription()
     {
         return "A powerful tower that hurls projectiles at enemies.";
