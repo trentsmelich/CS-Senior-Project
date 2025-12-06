@@ -19,12 +19,13 @@ public class LevelSelect : MainMenuState
         level1Button.onClick.AddListener(() =>
         {
             Debug.Log("Level 1 Button Clicked");
-            //SceneManager.LoadScene("Level_1");
+            m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
 
         mainMenuButton.onClick.AddListener(() =>
         {
+            m.PlayButtonClickSound();
             m.SetState(new MainMenu());
             Debug.Log("Main Menu Button Clicked");
         });

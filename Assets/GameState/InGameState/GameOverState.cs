@@ -27,6 +27,7 @@ public class GameOverState : GameState
         //Main Menu Button
         mainMenuButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             // Load main menu scene
             Time.timeScale = 1;
             SceneManager.LoadScene(0);
@@ -36,6 +37,7 @@ public class GameOverState : GameState
         //Restart Button
         restartButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Time.timeScale = 1;
             Debug.Log("Restart Button Clicked");

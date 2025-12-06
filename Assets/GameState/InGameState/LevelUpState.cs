@@ -40,8 +40,8 @@ public class LevelUpState : GameState
         
         offer1.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             //increase player stat
-
             stats.ModifyStat(selectedStats[0], statIncreases[0]);
             //exit level-up state
             if(Game.GetPlaceTower() != null)
@@ -56,8 +56,8 @@ public class LevelUpState : GameState
         });
         offer2.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             //increase player stat
-
             stats.ModifyStat(selectedStats[1], statIncreases[1]);
             //exit level-up state
             if(Game.GetPlaceTower() != null)
@@ -72,8 +72,8 @@ public class LevelUpState : GameState
         });
         offer3.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             //increase player stat
-
             stats.ModifyStat(selectedStats[2], statIncreases[2]);
             //exit level-up state
             if(Game.GetPlaceTower() != null)

@@ -21,24 +21,28 @@ public class MainMenu : MainMenuState
 
         playButton.onClick.AddListener(() =>
         {
+            m.PlayButtonClickSound();
             m.SetState(new LevelSelect());
             Debug.Log("Play Button Clicked");
         });
 
         settingsButton.onClick.AddListener(() =>
         {
+            m.PlayButtonClickSound();
             m.SetState(new Settings());
             Debug.Log("Settings Button Clicked");
         });
 
         unlocksButton.onClick.AddListener(() =>
         {
+            m.PlayButtonClickSound();
             m.SetState(new Unlocks());
             Debug.Log("Unlocks Button Clicked");
         });
         
         exitButton.onClick.AddListener(() =>
         {
+            m.PlayButtonClickSound();
             Application.Quit();
         });
     }
