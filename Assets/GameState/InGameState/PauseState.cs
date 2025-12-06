@@ -29,6 +29,7 @@ public class PauseState : GameState
         //resume
         resumeButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             Game.SetState(new gameIdleState());
             Game.ShowPlayerUI(true);
             Debug.Log("resume Button Clicked");
@@ -37,6 +38,7 @@ public class PauseState : GameState
         //options
         optionsButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(true);
             Debug.Log("options Button Clicked");
         });
@@ -44,6 +46,7 @@ public class PauseState : GameState
         //quit
         quitButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Game.SetState(new gameIdleState());
             Debug.Log("quit Button Clicked");
@@ -52,6 +55,7 @@ public class PauseState : GameState
         //options X button (close the options panel)
         optionsXButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(false);
             Debug.Log("options X Button Clicked");
         });

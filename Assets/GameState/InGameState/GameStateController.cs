@@ -57,6 +57,8 @@ public class GameStateController : MonoBehaviour
 
     [SerializeField] private UnlockController unlockController;
 
+    public AudioSource buttonClickSound;
+
     void Start()
     {
         waveManager = new WavesState(
@@ -201,5 +203,10 @@ public class GameStateController : MonoBehaviour
     public UnlockController GetUnlockController()
     {
         return unlockController;
+    }
+
+    public void PlayButtonClickSound()
+    {
+        buttonClickSound.Play();
     }
 }

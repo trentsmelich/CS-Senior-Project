@@ -23,6 +23,7 @@ public class Unlocks : MainMenuState
 
         backButton.onClick.AddListener(() =>
         {
+            Main.PlayButtonClickSound();
             Main.SetState(new MainMenu());
             Debug.Log("Back Button Clicked");
         });
@@ -33,6 +34,7 @@ public class Unlocks : MainMenuState
 
         damageButton.onClick.AddListener(() =>
         {
+            Main.PlayButtonClickSound();
             //Filter to show only damage upgrades
             towerType = "Damage";
             MakeLists(Main);
@@ -40,6 +42,7 @@ public class Unlocks : MainMenuState
 
         farmButton.onClick.AddListener(() =>
         {
+            Main.PlayButtonClickSound();
             //Filter to show only farm upgrades
             towerType = "Farm";
             MakeLists(Main);
@@ -47,6 +50,7 @@ public class Unlocks : MainMenuState
 
         statButton.onClick.AddListener(() =>
         {
+            Main.PlayButtonClickSound();
             //Filter to show only stat upgrades
             towerType = "Stat";
             MakeLists(Main);

@@ -14,6 +14,7 @@ public class Settings : MainMenuState
 
         backButton.onClick.AddListener(() =>
         {
+            Main.PlayButtonClickSound();
             Main.SetState(new MainMenu());
             Debug.Log("Back Button Clicked");
         });

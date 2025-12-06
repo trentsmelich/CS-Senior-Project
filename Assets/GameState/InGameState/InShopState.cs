@@ -36,6 +36,7 @@ public class InShopState : GameState
 
         xButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             Game.SetState(new gameIdleState());
         });
     
@@ -46,6 +47,7 @@ public class InShopState : GameState
 
         damageButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             //Filter to show only damage upgrades
             towerType = "Damage";
             MakeLists(Game);
@@ -53,6 +55,7 @@ public class InShopState : GameState
 
         farmButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             //Filter to show only farm upgrades
             towerType = "Farm";
             MakeLists(Game);
@@ -60,6 +63,7 @@ public class InShopState : GameState
 
         statButton.onClick.AddListener(() =>
         {
+            Game.PlayButtonClickSound();
             //Filter to show only stat upgrades
             towerType = "Stat";
             MakeLists(Game);
