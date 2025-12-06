@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class UnlockParent : MonoBehaviour
 {
     protected TowerParent towerToUnlock;
+    protected PlayerStats playerStats;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // void Start()

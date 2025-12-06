@@ -16,26 +16,20 @@ public class SlingshotUnlock : UnlockParent
 
     public override void LoadUnlockState()
     {
-        lvl1Unlocked = PlayerPrefs.GetInt(slingLvl1, 0) == 1;
+        lvl1Unlocked = true;
         lvl2Unlocked = PlayerPrefs.GetInt(slingLvl2, 0) == 1;
         lvl3Unlocked = PlayerPrefs.GetInt(slingLvl3, 0) == 1;
     }
 
-    public override void Unlock(UnlockController UnlockController)
+    public override void Unlock(UnlockController unlockController)
     {
-        if (!lvl1Unlocked && UnlockController.GetNumTowers("SlingShot", 1) >= 10)
-        {
-            PlayerPrefs.SetInt(slingLvl1, 1);
-            lvl1Unlocked = true;
-        }
-
-        if (!lvl2Unlocked && UnlockController.GetNumTowers("SlingShot", 2) >= 10)
+        if (!lvl2Unlocked && unlockController.GetNumTowers("SlingShot", 1) >= 10)
         {
             PlayerPrefs.SetInt(slingLvl2, 1);
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && UnlockController.GetNumTowers("SlingShot", 3) >= 10)
+        if (!lvl3Unlocked && unlockController.GetNumTowers("SlingShot", 2) >= 10)
         {
             PlayerPrefs.SetInt(slingLvl3, 1);
             lvl3Unlocked = true;

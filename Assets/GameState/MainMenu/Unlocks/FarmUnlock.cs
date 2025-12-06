@@ -23,19 +23,19 @@ public class FarmUnlock : UnlockParent
 
     public override void Unlock(UnlockController UnlockController)
     {
-        if (!lvl1Unlocked && UnlockController.GetNumTowers("Farm", 1) >= 10)
+        if (!lvl1Unlocked && playerStats.GetCoins() >= 500)
         {
             PlayerPrefs.SetInt(farmLvl1, 1);
             lvl1Unlocked = true;
         }
 
-        if (!lvl2Unlocked && UnlockController.GetNumTowers("Farm", 2) >= 10)
+        if (!lvl2Unlocked && UnlockController.GetNumTowers("Farm", 1) >= 10)
         {
             PlayerPrefs.SetInt(farmLvl2, 1);
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && UnlockController.GetNumTowers("Farm", 3) >= 10)
+        if (!lvl3Unlocked && UnlockController.GetNumTowers("Farm", 2) >= 10)
         {
             PlayerPrefs.SetInt(farmLvl3, 1);
             lvl3Unlocked = true;

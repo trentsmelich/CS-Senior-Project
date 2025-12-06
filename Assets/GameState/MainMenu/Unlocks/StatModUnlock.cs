@@ -23,19 +23,19 @@ public class StatModUnlock : UnlockParent
 
     public override void Unlock(UnlockController UnlockController)
     {
-        if (!lvl1Unlocked && UnlockController.GetNumTowers("StatModifier", 1) >= 10)
+        if (!lvl1Unlocked && playerStats.GetEnemiesDefeated() >= 1000)
         {
             PlayerPrefs.SetInt(statModLvl1, 1);
             lvl1Unlocked = true;
         }
 
-        if (!lvl2Unlocked && UnlockController.GetNumTowers("StatModifier", 2) >= 10)
+        if (!lvl2Unlocked && UnlockController.GetNumTowers("StatModifier", 1) >= 10)
         {
             PlayerPrefs.SetInt(statModLvl2, 1);
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && UnlockController.GetNumTowers("StatModifier", 3) >= 10)
+        if (!lvl3Unlocked && UnlockController.GetNumTowers("StatModifier", 2) >= 10)
         {
             PlayerPrefs.SetInt(statModLvl3, 1);
             lvl3Unlocked = true;
