@@ -1,100 +1,98 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-
 public class BuildingState : GameState
 {
     private GameObject towerToPlace;
-    private Tilemap tilemap;
     private GameObject previewTower;
     private Grid grid;
-    private Grid grid2;
+
     private Tilemap grassTilemap;
     private Tilemap grassTilemap2;
+
+    // Layer for placed buildings (YOU MUST SET THIS IN UNITY)
+    private LayerMask buildingLayer = 1 << 8; // example: layer 8 = Buildings
+
     public override void EnterState(GameStateController Game)
     {
         towerToPlace = Game.GetPlaceTower();
+
         previewTower = GameObject.Instantiate(towerToPlace);
         previewTower.GetComponent<Collider2D>().enabled = false;
         previewTower.GetComponent<TowerAI>().enabled = false;
+
+        // Make preview semi-transparent
         SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer renderer in renderers)
         {
-            Color color = renderer.color;
-            color.a = 0.5f; // Set alpha to 50%
-            renderer.color = color;
+            Color c = renderer.color;
+            c.a = 0.5f;
+            renderer.color = c;
         }
+
         grid = Game.GetGrid();
-        grid2 = Game.GetGrid();
         grassTilemap = Game.GetGrassTilemap();
         grassTilemap2 = Game.GetGrassTilemap2();
-
     }
 
     public override void UpdateState(GameStateController Game)
     {
-        // Implementation for updating the building state
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3Int cell = grid.WorldToCell(mousePosition);
-        Vector3 cellCenterPos = grid.GetCellCenterWorld(cell);
-        previewTower.transform.position = cellCenterPos;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int cell = grid.WorldToCell(mousePos);
+        Vector3 cellCenter = grid.GetCellCenterWorld(cell);
+        //check for corners of the tower to see if they are grass
+        Vector3Int cellTopRight = new Vector3Int(cell.x + 1, cell.y + 1, cell.z);
+        Vector3Int cellTopLeft = new Vector3Int(cell.x - 1, cell.y + 1, cell.z);
+        Vector3Int cellBottomRight = new Vector3Int(cell.x + 1, cell.y - 1, cell.z);
+        Vector3Int cellBottomLeft = new Vector3Int(cell.x - 1, cell.y - 1, cell.z);
 
+        previewTower.transform.position = cellCenter;
 
-        bool canBuild = grassTilemap.HasTile(cell) || grassTilemap2.HasTile(cell);
+        // --------- CHECK VALID TILE ---------
+        bool validTile = grassTilemap.HasTile(cellTopRight) && grassTilemap.HasTile(cellTopLeft) && grassTilemap.HasTile(cellBottomRight) && grassTilemap.HasTile(cellBottomLeft) ||
+                         grassTilemap2.HasTile(cellTopRight) && grassTilemap2.HasTile(cellTopLeft) && grassTilemap2.HasTile(cellBottomRight) && grassTilemap2.HasTile(cellBottomLeft);
+
+        // --------- CHECK OVERLAP WITH OTHER BUILDINGS ---------
+        bool blocked = IsBlocked(cellCenter);
+
+        bool canBuild = validTile && !blocked;
+
+        // ---- Change color based on validity ----
         SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer renderer in renderers)
         {
-            Color color = renderer.color;
-            color.a = 0.5f; // Set alpha to 50%
+            Color c = renderer.color;
+            c.a = 0.5f;
+
             if (canBuild)
             {
-                color.g = 1f;
-                color.r = 0f;
+                c.r = 0f; c.g = 1f; c.b = 0f; // green
             }
             else
             {
-                color.g = 0f;
-                color.r = 1f;
+                c.r = 1f; c.g = 0f; c.b = 0f; // red
             }
-            renderer.color = color;
+
+            renderer.color = c;
         }
 
+        // --------- PLACE BUILDING ---------
         if (Input.GetMouseButtonDown(0) && canBuild)
         {
-            // Place tower
-            GameObject placedTower = GameObject.Instantiate(towerToPlace, cellCenterPos, Quaternion.identity);
-            
+            GameObject placedTower = GameObject.Instantiate(towerToPlace, cellCenter, Quaternion.identity);
+
+            // The placed building must be in "Buildings" layer
+            placedTower.layer = 8;
+
             placedTower.GetComponent<TowerParent>().increaseCount();
-            if (Game.GetUnlockController() == null)
-            {
-                Debug.Log("Youre stupid");
-            }
-            //Game.GetUnlockController().CheckUnlocks();
-
-            // Debug unlock status
-
-            // foreach (UnlockParent unlock in Game.GetUnlockController().GetUnlocks())
-            // {
-            //     if (unlock is SlingshotUnlock sling)
-            //     {
-            //         Debug.Log($"Slingshot Unlocks: L1={sling.lvl1Unlocked}, L2={sling.lvl2Unlocked}, L3={sling.lvl3Unlocked}");
-            //     }
-            //     else if (unlock is CatapultUnlock catapult)
-            //     {
-            //         Debug.Log($"Catapult Unlocks: L1={catapult.lvl1Unlocked}, L2={catapult.lvl2Unlocked}, L3={catapult.lvl3Unlocked}");
-            //     }
-            // }
-
-            // end of debug
-
-            Debug.Log("Placed Tower: " +  Game.GetUnlockController().GetNumTowers("SlingShot", 1));
 
             Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
-        else if (Input.GetMouseButtonDown(1) )
+
+        // --------- CANCEL ---------
+        if (Input.GetMouseButtonDown(1))
         {
-            // Cancel placement
             Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
@@ -102,8 +100,37 @@ public class BuildingState : GameState
 
     public override void ExitState(GameStateController Game)
     {
-        // Implementation for exiting the building state
         GameObject.Destroy(previewTower);
-        
+    }
+
+    // ===========================================================
+    //                  BLOCK CHECK (important)
+    // ===========================================================
+
+    private bool IsBlocked(Vector3 center)
+    {
+        // I assume your building prefabs use a BoxCollider2D
+        BoxCollider2D box = towerToPlace.GetComponent<BoxCollider2D>();
+
+        if (box == null)
+        {
+            Debug.LogWarning("Tower prefab missing BoxCollider2D.");
+            return false;
+        }
+
+        // Calculate box size & offset in world space
+        Vector2 size = box.size;
+        Vector2 offset = box.offset;
+
+        Vector2 worldCenter = (Vector2)center + offset;
+
+        Collider2D hit = Physics2D.OverlapBox(
+            worldCenter,
+            size,
+            0f,
+            buildingLayer
+        );
+
+        return hit != null;
     }
 }

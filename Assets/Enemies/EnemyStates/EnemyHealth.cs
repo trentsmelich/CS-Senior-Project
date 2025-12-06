@@ -119,6 +119,9 @@ public class EnemyHealth : MonoBehaviour
     {
         return isNormal;
     }
-
+    public int GetCurrentHealth()
+    {
+        return (int)currentHealth;
+    }
 
 }
