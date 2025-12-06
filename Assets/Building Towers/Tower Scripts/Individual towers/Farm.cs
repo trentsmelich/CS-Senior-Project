@@ -43,4 +43,16 @@ public class Farm : TowerParent
 
 
     }
+    public override string GetDescription()
+    {
+        return "A farm that generates coins over time.";
+    }
+    public override string GetAttributes()
+    {
+        return "Farming Attributes\n" +
+                        "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
+                        "Profit:" + "<pos=125>" + profit.ToString() + "</pos>\n" + "\n" +
+                        "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
+                        "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
+    }
 }

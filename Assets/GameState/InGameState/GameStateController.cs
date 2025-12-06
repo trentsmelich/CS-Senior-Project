@@ -52,7 +52,7 @@ public class GameStateController : MonoBehaviour
 
     private GameObject placeTower;
 
-    [SerializeField] GameObject[] towers;
+    
     [SerializeField] GameObject towerButtonPrefab;
 
     [SerializeField] private UnlockController unlockController;
@@ -156,7 +156,7 @@ public class GameStateController : MonoBehaviour
 
     public GameObject[] GetTowers()
     {
-        return towers;
+        return unlockController.GetTowers();
     }
 
     public void ShowPlayerUI(bool show)

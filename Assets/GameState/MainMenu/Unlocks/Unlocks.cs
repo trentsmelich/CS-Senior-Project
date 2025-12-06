@@ -95,19 +95,15 @@ public class Unlocks : MainMenuState
 
                     // Set tower info screen texts to tower info
                     unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
-
+                    unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
+                    tower.GetComponent<TowerParent>().GetAttributes();
                     // set the attribute text box differently depending on its tower type
+                    /*
                     if(tower.GetComponent<TowerParent>().TowerType == "Damage")
                     {
                         // Set the tower attack attributes
                         unlocksPanel.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
-                        "Attack Attributes\n" +
-                        "Level:"+ "<pos=125>" + tower.GetComponent<TowerParent>().Level.ToString() + "</pos>\n" + "\n" +
-                        "Damage:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerDamage.ToString() + "</pos>\n" + "\n" +
-                        "Range:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerRange.ToString() + "</pos>\n" + "\n" +
-                        "Speed:" + "<pos=125>" + tower.GetComponent<TowerParent>().Speed.ToString() + "</pos>\n" + "\n" +
-                        "Cooldown:" + "<pos=125>" + tower.GetComponent<TowerParent>().AttackCooldown.ToString() + "</pos>\n" + "\n" +
-                        "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
+                        tower.GetComponent<TowerParent>().GetAttributes();
                     }
                     else if (tower.GetComponent<TowerParent>().TowerType == "Farm")
                     {
@@ -127,7 +123,7 @@ public class Unlocks : MainMenuState
                         "Modify:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
                         "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
                         
-                    }
+                    }*/
 
                     
 

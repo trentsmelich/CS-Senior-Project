@@ -28,4 +28,16 @@ public class StatModifier : TowerParent
         playerStats.ModifyStat(statToModify, modificationAmount);
         Debug.Log("Modified Player Stat: " + statToModify + " by " + modificationAmount);
     }
+    public override string GetDescription()
+    {
+        return "A tower that modifies player stats.";
+    }
+    public override string GetAttributes()
+    {
+        return "Stat Attributes\n" +
+                        "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
+                        "Stat To Modify" + "<pos=125>" + statToModify + "</pos>\n" + "\n" +
+                        "Modification Amount:" + "<pos=125>" + modificationAmount.ToString() + "</pos>\n" + "\n" +
+                        "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
+    }
 }

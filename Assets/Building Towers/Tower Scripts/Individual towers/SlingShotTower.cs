@@ -45,5 +45,18 @@ public class SlingShotTower : TowerParent
         projectile.SetActive(true);
 
     }
+    public override string GetDescription()
+    {
+        return "A basic tower that shoots projectiles at enemies.";
+    }
 
+    public override string GetAttributes()
+    {
+        return "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
+                "Damage:" + "<pos=125>" + towerDamage.ToString() + "</pos>\n" + "\n" +
+                "Range:" + "<pos=125>" + towerRange.ToString() + "</pos>\n" + "\n" +
+                "Speed:" + "<pos=125>" + speed.ToString() + "</pos>\n" + "\n" +
+                "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
+                "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
+    }
 }

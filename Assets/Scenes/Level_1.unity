@@ -34484,50 +34484,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &732643876
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 732643878}
-  - component: {fileID: 732643877}
-  m_Layer: 0
-  m_Name: WaveControl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &732643877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732643876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f0359270d6f89f49aa45120682e7708, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WaveController
---- !u!4 &732643878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732643876}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.5, y: 10.33012, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734934342
 GameObject:
   m_ObjectHideFlags: 0
@@ -38254,14 +38210,6 @@ MonoBehaviour:
   enemyDefeatCounter: {fileID: 2039509557}
   waveCounter: {fileID: 981819078}
   timer: {fileID: 557134604}
-  towers:
-  - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
-  - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
-  - {fileID: 146517596455405730, guid: 12e913355c624564ba7c81915b79231d, type: 3}
-  - {fileID: 965917807470210177, guid: bf1017a18eefa2c428229fb2bb30d129, type: 3}
-  - {fileID: 6770428916232597138, guid: c9b568dd9c0315e499ed6234cfa12a35, type: 3}
-  - {fileID: 4659362562171334871, guid: 5b8a82dd627167c44bea9e0ef267aed6, type: 3}
-  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
   towerButtonPrefab: {fileID: 4440208757228867778, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
   unlockController: {fileID: 1781292268}
 --- !u!1 &1075303722
@@ -57470,7 +57418,16 @@ MonoBehaviour:
   unlocks:
   - {fileID: 1860758941}
   - {fileID: 365902749}
-  towers: []
+  towers:
+  - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
+  - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
+  - {fileID: 146517596455405730, guid: 12e913355c624564ba7c81915b79231d, type: 3}
+  - {fileID: 965917807470210177, guid: bf1017a18eefa2c428229fb2bb30d129, type: 3}
+  - {fileID: 6770428916232597138, guid: c9b568dd9c0315e499ed6234cfa12a35, type: 3}
+  - {fileID: 4659362562171334871, guid: 5b8a82dd627167c44bea9e0ef267aed6, type: 3}
+  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
+  - {fileID: 4449575510196601865, guid: a7ceeaad5dc4b794aa08ae0b5518d752, type: 3}
+  - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
 --- !u!4 &1781292269
 Transform:
   m_ObjectHideFlags: 0
@@ -74896,7 +74853,6 @@ SceneRoots:
   - {fileID: 1188910855}
   - {fileID: 2096232376}
   - {fileID: 1046596826}
-  - {fileID: 732643878}
   - {fileID: 350834644}
   - {fileID: 1664214045}
   - {fileID: 943069303}

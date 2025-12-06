@@ -14,7 +14,7 @@ public class FarmUnlock : UnlockParent
     public bool Lvl2Unlocked => lvl2Unlocked;
     public bool Lvl3Unlocked => lvl3Unlocked;
 
-    public override void LoadUnlockState()
+    public override void LoadUnlockState(UnlockController unlockController)
     {
         lvl1Unlocked = PlayerPrefs.GetInt(farmLvl1, 0) == 1;
         lvl2Unlocked = PlayerPrefs.GetInt(farmLvl2, 0) == 1;

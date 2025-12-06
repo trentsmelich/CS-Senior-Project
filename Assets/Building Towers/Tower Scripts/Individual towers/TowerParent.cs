@@ -16,6 +16,9 @@ public abstract class TowerParent : MonoBehaviour
 
     [SerializeField] protected string towerType;
 
+    [SerializeField] protected string towerName;
+    [SerializeField] protected bool unlocked;
+
     
 
     public float TowerRange => towerRange;
@@ -27,6 +30,20 @@ public abstract class TowerParent : MonoBehaviour
     public Sprite TowerImage => towerImage;
     public int TowerCost => towerCost;
     public string TowerType => towerType;
+
+    public bool Unlocked => unlocked;
+
+    public string TowerName => towerName;
+
+    public void SetUnlock(bool unlock)
+    {
+        unlocked = unlock;
+    }
+    public void SetTowerImage(Sprite image)
+    {
+        towerImage = image;
+    }
+
     
 
     public abstract void UpdateTower(Transform enemy);
@@ -36,6 +53,8 @@ public abstract class TowerParent : MonoBehaviour
         UnlockController unlockController = FindFirstObjectByType<UnlockController>();
         unlockController.IncreaseTowerCount(this, level);
     }
+    public abstract string GetDescription();
+    public abstract string GetAttributes();
     
     
 }

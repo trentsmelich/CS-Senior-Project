@@ -90,11 +90,12 @@ public class InShopState : GameState
                 button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Level " + tower.GetComponent<TowerParent>().Level.ToString();
                 //add listener to button to open tower upgrade screen
 
-
-                button.GetComponent<Button>().onClick.AddListener(() =>
+                if(tower.GetComponent<TowerParent>().Unlocked)
                 {
-
-                    Debug.Log("Tower Button Clicked: ");
+                    button.GetComponent<Button>().onClick.AddListener(() =>
+                    {
+                
+                        Debug.Log("Tower Button Clicked: ");
 
                     // Open tower info screen
                     shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
@@ -104,6 +105,9 @@ public class InShopState : GameState
                     shopScreen.transform.Find("Tower_Info_Screen/Tower_Image").GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
 
                     // set the attribute text box differently depending on its tower type
+                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Attribute_Description").GetComponent<TextMeshProUGUI>().text = 
+                    tower.GetComponent<TowerParent>().GetAttributes();
+                    /*
                     if(tower.GetComponent<TowerParent>().TowerType == "Damage")
                     {
                         // Set the tower attack attributes
@@ -134,8 +138,7 @@ public class InShopState : GameState
                         "Modify:" + "<pos=125>" + "000" + "</pos>\n" + "\n" +
                         "Cost:" + "<pos=125>" + tower.GetComponent<TowerParent>().TowerCost.ToString() + "</pos>";
                         
-                    }
-                    
+                    }*/
                     Button xButton = shopScreen.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
                     Button buyButton = shopScreen.transform.Find("Tower_Info_Screen/Buy_Button").GetComponent<Button>();
 
@@ -164,10 +167,27 @@ public class InShopState : GameState
                         {
                             shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(true);
                         }
-                    });
+                    });  
+                    
+                    
+                    
                     
 
-                });
+                    });
+                }
+                else
+                {
+                    //modify tower image to make it dark dark dark grey out to show its locked
+                    ColorBlock cb = button.GetComponent<Button>().colors;
+                    cb.normalColor = new Color(0.2f, 0.2f, 0.2f);
+                    cb.highlightedColor = new Color(0.2f, 0.2f, 0.2f);
+                    cb.pressedColor = new Color(0.2f, 0.2f, 0.2f);
+                    cb.selectedColor = new Color(0.2f, 0.2f, 0.2f);
+                    button.GetComponent<Button>().colors = cb;
+
+                    
+                }
+                
             }
             
 

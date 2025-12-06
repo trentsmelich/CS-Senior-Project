@@ -12,6 +12,8 @@ public class GameOverState : GameState
         gameOverScreen = Game.GetGameOverScreen();
         Game.ShowPlayerUI(false);
 
+        Game.GetUnlockController().CheckUnlocks();
+        Debug.Log("Number of Level 1 Slingshot Towers: " + Game.GetUnlockController().GetNumTowers("SlingShot", 1));
         //open pause UI
         gameOverScreen.SetActive(true);
         //pause time

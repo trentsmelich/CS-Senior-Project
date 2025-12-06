@@ -3,7 +3,7 @@ using UnityEngine;
 public class UnlockController : MonoBehaviour
 {
     [SerializeField] private UnlockParent[] unlocks;
-    [SerializeField] private TowerParent[] towers;
+    [SerializeField] private GameObject[] towers;
      
     private static int numSlingshot1 = 0;
     private static int numSlingshot2 = 0;
@@ -37,7 +37,8 @@ public class UnlockController : MonoBehaviour
         //inside each unlock, loop trhoug tower name is == to level I am in 
         foreach (UnlockParent unlock in unlocks)
         {
-            unlock.LoadUnlockState();
+            Debug.Log("Loading unlock states");
+            unlock.LoadUnlockState(this);
         }
     }
 
@@ -49,6 +50,7 @@ public class UnlockController : MonoBehaviour
         {
             if (level == 1)
             {
+                Debug.Log("Increasing Slingshot Level 1 Count");
                 numSlingshot1++;
             }
             else if (level == 2)
@@ -173,4 +175,8 @@ public class UnlockController : MonoBehaviour
     }
 
     public UnlockParent[] GetUnlocks() => unlocks;
+    public GameObject[] GetTowers()
+    {
+        return towers;
+    }
 }

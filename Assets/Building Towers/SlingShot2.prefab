@@ -119,6 +119,8 @@ MonoBehaviour:
   towerImage: {fileID: -7282244306614514909, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
   towerCost: 0
   towerType: Damage
+  towerName: SlingShot
+  unlocked: 0
 --- !u!114 &996062315310669796
 MonoBehaviour:
   m_ObjectHideFlags: 0
