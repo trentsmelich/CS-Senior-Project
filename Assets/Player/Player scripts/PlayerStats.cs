@@ -133,8 +133,14 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
+        PlayerStateController player = GetComponent<PlayerStateController>();
+
         if (currentHealth > 0)
         {
+            //Play Hurt SFX and color changed
+            player.HurtSFX();
+            StartCoroutine(HurtPlayerColor(player));
+
             currentHealth -= damageAmount;
             Debug.Log("Player took " + damageAmount + " damage, current health: " + currentHealth);
             if (currentHealth <= 0)
@@ -146,6 +152,19 @@ public class PlayerStats : MonoBehaviour
         return;
     }
 
+    private System.Collections.IEnumerator HurtPlayerColor(PlayerStateController player)
+    {
+        SpriteRenderer SR = player.GetSpriteRenderer();
+
+        // Change player's color to red
+        SR.color = Color.red;
+        // Wait for the color duration
+        yield return new WaitForSeconds(0.15f);
+        // Reset to original color white
+        SR.color = Color.white;
+    }
+
+
     private void Die()
     {
         // Handle player death (e.g., trigger death animation, respawn, game over)
@@ -153,6 +172,7 @@ public class PlayerStats : MonoBehaviour
 
         anim.SetTrigger("isDead");
         PlayerStateController player = GetComponent<PlayerStateController>();
+        player.DeadSFX();
         player.enabled = false;
         player.GetRigidbody().linearVelocity = Vector2.zero;
     }

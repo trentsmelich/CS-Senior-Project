@@ -5,6 +5,7 @@ public class PlayerStateController : MonoBehaviour
     private PlayerState currentState;
     private Animator anim;
     private Rigidbody2D rb;
+    private SpriteRenderer sprite;
 
     [Header("Movement")]
     public Vector2 moveInput; // Current frame's movement input
@@ -14,10 +15,17 @@ public class PlayerStateController : MonoBehaviour
     public GameObject projectilePrefab; // Projectile prefab to instantiate
     public PlayerStats playerStats; // Reference to player stats
 
+    // Player SFX
+    [Header("Player SFX")]
+    [SerializeField] AudioSource attackSound;
+    [SerializeField] AudioSource hurtSound;
+    [SerializeField] AudioSource deadSound;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
 
 
         // Start in Idle state
@@ -44,6 +52,7 @@ public class PlayerStateController : MonoBehaviour
 
     public Animator GetAnimator() => anim;
     public Rigidbody2D GetRigidbody() => rb;
+    public SpriteRenderer GetSpriteRenderer() => sprite;
 
     public GameObject GetGameObject() => gameObject;
 
@@ -61,5 +70,20 @@ public class PlayerStateController : MonoBehaviour
         anim.SetFloat("Horizontal", lastDir.x);
         anim.SetFloat("Vertical", lastDir.y);
         anim.SetBool("isMoving", moveInput.sqrMagnitude > 0.1f);
+    }
+
+    public void AttackSFX()
+    {
+        attackSound.Play();
+    }
+
+    public void HurtSFX()
+    {
+        hurtSound.Play();
+    }
+
+    public void DeadSFX()
+    {
+        deadSound.Play();
     }
 }

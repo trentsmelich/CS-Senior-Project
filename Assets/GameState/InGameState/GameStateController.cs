@@ -57,7 +57,10 @@ public class GameStateController : MonoBehaviour
 
     [SerializeField] private UnlockController unlockController;
 
+    //Music and SFX
     public AudioSource buttonClickSound;
+    public AudioSource backgroundMusic;
+    public AudioSource GameOverMusic;
 
     void Start()
     {
@@ -112,7 +115,7 @@ public class GameStateController : MonoBehaviour
         if (playerCurrentHealth <= 0 && !(currentState is GameOverState))
         {
             timerScript.StopTimer();
-            SetState(new GameOverState());
+            StartCoroutine(DelayedGameOverScreen());
         } 
         else if (playerCurrentHealth > 0 && (currentState is GameOverState))
         {
@@ -128,6 +131,15 @@ public class GameStateController : MonoBehaviour
         }
         currentState = newState;
         currentState.EnterState(this);
+    }
+
+    private System.Collections.IEnumerator DelayedGameOverScreen()
+    {
+        //wait 1.5 seconds before showing the Game Over Screen
+        yield return new WaitForSeconds(1.5f);
+        backgroundMusic.Stop();
+        GameOverMusic.Play();
+        SetState(new GameOverState());
     }
 
     public GameState GetWaveManager()

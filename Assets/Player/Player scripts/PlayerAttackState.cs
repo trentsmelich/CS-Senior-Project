@@ -95,6 +95,7 @@ public class PlayerAttackState : PlayerState
         Vector2 dir = GetMouseDirection(player.firePoint.position);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
+        player.AttackSFX();
         // Instantiate projectile at fire point
         GameObject projectile = GameObject.Instantiate(
             player.projectilePrefab,

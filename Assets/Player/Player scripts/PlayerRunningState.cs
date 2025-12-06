@@ -8,7 +8,6 @@ public class PlayerRunningState : PlayerState
         // Set animator to running by setting isMoving to true
         var anim = player.GetAnimator();
         anim.SetBool("isMoving", true);
-        
         timer = 0f;
     }
 

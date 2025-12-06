@@ -9,7 +9,7 @@ public class MainMenuStateController : MonoBehaviour
 
     public AudioSource buttonClickAudio;
 
-    [SerializeField] GameObject[] towers;
+    //[SerializeField] GameObject[] towers;
     [SerializeField] GameObject towerButtonPrefab;
     [SerializeField] private UnlockController unlockController;
 
@@ -56,7 +56,7 @@ public class MainMenuStateController : MonoBehaviour
 
     public GameObject[] GetTowers()
     {
-        return towers;
+        return unlockController.GetTowers();
     }
 
     public GameObject GetTowerButtonPrefab()
