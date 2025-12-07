@@ -9,11 +9,13 @@ public class TurtleBoss : EnemyParent
     private Animator anim;
     private bool specialActive = false;
     private EnemyAI enemyAI;
+    private Rigidbody2D rb;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
+        rb = GetComponent<Rigidbody2D>();
         StartCoroutine(SpecialAttackController());
     }
 
@@ -68,6 +70,8 @@ public class TurtleBoss : EnemyParent
     {
         specialActive = true;
         enemyAI.enabled = false;
+        // stop all movement
+        rb.linearVelocity = Vector2.zero;
         anim.SetTrigger("Special");
 
         yield return new WaitForSeconds(5.0f);
