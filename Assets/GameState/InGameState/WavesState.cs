@@ -137,7 +137,7 @@ public class WavesState : GameState
         // Spawn enemies with a delay between each spawn
         for (int i = 0; i < enemiesPerWave; i++)
         {
-            SpawnEnemy();
+            SpawnWaveEnemy();
             yield return new WaitForSeconds(spawnInterval);
         }
 
@@ -163,7 +163,7 @@ public class WavesState : GameState
 
     // This function will make an enemy, change its values according to the current difficulty
     // and then initialize the enemy
-    private void SpawnEnemy()
+    private void SpawnWaveEnemy()
     {
         // Select a random enemy prefab from the array
         GameObject enemyToSpawn = enemyList[Random.Range(0, enemyList.Length)];
