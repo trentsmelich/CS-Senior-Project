@@ -8,7 +8,7 @@ public class PlayerAttackState : PlayerState
 
     private bool projectileFired = false;
     private Vector2 faceDir;
-    private int damageAmount;
+    private Vector2 shootDir;
 
     public override void EnterState(PlayerStateController player)
     {
@@ -20,6 +20,7 @@ public class PlayerAttackState : PlayerState
         // Face towards mouse direction at the start of the attack
         faceDir = GetMouseDirection(player.transform.position);
         player.UpdateDirection(faceDir);
+        shootDir = GetMouseDirection(player.firePoint.position);
         player.GetAnimator().SetTrigger("Attacking");
 
         timer = 0f;
@@ -41,18 +42,11 @@ public class PlayerAttackState : PlayerState
         // Update movement animation
         player.GetAnimator().SetBool("isMoving", moveDir.sqrMagnitude > 0.01f);
 
-        // Update facing to where the mouse is
-        if (!projectileFired)
+        // Shoot the projectile after delay so it syncs with animation
+        if (!projectileFired && timer >= projectileDelay)
         {
-            faceDir = GetMouseDirection(player.transform.position);
-            player.UpdateDirection(faceDir);
-
-            // Shoot the projectile after delay so it syncs with animation
-            if (!projectileFired && timer >= projectileDelay)
-            {
-                ShootProjectile(player);
-                projectileFired = true;
-            }
+            ShootProjectile(player);
+            projectileFired = true;
         }
 
         // Return to idle state after attack cooldown since it means attack is finished
@@ -92,8 +86,7 @@ public class PlayerAttackState : PlayerState
     private void ShootProjectile(PlayerStateController player)
     {
         // Calculate angle based on mouse position
-        Vector2 dir = GetMouseDirection(player.firePoint.position);
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
 
         player.AttackSFX();
         // Instantiate projectile at fire point

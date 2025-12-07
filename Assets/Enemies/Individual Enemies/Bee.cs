@@ -19,7 +19,6 @@ public class Bee : EnemyParent
 
     public override void Attack(EnemyAI enemy)
     {
-        enemy.GetAnimator().SetTrigger("Attacking");
         enemy.StartCoroutine(AttackDelay(enemy, 0.4f));
     }
 

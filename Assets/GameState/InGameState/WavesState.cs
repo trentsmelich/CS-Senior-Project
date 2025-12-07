@@ -59,8 +59,6 @@ public class WavesState : GameState
         // Reset wave countdown and spawning flag
         waveCountdown = waveTimer;
         spawning = false;
-
-        Debug.Log("Entered Waves State");
     }
 
     // Update method called every frame
@@ -78,7 +76,6 @@ public class WavesState : GameState
                 allowNormalSpawning = true;
                 waveCountdown = waveTimer; // restart timer
             }
-
             return;
         }
 
@@ -93,7 +90,7 @@ public class WavesState : GameState
 
         if (normalSpawnTimer <= 0f && allowNormalSpawning)
         {
-            SpawnNormalEnemy();
+            SpawnEnemy(enemyList, false, false);
             normalSpawnTimer = normalSpawnInterval;
         }
 
@@ -137,14 +134,14 @@ public class WavesState : GameState
         // Spawn enemies with a delay between each spawn
         for (int i = 0; i < enemiesPerWave; i++)
         {
-            SpawnEnemy();
+            SpawnEnemy(enemyList, true, false);
             yield return new WaitForSeconds(spawnInterval);
         }
 
         if (waveNumber % 5 == 0)
         {
             // Spawn a boss every 5 waves
-            SpawnBoss();
+            SpawnEnemy(bossList, true, true);
         }
         
         waveNumber++;
@@ -162,19 +159,23 @@ public class WavesState : GameState
     }
 
     // This function will make an enemy, change its values according to the current difficulty
-    // and then initialize the enemy
-    private void SpawnEnemy()
+    // and then initialize the enemy. It also makes the enemy count as either a wave enemy or normal enemy
+    private void SpawnEnemy(GameObject[] enemyList, bool isWave, bool isBoss)
     {
-        // Select a random enemy prefab from the array
-        GameObject enemyToSpawn = enemyList[Random.Range(0, enemyList.Length)];
-        
-        // Get a random spawn position around the player base
-        Vector2 spawnPosition = GetRandomSpawnPosition();
+        GameObject enemy;
+        if (isBoss)
+        {
+            enemy = bossList[currentBossNum % bossList.Length];
+        }
+        else
+        {
+            enemy = enemyList[Random.Range(0, enemyList.Length)];
+        }
 
-        // Instantiate the enemy at the spawn position
-        GameObject enemy = GameObject.Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-        EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+        Vector2 spawnPosition = GetRandomSpawnPosition();
+        GameObject instantiatedEnemy = GameObject.Instantiate(enemy, spawnPosition, Quaternion.identity);
+        EnemyHealth enemyHealth = instantiatedEnemy.GetComponent<EnemyHealth>();
+        EnemyAI enemyAI = instantiatedEnemy.GetComponent<EnemyAI>();
 
         if (enemyHealth != null && enemyAI != null)
         {
@@ -183,22 +184,20 @@ public class WavesState : GameState
             enemyAI.SetMoveSpeed(enemyAI.GetMoveSpeed() * enemyDifficultyMultiplier);
         }
 
-        enemy.SetActive(true);
-        enemyHealth.waveCount();
-    }
+        if (isWave)
+        {
+            enemyHealth.waveCount();
+        }
+        else
+        {
+            enemyHealth.normalCount();
+        }
 
-    // Same as SpawnEnemy but for a boss, will likely change it later
-    private void SpawnBoss()
-    {
-        GameObject bossToSpawn = bossList[currentBossNum % bossList.Length];
-        Vector2 spawnPosition = GetRandomSpawnPosition();
-
-        GameObject instantiatedBoss = GameObject.Instantiate(bossToSpawn, spawnPosition, Quaternion.identity);
-        EnemyHealth bossHealth = instantiatedBoss.GetComponent<EnemyHealth>();
-        instantiatedBoss.SetActive(true);
-
-        bossHealth.waveCount();
-        currentBossNum++;
+        instantiatedEnemy.SetActive(true);
+        if (isBoss)
+        {
+            currentBossNum++;
+        }
     }
 
     // This function will get a random position using the min and max radius from the base
@@ -216,21 +215,6 @@ public class WavesState : GameState
         float y = playerBase.position.y + spawnRadius * Mathf.Sin(angle);
 
         return new Vector2(x, y);
-    }
-
-    // Function to normally spawn enemies between waves, not counted towards wave enemies
-    private void SpawnNormalEnemy()
-    {
-        if (!allowNormalSpawning) return;
-
-        GameObject enemyToSpawn = enemyList[Random.Range(0, enemyList.Length)];
-        Vector2 spawnPosition = GetRandomSpawnPosition();
-
-        GameObject instantiatedEnemy = GameObject.Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-        EnemyHealth enemyHealth = instantiatedEnemy.GetComponent<EnemyHealth>();
-
-        enemyHealth.normalCount();
-        instantiatedEnemy.SetActive(true);
     }
 
     // This function will make all the currently alive normal enemies that spawn between waves

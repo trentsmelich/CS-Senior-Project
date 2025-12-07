@@ -16,12 +16,32 @@ public class FarmUnlock : UnlockParent
 
     public override void LoadUnlockState(UnlockController unlockController)
     {
-        lvl1Unlocked = PlayerPrefs.GetInt(farmLvl1, 0) == 1;
-        lvl2Unlocked = PlayerPrefs.GetInt(farmLvl2, 0) == 1;
-        lvl3Unlocked = PlayerPrefs.GetInt(farmLvl3, 0) == 1;
+        GameObject[] towers = unlockController.GetTowers();
+        foreach (GameObject tower in towers)
+        {
+            TowerParent towerParent = tower.GetComponent<TowerParent>();
+            if(towerParent.TowerName == "Farm")
+            {
+                if(towerParent.Level == 1)
+                {
+                    towerParent.SetUnlock(PlayerPrefs.GetInt(farmLvl1, 0) == 1);
+                    Debug.Log("Farm level 1 unlock state: " + (PlayerPrefs.GetInt(farmLvl1, 0) == 1));
+                }
+                else if(towerParent.Level == 2)
+                {
+                    towerParent.SetUnlock(PlayerPrefs.GetInt(farmLvl2, 0) == 1);
+                    Debug.Log("Farm level 2 unlock state: " + (PlayerPrefs.GetInt(farmLvl2, 0) == 1));
+                }
+                else if(towerParent.Level == 3)
+                {
+                    towerParent.SetUnlock(PlayerPrefs.GetInt(farmLvl3, 0) == 1);
+                    Debug.Log("Farm level 3 unlock state: " + (PlayerPrefs.GetInt(farmLvl3, 0) == 1));
+                }
+            }
+        }
     }
 
-    public override void Unlock(UnlockController UnlockController)
+    public override void Unlock(UnlockController unlockController)
     {
         if (!lvl1Unlocked && playerStats.GetCoins() >= 500)
         {
@@ -29,13 +49,13 @@ public class FarmUnlock : UnlockParent
             lvl1Unlocked = true;
         }
 
-        if (!lvl2Unlocked && UnlockController.GetNumTowers("Farm", 1) >= 10)
+        if (!lvl2Unlocked && unlockController.GetNumTowers("Farm", 1) >= 10)
         {
             PlayerPrefs.SetInt(farmLvl2, 1);
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && UnlockController.GetNumTowers("Farm", 2) >= 10)
+        if (!lvl3Unlocked && unlockController.GetNumTowers("Farm", 2) >= 10)
         {
             PlayerPrefs.SetInt(farmLvl3, 1);
             lvl3Unlocked = true;
