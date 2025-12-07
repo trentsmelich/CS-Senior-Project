@@ -47,7 +47,7 @@ public class PauseState : GameState
         quitButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);  
             Game.SetState(new gameIdleState());
             Debug.Log("quit Button Clicked");
         });

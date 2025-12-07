@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c0cac6a81e3ed224682462ef2005ac51, type: 2}
-  m_Color: {r: 1, g: 0, b: 1, a: 0.5}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   towerImage: {fileID: -3178151490746570464, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
   towerCost: 0
   towerType: Damage
-  towerName: SlingShot 3
+  towerName: SlingShot
   unlocked: 0
 --- !u!114 &4632220169891554721
 MonoBehaviour:

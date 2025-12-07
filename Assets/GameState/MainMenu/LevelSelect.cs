@@ -15,12 +15,20 @@ public class LevelSelect : MainMenuState
         //find main mneu buttons in main mneu panel
         Button mainMenuButton = levelSelectPanel.transform.Find("MainMenu_Button").GetComponent<Button>();
         Button level1Button = levelSelectPanel.transform.Find("Level_1_Button").GetComponent<Button>();
+        Button level2Button = levelSelectPanel.transform.Find("Level_2_Button").GetComponent<Button>();
 
         level1Button.onClick.AddListener(() =>
         {
             Debug.Log("Level 1 Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        });
+
+        level2Button.onClick.AddListener(() =>
+        {
+            Debug.Log("Level 2 Button Clicked");
+            m.PlayButtonClickSound();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         });
 
         mainMenuButton.onClick.AddListener(() =>

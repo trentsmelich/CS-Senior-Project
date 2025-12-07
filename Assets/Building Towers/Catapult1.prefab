@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 87da56cf111a0aa4881e4fd3667a8ff8, type: 2}
-  m_Color: {r: 1, g: 0, b: 1, a: 0.5}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   towerImage: {fileID: 21300000, guid: 87da56cf111a0aa4881e4fd3667a8ff8, type: 2}
   towerCost: 0
   towerType: Damage
-  towerName: Catapult 1
+  towerName: Catapult
   unlocked: 0
 --- !u!61 &2405878848270733641
 BoxCollider2D:
