@@ -20,7 +20,10 @@ public class BombGoblinBoss : EnemyParent
     // Normal attack of the boss
     public override void Attack(EnemyAI enemy)
     {
+        if (!specialActive)
+        {
         enemy.StartCoroutine(NormalAttack(enemy));
+        }
     }
 
 
