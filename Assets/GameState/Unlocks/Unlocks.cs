@@ -87,6 +87,8 @@ public class Unlocks : MainMenuState
                     // When the tower button with image is clicked
                     button.GetComponent<Button>().onClick.AddListener(() =>
                     {
+                        //Play Button Sound
+                        Main.PlayButtonClickSound();
 
                         // Open tower info screen
                         unlocksPanel.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
@@ -101,6 +103,7 @@ public class Unlocks : MainMenuState
                         Button xButton = unlocksPanel.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
                         xButton.onClick.AddListener(() =>
                         {
+                            Main.PlayButtonClickSound();
                             unlocksPanel.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
                         });
                         

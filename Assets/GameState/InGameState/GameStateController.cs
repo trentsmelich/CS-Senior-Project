@@ -59,6 +59,7 @@ public class GameStateController : MonoBehaviour
 
     //Music and SFX
     public AudioSource buttonClickSound;
+    private AudioSource keyClickSound;
     public AudioSource backgroundMusic;
     public AudioSource GameOverMusic;
 
@@ -80,6 +81,9 @@ public class GameStateController : MonoBehaviour
 
         //Get the Player information
         playerStats = player.GetComponent<PlayerStats>();
+
+        //Set SFX
+        keyClickSound = GameObject.Find("SFX/Key_Click_SFX").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -91,20 +95,24 @@ public class GameStateController : MonoBehaviour
         // paused state transitions
         if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState)) // press Esc key
         {
+            keyClickSound.Play();
             SetState(new PauseState());
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && (currentState is PauseState)) // press Esc key
         {
+            keyClickSound.Play();
             SetState(new gameIdleState());
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState)) // press S key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState)) // press F key to enter shop
         {
+            keyClickSound.Play();
             SetState(new InShopState());
         }
-        else if (Input.GetKeyDown(KeyCode.F) && (currentState is InShopState)) // press S key to exit shop
+        else if (Input.GetKeyDown(KeyCode.F) && (currentState is InShopState)) // press F key to exit shop
         {
+            keyClickSound.Play();
             SetState(new gameIdleState());
         }
         

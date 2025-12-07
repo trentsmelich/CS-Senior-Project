@@ -17,6 +17,9 @@ public class EnemyHealth : MonoBehaviour
     private static int waveEnemies = 0;
     private static int normalEnemies = 0;
 
+    private AudioSource enemyHurtSFX;
+    private AudioSource enemyDeadSFX;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +28,9 @@ public class EnemyHealth : MonoBehaviour
         enemyAI = gameObject.GetComponent<EnemyAI>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         isDead = false;
+
+        enemyHurtSFX = GameObject.Find("Enemy_Hurt_SFX").GetComponent<AudioSource>();
+        enemyDeadSFX = GameObject.Find("Enemy_Death_SFX").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        enemyHurtSFX.Play();
         currentHealth -= damage;
         Debug.Log("Enemy took " + damage + " damage, current health: " + currentHealth);
         StartCoroutine(FlashRed());
@@ -42,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0 && !isDead)
         {
+            enemyDeadSFX.Play();
             isDead = true;
             Die();
         }

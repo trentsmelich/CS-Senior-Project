@@ -10,11 +10,16 @@ public class InShopState : GameState
     //private RectTransform listParent;
     private String towerType;
 
+    private AudioSource coinSFX;
+
     public override void EnterState(GameStateController Game)
     {
         //towers = Game.GetTowers();
         shopScreen = Game.GetShopScreen();
         towers = Game.GetTowers();
+
+        //set Coin SFX
+        coinSFX = GameObject.Find("SFX/Coin_SFX").GetComponent<AudioSource>();
         
         // Set The Tower UI Panels to inactive since the player is not viewing them yet
         shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
@@ -100,6 +105,8 @@ public class InShopState : GameState
                     {
                 
                         Debug.Log("Tower Button Clicked: ");
+                        //Play Button Sound
+                        Game.PlayButtonClickSound();
 
                         // Open tower info screen
                         shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(true);
@@ -118,12 +125,15 @@ public class InShopState : GameState
                         // Close tower info screen
                         xButton.onClick.AddListener(() =>
                         {
+                            Game.PlayButtonClickSound();
                             shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
                         });
 
                         // When buy button is clicked
                         buyButton.onClick.AddListener(() =>
                         {
+                            //Play Coin SFX
+                            coinSFX.Play();
                             //check if player has enough coins to purchase tower
                             if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
                             {

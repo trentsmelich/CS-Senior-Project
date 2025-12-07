@@ -24,7 +24,7 @@ public class AudioVolume : MonoBehaviour
     {
         float volume = PlayerPrefs.GetFloat(VolumeMusicKey, 1f);
 
-        // Get all AudioSources in scene (Unity 2023+)
+        // Get all AudioSources in scene
         AudioSource[] sources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
 
         foreach (AudioSource src in sources)
