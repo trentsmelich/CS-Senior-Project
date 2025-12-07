@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private bool isDead;
+    private bool isInvincible = false;
 
     private float currentHealth;
 
@@ -19,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
 
     private AudioSource enemyHurtSFX;
     private AudioSource enemyDeadSFX;
+
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,6 +44,11 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isInvincible) 
+        {
+            return;
+        }
+        
         enemyHurtSFX.Play();
         currentHealth -= damage;
         Debug.Log("Enemy took " + damage + " damage, current health: " + currentHealth);
@@ -126,6 +134,11 @@ public class EnemyHealth : MonoBehaviour
     public bool IsNormalEnemy()
     {
         return isNormal;
+    }
+
+    public void SetInvincible(bool value)
+    {
+        isInvincible = value;
     }
 
 

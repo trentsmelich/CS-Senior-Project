@@ -9,6 +9,7 @@ public class TurtleBoss : EnemyParent
     private Animator anim;
     private bool specialActive = false;
     private EnemyAI enemyAI;
+    private EnemyHealth enemyHealth;
     private Rigidbody2D rb;
 
     void Start()
@@ -16,6 +17,7 @@ public class TurtleBoss : EnemyParent
         anim = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
         rb = GetComponent<Rigidbody2D>();
+        enemyHealth = GetComponent<EnemyHealth>();
         StartCoroutine(SpecialAttackController());
     }
 
@@ -73,6 +75,7 @@ public class TurtleBoss : EnemyParent
         // stop all movement
         rb.linearVelocity = Vector2.zero;
         anim.SetTrigger("Special");
+        enemyHealth.SetInvincible(true);
 
         yield return new WaitForSeconds(5.0f);
 
@@ -94,6 +97,7 @@ public class TurtleBoss : EnemyParent
 
         }
         specialActive = false;
+        enemyHealth.SetInvincible(false);
         enemyAI.enabled = true;
     }
 }
