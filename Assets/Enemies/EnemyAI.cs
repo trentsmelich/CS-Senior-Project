@@ -116,4 +116,9 @@ public class EnemyAI : MonoBehaviour
         moveSpeed = newSpeed;
     }
 
+    public void GetMoveSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
+
 }

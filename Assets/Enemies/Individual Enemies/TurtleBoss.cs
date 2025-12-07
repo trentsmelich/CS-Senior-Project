@@ -4,7 +4,9 @@ using System.Collections;
 public class TurtleBoss : EnemyParent
 {
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float specialAttackCooldown = 10f;
+    [SerializeField] private float specialAttackCooldown = 15f;
+    [SerializeField] private int minionCount = 4;
+    [SerializeField] private float summonRadius = 4f;
 
     private Animator anim;
     private bool specialActive = false;
@@ -71,20 +73,17 @@ public class TurtleBoss : EnemyParent
     IEnumerator SummonMinions()
     {
         specialActive = true;
-        enemyAI.enabled = false;
-        // stop all movement
-        rb.linearVelocity = Vector2.zero;
+        float originalSpeed = enemyAI.GetMoveSpeed();
+        enemyAI.SetMoveSpeed(0);
+        anim.SetBool("Walking", false);
         anim.SetTrigger("Special");
         enemyHealth.SetInvincible(true);
 
-        yield return new WaitForSeconds(5.0f);
-
-        // Summon normal enemies around the boss
-        int minionCount = 4;
-        float summonRadius = 2f;
+        yield return new WaitForSeconds(4f); // Wait for the animation to play
 
         Vector2 bossPosition = transform.position;
 
+        // Summon minions in a circle around the boss
         for (int i = 0; i < minionCount; i++)
         {
             float angle = i * Mathf.PI * 2 / minionCount;
@@ -96,8 +95,11 @@ public class TurtleBoss : EnemyParent
             minion.SetActive(true);
 
         }
+
+        yield return new WaitForSeconds(3f); // Wait for rest of the animation to play
         specialActive = false;
         enemyHealth.SetInvincible(false);
-        enemyAI.enabled = true;
+        enemyAI.SetMoveSpeed(originalSpeed);
+        anim.SetBool("Walking", true);
     }
 }

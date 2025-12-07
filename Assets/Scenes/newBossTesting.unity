@@ -112979,6 +112979,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1607628040442528179, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6337119327731695134, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
       propertyPath: m_Name
       value: TurtleBoss
