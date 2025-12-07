@@ -9,6 +9,7 @@ public class CatapultUnlock : UnlockParent
     public bool lvl1Unlocked;
     public bool lvl2Unlocked;
     public bool lvl3Unlocked;
+    
     public bool Lvl1Unlocked => lvl1Unlocked;
     public bool Lvl2Unlocked => lvl2Unlocked;
     public bool Lvl3Unlocked => lvl3Unlocked;
