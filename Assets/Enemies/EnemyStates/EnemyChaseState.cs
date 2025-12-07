@@ -15,9 +15,7 @@ public class EnemyChaseState : EnemyState
         float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
 
         // Move toward player
-        enemy.GetRigidbody().MovePosition(
-            enemy.GetRigidbody().position + direction * enemy.GetMoveSpeed() * Time.deltaTime
-        );
+        enemy.GetRigidbody().linearVelocity = direction * enemy.GetMoveSpeed();
 
         // Update direction animation
         enemy.UpdateDirection(enemy, direction);

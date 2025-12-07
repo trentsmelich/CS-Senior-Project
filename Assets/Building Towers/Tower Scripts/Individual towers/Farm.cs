@@ -28,18 +28,18 @@ public class Farm : TowerParent
     {
         // Farms do not attack
         //farms update timer and when timer reaches cooldown, play animation and reset timer
-        Debug.Log("Farm Updating");
+        //Debug.Log("Farm Updating");
         float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;
         if (timeSinceLastHarvest < attackCooldown)
         {
-            Debug.Log("Farm Timer: " + timeSinceLastHarvest + " / " + attackCooldown);
+            //Debug.Log("Farm Timer: " + timeSinceLastHarvest + " / " + attackCooldown);
             return;
         }
         harvestTimer = Time.realtimeSinceStartup;
         //anim.SetTrigger("Harvest");
         attackTimer = 0f;
         playerStats.AddCoins(profit * (int)playerStats.GetProfitMultiplier());
-        Debug.Log("Farm Generated Profit: " + (profit * (int)playerStats.GetProfitMultiplier()));
+        //Debug.Log("Farm Generated Profit: " + (profit * (int)playerStats.GetProfitMultiplier()));
 
 
     }

@@ -135,6 +135,10 @@ public class EnemyHealth : MonoBehaviour
     {
         return isNormal;
     }
+    public int GetCurrentHealth()
+    {
+        return (int)currentHealth;
+    }
 
     public void SetInvincible(bool value)
     {

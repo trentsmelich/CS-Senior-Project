@@ -18,14 +18,13 @@ public class Catapult : TowerParent
         attackCooldown = 5f / level;
         attackTimer = 0f;
         speed = 10f * level;
-        towerType = "Catapult";
 
     }
     public override void UpdateTower(Transform enemy)
     {
         // Implementation of attack logic for Catapult
         //create offset for enemy position y by .2
-        Vector2 direction = (enemy.position - new Vector3(0, 1f, 0)) - transform.position;
+        Vector2 direction = (enemy.position - new Vector3(0, 0.8f, 0)) - transform.position;
         catapultArm.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
         if(attackTimer < attackCooldown)
         {
@@ -50,7 +49,7 @@ public class Catapult : TowerParent
         // Implement firing logic here
         
         GameObject projectile = Instantiate(projectilePrefab, catapultArm.transform.position, catapultArm.transform.rotation);
-        projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 1f, 0) - transform.position).normalized, enemy);
+        projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
         projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage);
         projectile.transform.localScale = new Vector3(4, 4, 4);
         projectile.SetActive(true);

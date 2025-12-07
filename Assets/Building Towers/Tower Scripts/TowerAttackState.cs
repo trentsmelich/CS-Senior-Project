@@ -12,19 +12,38 @@ public class TowerAttackState : TowerState
     }
 
     public override void UpdateState(TowerAI tower)
+
     {
-        if (tower.targetEnemy != null || tower.GetTowerParent().TowerType == "Farm")
+        if(tower.GetTowerParent().TowerType == "Farm")
         {
-            
-                // Attack the enemy
+            tower.GetTowerParent().UpdateTower(null);
+            return;
+        }
+        Debug.Log("Tower in Attack State. Tower type is " + tower.GetTowerParent().TowerType);
+        if (tower.targetEnemy != null && tower.GetTowerParent().TowerType == "Damage")
+        {
+            Debug.Log("Tower in Attack State, targeting enemy: ");
+            if(tower.targetEnemy.GetComponent<EnemyHealth>().GetCurrentHealth() > 0)
+            {
+                //update tower to attack
                 tower.GetTowerParent().UpdateTower(tower.targetEnemy);
                 
+            }
             
+            else
+            {
+                Debug.Log("Target enemy is dead, switching to Idle State.");
+                tower.SetState(new TowerIdleState());
+            }
+            return;
+        
         }
         else
         {
+            Debug.Log("No target enemy, switching to Idle State.");
             tower.SetState(new TowerIdleState());
         }
+        
     }
 
     public override void ExitState(TowerAI tower)
