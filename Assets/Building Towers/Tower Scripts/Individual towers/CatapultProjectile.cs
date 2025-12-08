@@ -29,13 +29,17 @@ public class CatapultProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemyTarget.TakeDamage((int)damage);
-            anim.SetTrigger("Explode");
-            //wait .3 seconds then destroy projectile
-            //velocity = Vector2.zero;
-            speed = 0;
-            ExplodeBall();
-            Destroy(gameObject, 0.3f);
+            if(enemyTarget != null)
+            {
+                enemyTarget.TakeDamage((int)damage);
+                anim.SetTrigger("Explode");
+                //wait .3 seconds then destroy projectile
+                //velocity = Vector2.zero;
+                speed = 0;
+                ExplodeBall();
+                Destroy(gameObject, 0.3f);
+            }
+            
         }
     }
 

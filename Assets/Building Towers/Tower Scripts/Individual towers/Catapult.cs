@@ -43,7 +43,10 @@ public class Catapult : TowerParent
     {
         yield return new WaitForSeconds(delay);
         // Implement firing logic here
-        
+        if(enemy == null)
+        {
+            yield break;
+        }
         GameObject projectile = Instantiate(projectilePrefab, catapultArm.transform.position, catapultArm.transform.rotation);
         projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
         projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage);
