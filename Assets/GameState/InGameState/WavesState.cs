@@ -20,6 +20,8 @@ public class WavesState : GameState
     private int currentBossNum = 0; // Index to decide which boss to spawn
     private float numEnemiesMultiplier = 1.0f;  // Multiplier to increase number of enemies (incresed after each wave)
     private float enemyDifficultyMultiplier = 1.0f; // How much enemies should scale (increased after each wave)
+    private float healthMultiplier = 1.0f; // How much enemy health should scale (increased after each wave)
+    private float speedMultiplier = 1.0f; // How much enemy speed should scale (increased after each wave)
 
     // Normal spawn settings
     private float normalSpawnTimer = 0f;
@@ -151,7 +153,10 @@ public class WavesState : GameState
 
         // Increase difficulty for next wave
         numEnemiesMultiplier += 0.5f;
-        enemyDifficultyMultiplier += 0.4f;
+        enemyDifficultyMultiplier += 0.3f;
+        healthMultiplier += 0.1f;
+        speedMultiplier += 0.1f;
+
 
         // normal spawns get slightly faster after each wave
         normalSpawnInterval *= normalSpawnScaling;
@@ -180,9 +185,9 @@ public class WavesState : GameState
 
         if (enemyHealth != null && enemyAI != null)
         {
-            enemyHealth.SetMaxHealth(enemyHealth.GetMaxHealth() * enemyDifficultyMultiplier);
+            enemyHealth.SetMaxHealth(enemyHealth.GetMaxHealth() * healthMultiplier);
             enemyAI.SetDamage(enemyAI.GetDamage() * enemyDifficultyMultiplier);
-            enemyAI.SetMoveSpeed(enemyAI.GetMoveSpeed() * enemyDifficultyMultiplier);
+            enemyAI.SetMoveSpeed(enemyAI.GetMoveSpeed() * speedMultiplier);
         }
 
         if (isWave)

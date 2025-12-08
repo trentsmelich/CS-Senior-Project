@@ -71,7 +71,7 @@ public class EnemyHealth : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
     
-    void Die()
+    public void Die()
     {
         if (isWaveEnemy)
         {
