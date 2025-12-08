@@ -9,6 +9,9 @@ public class BuildingState : GameState
 
     private Tilemap grassTilemap;
     private Tilemap grassTilemap2;
+    private Tilemap dirtTilemap;
+    private Grid grid2;
+    private Grid grid3;
 
     // Layer for placed buildings (YOU MUST SET THIS IN UNITY)
     private LayerMask buildingLayer = LayerMask.GetMask("Default");
@@ -33,6 +36,9 @@ public class BuildingState : GameState
         grid = Game.GetGrid();
         grassTilemap = Game.GetGrassTilemap();
         grassTilemap2 = Game.GetGrassTilemap2();
+        dirtTilemap = Game.GetDirtTilemap();
+        grid2 = Game.GetGrid2();
+        grid3 = Game.GetGrid3();
     }
 
     public override void UpdateState(GameStateController Game)
@@ -40,6 +46,7 @@ public class BuildingState : GameState
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cell = grid.WorldToCell(mousePos);
         Vector3 cellCenter = grid.GetCellCenterWorld(cell);
+        
         //check for corners of the tower to see if they are grass
         Vector3Int cellTopRight = new Vector3Int(cell.x + 1, cell.y + 1, cell.z);
         Vector3Int cellTopLeft = new Vector3Int(cell.x - 1, cell.y + 1, cell.z);
@@ -49,8 +56,9 @@ public class BuildingState : GameState
         previewTower.transform.position = cellCenter;
 
         // --------- CHECK VALID TILE ---------
-        bool validTile = grassTilemap.HasTile(cellTopRight) && grassTilemap.HasTile(cellTopLeft) && grassTilemap.HasTile(cellBottomRight) && grassTilemap.HasTile(cellBottomLeft) ||
-                         grassTilemap2.HasTile(cellTopRight) && grassTilemap2.HasTile(cellTopLeft) && grassTilemap2.HasTile(cellBottomRight) && grassTilemap2.HasTile(cellBottomLeft);
+        bool validTile = grassTilemap.HasTile(cellTopRight) && grassTilemap.HasTile(cellTopLeft) && grassTilemap.HasTile(cellBottomRight) && grassTilemap.HasTile(cellBottomLeft) && grassTilemap.HasTile(cell) && !dirtTilemap.HasTile(cell)||
+                         grassTilemap2.HasTile(cellTopRight) && grassTilemap2.HasTile(cellTopLeft) && grassTilemap2.HasTile(cellBottomRight) && grassTilemap2.HasTile(cellBottomLeft) && grassTilemap2.HasTile(cell) && !dirtTilemap.HasTile(cell);
+                         
 
         // --------- CHECK OVERLAP WITH OTHER BUILDINGS ---------
         bool blocked = IsBlocked(cellCenter);

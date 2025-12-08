@@ -3542,6 +3542,8 @@ MonoBehaviour:
   unlocks:
   - {fileID: 729206514}
   - {fileID: 1101571713}
+  - {fileID: 1475510913}
+  - {fileID: 1407491051}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -3552,6 +3554,7 @@ MonoBehaviour:
   - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
   - {fileID: 4449575510196601865, guid: a7ceeaad5dc4b794aa08ae0b5518d752, type: 3}
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
+  - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
 --- !u!4 &740777463
 Transform:
   m_ObjectHideFlags: 0
@@ -3567,6 +3570,8 @@ Transform:
   m_Children:
   - {fileID: 729206513}
   - {fileID: 1101571714}
+  - {fileID: 1475510914}
+  - {fileID: 1407491052}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779286882
@@ -4679,7 +4684,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -49
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -47695,7 +47700,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -48
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.8125, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -49971,19 +49976,22 @@ MonoBehaviour:
   player: {fileID: 1120095441}
   grid: {fileID: 1895178566}
   grid2: {fileID: 1895178566}
+  grid3: {fileID: 1390743899}
   grassTilemap: {fileID: 1560121256}
   grassTilemap2: {fileID: 1560121256}
+  dirtTilemap: {fileID: 1622481253}
   playerBase: {fileID: 866857887}
-  enemiesPerWave: 10
+  enemiesPerWave: 0
   waveTimer: 5
   waveCountdown: 0
   enemyList:
   - {fileID: 8181663554138463540, guid: d886e2fe89d57e04fbeec075d7bd34d8, type: 3}
+  - {fileID: 4636911474501418465, guid: 448eff5edb834564392b6ef0cb148bc3, type: 3}
   bossList:
-  - {fileID: 919114048276854430, guid: eac7a6065a2c393419ccb73a29264b27, type: 3}
+  - {fileID: 6337119327731695134, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
-  spawnInterval: 1
+  spawnInterval: 10000000
   countdownText: {fileID: 591586192}
   pauseMenu: {fileID: 93467603}
   shopScreen: {fileID: 226159261}
@@ -51062,6 +51070,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392734177}
   m_CullTransparentMesh: 1
+--- !u!1 &1407491050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407491052}
+  - component: {fileID: 1407491051}
+  m_Layer: 0
+  m_Name: StatModUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407491051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407491050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8b2e1d6a0d0764c88eea31f7ef67e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatModUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &1407491052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407491050}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.7383194, y: 10.07696, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 740777463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409171891
 GameObject:
   m_ObjectHideFlags: 0
@@ -51472,6 +51527,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466860846}
   m_CullTransparentMesh: 1
+--- !u!1 &1475510912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475510914}
+  - component: {fileID: 1475510913}
+  m_Layer: 0
+  m_Name: FarmUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1475510913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475510912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd9b248c158edb4ea3a2dcf91aefa11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &1475510914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475510912}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.7383194, y: 10.07696, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 740777463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1476254749
 GameObject:
   m_ObjectHideFlags: 0
@@ -51927,7 +52029,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -49
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -59211,7 +59313,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -7
+  m_SortingOrder: -50
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -76227,7 +76329,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 35
+  m_SortingOrder: -47
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.96875, z: 0}
   m_MaxChunkCount: 16

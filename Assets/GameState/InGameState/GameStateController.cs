@@ -9,8 +9,10 @@ public class GameStateController : MonoBehaviour
     private PlayerStats playerStats;
     [SerializeField] private Grid grid;
     [SerializeField] private Grid grid2;
+    [SerializeField] private Grid grid3;
     [SerializeField] private Tilemap grassTilemap;
     [SerializeField] private Tilemap grassTilemap2;
+    [SerializeField] private Tilemap dirtTilemap;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Wave Settings")]
@@ -218,6 +220,15 @@ public class GameStateController : MonoBehaviour
     public Grid GetGrid2()
     {
         return grid2;
+    }
+    public Tilemap GetDirtTilemap()
+    {
+        return dirtTilemap;
+    }
+
+    public Grid GetGrid3()
+    {
+        return grid3;
     }
 
     public UnlockController GetUnlockController()
