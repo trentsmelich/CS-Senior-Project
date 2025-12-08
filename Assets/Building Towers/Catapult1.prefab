@@ -130,7 +130,7 @@ MonoBehaviour:
   attackTimer: 0
   speed: 10
   towerImage: {fileID: 8881934450746769720, guid: 35bb04c4a409a484c82cdb0973ec95e2, type: 3}
-  towerCost: 30
+  towerCost: 60
   towerType: Damage
   towerName: Catapult
   unlocked: 0

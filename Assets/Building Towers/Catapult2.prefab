@@ -130,7 +130,7 @@ MonoBehaviour:
   attackTimer: 0
   speed: 20
   towerImage: {fileID: 2213631248328423709, guid: 35bb04c4a409a484c82cdb0973ec95e2, type: 3}
-  towerCost: 60
+  towerCost: 120
   towerType: Damage
   towerName: Catapult
   unlocked: 0
@@ -287,11 +287,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 00adcbba07e4ba546a372f7ea421a8a1, type: 2}
     - target: {fileID: 3626916397498700004, guid: 0c8dcfbc151fca34b9429ea03938ba58, type: 3}
       propertyPath: m_Color.a
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 0c8dcfbc151fca34b9429ea03938ba58, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0c8dcfbc151fca34b9429ea03938ba58, type: 3}
       propertyPath: m_LocalPosition.x

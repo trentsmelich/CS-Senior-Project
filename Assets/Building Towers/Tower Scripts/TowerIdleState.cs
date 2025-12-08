@@ -14,6 +14,7 @@ public class TowerIdleState : TowerState
     public override void UpdateState(TowerAI tower)
     {
         // Check for nearby enemies to switch to attack state
+        tower.GetComponent<SpriteRenderer>().color = Color.black;
         if(tower.GetTowerParent().TowerType == "Farm")
         {
             tower.SetState(new TowerAttackState());
@@ -23,6 +24,7 @@ public class TowerIdleState : TowerState
         if (enemiesInRange.Length > 0)
         {
             tower.targetEnemy = enemiesInRange[0].transform;
+            tower.GetComponent<SpriteRenderer>().color = Color.white;
             tower.SetState(new TowerAttackState());
         }
         

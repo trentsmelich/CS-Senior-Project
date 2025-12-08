@@ -165,7 +165,7 @@ MonoBehaviour:
   attackTimer: 0
   speed: 0
   towerImage: {fileID: 3706471016571915744, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
-  towerCost: 10
+  towerCost: 20
   towerType: Farm
   towerName: Farm
   unlocked: 1
