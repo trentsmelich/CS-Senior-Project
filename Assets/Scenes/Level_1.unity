@@ -88019,7 +88019,7 @@ MonoBehaviour:
   - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
-  spawnInterval: 0.5
+  spawnInterval: 0.2
   countdownText: {fileID: 981819080}
   pauseMenu: {fileID: 793006480}
   shopScreen: {fileID: 1637112455}

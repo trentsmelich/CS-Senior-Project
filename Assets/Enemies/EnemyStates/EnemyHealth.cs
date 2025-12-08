@@ -145,5 +145,10 @@ public class EnemyHealth : MonoBehaviour
         isInvincible = value;
     }
 
+    public void resetEnemyCounts()
+    {
+        waveEnemies = 0;
+        normalEnemies = 0;
+    }
 
 }

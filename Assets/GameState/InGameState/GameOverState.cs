@@ -10,6 +10,8 @@ public class GameOverState : GameState
     {
         Game.GetUnlockController().CheckUnlocks();
         gameOverScreen = Game.GetGameOverScreen();
+        EnemyHealth enemyHealth = GameObject.FindFirstObjectByType<EnemyHealth>();
+        enemyHealth.resetEnemyCounts();
         Game.ShowPlayerUI(false);
 
         Game.GetUnlockController().CheckUnlocks();
