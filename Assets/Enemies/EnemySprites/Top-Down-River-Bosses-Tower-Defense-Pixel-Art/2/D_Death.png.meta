@@ -153,7 +153,7 @@ TextureImporter:
         width: 29
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,9 +171,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 113
-        y: 30
-        width: 21
-        height: 32
+        y: 29
+        width: 44
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: D_Death_2
       rect:
         serializedVersion: 2
-        x: 130
-        y: 29
-        width: 27
-        height: 37
+        x: 200
+        y: 31
+        width: 55
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,10 +214,10 @@ TextureImporter:
       name: D_Death_3
       rect:
         serializedVersion: 2
-        x: 226
-        y: 31
-        width: 29
-        height: 35
+        x: 296
+        y: 30
+        width: 55
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +236,10 @@ TextureImporter:
       name: D_Death_4
       rect:
         serializedVersion: 2
-        x: 322
+        x: 394
         y: 31
-        width: 29
-        height: 35
+        width: 52
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: D_Death_5
       rect:
         serializedVersion: 2
-        x: 419
-        y: 31
-        width: 22
-        height: 33
+        x: 492
+        y: 32
+        width: 48
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,231 +276,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: D_Death_6
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 32
-        width: 43
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b50eaee7596e15580800000000000000
-      internalID: -8840031063797735333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_7
-      rect:
-        serializedVersion: 2
-        x: 525
-        y: 54
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 315a12d247cb6b430800000000000000
-      internalID: 3798430542892999955
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_8
-      rect:
-        serializedVersion: 2
-        x: 531
-        y: 47
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c03979fb968c60230800000000000000
-      internalID: 3604788908268163852
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_9
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 30
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e5e831e21cb762a0800000000000000
-      internalID: -6744215127689992728
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_10
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 30
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c09f7cd48f83ba010800000000000000
-      internalID: 1201116364732365068
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_11
-      rect:
-        serializedVersion: 2
-        x: 394
-        y: 40
-        width: 9
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 888d8d3a4db339e50800000000000000
-      internalID: 6814856445609695368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_12
-      rect:
-        serializedVersion: 2
-        x: 439
-        y: 45
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dbf79153a126b3440800000000000000
-      internalID: 4916631282904563645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_13
-      rect:
-        serializedVersion: 2
-        x: 523
-        y: 39
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d5661acf32cd14be0800000000000000
-      internalID: -1494671554189892003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_14
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 36
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 68786241c2ed9c180800000000000000
-      internalID: -9094493691600009338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: D_Death_15
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 31
-        width: 11
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 60d4c6188f5413c90800000000000000
-      internalID: -7191890196308407034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7d3d102f89e7a174394d745353ae6646
     internalID: 0
     vertices: []
     indices: 

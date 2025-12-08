@@ -88006,7 +88006,7 @@ MonoBehaviour:
   grassTilemap2: {fileID: 407236789}
   dirtTilemap: {fileID: 1731449716}
   playerBase: {fileID: 1188910855}
-  enemiesPerWave: 0
+  enemiesPerWave: 20
   waveTimer: 10
   waveCountdown: 0
   enemyList:
