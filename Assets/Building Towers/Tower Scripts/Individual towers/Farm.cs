@@ -18,12 +18,7 @@ public class Farm : TowerParent
         Debug.Log("Farm Tower Created");
         //anim = GetComponent<Animator>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        towerType = "Farm";
-        towerDamage = 0f;
-        towerRange = 0f;
-        attackCooldown = 14f;
-        attackTimer = 0f;
-        profit = 10 * level;
+        
         harvestTimer = Time.realtimeSinceStartup;
         spriteTimer = attackCooldown / sprites.Length;
         

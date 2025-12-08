@@ -11,11 +11,6 @@ public class StatModifier : TowerParent
         Debug.Log("Stat Modifier Tower Created");
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         ApplyStatModification();
-        towerType = "StatModifier";
-        towerDamage = 0f;
-        towerRange = 0f;
-        attackCooldown = 0f;
-        attackTimer = 0f;
     }
 
     public override void UpdateTower(Transform enemy)

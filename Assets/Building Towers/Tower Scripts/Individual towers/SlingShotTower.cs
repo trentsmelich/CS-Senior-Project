@@ -15,12 +15,7 @@ public class SlingShotTower : TowerParent
         slingShotArm = transform.Find("SlingShotArm").gameObject;
         projectilePrefab = slingShotArm.transform.Find("Projectile").gameObject;
         anim = slingShotArm.GetComponent<Animator>();
-        towerDamage = 15f * level;
-        towerRange = 12f * level;
-        attackCooldown = 1.5f / level;
-        attackTimer = 0f;
-        speed = 15f * level;
-
+        
     }
     public override void UpdateTower(Transform enemy)
     {

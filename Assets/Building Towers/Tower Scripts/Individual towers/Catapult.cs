@@ -13,11 +13,7 @@ public class Catapult : TowerParent
         catapultArm = transform.Find("CatapultArm").gameObject;
         projectilePrefab = catapultArm.transform.Find("Projectile").gameObject;
         anim = catapultArm.GetComponent<Animator>();
-        towerDamage = 25f * level;
-        towerRange = 8f * level;
-        attackCooldown = 5f / level;
-        attackTimer = 0f;
-        speed = 10f * level;
+        
 
     }
     public override void UpdateTower(Transform enemy)

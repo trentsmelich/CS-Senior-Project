@@ -432,7 +432,7 @@ MonoBehaviour:
   level: 3
   towerRange: 0
   towerDamage: 0
-  attackCooldown: 14
+  attackCooldown: 30
   attackTimer: 0
   speed: 0
   towerImage: {fileID: 9212631399393004326, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}

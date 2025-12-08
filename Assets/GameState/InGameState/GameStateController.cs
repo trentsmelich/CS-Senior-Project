@@ -107,7 +107,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState)) // press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState)) // press F key to enter shop
         {
             keyClickSound.Play();
             SetState(new InShopState());

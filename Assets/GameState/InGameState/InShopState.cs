@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 
 public class InShopState : GameState
 {
@@ -98,7 +99,8 @@ public class InShopState : GameState
                 button.GetComponent<Image>().sprite = tower.GetComponent<TowerParent>().TowerImage;
                 button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Level " + tower.GetComponent<TowerParent>().Level.ToString();
                 //add listener to button to open tower upgrade screen
-
+                //clear all listeners first
+                button.GetComponent<Button>().onClick.RemoveAllListeners();
                 if(tower.GetComponent<TowerParent>().Unlocked)
                 {
                     button.GetComponent<Button>().onClick.AddListener(() =>
@@ -121,6 +123,9 @@ public class InShopState : GameState
                         // Set the buttons functionlity
                         Button xButton = shopScreen.transform.Find("Tower_Info_Screen/X_Button").GetComponent<Button>();
                         Button buyButton = shopScreen.transform.Find("Tower_Info_Screen/Buy_Button").GetComponent<Button>();
+                        //clear all listeners first
+                        xButton.onClick.RemoveAllListeners();
+                        buyButton.onClick.RemoveAllListeners();
 
                         // Close tower info screen
                         xButton.onClick.AddListener(() =>
