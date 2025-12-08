@@ -64,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.017004, y: 9.279398, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6551052166521085074}
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e749b879af474599d7bc239fd9758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 500
+  maxHealth: 200
 --- !u!114 &7869443940381936647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   attackCooldown: 3
   attackTimer: 0
   attackDistance: 8
-  speed: 10
+  speed: 6
   firePoint: {fileID: 6551052166521085074}
   projectilePrefab: {fileID: 5247688543459866561, guid: 8c49fff4f5c703d4ca6f7148d53caeef, type: 3}
   specialAttackCooldown: 5

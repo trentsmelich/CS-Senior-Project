@@ -24,7 +24,7 @@ public class GameStateController : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] float minSpawnRadius = 5f; // Minimum spawn radius
     [SerializeField] float maxSpawnRadius = 15f; // Maximum spawn radius
-    [SerializeField] float spawnInterval = 1f; // Time between enemy spawns
+    [SerializeField] float spawnInterval = 0.5f; // Time between enemy spawns
 
     [Header("Wave UI Settings")]
     [SerializeField] TextMeshProUGUI countdownText; // UI Text to display wave countdown

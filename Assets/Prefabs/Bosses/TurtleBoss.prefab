@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e749b879af474599d7bc239fd9758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 1000
+  maxHealth: 300
 --- !u!114 &6182550083991896792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +235,8 @@ MonoBehaviour:
   attackCooldown: 1
   attackTimer: 0
   attackDistance: 1
-  speed: 7
-  enemyPrefab: {fileID: 1474639053942944605, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
-  specialAttackCooldown: 10
+  speed: 3
+  enemyPrefab: {fileID: 4636911474501418465, guid: 448eff5edb834564392b6ef0cb148bc3, type: 3}
+  specialAttackCooldown: 20
+  minionCount: 4
+  summonRadius: 4

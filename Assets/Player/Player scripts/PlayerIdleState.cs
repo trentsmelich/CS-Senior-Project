@@ -16,6 +16,8 @@ public class PlayerIdleState : PlayerState
     public override void UpdateState(PlayerStateController player)
     {
         // Check for input
+        player.GetRigidbody().linearVelocity = Vector2.zero;
+
         player.moveInput.x = Input.GetAxisRaw("Horizontal");
         player.moveInput.y = Input.GetAxisRaw("Vertical");
 

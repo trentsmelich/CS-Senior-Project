@@ -7,12 +7,6 @@ public class Goblin : EnemyParent
     void Start()
     {
         playerLayers = LayerMask.GetMask("Player");
-        enemyRange = 0.8f;
-        enemyDamage = 10f;
-        speed = 3f;
-        attackCooldown = 1f;
-        attackTimer = 0f;
-        attackDistance = 0.2f;
     }
     public override void Attack(EnemyAI enemy)
     {
@@ -43,6 +37,7 @@ public class Goblin : EnemyParent
 
         return Vector2.right; // Default direction
     }
+
     IEnumerator AttackDelay(EnemyAI enemy, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -66,5 +61,12 @@ public class Goblin : EnemyParent
             Debug.Log("Player hit by enemy attack!");
         }
         
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw attack range sphere in editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, enemyRange);
     }
 }
