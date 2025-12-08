@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: a5457ad38235e6a429ab39dfc9d19235
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8037332791849799362
+    second: Cycle Of The Dead Title_0
+  - first:
+      213: -4084735673925348727
+    second: Cycle Of The Dead Title_1
+  - first:
+      213: 8327367096908138610
+    second: Cycle Of The Dead Title_2
+  - first:
+      213: -6129376645481493464
+    second: Cycle Of The Dead Title_3
+  - first:
+      213: -1322588244864687565
+    second: Cycle Of The Dead Title_4
+  - first:
+      213: -5265652792658808127
+    second: Cycle Of The Dead Title_5
+  - first:
+      213: -621709276064572380
+    second: Cycle Of The Dead Title_6
+  - first:
+      213: 461251034204300047
+    second: Cycle Of The Dead Title_7
+  - first:
+      213: 5756817108661714745
+    second: Cycle Of The Dead Title_8
+  - first:
+      213: -6728369376786285718
+    second: Cycle Of The Dead Title_9
+  - first:
+      213: -7985584829918748671
+    second: Cycle Of The Dead Title_10
+  - first:
+      213: 756167002872499565
+    second: Cycle Of The Dead Title_11
+  - first:
+      213: -3120867408197754374
+    second: Cycle Of The Dead Title_12
+  - first:
+      213: -1725389170393667907
+    second: Cycle Of The Dead Title_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 165
+        width: 59
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce4ecf27975a8f60800000000000000
+      internalID: 8037332791849799362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_1
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 165
+        width: 72
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9825052eb8a1057c0800000000000000
+      internalID: -4084735673925348727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_2
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 165
+        width: 50
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2784c7d1140c09370800000000000000
+      internalID: 8327367096908138610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_3
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 165
+        width: 52
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c008f6a6410faa0800000000000000
+      internalID: -6129376645481493464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_4
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 165
+        width: 56
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332abb8aff835ade0800000000000000
+      internalID: -1322588244864687565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_5
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 175
+        width: 56
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c237070fa4ace6b0800000000000000
+      internalID: -5265652792658808127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_6
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 175
+        width: 55
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c1b9615be3f57f0800000000000000
+      internalID: -621709276064572380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 37
+        width: 60
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f03670e2f51b66600800000000000000
+      internalID: 461251034204300047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 37
+        width: 55
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93f3caec8a254ef40800000000000000
+      internalID: 5756817108661714745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_9
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 37
+        width: 56
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b790343b700a2a0800000000000000
+      internalID: -6728369376786285718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_10
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 22
+        width: 68
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100e1f818e08d2190800000000000000
+      internalID: -7985584829918748671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_11
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 22
+        width: 56
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6d461df1e17e7a00800000000000000
+      internalID: 756167002872499565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_12
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 22
+        width: 61
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af1674790a370b4d0800000000000000
+      internalID: -3120867408197754374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cycle Of The Dead Title_13
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 22
+        width: 68
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db62167e0bf2e08e0800000000000000
+      internalID: -1725389170393667907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Cycle Of The Dead Title_0: 8037332791849799362
+      Cycle Of The Dead Title_1: -4084735673925348727
+      Cycle Of The Dead Title_10: -7985584829918748671
+      Cycle Of The Dead Title_11: 756167002872499565
+      Cycle Of The Dead Title_12: -3120867408197754374
+      Cycle Of The Dead Title_13: -1725389170393667907
+      Cycle Of The Dead Title_2: 8327367096908138610
+      Cycle Of The Dead Title_3: -6129376645481493464
+      Cycle Of The Dead Title_4: -1322588244864687565
+      Cycle Of The Dead Title_5: -5265652792658808127
+      Cycle Of The Dead Title_6: -621709276064572380
+      Cycle Of The Dead Title_7: 461251034204300047
+      Cycle Of The Dead Title_8: 5756817108661714745
+      Cycle Of The Dead Title_9: -6728369376786285718
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
