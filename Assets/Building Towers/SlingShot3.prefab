@@ -117,7 +117,7 @@ MonoBehaviour:
   attackTimer: 0
   speed: 60
   towerImage: {fileID: -3178151490746570464, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
-  towerCost: 300
+  towerCost: 60
   towerType: Damage
   towerName: SlingShot
   unlocked: 0

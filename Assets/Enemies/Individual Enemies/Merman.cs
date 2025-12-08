@@ -85,7 +85,9 @@ public class Merman : EnemyParent
         }
 
         yield return new WaitForSeconds(0.3f); //wait for animation to finish
-        Destroy(gameObject);
+        sr.enabled = false;
+        EnemyHealth enemyHealth = GetComponent<EnemyHealth>();
+        enemyHealth.Die();
     }
     
 }

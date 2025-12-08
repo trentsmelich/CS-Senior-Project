@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class LevelUpState : GameState
 {
     private GameObject levelUpUI;
+    private Button offer1;
+    private Button offer2;
+    private Button offer3;
 
     
     public List<string> playerStats = new List<string> { "Health", "Speed", "Damage", "Attack Speed", "Profit Multiplier", "Experience Multiplier" };
@@ -22,15 +25,15 @@ public class LevelUpState : GameState
         
         List<string> selectedStats = playerStats.OrderBy(s => UnityEngine.Random.value).Take(3).ToList();
         List<float> statIncreases = new List<float>();
-        //make each stat increase between 1 and 10
+        //make each stat increase between 15 and 30
         for (int i = 0; i < 3; i++)
         {
-            statIncreases.Add(UnityEngine.Random.Range(1f, 10f));
+            statIncreases.Add(UnityEngine.Random.Range(15f, 30f));
         }
 
-        Button offer1 = levelUpUI.transform.Find("Offer_1").GetComponent<Button>();
-        Button offer2 = levelUpUI.transform.Find("Offer_2").GetComponent<Button>();
-        Button offer3 = levelUpUI.transform.Find("Offer_3").GetComponent<Button>();
+        offer1 = levelUpUI.transform.Find("Offer_1").GetComponent<Button>();
+        offer2 = levelUpUI.transform.Find("Offer_2").GetComponent<Button>();
+        offer3 = levelUpUI.transform.Find("Offer_3").GetComponent<Button>();
         TMP_Text offer1text = offer1.GetComponentInChildren<TMP_Text>();
         TMP_Text offer2text = offer2.GetComponentInChildren<TMP_Text>();   
         TMP_Text offer3text = offer3.GetComponentInChildren<TMP_Text>();
@@ -86,6 +89,8 @@ public class LevelUpState : GameState
             }
             Debug.Log("Offer 3 Selected");
         });
+        //reset listeners on buttons to prevent multiple triggers
+        
         
         Time.timeScale = 0;
         
@@ -111,6 +116,9 @@ public class LevelUpState : GameState
         // Implementation for exiting the level-up state
         //close level-up UI
         levelUpUI.SetActive(false);
+        offer1.onClick.RemoveAllListeners();
+        offer2.onClick.RemoveAllListeners();
+        offer3.onClick.RemoveAllListeners();
         Time.timeScale = 1;
         //resume time
     }

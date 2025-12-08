@@ -46708,6 +46708,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1289018385}
+    - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9182151922662137091, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: deadSound
       value: 
