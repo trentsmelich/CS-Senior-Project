@@ -1517,7 +1517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 285281361}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46765,7 +46765,7 @@ GameObject:
   - component: {fileID: 1136778365}
   - component: {fileID: 1136778367}
   - component: {fileID: 1136778366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49981,7 +49981,7 @@ MonoBehaviour:
   grassTilemap2: {fileID: 1560121256}
   dirtTilemap: {fileID: 1622481253}
   playerBase: {fileID: 866857887}
-  enemiesPerWave: 0
+  enemiesPerWave: 10
   waveTimer: 5
   waveCountdown: 0
   enemyList:
@@ -49991,7 +49991,7 @@ MonoBehaviour:
   - {fileID: 6337119327731695134, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
-  spawnInterval: 10000000
+  spawnInterval: 1
   countdownText: {fileID: 591586192}
   pauseMenu: {fileID: 93467603}
   shopScreen: {fileID: 226159261}
@@ -72465,7 +72465,7 @@ GameObject:
   - component: {fileID: 1673225244}
   - component: {fileID: 1673225246}
   - component: {fileID: 1673225245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75593,7 +75593,7 @@ GameObject:
   - component: {fileID: 2051114128}
   - component: {fileID: 2051114130}
   - component: {fileID: 2051114129}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75730,7 +75730,7 @@ GameObject:
   - component: {fileID: 2054020431}
   - component: {fileID: 2054020433}
   - component: {fileID: 2054020432}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Down_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
