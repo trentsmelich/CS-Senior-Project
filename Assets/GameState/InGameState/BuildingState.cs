@@ -11,7 +11,7 @@ public class BuildingState : GameState
     private Tilemap grassTilemap2;
 
     // Layer for placed buildings (YOU MUST SET THIS IN UNITY)
-    private LayerMask buildingLayer = 1 << 8; // example: layer 8 = Buildings
+    private LayerMask buildingLayer = LayerMask.GetMask("Default");
 
     public override void EnterState(GameStateController Game)
     {
@@ -82,9 +82,17 @@ public class BuildingState : GameState
             GameObject placedTower = GameObject.Instantiate(towerToPlace, cellCenter, Quaternion.identity);
 
             // The placed building must be in "Buildings" layer
-            placedTower.layer = 8;
+            placedTower.layer = 0;
 
             placedTower.GetComponent<TowerParent>().increaseCount();
+
+            SpriteRenderer[] towerRenderers = placedTower.GetComponentsInChildren<SpriteRenderer>();
+            int num = 0;
+            foreach (SpriteRenderer renderer in towerRenderers)
+            {
+                renderer.sortingOrder = Mathf.RoundToInt(-cellCenter.y) + num;
+                num++;
+            }
 
             Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());

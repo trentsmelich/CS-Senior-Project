@@ -1813,7 +1813,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -7
+  m_SortingOrder: -50
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.1, y: 1.8499999, z: 0}
   m_MaxChunkCount: 16
@@ -67767,6 +67767,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265306563}
   m_CullTransparentMesh: 1
+--- !u!1001 &268918992
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1474639053942944605, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_Name
+      value: Wolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.706713
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2956018
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125147639083866349, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
 --- !u!1 &284782397
 GameObject:
   m_ObjectHideFlags: 0
@@ -68506,130 +68563,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336471576}
   m_CullTransparentMesh: 1
---- !u!1001 &350834644
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1295806653960072736, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: maxHealth
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1295806653960072736, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: enemyDeadSFX
-      value: 
-      objectReference: {fileID: 1026249865}
-    - target: {fileID: 1295806653960072736, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: enemyHurtSFX
-      value: 
-      objectReference: {fileID: 995914101}
-    - target: {fileID: 1801675020621945310, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Size.y
-      value: 0.122583374
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801675020621945310, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.05130399
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 18.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Name
-      value: Goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7619410868979515203, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 98333655}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: coinPrefab
-      value: 
-      objectReference: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: attackRange
-      value: 0.8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2059445916}
-  m_SourcePrefab: {fileID: 100100000, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
 --- !u!1 &360609912
 GameObject:
   m_ObjectHideFlags: 0
@@ -69135,7 +69068,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -49
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -79309,7 +79242,7 @@ GameObject:
   - component: {fileID: 458426310}
   - component: {fileID: 458426309}
   - component: {fileID: 458426308}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80252,7 +80185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507897602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84191,7 +84124,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 25
+  m_SortingOrder: -50
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.15, y: 1.8499999, z: 0}
   m_MaxChunkCount: 16
@@ -88088,7 +88021,7 @@ MonoBehaviour:
   grassTilemap: {fileID: 2116943267}
   grassTilemap2: {fileID: 407236789}
   playerBase: {fileID: 1188910855}
-  enemiesPerWave: 20
+  enemiesPerWave: 0
   waveTimer: 10
   waveCountdown: 0
   enemyList:
@@ -88197,7 +88130,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 25
+  m_SortingOrder: -48
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.03125, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -90252,7 +90185,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -48
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5625, y: 0.15625, z: 0}
   m_MaxChunkCount: 16
@@ -92076,7 +92009,7 @@ GameObject:
   - component: {fileID: 1305089287}
   - component: {fileID: 1305089289}
   - component: {fileID: 1305089288}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95143,111 +95076,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1664214045
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1295806653960072736, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: enemyDeadSFX
-      value: 
-      objectReference: {fileID: 1026249865}
-    - target: {fileID: 1295806653960072736, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: enemyHurtSFX
-      value: 
-      objectReference: {fileID: 995914101}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 17.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2900365800747980514, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6800590198088273001, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_Name
-      value: Goblin (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 98333655}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: coinPrefab
-      value: 
-      objectReference: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
-    - target: {fileID: 7721595824516796778, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-      propertyPath: attackRange
-      value: 0.8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
 --- !u!1 &1686362514
 GameObject:
   m_ObjectHideFlags: 0
@@ -96036,7 +95864,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -51
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -111334,7 +111162,7 @@ GameObject:
   - component: {fileID: 1915893243}
   - component: {fileID: 1915893245}
   - component: {fileID: 1915893244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111864,7 +111692,7 @@ GameObject:
   - component: {fileID: 2001138482}
   - component: {fileID: 2001138484}
   - component: {fileID: 2001138483}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Down_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112328,29 +112156,6 @@ Transform:
   - {fileID: 2104403118}
   m_Father: {fileID: 1640672945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2059445915 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-  m_PrefabInstance: {fileID: 350834644}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2059445916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059445915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 958dea10a8e8cc744ab090d1f1791c5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Goblin
-  enemyRange: 0.8
-  enemyDamage: 10
-  attackCooldown: 1
-  attackTimer: 0
-  attackDistance: 0.3
-  speed: 5
 --- !u!1 &2060659894
 GameObject:
   m_ObjectHideFlags: 0
@@ -112950,7 +112755,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -7
+  m_SortingOrder: -50
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -119043,6 +118848,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4033774515903607807, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: m_Size.y
+      value: 0.19273555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4033774515903607807, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.043632235
+      objectReference: {fileID: 0}
     - target: {fileID: 4180670317199987588, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: m_Name
       value: Player
@@ -119055,6 +118868,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1046596825}
+    - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9182151922662137091, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: deadSound
       value: 
@@ -119088,8 +118905,6 @@ SceneRoots:
   - {fileID: 1188910855}
   - {fileID: 2096232376}
   - {fileID: 1046596826}
-  - {fileID: 350834644}
-  - {fileID: 1664214045}
   - {fileID: 979828040}
   - {fileID: 1640672945}
   - {fileID: 1392279737}
@@ -119099,3 +118914,4 @@ SceneRoots:
   - {fileID: 1510044679}
   - {fileID: 1715877749}
   - {fileID: 38825538}
+  - {fileID: 268918992}

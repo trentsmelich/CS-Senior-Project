@@ -6,16 +6,6 @@ public class Bee : EnemyParent
     private float poisonDamage = 3f; // damage per tick
     private int ticksNum = 3; // number of poison ticks
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        enemyRange = 0.8f;
-        enemyDamage = 5f;
-        speed = 7f;
-        attackCooldown = 1.5f;
-        attackTimer = 0f;
-        attackDistance = 0.3f;
-    }
 
     public override void Attack(EnemyAI enemy)
     {

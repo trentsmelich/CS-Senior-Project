@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Farm : TowerParent
 {
     Animator anim;
     PlayerStats playerStats;
+    SpriteRenderer[] spriteRenderers;
+    [SerializeField] Sprite[] sprites;
 
 
     [SerializeField]private int profit;
     private float harvestTimer;
+    private float spriteTimer;
 
     void Start()
     {
@@ -21,15 +25,42 @@ public class Farm : TowerParent
         attackTimer = 0f;
         profit = 10 * level;
         harvestTimer = Time.realtimeSinceStartup;
+        spriteTimer = attackCooldown / sprites.Length;
         
+        int childCount = transform.childCount;
+        spriteRenderers = new SpriteRenderer[childCount];
 
+        for (int i = 0; i < childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+
+            if (child.childCount > 0)
+            {
+                Transform grandChild = child.GetChild(0);
+                SpriteRenderer sr = grandChild.GetComponent<SpriteRenderer>();
+                spriteRenderers[i] = sr;
+            }
+        }
     }
     public override void UpdateTower(Transform enemy)
     {
         // Farms do not attack
         //farms update timer and when timer reaches cooldown, play animation and reset timer
         //Debug.Log("Farm Updating");
+
         float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;
+        
+        int spriteIndex = (int)(timeSinceLastHarvest / spriteTimer);
+        spriteIndex %= sprites.Length;
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            if (spriteRenderers[i] != null)
+            {
+                spriteRenderers[i].sprite = sprites[spriteIndex];
+            }
+        }
+
         if (timeSinceLastHarvest < attackCooldown)
         {
             //Debug.Log("Farm Timer: " + timeSinceLastHarvest + " / " + attackCooldown);

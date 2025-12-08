@@ -169,6 +169,14 @@ MonoBehaviour:
   towerType: Farm
   towerName: Strawberry
   unlocked: 0
+  sprites:
+  - {fileID: 8369948372191450990, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  - {fileID: -3402868906910896487, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  - {fileID: 7953443401717196921, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  - {fileID: 240733362411572873, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  - {fileID: 1734387795819554390, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  - {fileID: 8578180459406042070, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
+  - {fileID: 3706471016571915744, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   profit: 0
 --- !u!61 &7349635794155834066
 BoxCollider2D:
@@ -317,7 +325,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8925768468903701125}
   - component: {fileID: 7578941184975470432}
-  - component: {fileID: 6828453173289920420}
   m_Layer: 0
   m_Name: Spring Crops_0 (4)
   m_TagString: Untagged
@@ -398,28 +405,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6828453173289920420
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2683745427392514621}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f9472bf47b739a4c97011946ced5b0b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2924481512990667000
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 700641793204501560}
   - component: {fileID: 2913600046377475211}
-  - component: {fileID: 7309934957390706039}
   m_Layer: 0
   m_Name: Spring Crops_0 (2)
   m_TagString: Untagged
@@ -511,28 +495,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7309934957390706039
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2924481512990667000}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f9472bf47b739a4c97011946ced5b0b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5750457896125553637
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +505,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2318352204412824821}
   - component: {fileID: 6556532225213315995}
-  - component: {fileID: 7051004236060530868}
   m_Layer: 0
   m_Name: Spring Crops_0 (3)
   m_TagString: Untagged
@@ -624,28 +585,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7051004236060530868
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750457896125553637}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f9472bf47b739a4c97011946ced5b0b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7150587737387480321
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +686,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5289683081710455811}
   - component: {fileID: 4810884178529796094}
-  - component: {fileID: 6368444476572717913}
   m_Layer: 0
   m_Name: Spring Crops_0 (1)
   m_TagString: Untagged
@@ -828,28 +766,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6368444476572717913
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7507823470057480990}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f9472bf47b739a4c97011946ced5b0b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8649705738383092884
 GameObject:
   m_ObjectHideFlags: 0

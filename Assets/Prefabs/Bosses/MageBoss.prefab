@@ -173,14 +173,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6082407367751296504}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e749b879af474599d7bc239fd9758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 500
+  maxHealth: 250
 --- !u!114 &9183269179418225032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   attackCooldown: 3
   attackTimer: 0
   attackDistance: 0
-  speed: 6
+  speed: 4
   firePoint: {fileID: 2385499359863622341}
   projectilePrefab: {fileID: 7718652438645872543, guid: eeaff4e9b1fbc9e43899dce6df66ac2c, type: 3}
   specialAttackCooldown: 5

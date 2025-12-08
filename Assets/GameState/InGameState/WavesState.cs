@@ -23,7 +23,7 @@ public class WavesState : GameState
 
     // Normal spawn settings
     private float normalSpawnTimer = 0f;
-    private float normalSpawnInterval = 5f; // base interval
+    private float normalSpawnInterval = 1f; // base interval
     private float normalSpawnScaling = 0.95f; // reduce interval per wave
     private bool allowNormalSpawning = true;
     private bool waveInProgress = false;
@@ -156,6 +156,7 @@ public class WavesState : GameState
         // normal spawns get slightly faster after each wave
         normalSpawnInterval *= normalSpawnScaling;
         normalSpawnInterval = Mathf.Max(1f, normalSpawnInterval); // hard limit for normal spawn speed
+
     }
 
     // This function will make an enemy, change its values according to the current difficulty

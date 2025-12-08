@@ -17,6 +17,7 @@ public class EnemyAttackState : EnemyState
 
     public override void UpdateState(EnemyAI enemy)
     {
+        enemy.GetRigidbody().linearVelocity = Vector2.zero;
         timer += Time.deltaTime;
         float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
 
