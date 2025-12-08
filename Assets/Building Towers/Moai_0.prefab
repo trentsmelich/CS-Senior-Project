@@ -129,9 +129,9 @@ MonoBehaviour:
   attackTimer: 0
   speed: 0
   towerImage: {fileID: -4712846450385580888, guid: 54d6b3367bf20bc448f0ba626d41d070, type: 3}
-  towerCost: 0
+  towerCost: 50
   towerType: Stat
-  towerName: Moai
+  towerName: StatModifier
   unlocked: 0
   statToModify: Speed
   modificationAmount: 10

@@ -124,16 +124,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Catapult
   level: 1
-  towerRange: 0
-  towerDamage: 0
-  attackCooldown: 0
+  towerRange: 8
+  towerDamage: 25
+  attackCooldown: 5
   attackTimer: 0
-  speed: 0
+  speed: 10
   towerImage: {fileID: 8881934450746769720, guid: 35bb04c4a409a484c82cdb0973ec95e2, type: 3}
-  towerCost: 0
+  towerCost: 200
   towerType: Damage
   towerName: Catapult
-  unlocked: 1
+  unlocked: 0
 --- !u!61 &2405878848270733641
 BoxCollider2D:
   m_ObjectHideFlags: 0
