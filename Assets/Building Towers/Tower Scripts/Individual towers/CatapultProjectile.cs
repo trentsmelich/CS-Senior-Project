@@ -9,6 +9,7 @@ public class CatapultProjectile : MonoBehaviour
     [SerializeField] float explosionRadius;
     private Vector2 direction;
     private Animator anim;
+    private float lifetime = 3f;
 
     private EnemyHealth enemyTarget;
     public void Begin(Vector2 direction, Transform enemyTarget)
@@ -16,6 +17,11 @@ public class CatapultProjectile : MonoBehaviour
         this.direction = direction;
         this.enemyTarget = enemyTarget.GetComponent<EnemyHealth>();
         anim = GetComponent<Animator>();
+    }
+
+    public void Start()
+    {
+        Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame

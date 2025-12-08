@@ -6,6 +6,7 @@ public class WavesState : GameState
 {
     private Transform playerBase; // Reference to the player base position
     private int enemiesPerWave; // Number of enemies to spawn per wave
+    private int initialEnemiesPerWave; // Remember the starting enemies per wave so scaling is linear
     private float waveTimer; // Time between waves in seconds
     private float waveCountdown; // Countdown timer for the next wave
     private GameObject[] enemyList; // Enemy prefab to spawn
@@ -44,7 +45,8 @@ public class WavesState : GameState
     )
     {
         this.playerBase = playerBase;
-        this.enemiesPerWave = enemiesPerWave;
+        //this.enemiesPerWave = enemiesPerWave;
+        this.initialEnemiesPerWave = enemiesPerWave;
         this.waveTimer = waveTimer;
         this.enemyList = enemyList;
         this.bossList = bossList;
@@ -83,7 +85,7 @@ public class WavesState : GameState
 
         if (spawning)
         {
-            countdownText.text = "Spawning Wave!";
+            countdownText.text = "Spawning Wave " + waveNumber + "...";
             return;
         }
 
@@ -124,17 +126,17 @@ public class WavesState : GameState
         spawning = true;
         allowNormalSpawning = false;
 
-        // Calculate the number of enemies to spawn for this wave which depends on the multiplier
-        enemiesPerWave = Mathf.RoundToInt(enemiesPerWave * numEnemiesMultiplier);
+        // Calculate enemies for this wave without compounding the base each time
+        int enemiesThisWave = Mathf.RoundToInt(initialEnemiesPerWave * numEnemiesMultiplier);
         countdownText.text = "Spawning Wave!";
 
         // Make all current alive enemies count as wave enemies
         NormalToWave();
 
-        Debug.Log("Enemies This Wave: " + enemiesPerWave);
+        Debug.Log($"Wave {waveNumber}: base {initialEnemiesPerWave}, multiplier {numEnemiesMultiplier}, enemies {enemiesThisWave}");
 
         // Spawn enemies with a delay between each spawn
-        for (int i = 0; i < enemiesPerWave; i++)
+        for (int i = 0; i < enemiesThisWave; i++)
         {
             SpawnEnemy(enemyList, true, false);
             yield return new WaitForSeconds(spawnInterval);

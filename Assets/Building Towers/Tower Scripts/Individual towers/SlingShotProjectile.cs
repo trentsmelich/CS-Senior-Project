@@ -7,12 +7,18 @@ public class SlingShotProjectile : MonoBehaviour
     public float speed;
     public float damage;
     private Vector2 direction;
+    private float lifetime = 3f;
 
     private EnemyHealth enemyTarget;
     public void Begin(Vector2 direction, Transform enemyTarget)
     {
         this.direction = direction;
         this.enemyTarget = enemyTarget.GetComponent<EnemyHealth>();
+    }
+
+    public void Start()
+    {
+        Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame

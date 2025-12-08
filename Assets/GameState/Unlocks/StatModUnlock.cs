@@ -43,7 +43,7 @@ public class StatModUnlock : UnlockParent
 
     public override void Unlock(UnlockController unlockController)
     {
-        if (!lvl1Unlocked && playerStats.GetEnemiesDefeated() >= 1000)
+        if (!lvl1Unlocked && playerStats.GetEnemiesDefeated() >= 500)
         {
             PlayerPrefs.SetInt(statModLvl1, 1);
             lvl1Unlocked = true;
