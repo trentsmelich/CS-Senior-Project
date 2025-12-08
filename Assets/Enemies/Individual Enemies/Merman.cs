@@ -10,9 +10,6 @@ public class Merman : EnemyParent
     public float explosionRadius = 1.5f;
     private float explosionDamage = 10f;
 
-
-    [SerializeField] private GameObject waterExplosionPrefab;
-
     void Start()
     {
         playerLayers = LayerMask.GetMask("Player");
