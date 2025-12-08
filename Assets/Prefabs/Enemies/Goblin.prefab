@@ -235,4 +235,4 @@ MonoBehaviour:
   attackCooldown: 1
   attackTimer: 0
   attackDistance: 0.3
-  speed: 5
+  speed: 2

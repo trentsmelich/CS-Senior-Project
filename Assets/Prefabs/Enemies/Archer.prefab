@@ -267,6 +267,6 @@ MonoBehaviour:
   attackCooldown: 3
   attackTimer: 0
   attackDistance: 0
-  speed: 6
+  speed: 2
   firePoint: {fileID: 3657069481471231675}
   projectilePrefab: {fileID: 8511129841158349827, guid: 722926cdf37b3324690eb212b3606eba, type: 3}

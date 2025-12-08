@@ -129,7 +129,7 @@ MonoBehaviour:
   attackCooldown: 0
   attackTimer: 0
   speed: 0
-  towerImage: {fileID: 21300000, guid: 3c2ac1337595b7f4ab10b468e298cc4c, type: 2}
+  towerImage: {fileID: 2213631248328423709, guid: 35bb04c4a409a484c82cdb0973ec95e2, type: 3}
   towerCost: 0
   towerType: Damage
   towerName: Catapult
@@ -198,11 +198,19 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 4805a8f99746c194e9f88ba9f01edc1a, type: 2}
     - target: {fileID: 3626916397498700004, guid: fcd534a66fe34454daef6d35c83238fb, type: 3}
       propertyPath: m_Color.a
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: fcd534a66fe34454daef6d35c83238fb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: fcd534a66fe34454daef6d35c83238fb, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: fcd534a66fe34454daef6d35c83238fb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: fcd534a66fe34454daef6d35c83238fb, type: 3}
       propertyPath: m_SortingOrder

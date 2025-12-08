@@ -43,7 +43,7 @@ public class CatapultUnlock : UnlockParent
 
     public override void Unlock(UnlockController unlockController)
     {
-        PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
+        //PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
         if (!lvl1Unlocked && playerStats.GetEnemiesDefeated() >= 100)
         {
             PlayerPrefs.SetInt(catapultLvl1, 1);

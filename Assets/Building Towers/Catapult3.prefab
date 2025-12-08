@@ -128,9 +128,11 @@ MonoBehaviour:
   attackCooldown: 0
   attackTimer: 0
   speed: 0
-  towerImage: {fileID: 0}
+  towerImage: {fileID: 8399392875464094894, guid: 35bb04c4a409a484c82cdb0973ec95e2, type: 3}
   towerCost: 0
   towerType: Damage
+  towerName: 
+  unlocked: 0
 --- !u!1001 &6630504656176508555
 PrefabInstance:
   m_ObjectHideFlags: 0

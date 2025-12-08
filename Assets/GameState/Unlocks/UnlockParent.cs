@@ -5,6 +5,11 @@ public abstract class UnlockParent : MonoBehaviour
     protected TowerParent towerToUnlock;
     protected PlayerStats playerStats;
 
+    void Start()
+    {
+        playerStats = FindFirstObjectByType<PlayerStats>();
+    }   
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // void Start()
     // {
