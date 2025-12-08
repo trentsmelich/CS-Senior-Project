@@ -5,6 +5,7 @@ public class EnemyDeadState : EnemyState
     public override void EnterState(EnemyAI enemy)
     {
         enemy.GetAnimator().SetTrigger("Dying");
+        enemy.GetComponent<Collider2D>().enabled = false; // Disable collider to prevent further interactions
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         Object.Destroy(enemy.gameObject, 1.0f); // Destroy after 1 second to allow death animation to play
         enemy.GetPlayer().GetComponent<PlayerStats>().AddExperience();

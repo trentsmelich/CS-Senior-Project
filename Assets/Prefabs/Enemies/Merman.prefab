@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
-  healPrefab: {fileID: 0}
+  healPrefab: {fileID: 2356374451528525618, guid: 44630273a6424dd47b9ff2d434887cc7, type: 3}
 --- !u!114 &6302709535572941207
 MonoBehaviour:
   m_ObjectHideFlags: 0
