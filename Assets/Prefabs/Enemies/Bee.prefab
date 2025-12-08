@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14fddc192e8a6d4fa959ab4c8e7277a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bee
-  enemyRange: 0.5
+  enemyRange: 1
   enemyDamage: 10
   attackCooldown: 1
   attackTimer: 0
