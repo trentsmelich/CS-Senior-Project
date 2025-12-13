@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerState
 {
+    // When entering the idle state, set animator and velocity accordingly
     public override void EnterState(PlayerStateController player)
     {
         // Set animator to idle by setting isMoving to false and velocity to zero
@@ -13,11 +14,14 @@ public class PlayerIdleState : PlayerState
         player.UpdateDirection(player.lastDir);
     }
 
+    // Update is called once per frame
+    // Check for movement or attack input to transition to other states
     public override void UpdateState(PlayerStateController player)
     {
         // Check for input
         player.GetRigidbody().linearVelocity = Vector2.zero;
 
+        // Get movement input
         player.moveInput.x = Input.GetAxisRaw("Horizontal");
         player.moveInput.y = Input.GetAxisRaw("Vertical");
 
@@ -36,6 +40,7 @@ public class PlayerIdleState : PlayerState
         }
     }
 
+    // When exiting the idle state, do nothing
     public override void ExitState(PlayerStateController player)
     {
         
