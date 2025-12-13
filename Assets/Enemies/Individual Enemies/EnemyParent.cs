@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Abstract class for enemy parent
 public abstract class EnemyParent : MonoBehaviour
 {
     [SerializeField] protected float enemyRange;

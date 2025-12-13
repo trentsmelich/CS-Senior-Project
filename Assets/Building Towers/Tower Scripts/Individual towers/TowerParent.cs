@@ -1,7 +1,8 @@
 using UnityEngine;
-
+// Abstract class for all towers
 public abstract class TowerParent : MonoBehaviour
 {
+    // Common properties for all towers
     [SerializeField]protected int level;
     [SerializeField] protected float towerRange;
     [SerializeField] protected float towerDamage;
@@ -20,7 +21,7 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected bool unlocked;
 
     
-
+    //getters and setters for the properties
     public float TowerRange => towerRange;
     public float TowerDamage => towerDamage;
     public float AttackCooldown => attackCooldown;
@@ -45,9 +46,9 @@ public abstract class TowerParent : MonoBehaviour
     }
 
     
-
+    // Abstract method for updating towers
     public abstract void UpdateTower(Transform enemy);
-
+    //increase count of tower for the unlock controller
     public void increaseCount ()
     {
         UnlockController unlockController = FindFirstObjectByType<UnlockController>();

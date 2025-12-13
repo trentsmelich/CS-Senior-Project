@@ -12,6 +12,7 @@ public class SlingShotTower : TowerParent
     
     void Start()
     {
+        // Initialize variables and set up the SlingShotTower
         slingShotArm = transform.Find("SlingShotArm").gameObject;
         projectilePrefab = slingShotArm.transform.Find("Projectile").gameObject;
         anim = slingShotArm.GetComponent<Animator>();
@@ -23,13 +24,16 @@ public class SlingShotTower : TowerParent
         //create offset for enemy position y by .2
         Vector2 direction = (enemy.position - new Vector3(0, 0.8f, 0)) - transform.position;
         slingShotArm.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
+        //attack cooldown
         if(attackTimer < attackCooldown)
         {
             attackTimer += Time.deltaTime;
             return;
         }
         attackTimer = 0f;
+        //fire animation
         anim.SetTrigger("Fire");
+        //fire projectile
         Fire(enemy);
 
     }
@@ -37,10 +41,13 @@ public class SlingShotTower : TowerParent
     private void Fire(Transform enemy)
     {
         // Implement firing logic here
-        
+        // Instantiate a new projectile and set its initial position, rotation, and velocity
+        //Set up the direction of the projectile
+        //Set up the speed and damage of the projectile
         GameObject projectile = Instantiate(projectilePrefab, slingShotArm.transform.position, slingShotArm.transform.rotation);
         projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
         projectile.GetComponent<SlingShotProjectile>().setStats(speed, towerDamage);
+        //change scale bc unity annoying
         projectile.transform.localScale = new Vector3(3, 3, 3);
         projectile.SetActive(true);
 
