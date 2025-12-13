@@ -1,3 +1,5 @@
+
+// Libraries
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,16 +11,17 @@ public class MainMenu : MainMenuState
         Debug.Log("Entered Main Menu State");
         // Initialize main menu UI elements here
 
-        //make main menu appear
+        // make main menu appear
         mainMenuPanel = m.GetMainMenuPanel();
         mainMenuPanel.SetActive(true);
 
-        //find main mneu buttons in main mneu panel
+        // find main mneu buttons in main mneu panel
         Button playButton = mainMenuPanel.transform.Find("Play_Button").GetComponent<Button>();
         Button settingsButton = mainMenuPanel.transform.Find("Settings_Button").GetComponent<Button>();
         Button unlocksButton = mainMenuPanel.transform.Find("Unlocks_Button").GetComponent<Button>();
         Button exitButton = mainMenuPanel.transform.Find("Exit_Button").GetComponent<Button>();
 
+        // set the buttons with the functionalities, such as play, settings, unlocks, and exit.
         playButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();

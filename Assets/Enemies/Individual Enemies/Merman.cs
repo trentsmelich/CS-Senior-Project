@@ -1,8 +1,11 @@
+
+// Libraries
 using UnityEngine;
 using System.Collections;  
 
 public class Merman : EnemyParent
 {
+    // Declare variables for the attack attributes
     private LayerMask playerLayers;
 
     public float explosionDelay = 1.5f;
@@ -81,6 +84,7 @@ public class Merman : EnemyParent
 
         }
 
+        // Clean up before and after the enemy died
         yield return new WaitForSeconds(0.3f); //wait for animation to finish
         sr.enabled = false;
         EnemyHealth enemyHealth = GetComponent<EnemyHealth>();

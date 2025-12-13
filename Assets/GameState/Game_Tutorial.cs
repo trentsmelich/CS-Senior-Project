@@ -1,9 +1,12 @@
+
+// Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class Game_Tutorial : MonoBehaviour
 {
+    // Declare lists for steps, playerPrefab, UI, SFX, and display game objects
     public GameObject[] tutorialSteps;
     public Button[] nextButtons;
     private int currentStep;
@@ -55,6 +58,7 @@ public class Game_Tutorial : MonoBehaviour
 
     private void NextFunctionality()
     {
+        // Play button SFX and go to next step
         buttonSFX.Play();
         NextStep();
     }
@@ -62,7 +66,7 @@ public class Game_Tutorial : MonoBehaviour
     private void SetTexts()
     {
         
-        //Setting the step texts
+        //Setting the step texts from the start to the end of the tutorial
         stepOneText = "Welcome to Cycle Of The Dead!" + "\n\n" + "This is a quick tutorial of the game" + "\n\n"
         + "This is a 2D Top Down defensive survival video game with a roguelike aspect. The main goal is to defeat as much enemies as you can and survival as long as possible. " 
         + "During the game, you can choose to buy different items from the shop or getting a upgrade offer to help you get stronger as you process the game.";

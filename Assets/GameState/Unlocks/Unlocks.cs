@@ -1,3 +1,5 @@
+
+// Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -5,22 +7,26 @@ using TMPro;
 
 public class Unlocks : MainMenuState
 {
+    // Set the variable list and get the panel
     GameObject unlocksPanel;
     private GameObject[] towers;
     private String towerType;
 
     public override void EnterState(MainMenuStateController Main)
     {
+        // Set the panel and get the towers
         unlocksPanel = Main.GetUnlocksPanel();
         towers = Main.GetTowers();
         unlocksPanel.SetActive(true);
 
+        // Default damage filter when the player first enter the shop
         towerType = "Damage";
         MakeLists(Main);
 
+        // Find the unlock close button
         Button backButton = unlocksPanel.transform.Find("Unlocks_XButton").GetComponent<Button>();
 
-
+        // Set the unlock close button
         backButton.onClick.AddListener(() =>
         {
             Main.PlayButtonClickSound();
@@ -28,10 +34,12 @@ public class Unlocks : MainMenuState
             Debug.Log("Back Button Clicked");
         });
 
+        // Find the button
         Button damageButton = unlocksPanel.transform.Find("Damage_Button").GetComponent<Button>();
         Button farmButton = unlocksPanel.transform.Find("Farm_Button").GetComponent<Button>();
         Button statButton = unlocksPanel.transform.Find("Stat_Button").GetComponent<Button>();
 
+        // Give the filter buttons functionality
         damageButton.onClick.AddListener(() =>
         {
             Main.PlayButtonClickSound();
@@ -65,7 +73,6 @@ public class Unlocks : MainMenuState
 
         //remove all childs of content under the scroll view
         Transform contentTransform = unlocksPanel.transform.Find("ScrollView/Viewport/Content");
-
         foreach (Transform child in contentTransform)
         {
             GameObject.Destroy(child.gameObject);
@@ -133,6 +140,7 @@ public class Unlocks : MainMenuState
 
     public override void ExitState(MainMenuStateController Main)
     {
+        // Close the panel when the player clicked the X button
         unlocksPanel.SetActive(false);
     }
     

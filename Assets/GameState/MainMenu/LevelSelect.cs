@@ -1,3 +1,5 @@
+
+// Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -5,21 +7,24 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MainMenuState
 {
+    // Declare variables for panel and the playerPrefab variable
     GameObject levelSelectPanel;
     private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
 
     public override void EnterState(MainMenuStateController m)
     {
+        // Get and set panel
         Debug.Log("Go to level select");
         levelSelectPanel = m.GetLevel();
         levelSelectPanel.SetActive(true);
 
-        //find main mneu buttons in main mneu panel
+        // Find main mneu buttons in main mneu panel
         Button mainMenuButton = levelSelectPanel.transform.Find("MainMenu_Button").GetComponent<Button>();
         Button tutorialButton = levelSelectPanel.transform.Find("Tutorial_Button").GetComponent<Button>();
         Button level1Button = levelSelectPanel.transform.Find("Level_1_Button").GetComponent<Button>();
         Button level2Button = levelSelectPanel.transform.Find("Level_2_Button").GetComponent<Button>();
 
+        // Give each button functionalities for level 1, level 2, main menu, and tutorial
         level1Button.onClick.AddListener(() =>
         {
             Debug.Log("Level 1 Button Clicked");
@@ -27,6 +32,7 @@ public class LevelSelect : MainMenuState
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
 
+        // Level 2 button
         level2Button.onClick.AddListener(() =>
         {
             Debug.Log("Level 2 Button Clicked");
@@ -34,6 +40,7 @@ public class LevelSelect : MainMenuState
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         });
 
+        // Main menu button
         mainMenuButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();
@@ -41,6 +48,7 @@ public class LevelSelect : MainMenuState
             Debug.Log("Main Menu Button Clicked");
         });
 
+        // Tutorial button
         tutorialButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();

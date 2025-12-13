@@ -1,3 +1,5 @@
+
+// Library
 using UnityEngine;
 
 public class AudioVolume : MonoBehaviour
@@ -24,7 +26,7 @@ public class AudioVolume : MonoBehaviour
     {
         float volume = PlayerPrefs.GetFloat(VolumeMusicKey, 1f);
 
-        // Get all AudioSources in scene
+        // Get all Music Audio Sources in scene
         AudioSource[] sources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
 
         foreach (AudioSource src in sources)
@@ -42,6 +44,7 @@ public class AudioVolume : MonoBehaviour
     {
         float volume = PlayerPrefs.GetFloat(VolumeSFXKey, 1f);
 
+        // Get all the SFX Audio Sources in the scene
         AudioSource[] sources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
 
         foreach (AudioSource src in sources)

@@ -1,3 +1,5 @@
+
+// Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -5,6 +7,7 @@ using TMPro;
 
 public class PauseState : GameState
 {
+    // Declare new pause menu panel
     GameObject pauseMenu;
     public override void EnterState(GameStateController Game)
     {
@@ -26,7 +29,7 @@ public class PauseState : GameState
         //find X button in options panel and set its listener
         Button optionsXButton = pauseMenu.transform.Find("Options_Panel").Find("Options_XButton").GetComponent<Button>();
 
-        //resume
+        //resume button
         resumeButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();
@@ -35,7 +38,7 @@ public class PauseState : GameState
             Debug.Log("resume Button Clicked");
         });
 
-        //options
+        //options button
         optionsButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();
@@ -43,7 +46,7 @@ public class PauseState : GameState
             Debug.Log("options Button Clicked");
         });
 
-        //quit
+        //quit button
         quitButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();

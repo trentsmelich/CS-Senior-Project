@@ -1,13 +1,17 @@
+
+// Library
 using UnityEngine;
 using System.Collections; 
 
 public class Wolf : EnemyParent
 {
+    // Declare the player mask variable
     private LayerMask playerLayers;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Get the player's Layer Mask
         playerLayers = LayerMask.GetMask("Player");
     }
 
@@ -19,6 +23,7 @@ public class Wolf : EnemyParent
 
     public override void Attack(EnemyAI enemy)
     {
+        //Play animation and start the lunge charge and attack delay
         enemy.GetAnimator().SetTrigger("Attacking");
         enemy.StartCoroutine(LungeCharge(enemy, 50f, 2.75f, 0.3f));
         enemy.StartCoroutine(AttackDelay(enemy, 0f));
@@ -50,6 +55,7 @@ public class Wolf : EnemyParent
 
     IEnumerator AttackDelay(EnemyAI enemy, float delay)
     {
+        // Set the directions
         yield return new WaitForSeconds(delay);
         Vector2 dir = GetFacingDirection(enemy);
         Vector2 attackPosition = (Vector2)enemy.GetGameObject().transform.position + dir * attackDistance;
@@ -60,13 +66,12 @@ public class Wolf : EnemyParent
             LayerMask.GetMask("Player")
         );
 
-        Debug.Log("Wolf is attacking!");
-
         // Normal attack
         if (hitEnemies.Length > 0)
         {
             PlayerStats playerStats = enemy.GetPlayer().GetComponent<PlayerStats>();
 
+            // Damage the player if gets hit
             if (playerStats != null)
             {
                 playerStats.TakeDamage(enemyDamage);
@@ -79,14 +84,17 @@ public class Wolf : EnemyParent
 
     IEnumerator LungeCharge(EnemyAI enemy, float lungeSpeed, float lungeDistance, float duration)
     {
+        // Get the wolf and the player's position
         Transform wolf = enemy.GetGameObject().transform;
         Transform player = enemy.GetPlayer().transform;
 
+        // Calculation the distance
         Vector2 startPosition = wolf.position;
         Vector2 endPosition = startPosition + (Vector2)(player.position - wolf.position).normalized * lungeDistance;
 
         float time = 0f;
 
+        // Do the attack
         while (time < 1f)
         {
             time += Time.deltaTime / duration; 

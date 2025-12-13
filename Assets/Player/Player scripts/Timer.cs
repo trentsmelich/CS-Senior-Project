@@ -1,8 +1,11 @@
+
+// Libraries
 using UnityEngine;
 using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    // Setting variables for the time
     private float timeElapsed;   // total time passed (seconds)
     private bool isRunning = true;
     public TextMeshProUGUI displayTimeCounter;
@@ -17,12 +20,14 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If runs then keep adding time
         if (isRunning)
         {
             timeElapsed += Time.deltaTime;   // Add time each frame
             FixedUpdate();
         }
 
+        // If stops no more time added
         if (!isRunning)
         {
             FixedUpdate();
@@ -40,6 +45,7 @@ public class Timer : MonoBehaviour
 
     public void StopTimer()
     {
+        // Stop the timer after the game is over
         isRunning = false;
     }
 }
