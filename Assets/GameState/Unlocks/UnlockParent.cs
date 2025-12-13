@@ -2,34 +2,16 @@ using UnityEngine;
 
 public abstract class UnlockParent : MonoBehaviour
 {
-    protected TowerParent towerToUnlock;
-    protected PlayerStats playerStats;
+    protected TowerParent towerToUnlock; // Reference to TowerParent script
+    protected PlayerStats playerStats; // Reference to PlayerStats script
 
     void Start()
     {
+        // Find and assign the PlayerStats component in the scene
         playerStats = FindFirstObjectByType<PlayerStats>();
     }   
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // void Start()
-    // {
-    //     isUnlocked = PlayerPrefs.GetInt(unlockKey, 0) == 1;
-    // }
-
-    // private void saveUnlockStatus()
-    // {
-    //     if (isUnlocked)
-    //     {
-    //         PlayerPrefs.SetInt(unlockKey, 1);
-    //     }
-    //     else
-    //     {
-    //         PlayerPrefs.SetInt(unlockKey, 0);
-    //     }
-
-    //     PlayerPrefs.Save();
-    // }
-
+    // Abstract methods to be implemented by derived classes
     public abstract void Unlock(UnlockController unlockController);
     public abstract void LoadUnlockState(UnlockController unlockController);
 }

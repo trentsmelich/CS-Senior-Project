@@ -20,6 +20,7 @@ public class TowerAI : MonoBehaviour
     void Start()
     
     {
+        // Initialize private variables
         towerParent = GetComponent<TowerParent>();
         enemyLayer = LayerMask.GetMask("Enemy");
         SetState(new TowerIdleState());
@@ -34,13 +35,15 @@ public class TowerAI : MonoBehaviour
         }
         currentState.UpdateState(this);
     }
-    
+    //set the state of the tower
     public void SetState(TowerState newState)
     {
         if (currentState != null)
         {
+            // Exit the current state before entering a new one
             currentState.ExitState(this);
         }
+        // Set the new state and enter it
         currentState = newState;
         currentState.EnterState(this);
     }

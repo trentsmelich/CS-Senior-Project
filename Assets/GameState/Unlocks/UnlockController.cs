@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class UnlockController : MonoBehaviour
 {
-    [SerializeField] private UnlockParent[] unlocks;
-    [SerializeField] private GameObject[] towers;
+    [SerializeField] private UnlockParent[] unlocks; // List of unlock scripts
+    [SerializeField] private GameObject[] towers; // List of all tower game objects
      
+     // Static counters for each tower type and level
     private static int numSlingshot1 = 0;
     private static int numSlingshot2 = 0;
     private static int numSlingshot3 = 0;
@@ -18,19 +19,24 @@ public class UnlockController : MonoBehaviour
     private static int numStatMod2 = 0;
     private static int numStatMod3 = 0;
 
+    // Start is called before the first frame update
     private void Start()
     {
+        // Load saved unlock states at the start
         LoadSavedUnlocks();
     }
 
+    // Check the unlock conditions for each unlock script
     public void CheckUnlocks()
     {
+        // Loop through each unlock script and check unlock conditions
         foreach (UnlockParent unlock in unlocks)
         {
             unlock.Unlock(this);
         }
     }
 
+    // Load the saved unlock states from PlayerPrefs to know which towers are unlocked
     public void LoadSavedUnlocks()
     {
         //pass in list of towers to each unlock to load their states
@@ -43,7 +49,7 @@ public class UnlockController : MonoBehaviour
     }
 
     
-
+    // Increase the count of towers built for a specific tower type and level
     public void IncreaseTowerCount (TowerParent towerParent, int level)
     {   
         if (towerParent is SlingShotTower)
@@ -109,6 +115,7 @@ public class UnlockController : MonoBehaviour
         }
     }
 
+    // Get the number of towers built for a specific tower type and level
     public int GetNumTowers(string towerType, int level)
     {
         if (towerType == "SlingShot")
@@ -174,7 +181,11 @@ public class UnlockController : MonoBehaviour
         return 0;
     }
 
+
+    // Get the list of unlock scripts
     public UnlockParent[] GetUnlocks() => unlocks;
+
+    // Get the list of tower game objects
     public GameObject[] GetTowers()
     {
         return towers;

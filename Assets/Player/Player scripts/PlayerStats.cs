@@ -1,10 +1,12 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    //All player stats are initialized here
     public float moveSpeed = 5f;
     public float currentHealth = 100f;
 
@@ -29,11 +31,12 @@ public class PlayerStats : MonoBehaviour
     private Animator anim;
     void Start()
     {
+        // Initialize player stats
         gameStateController = game.GetComponent<GameStateController>();
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
     }
-
+    //getters and setters for player stats
     public float GetMoveSpeed()
     {
         return moveSpeed;
@@ -78,6 +81,7 @@ public class PlayerStats : MonoBehaviour
     {
         return enemiesDefeated;
     }
+    //when an enemy is killed, it adds experience to the player from here
     public void AddExperience()
     {
         currentExperience += 1 * experienceMultiplier;
@@ -99,7 +103,7 @@ public class PlayerStats : MonoBehaviour
     {
         return coins;
     }
-
+    // Modify a player stat by a given stat name and amount
     public void ModifyStat(String statName, float amount)
     {
         float multiplier = 1f + (amount / 100f);
@@ -130,7 +134,7 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
     }
-
+    // Take damage from an enemy
     public void TakeDamage(float damageAmount)
     {
         PlayerStateController player = GetComponent<PlayerStateController>();
@@ -164,10 +168,10 @@ public class PlayerStats : MonoBehaviour
         SR.color = Color.white;
     }
 
-
+    //when player health is 0 or less this triggers for the death
     private void Die()
     {
-        // Handle player death (e.g., trigger death animation, respawn, game over)
+        // Handle player death trigger death animation and sound effect and disable player movement
         Debug.Log("Player has died.");
 
         anim.SetTrigger("isDead");

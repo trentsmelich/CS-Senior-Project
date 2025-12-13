@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Abstract class for game states
 public abstract class GameState
 {
     public abstract void EnterState(GameStateController Game);

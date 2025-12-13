@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MageBoss : EnemyParent
 {
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint; // Point from which projectiles spawn
+    [SerializeField] private GameObject projectilePrefab; // Prefab of the projectile to shoot
 
     [Header("Burst Attack")]
     [SerializeField] private float specialAttackCooldown = 5f;
@@ -21,6 +21,8 @@ public class MageBoss : EnemyParent
     // As soon as the boss is created, start doing the special attacks
     private void Start()
     {
+        // Get reference to animator and calculate angle between projectiles, 
+        // then start special attack controller
         anim = GetComponent<Animator>();
         angle = 360 / specialPrjCount;
         StartCoroutine(SpecialAttackController());
@@ -29,6 +31,7 @@ public class MageBoss : EnemyParent
     // Normal attack of the boss
     public override void Attack(EnemyAI enemy)
     {
+        // Only perform normal attack if no special attack is active
         if (!specialActive)
         {
             enemy.StartCoroutine(NormalAttack(enemy));
@@ -38,17 +41,22 @@ public class MageBoss : EnemyParent
     // This coroutine handles when to call the special attack
     IEnumerator SpecialAttackController()
     {
+        // Loop indefinitely to perform special attacks at intervals
         while(true)
         {
+            // First special attack
             yield return new WaitForSeconds(specialAttackCooldown);
             StartCoroutine(BurstAttack());
 
+            // Second special attack
             yield return new WaitForSeconds(specialAttackCooldown);
             StartCoroutine(SpiralAttack(spinDuration, spinSpeed));
         }
     }
 
     // This coroutine controls the timing between the attack bursts of the special attack
+    // Each burst shoots projectiles in a circular pattern around the boss
+    // The attack has 3 bursts with short delays between them
     IEnumerator BurstAttack()
     {
         if (!firePoint || projectilePrefab == null)
@@ -58,7 +66,7 @@ public class MageBoss : EnemyParent
 
         specialActive = true;
 
-
+        // Call the Special animation, and then fire projectiles in bursts
         anim.SetTrigger("Special");
         FireProjectiles(0f, angle);
 
@@ -71,7 +79,7 @@ public class MageBoss : EnemyParent
         specialActive = false;
     }
 
-    // This coroutine makes a spiral of projectiles
+    // This coroutine makes a spiral of projectiles for a given duration and spin speed
     IEnumerator SpiralAttack(float duration, float spinSpeed)
     {
         if (!firePoint || projectilePrefab == null)
@@ -86,6 +94,8 @@ public class MageBoss : EnemyParent
 
         anim.SetTrigger("Special");
 
+        // Continue firing projectiles while the duration has not been reached
+        // the projectiles starting angle changes each time to make a spiral
         while (timer < duration)
         {
             FireProjectiles(startAngle, angle);
@@ -129,7 +139,7 @@ public class MageBoss : EnemyParent
         return (player.position - enemy.GetGameObject().transform.position).normalized;
     }
 
-    // Helper function, only creates the projectile
+    // Helper function, only creates the projectile at the fire point with given direction
     void SpawnProjectile(Vector2 direction)
     {
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);

@@ -13,7 +13,6 @@ public class BuildingState : GameState
     private Grid grid2;
     private Grid grid3;
 
-    // Layer for placed buildings (YOU MUST SET THIS IN UNITY)
     private LayerMask buildingLayer = LayerMask.GetMask("Default");
 
     public override void EnterState(GameStateController Game)
@@ -24,7 +23,7 @@ public class BuildingState : GameState
         previewTower.GetComponent<Collider2D>().enabled = false;
         previewTower.GetComponent<TowerAI>().enabled = false;
 
-        // Make preview semi-transparent
+        // Make preview semi transparent by getting all sprite rendereres in the gameobject and setting a to 0.5f
         SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer renderer in renderers)
         {
@@ -55,17 +54,17 @@ public class BuildingState : GameState
 
         previewTower.transform.position = cellCenter;
 
-        // --------- CHECK VALID TILE ---------
+        // Check if the cell is grass and not dirt
         bool validTile = grassTilemap.HasTile(cellTopRight) && grassTilemap.HasTile(cellTopLeft) && grassTilemap.HasTile(cellBottomRight) && grassTilemap.HasTile(cellBottomLeft) && grassTilemap.HasTile(cell) && !dirtTilemap.HasTile(cell)||
                          grassTilemap2.HasTile(cellTopRight) && grassTilemap2.HasTile(cellTopLeft) && grassTilemap2.HasTile(cellBottomRight) && grassTilemap2.HasTile(cellBottomLeft) && grassTilemap2.HasTile(cell) && !dirtTilemap.HasTile(cell);
                          
 
-        // --------- CHECK OVERLAP WITH OTHER BUILDINGS ---------
+        // Check if the cell is overllapping with other buildings
         bool blocked = IsBlocked(cellCenter);
 
         bool canBuild = validTile && !blocked;
 
-        // ---- Change color based on validity ----
+        // Change color based on if the cell is valid or not (green = valid, red = not valid)
         SpriteRenderer[] renderers = previewTower.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer renderer in renderers)
         {
@@ -84,29 +83,31 @@ public class BuildingState : GameState
             renderer.color = c;
         }
 
-        // --------- PLACE BUILDING ---------
+        // PLACE TOWER IF U CAN BUILD IT THEN CREATE THE OBJECT AND SET THE GAMESTATE BACK TO IDLE
         if (Input.GetMouseButtonDown(0) && canBuild)
         {
             GameObject placedTower = GameObject.Instantiate(towerToPlace, cellCenter, Quaternion.identity);
 
-            // The placed building must be in "Buildings" layer
+            // placed building must be in Buildings layer
             placedTower.layer = 0;
 
             placedTower.GetComponent<TowerParent>().increaseCount();
 
             SpriteRenderer[] towerRenderers = placedTower.GetComponentsInChildren<SpriteRenderer>();
             int num = 0;
+            // Set sorting order based on the y position of the cell so that buildings closer to the bottom of the screen are 
+            // rendered in front of buildings closer to the top of the screen
             foreach (SpriteRenderer renderer in towerRenderers)
             {
                 renderer.sortingOrder = Mathf.RoundToInt(-cellCenter.y) + num;
                 num++;
             }
-
+            // Set the game state back to idle
             Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
 
-        // --------- CANCEL ---------
+        // Cancel building state if right mouse button is pressed and set the game state back to idle
         if (Input.GetMouseButtonDown(1))
         {
             Game.SetPlaceTower(null);
@@ -119,13 +120,9 @@ public class BuildingState : GameState
         GameObject.Destroy(previewTower);
     }
 
-    // ===========================================================
-    //                  BLOCK CHECK (important)
-    // ===========================================================
-
+    //Check if the cell is blocked by other buildings
     private bool IsBlocked(Vector3 center)
     {
-        // I assume your building prefabs use a BoxCollider2D
         BoxCollider2D box = towerToPlace.GetComponent<BoxCollider2D>();
 
         if (box == null)
@@ -139,14 +136,14 @@ public class BuildingState : GameState
         Vector2 offset = box.offset;
 
         Vector2 worldCenter = (Vector2)center + offset;
-
+        //Check if the collider of the placing tower overlaps with other colliders
         Collider2D hit = Physics2D.OverlapBox(
             worldCenter,
             size,
             0f,
             buildingLayer
         );
-
+        //return true if hit found a collider, false if it did not
         return hit != null;
     }
 }

@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerState
 {
-    private float attackCooldown = 0.5f;
-    private float projectileDelay = 0.3f;
-    private float timer = 0f;
+    private float attackCooldown = 0.5f; // Time between player attacks
+    private float projectileDelay = 0.3f; // Delay before projectile is fired to sync with animation
+    private float timer = 0f; // Timer to track time in state
 
-    private bool projectileFired = false;
-    private Vector2 faceDir;
-    private Vector2 shootDir;
+    private bool projectileFired = false; // Whether the projectile has been fired
+    private Vector2 faceDir; // Direction the player is facing
+    private Vector2 shootDir; // Direction to shoot the projectile
 
     public override void EnterState(PlayerStateController player)
     {
         // Cooldown depends on attackSpeed
         attackCooldown = 1f / player.playerStats.GetAttackSpeed();
 
+        // Calculate projectile delay to be at most half of attack cooldown
         projectileDelay = Mathf.Min(projectileDelay, attackCooldown * 0.5f);
 
         // Face towards mouse direction at the start of the attack
@@ -96,6 +97,7 @@ public class PlayerAttackState : PlayerState
             Quaternion.Euler(0, 0, angle)
         );
 
+        // Set projectile damage
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         if (projectileScript != null)
         {
