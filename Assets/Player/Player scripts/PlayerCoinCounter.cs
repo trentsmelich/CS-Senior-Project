@@ -1,9 +1,8 @@
-
-
 // Libraries
 using UnityEngine;
 using TMPro;
-
+//Author:Jia
+//Description: Displays the player's current coin count in the UI.
 public class PlayerCoinCounter : MonoBehaviour
 {
     // Declare variables for the UI and player stat

@@ -3,7 +3,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Author:Jia
+//Description: This script manages the in game tutorial, guiding players through the game's mechanics and UI.
 public class Game_Tutorial : MonoBehaviour
 {
     // Declare lists for steps, playerPrefab, UI, SFX, and display game objects

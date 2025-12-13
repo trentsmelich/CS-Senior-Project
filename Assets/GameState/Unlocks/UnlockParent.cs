@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Base class for managing tower unlocks, providing common functionality and abstract methods for derived classes.
 public abstract class UnlockParent : MonoBehaviour
 {
     protected TowerParent towerToUnlock; // Reference to TowerParent script

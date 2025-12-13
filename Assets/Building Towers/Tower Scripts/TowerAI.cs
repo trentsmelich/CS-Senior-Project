@@ -1,4 +1,6 @@
 using UnityEngine;
+//Author:Trent and Jia
+//Description: This script manages the AI behavior of towers, including targeting and attacking enemies.
 
 public class TowerAI : MonoBehaviour
 {

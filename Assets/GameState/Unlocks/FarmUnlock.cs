@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: This script manages the unlock states for the Farm tower, including loading and saving unlock states and checking conditions for unlocking different levels.
 public class FarmUnlock : UnlockParent
 {
     // Constants for PlayerPrefs keys

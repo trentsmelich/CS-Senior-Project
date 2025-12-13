@@ -2,7 +2,8 @@
 // Libraries
 using UnityEngine;
 using UnityEngine.UI;
-
+//Author:Jia
+//Description: This script controls the audio settings in a Unity game, allowing players to adjust the volume of music and sound effects through UI sliders.
 public class AudioController : MonoBehaviour
 {
     //set the keys for Music and SFX volume

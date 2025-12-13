@@ -2,7 +2,8 @@
 // Libraries
 using UnityEngine;
 using TMPro;
-
+//Author:Jia
+//Description: Displays the player's current enemy defeat count in the UI.
 public class PlayerEnemyCounter : MonoBehaviour
 {
     // Declare the variables for the player and UI

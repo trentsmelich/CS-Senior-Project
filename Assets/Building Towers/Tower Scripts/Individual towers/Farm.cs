@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent and Luis and Jia
+//Description: This script manages the Farm tower which generates coins over time.
 public class Farm : TowerParent
 {
     Animator anim;

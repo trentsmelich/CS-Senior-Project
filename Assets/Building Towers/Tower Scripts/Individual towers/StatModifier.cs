@@ -1,9 +1,10 @@
 using UnityEngine;
-
+//Author:Trent and Jia
+//Description: This script manages the Stat Modifier tower which modifies player stats.
 public class StatModifier : TowerParent
 {
     //variable set for stat modification tower
-    
+
     [SerializeField] private string statToModify;
     [SerializeField] private float modificationAmount;
 

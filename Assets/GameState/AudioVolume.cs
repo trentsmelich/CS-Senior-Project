@@ -1,7 +1,8 @@
 
 // Library
 using UnityEngine;
-
+//Author:Jia
+//Description: This script manages the audio volume settings for music and sound effects in the game.
 public class AudioVolume : MonoBehaviour
 {
     //set the keys for Music and SFX volume

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+//Author:Luis
+//Description: This script manages the behavior of the Bee enemy, including applying poison damage over time to the player.
 public class Bee : EnemyParent
 {
     private float poisonDamage = 3f; // damage per tick

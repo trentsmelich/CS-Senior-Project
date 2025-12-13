@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
-
+//Author:Jia
+//Description: This script manages the unlocks UI and filtering of towers in the main menu.
 public class Unlocks : MainMenuState
 {
     // Set the variable list and get the panel

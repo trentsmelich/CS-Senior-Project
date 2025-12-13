@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Jia and Trent and Luis
+//Description: This script manages the DEAD state for all enemies
 public class EnemyDeadState : EnemyState
 {
     public override void EnterState(EnemyAI enemy)

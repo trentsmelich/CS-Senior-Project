@@ -2,7 +2,8 @@
 // Libraries
 using UnityEngine;
 using UnityEngine.UI;
-
+//Author:Jia
+//Description: This script manages the main menu, including handling button interactions for navigating to different menu states and exiting the game.
 public class MainMenu : MainMenuState
 {
     GameObject mainMenuPanel;

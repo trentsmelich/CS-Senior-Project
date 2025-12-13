@@ -3,7 +3,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+//Author:Jia
+//Description: This script manages the level selection menu, including handling button interactions for selecting levels and navigating back to the main menu.
 
 public class LevelSelect : MainMenuState
 {

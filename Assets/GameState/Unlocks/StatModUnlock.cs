@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: This script handles the unlocking of StatModifier towers based on specific conditions and player progress.
 public class StatModUnlock : UnlockParent
 {
     // Constants for PlayerPrefs keys

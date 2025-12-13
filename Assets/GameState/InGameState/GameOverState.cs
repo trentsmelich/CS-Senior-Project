@@ -3,7 +3,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+//Author:Jia
+//Description: This script manages the game over state, including displaying the game over screen and handling user input for restarting or returning to the main menu.
 public class GameOverState : GameState
 {
     GameObject gameOverScreen;

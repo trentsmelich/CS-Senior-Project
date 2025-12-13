@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: This script manages the behavior of enemy projectiles, including movement and collision with the player.
 public class EnemyProjectile : MonoBehaviour
 {
     public float speed = 10f; // Speed of the projectile

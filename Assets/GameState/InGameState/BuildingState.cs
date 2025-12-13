@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+//Author:Trent 
+//Description: This script manages the building state of the game, including tower placement and validation.
 public class BuildingState : GameState
 {
     private GameObject towerToPlace;

@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent 
+//Description: This script manages the UPDATE state for all towers
 public class TowerAttackState : TowerState
 {
     //all tower attack params should go to TowerAI and be accessed from there will fix later

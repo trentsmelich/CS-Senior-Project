@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent 
+//Description: This script manages the SlingShot tower which fires projectiles at enemies.
 public class SlingShotTower : TowerParent
 
 {

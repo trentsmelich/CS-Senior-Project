@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
-
+//Author:Luis and Trent
+//Description: This script manages the health and damage system for enemies
 public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 30; // Maximum health of the enemy

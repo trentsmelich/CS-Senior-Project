@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+//Author:Luis
+//Description: This script manages the behavior of the Bomb Goblin Boss enemy, including its normal and special attacks.
 public class BombGoblinBoss : EnemyParent
 {
     [SerializeField] private Transform firePoint; // Point from which projectiles spawn

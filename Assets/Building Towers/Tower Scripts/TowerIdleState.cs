@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent
+//Description: This script manages the IDLE state for all towers
 public class TowerIdleState : TowerState
 {
     

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+//Author:Luis
+//Description: This script manages the behavior of the Archer enemy, including shooting projectiles at the player.
 public class Archer : EnemyParent
 {
     [SerializeField] private Transform firePoint; // Point from which projectiles spawn

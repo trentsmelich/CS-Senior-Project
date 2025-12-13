@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+//Author:Luis
+//Description: This script manages the wave state of the game, including spawning enemies, 
+//scaling the difficulty of the enemies, and handling wave progression. It is part of the GameState system and 
+//is responsible for controlling the flow of waves in the game.
 
-// This class manages the wave state of the game, including spawning enemies, 
-// scaling the difficulty of the enemies and handling wave progression
-// It is part of the GameState system and is responsible for controlling the flow of waves in the game
-// 
 
 public class WavesState : GameState
 {

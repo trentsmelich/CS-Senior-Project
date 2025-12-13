@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+//Author:Luis
+//Description: This script manages the behavior of the Turtle Boss enemy, including its normal and special attacks.
 public class TurtleBoss : EnemyParent
 {
     [SerializeField] private GameObject enemyPrefab; // Prefab of the minion to summon

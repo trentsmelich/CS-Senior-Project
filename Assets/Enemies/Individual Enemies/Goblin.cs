@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;   
+//Author:Trent
+//Description: This script manages the behavior of the Goblin enemy, including its attack mechanics.
 public class Goblin : EnemyParent
 
 {

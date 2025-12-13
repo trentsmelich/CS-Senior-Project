@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Handles player movement input and applies movement to the Rigidbody2D component.
 public class PlayerControls : MonoBehaviour
 {
     [Header("Movement Settings")]

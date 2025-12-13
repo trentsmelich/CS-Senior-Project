@@ -3,7 +3,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Author:Jia
+//Description: Manages the player's experience bar UI, updating it based on the player's current experience and level progress.
 
 public class PlayerXpBar : MonoBehaviour
 {

@@ -1,8 +1,8 @@
 using UnityEngine;
+//Authors: Trent and Luis
+//Description: This script is used to create a projectile that can be launched by a catapult tower. 
+// The projectile moves in a straight line and damages enemies within its explosion radius upon impact. 
 
-// Script for the projectile launched by the Catapult tower
-// This script is attached to the projectile prefab of the Catapult tower
-// The projectile moves in a straight line and damages enemies on area on impact
 
 public class CatapultProjectile : MonoBehaviour
 {

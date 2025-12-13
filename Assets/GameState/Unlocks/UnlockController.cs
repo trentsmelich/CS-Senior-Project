@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: This script manages the unlocking of towers based on specific conditions and player progress.
 public class UnlockController : MonoBehaviour
 {
     [SerializeField] private UnlockParent[] unlocks; // List of unlock scripts

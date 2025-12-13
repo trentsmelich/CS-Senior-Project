@@ -1,5 +1,7 @@
 using UnityEngine;
-
+//Author:Trent 
+//Description: This script handles the projectile that is fired from the slingshot. 
+// It sets the direction and speed of the ball, and when it collides with an enemy it will deal damage to the enemy and then destroy itself.
 
 public class SlingShotProjectile : MonoBehaviour
 {

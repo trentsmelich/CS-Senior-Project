@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Manages the player's state transitions and interactions with components like Animator and Rigidbody2D.
 public class PlayerStateController : MonoBehaviour
 {
     private PlayerState currentState; // Current state of the player

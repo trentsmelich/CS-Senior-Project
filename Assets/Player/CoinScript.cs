@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent
+//Description: Manages the collection of coins by the player, including playing sound effects and updating the player's coin count.
 public class CoinScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+//Author:Luis
+//Description: This script manages the behavior of the Mage Boss enemy, including its normal and special attacks.
 public class MageBoss : EnemyParent
 {
     [SerializeField] private Transform firePoint; // Point from which projectiles spawn

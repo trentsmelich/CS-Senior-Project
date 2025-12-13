@@ -2,7 +2,8 @@
 // Library
 using UnityEngine;
 using System.Collections; 
-
+//Author:Jia
+//Description: This script manages the behavior of the Wolf enemy, including its lunge attack mechanics.
 public class Wolf : EnemyParent
 {
     // Declare the player mask variable

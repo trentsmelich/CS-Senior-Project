@@ -1,7 +1,7 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
-
+//Author:Trent 
+//Description: Manages the player's statistics including health, experience, and multipliers.
 public class PlayerStats : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created

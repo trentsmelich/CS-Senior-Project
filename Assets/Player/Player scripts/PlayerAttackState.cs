@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Manages the player's attack state, handling attack cooldowns, animations, and projectile firing.
 public class PlayerAttackState : PlayerState
 {
     private float attackCooldown = 0.5f; // Time between player attacks

@@ -1,8 +1,9 @@
-
 // Libraries
 using UnityEngine;
 using System.Collections;  
 
+//Author:Jia
+//Description: This script manages the behavior of the Merman enemy, including its delayed explosion attack.
 public class Merman : EnemyParent
 {
     // Declare variables for the attack attributes

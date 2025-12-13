@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+//Author:Jia
+//Description: This script manages the pause state, including displaying the pause menu, handling user interactions, and managing game time.
 public class PauseState : GameState
 {
     // Declare new pause menu panel

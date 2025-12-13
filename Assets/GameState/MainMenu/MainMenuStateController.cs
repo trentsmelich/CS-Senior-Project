@@ -1,7 +1,8 @@
 
 // Library
 using UnityEngine;
-
+//Author:Jia
+//Description: This script controls the state of the main menu. It manages different panels and UI elements, and handles state transitions.
 public class MainMenuStateController : MonoBehaviour
 {
     // Declare variables

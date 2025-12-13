@@ -1,3 +1,5 @@
+//Authors: Trent and Jia
+//Description: This script is for the Catapult tower. It handles the attack logic, including firing projectiles at enemies.
 using System.Collections;
 using UnityEngine;
 

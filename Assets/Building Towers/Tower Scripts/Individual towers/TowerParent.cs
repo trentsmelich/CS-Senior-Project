@@ -1,5 +1,6 @@
 using UnityEngine;
-// Abstract class for all towers
+//Author:Trent and Luis
+//Description: Abstract class for all towers
 public abstract class TowerParent : MonoBehaviour
 {
     // Common properties for all towers

@@ -3,7 +3,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Author:Jia
+//Description: Displays the player's current health in the UI with a health bar and text.
 public class PlayerHealthBar : MonoBehaviour
 {
     // Declare variables for the images and player info

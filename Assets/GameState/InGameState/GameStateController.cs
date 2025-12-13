@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
-
+//Author:Trent and Jia and Luis
+//Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
 public class GameStateController : MonoBehaviour
 {
     [Header("Player Settings")]

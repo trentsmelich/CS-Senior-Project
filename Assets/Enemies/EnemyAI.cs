@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent
+//Description: This script manages the AI behavior of enemies, including state management and interaction with the player.
 public class EnemyAI : MonoBehaviour
 {
     //variables the enemyAI needs

@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Author:Jia and Trent
+//Description: This script manages the in shop state, including displaying the shop UI, filtering towers, and handling user interactions within the shop.
 public class InShopState : GameState
 {
     private GameObject shopScreen;

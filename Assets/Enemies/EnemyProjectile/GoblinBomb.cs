@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: This script manages the behavior of the Goblin Bomb projectile, including movement, explosion, and damage application.
 public class GoblinBomb : MonoBehaviour
 {
     private Vector2 direction; // Direction of the projectile

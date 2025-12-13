@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Heals the player by a specified amount when collected.
 public class HealPowerUp : MonoBehaviour
 {
     private PlayerStats player;

@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Manages the player's running state, handling movement input and transitions to idle or attacking states.
 public class PlayerRunningState : PlayerState
 {
     private float timer; // Timer to track idle transition delay

@@ -1,8 +1,9 @@
 
 // Libraries
 using UnityEngine;
+//Author:Jia
+//Description: Abstract class for Main Menu States
 
-// Abstract class with abstract methods for the Main Menu State
 public abstract class MainMenuState
 {
     public abstract void EnterState(MainMenuStateController Main);

@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Trent 
+//Description: This script manages the ATTACK state for all enemies
 
 public class EnemyAttackState : EnemyState
 {

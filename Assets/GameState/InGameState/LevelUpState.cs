@@ -4,7 +4,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Author:Trent and Jia
+//Description: This script manages the level up state, including displaying level-up options and applying stat increases to the player.
 public class LevelUpState : GameState
 {
     private GameObject levelUpUI;

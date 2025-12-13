@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Manages the player's idle state, handling transitions to running or attacking states based on input.
 public class PlayerIdleState : PlayerState
 {
     // When entering the idle state, set animator and velocity accordingly

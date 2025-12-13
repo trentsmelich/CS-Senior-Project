@@ -2,7 +2,8 @@
 // Libraries
 using UnityEngine;
 using TMPro;
-
+//Author:Jia
+//Description: Manages the game timer, displaying elapsed time and handling timer start/stop functionality.
 public class Timer : MonoBehaviour
 {
     // Setting variables for the time
