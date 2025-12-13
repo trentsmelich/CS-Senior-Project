@@ -16,13 +16,16 @@ public class CoinScript : MonoBehaviour
     {
         
     }
+    // Detect when the player collides with the coin
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            // Play the coin sound effect and add a coin to the player's total coins
             coinSFX.Play();
             playerStats.AddCoins(1);
             Debug.Log("Coin collected. Total coins: " + playerStats.coins);
+            // Destroy the coin object to remove it from the game
             Destroy(gameObject);
         }
     }
