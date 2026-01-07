@@ -10,6 +10,8 @@ public class EnemyChaseState : EnemyState
         //set the anim to walking
         agent = enemy.GetComponent<NavMeshAgent>();
         agent.isStopped = false;
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
         enemy.GetAnimator().SetBool("Walking", true);
     }
 
