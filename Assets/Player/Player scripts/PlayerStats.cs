@@ -99,6 +99,11 @@ public class PlayerStats : MonoBehaviour
         coins += (int)(amount * profitMultiplier);
     }
 
+    public void AddBackBuildingCoins(int amount)
+    {
+        coins += amount;
+    }
+
     public int GetCoins()
     {
         return coins;

@@ -147,6 +147,7 @@ public class InShopState : GameState
                                 playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
 
                                 //If the building is purchased, set the tower to be placed and change state to building state
+                                Game.SetCurrentBuildingCost(tower.GetComponent<TowerParent>().TowerCost);
                                 Game.SetPlaceTower(tower);
                                 Game.SetState(new BuildingState());
                             }

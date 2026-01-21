@@ -88036,6 +88036,7 @@ MonoBehaviour:
   buttonClickSound: {fileID: 1394639700}
   backgroundMusic: {fileID: 333173561}
   GameOverMusic: {fileID: 960492183}
+  currentBuildingCost: 0
 --- !u!1 &1075303722
 GameObject:
   m_ObjectHideFlags: 0
@@ -117443,6 +117444,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1046596825}
+    - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: coins
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: damage
       value: 10

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-//Author:Trent 
+//Author:Trent and Jia
 //Description: This script manages the building state of the game, including tower placement and validation.
 public class BuildingState : GameState
 {
@@ -104,6 +104,7 @@ public class BuildingState : GameState
                 num++;
             }
             // Set the game state back to idle
+            //Play Building SFX???
             Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
@@ -111,6 +112,8 @@ public class BuildingState : GameState
         // Cancel building state if right mouse button is pressed and set the game state back to idle
         if (Input.GetMouseButtonDown(1))
         {
+            Game.PlayButtonClickSound();
+            Game.AddBackBuildingCoins(Game.GetCurrentBuildingCost());
             Game.SetPlaceTower(null);
             Game.SetState(new gameIdleState());
         }
