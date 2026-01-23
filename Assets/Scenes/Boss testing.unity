@@ -1629,8 +1629,10 @@ MonoBehaviour:
   player: {fileID: 0}
   grid: {fileID: 0}
   grid2: {fileID: 0}
+  grid3: {fileID: 0}
   grassTilemap: {fileID: 0}
   grassTilemap2: {fileID: 0}
+  dirtTilemap: {fileID: 0}
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 10
   waveTimer: 5

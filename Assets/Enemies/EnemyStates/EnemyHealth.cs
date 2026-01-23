@@ -90,7 +90,7 @@ public class EnemyHealth : MonoBehaviour
         {
             waveEnemies--;
         }
-        else
+        else if (isNormal)
         {
             normalEnemies--;
         }

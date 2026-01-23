@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8962753404131724998}
   - component: {fileID: 6080421666343191838}
   - component: {fileID: 3365009410153105108}
+  - component: {fileID: 7238813960633488722}
   m_Layer: 6
   m_Name: Archer
   m_TagString: Enemy
@@ -270,3 +271,25 @@ MonoBehaviour:
   speed: 2
   firePoint: {fileID: 3657069481471231675}
   projectilePrefab: {fileID: 8511129841158349827, guid: 722926cdf37b3324690eb212b3606eba, type: 3}
+--- !u!195 &7238813960633488722
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919114048276854430}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.23000003
+  m_BaseOffset: 0.11500002
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

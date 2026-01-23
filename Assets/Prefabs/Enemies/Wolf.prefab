@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3868636821445240667}
   - component: {fileID: 8645247221658857968}
   - component: {fileID: 2173516425224145549}
+  - component: {fileID: 8170615568319471797}
   m_Layer: 6
   m_Name: Wolf
   m_TagString: Enemy
@@ -236,3 +237,25 @@ MonoBehaviour:
   attackTimer: 0
   attackDistance: 0.25
   speed: 4
+--- !u!195 &8170615568319471797
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474639053942944605}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.26
+  m_BaseOffset: 0.13
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
