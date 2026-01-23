@@ -59,13 +59,13 @@ public class CatapultUnlock : UnlockParent
             lvl1Unlocked = true;
         }
 
-        if (!lvl2Unlocked && unlockController.GetNumTowers("Catapult", 2) >= 10)
+        if (!lvl2Unlocked && unlockController.GetNumTowers("Catapult", 1) >= 10)
         {
             PlayerPrefs.SetInt(catapultLvl2, 1);
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && unlockController.GetNumTowers("Catapult", 3) >= 10)
+        if (!lvl3Unlocked && unlockController.GetNumTowers("Catapult", 2) >= 10)
         {
             PlayerPrefs.SetInt(catapultLvl3, 1);
             lvl3Unlocked = true;
