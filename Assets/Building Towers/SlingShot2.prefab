@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8518478704672100773}
   - component: {fileID: 996062315310669796}
   - component: {fileID: 1091323053579827822}
+  - component: {fileID: 9040032928041195593}
   m_Layer: 0
   m_Name: SlingShot2
   m_TagString: Untagged
@@ -184,6 +185,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.64, y: 0.586666}
   m_EdgeRadius: 0
+--- !u!208 &9040032928041195593
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045634263418035838}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.32000002, y: 0.355, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.24, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3562523696081863128
 PrefabInstance:
   m_ObjectHideFlags: 0
