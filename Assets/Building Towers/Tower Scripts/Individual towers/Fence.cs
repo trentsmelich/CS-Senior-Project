@@ -5,6 +5,21 @@ public class Fence : TowerParent
     
     // Start is called before the first frame update
     private bool up, down, left, right;
+    [SerializeField] Sprite upS;
+    [SerializeField] Sprite downS;
+    [SerializeField] Sprite leftS;
+    [SerializeField] Sprite rightS;
+    [SerializeField] Sprite upLeftS;
+    [SerializeField] Sprite upRightS;
+    [SerializeField] Sprite downLeftS;
+    [SerializeField] Sprite downRightS;
+    [SerializeField] Sprite upDownS;
+    [SerializeField] Sprite leftRightS;
+    [SerializeField] Sprite upLeftRightS;
+    [SerializeField] Sprite downLeftRightS;
+    [SerializeField] Sprite leftUpDownS;
+    [SerializeField] Sprite rightUpDownS;
+    [SerializeField] Sprite allSidesS;
 
     void Start()
     {
