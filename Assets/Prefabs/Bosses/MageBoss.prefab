@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
   healPrefab: {fileID: 2356374451528525618, guid: 44630273a6424dd47b9ff2d434887cc7, type: 3}
+  speedPrefab: {fileID: 7549482915154555136, guid: 05dbd6043c7e26d479ac59bf2077a9eb, type: 3}
 --- !u!114 &1761100838458973620
 MonoBehaviour:
   m_ObjectHideFlags: 0

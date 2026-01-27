@@ -19,6 +19,11 @@ public class EnemyDeadState : EnemyState
         {
             Object.Instantiate(enemy.GetHealPrefab(), enemy.transform.position, Quaternion.identity);
         }
+
+        if(Random.value <= 0.01f)
+        {
+            Object.Instantiate(enemy.GetSpeedPrefab(), enemy.transform.position, Quaternion.identity);
+        }
         
         //Add a defeated enemy count to the player's stats
         enemy.GetPlayer().GetComponent<PlayerStats>().AddDefeatedEnemyCount();
