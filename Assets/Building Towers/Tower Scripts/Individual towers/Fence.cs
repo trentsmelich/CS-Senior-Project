@@ -20,6 +20,7 @@ public class Fence : TowerParent
     [SerializeField] Sprite leftUpDownS;
     [SerializeField] Sprite rightUpDownS;
     [SerializeField] Sprite allSidesS;
+    
 
     void Start()
     {
