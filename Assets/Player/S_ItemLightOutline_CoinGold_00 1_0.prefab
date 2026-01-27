@@ -150,3 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a20b29b3e214f4f948dddf66c5177f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinScript
+  coinMovingSpeed: 7.5
+  attractionRange: 5
