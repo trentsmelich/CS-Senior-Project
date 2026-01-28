@@ -3726,7 +3726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &793172311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50194,6 +50194,7 @@ MonoBehaviour:
   shopScreen: {fileID: 226159261}
   upgradeScreen: {fileID: 1740217216}
   gameOverScreen: {fileID: 1358410062}
+  upgradeOfferCountDownText: {fileID: 0}
   playerHealthBar: {fileID: 1063710937}
   playerXPBar: {fileID: 193737902}
   coinCounter: {fileID: 460685721}
