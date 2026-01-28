@@ -105,7 +105,7 @@ public class TurtleBoss : EnemyParent
 
             GameObject minion = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             EnemyHealth minionHealth = minion.GetComponent<EnemyHealth>();
-            minionHealth.waveCount();
+            minionHealth.increaseEnemyCount();
             minion.SetActive(true);
 
         }
