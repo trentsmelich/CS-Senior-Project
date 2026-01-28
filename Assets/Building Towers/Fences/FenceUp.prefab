@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1212867703187486753}
   - component: {fileID: 5604924787355306757}
-  - component: {fileID: -2462917513574774211}
   m_Layer: 0
   m_Name: FenceUp
   m_TagString: Untagged
@@ -91,20 +90,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2462917513574774211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3850309681848115704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6106ed7e8f1bda4baabb8f690618943, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerAI
-  targetEnemy: {fileID: 0}
-  attackRange: 5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0

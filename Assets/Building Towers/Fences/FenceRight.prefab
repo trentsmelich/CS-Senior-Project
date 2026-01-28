@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6420534932632570323}
   - component: {fileID: 5121573476228315525}
-  - component: {fileID: -5524508488645151197}
   m_Layer: 0
   m_Name: FenceRight
   m_TagString: Untagged
@@ -91,20 +90,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5524508488645151197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4809354089381053890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6106ed7e8f1bda4baabb8f690618943, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerAI
-  targetEnemy: {fileID: 0}
-  attackRange: 5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
