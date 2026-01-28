@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+
 //Author:Trent and Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
 public class GameStateController : MonoBehaviour
@@ -44,6 +45,8 @@ public class GameStateController : MonoBehaviour
     public GameObject upgradeScreen;
     // Game Over Screen
     public GameObject gameOverScreen;
+    // Upgrade Offer Text
+    public GameObject upgradeOfferCountDownText;
 
     [Header("Player UI Display Elements")]
     public GameObject playerHealthBar;
@@ -255,5 +258,10 @@ public class GameStateController : MonoBehaviour
     public void PlayButtonClickSound()
     {
         buttonClickSound.Play();
+    }
+
+    public GameObject GetUpgradeCountDownText()
+    {
+        return upgradeOfferCountDownText;
     }
 }
