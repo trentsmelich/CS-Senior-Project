@@ -20,9 +20,16 @@ public class EnemyDeadState : EnemyState
             Object.Instantiate(enemy.GetHealPrefab(), enemy.transform.position, Quaternion.identity);
         }
 
-        if(Random.value <= 0.01f)
+        // 5% chance to drop speed or cooldown powerup
+        if(Random.value <= 0.05f)
         {
             Object.Instantiate(enemy.GetSpeedPrefab(), enemy.transform.position, Quaternion.identity);
+        }
+
+        // 5% chance to drop cooldown powerup
+        if(Random.value <= 0.05f)
+        {
+            Object.Instantiate(enemy.GetCooldownPrefab(), enemy.transform.position, Quaternion.identity);
         }
         
         //Add a defeated enemy count to the player's stats

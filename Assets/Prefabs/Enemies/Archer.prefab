@@ -166,6 +166,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
   healPrefab: {fileID: 2356374451528525618, guid: 44630273a6424dd47b9ff2d434887cc7, type: 3}
   speedPrefab: {fileID: 7549482915154555136, guid: 05dbd6043c7e26d479ac59bf2077a9eb, type: 3}
+  cooldownPrefab: {fileID: 4144941683259756929, guid: aa40d79e390b7bd478a8890615a4588b, type: 3}
 --- !u!50 &6908139809449696950
 Rigidbody2D:
   serializedVersion: 5
