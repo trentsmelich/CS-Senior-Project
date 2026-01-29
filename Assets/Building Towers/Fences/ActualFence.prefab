@@ -164,7 +164,7 @@ MonoBehaviour:
   towerImage: {fileID: 7253429335775374924, guid: 6aff8506642d35842b18e309b3888e85, type: 3}
   towerCost: 0
   towerType: Farm
-  towerName: Farm
+  towerName: Fence
   unlocked: 1
 --- !u!114 &6654409567372422999
 MonoBehaviour:
