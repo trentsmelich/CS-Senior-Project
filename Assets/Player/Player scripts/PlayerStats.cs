@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 //Author:Trent 
 //Description: Manages the player's statistics including health, experience, and multipliers.
@@ -200,5 +201,35 @@ public class PlayerStats : MonoBehaviour
     public void AddDefeatedEnemyCount()
     {
         enemiesDefeated += 1;
+    }
+
+    public void ApplySpeedBoost(float boostPercentage, float duration)
+    {
+        StartCoroutine(SpeedBoostCoroutine(boostPercentage, duration));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float boostPercentage, float duration)
+    {
+        float boostMultiplier = 1f + boostPercentage;
+        moveSpeed *= boostMultiplier;
+        
+        yield return new WaitForSeconds(duration);
+        
+        moveSpeed /= boostMultiplier;
+    }
+
+    public void ApplyAttackSpeedBoost(float cooldownRed, float duration)
+    {
+        StartCoroutine(AttackSpeedBoostCoroutine(cooldownRed, duration));
+    }
+
+    private IEnumerator AttackSpeedBoostCoroutine(float cooldownRed, float duration)
+    {
+        float boostMultiplier = 1f + cooldownRed;
+        attackSpeed *= boostMultiplier;
+        
+        yield return new WaitForSeconds(duration);
+        
+        attackSpeed /= boostMultiplier;
     }
 }
