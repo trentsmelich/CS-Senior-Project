@@ -29,11 +29,6 @@ public class WavesState : GameState
     private float healthMultiplier = 1.0f; // How much enemy health should scale (increased after each wave)
     private float speedMultiplier = 1.0f; // How much enemy speed should scale (increased after each wave)
 
-    // Normal spawn settings
-    private float normalSpawnTimer = 0f; // Timer for normal enemy spawns
-    private float normalSpawnInterval = 1f; // base interval
-    private float normalSpawnScaling = 0.95f; // reduce interval per wave
-    private bool allowNormalSpawning = true; // Whether normal spawning is allowed
     private bool waveInProgress = false; // Whether a wave is currently in progress
    
    // Constructor to initialize the WaveState at the start with necessary parameters
@@ -79,13 +74,12 @@ public class WavesState : GameState
         if (waveInProgress)
         {
             // Update countdown text to show remaining enemies
-            countdownText.text = "Enemies Remaining: " + EnemyHealth.GetWaveEnemies();
+            countdownText.text = "Enemies Remaining: " + EnemyHealth.GetNumEnemies();
 
             // If all wave enemies are defeated, end the wave   
-            if (EnemyHealth.GetWaveEnemies() <= 0)
+            if (EnemyHealth.GetNumEnemies() <= 0)
             {
                 waveInProgress = false;
-                allowNormalSpawning = true;
                 waveCountdown = waveTimer; // restart timer
             }
             return;
@@ -96,19 +90,6 @@ public class WavesState : GameState
         {
             countdownText.text = "Spawning Wave " + waveNumber + "...";
             return;
-        }
-
-        // Spawn normal enemies between waves
-        // Decrease normal spawn timer which spawns enemies at set intervals
-        normalSpawnTimer -= Time.deltaTime;
-
-        // Spawn a normal enemy if the timer reaches zero and normal spawning is allowed
-        if (normalSpawnTimer <= 0f && allowNormalSpawning)
-        {
-            SpawnEnemy(enemyList, false, false);
-            // Reset the normal spawn timer to the interval
-            // so it resets for the next spawn
-            normalSpawnTimer = normalSpawnInterval;
         }
 
         // If no wave is spawning currently, countinue counting down
@@ -138,16 +119,10 @@ public class WavesState : GameState
 
         // Set spawning flag to true and increment wave number
         spawning = true;
-        allowNormalSpawning = false;
 
         // Calculate enemies for this wave based on multiplier
         int enemiesThisWave = Mathf.RoundToInt(initialEnemiesPerWave * numEnemiesMultiplier);
         countdownText.text = "Spawning Wave!";
-
-        // Make all current alive normal enemies count as wave enemies so the player
-        // does not get confused when killing normal enemies during a wave
-        // and them not counting towards the wave kill count
-        NormalToWave();
 
         Debug.Log($"Wave {waveNumber}: base {initialEnemiesPerWave}, multiplier {numEnemiesMultiplier}, enemies {enemiesThisWave}");
 
@@ -178,12 +153,6 @@ public class WavesState : GameState
         enemyDamageMultiplier += 0.3f;
         healthMultiplier += 0.3f;
         speedMultiplier += 0.1f;
-
-
-        // normal spawns get slightly faster after each wave
-        normalSpawnInterval *= normalSpawnScaling;
-        normalSpawnInterval = Mathf.Max(1f, normalSpawnInterval); // hard limit for normal spawn speed
-
     }
 
     // This function will make an enemy, change its values according to the current difficulty
@@ -216,15 +185,8 @@ public class WavesState : GameState
             enemyAI.SetMoveSpeed(enemyAI.GetMoveSpeed() * speedMultiplier);
         }
 
-        // Make the enemy count as either a wave enemy or normal enemy
-        if (isWave)
-        {
-            enemyHealth.waveCount();
-        }
-        else
-        {
-            enemyHealth.normalCount();
-        }
+        //increase enemy count
+        enemyHealth.increaseEnemyCount();
 
         // Activate the instantiated enemy
         instantiatedEnemy.SetActive(true);
@@ -250,30 +212,5 @@ public class WavesState : GameState
         float y = playerBase.position.y + spawnRadius * Mathf.Sin(angle);
 
         return new Vector2(x, y);
-    }
-
-    // This function will make all the currently alive normal enemies that spawn between waves
-    // into wave enemies, and count them on the enemies that need to be killed to advance to the 
-    // next wave
-    private void NormalToWave()
-    {
-        // Make a list with all the enemies currently instantiated
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject obj in enemies)
-        {
-            // get the help component of the enemy to be able to change what it is
-            EnemyHealth e = obj.GetComponent<EnemyHealth>();
-
-            // If e is not empty
-            if (e != null)
-            {
-                // Only convert enemies that were actually normal before the wave
-                if (e.IsNormalEnemy())
-                {
-                    e.normalToWaveEnemy();
-                }
-            }
-        }
     }
 }

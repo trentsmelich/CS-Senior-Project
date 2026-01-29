@@ -14,10 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     private float currentHealth; // Current health of the enemy
 
-    private bool isWaveEnemy = false; // Whether the enemy is part of a wave
-    private bool isNormal = false; // Whether the enemy is a normal enemy
-    private static int waveEnemies = 0; // Count of wave enemies
-    private static int normalEnemies = 0; // Count of normal enemies
+    private static int numEnemies = 0; // Count of wave enemies
 
     private AudioSource enemyHurtSFX; // Sound effect for enemy hurt
     private AudioSource enemyDeadSFX; // Sound effect for enemy death
@@ -85,15 +82,8 @@ public class EnemyHealth : MonoBehaviour
     // Method to handle enemy death
     public void Die()
     {
-        // Decrement the count of wave or normal enemies based on the type
-        if (isWaveEnemy)
-        {
-            waveEnemies--;
-        }
-        else if (isNormal)
-        {
-            normalEnemies--;
-        }
+        // Decrease the count of enemies
+        numEnemies--;
 
         // Call the EnemyDie method from EnemyAI to handle death behavior
         enemyAI.EnemyDie();
@@ -113,49 +103,15 @@ public class EnemyHealth : MonoBehaviour
     }
 
     // Get the count of wave enemies
-    public static int GetWaveEnemies()
+    public static int GetNumEnemies()
     {
-        return waveEnemies;
-    }
-
-    // Get the count of normal enemies
-    public static int GetNormalEnemies()
-    {
-        return normalEnemies;
-    }
-
-    // Change a normal enemy to a wave enemy
-    public void normalToWaveEnemy()
-    {
-        if (!isWaveEnemy && isNormal)
-        {
-            isNormal = false;
-            isWaveEnemy = true;
-            waveEnemies++;
-            normalEnemies--;
-        }
-    }
-
-    // Increase the count of normal enemies
-    public void normalCount()
-    {
-        isNormal = true;
-        isWaveEnemy = false;
-        normalEnemies++;
+        return numEnemies;
     }
 
     // Increase the count of wave enemies
-    public void waveCount()
+    public void increaseEnemyCount()
     {
-        isWaveEnemy = true;
-        isNormal = false;
-        waveEnemies++;
-    }
-
-    // Check if the enemy is a normal enemy
-    public bool IsNormalEnemy()
-    {
-        return isNormal;
+        numEnemies++;
     }
 
     // Get the current health of the enemy
@@ -173,8 +129,7 @@ public class EnemyHealth : MonoBehaviour
     // Reset the counts of wave and normal enemies
     public void resetEnemyCounts()
     {
-        waveEnemies = 0;
-        normalEnemies = 0;
+        numEnemies = 0;
     }
 
 }
