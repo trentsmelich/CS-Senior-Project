@@ -90561,6 +90561,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190505515}
   m_CullTransparentMesh: 1
+--- !u!1 &1194448369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194448371}
+  - component: {fileID: 1194448370}
+  m_Layer: 0
+  m_Name: FenceUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1194448370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194448369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd4cf0df71b30649be289672eec488a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FenceUnlock
+  unlocked: 0
+--- !u!4 &1194448371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194448369}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.8090286, y: -1.5834298, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781292269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1198961881
 GameObject:
   m_ObjectHideFlags: 0
@@ -110098,6 +110143,7 @@ MonoBehaviour:
   - {fileID: 365902749}
   - {fileID: 1996019581}
   - {fileID: 385040087}
+  - {fileID: 1194448370}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -110109,6 +110155,7 @@ MonoBehaviour:
   - {fileID: 4449575510196601865, guid: a7ceeaad5dc4b794aa08ae0b5518d752, type: 3}
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
+  - {fileID: 643403248037975920, guid: 159901a0275802f4ba03566a77a60537, type: 3}
 --- !u!4 &1781292269
 Transform:
   m_ObjectHideFlags: 0
@@ -110126,6 +110173,7 @@ Transform:
   - {fileID: 365902750}
   - {fileID: 1996019582}
   - {fileID: 385040088}
+  - {fileID: 1194448371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1806616786

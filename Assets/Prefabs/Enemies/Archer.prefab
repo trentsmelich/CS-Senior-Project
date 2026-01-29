@@ -270,7 +270,7 @@ MonoBehaviour:
   attackCooldown: 3
   attackTimer: 0
   attackDistance: 0
-  speed: 2
+  speed: 1
   firePoint: {fileID: 3657069481471231675}
   projectilePrefab: {fileID: 8511129841158349827, guid: 722926cdf37b3324690eb212b3606eba, type: 3}
 --- !u!195 &7238813960633488722
@@ -283,7 +283,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

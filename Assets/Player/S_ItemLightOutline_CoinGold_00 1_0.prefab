@@ -151,4 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinScript
   coinMovingSpeed: 7.5
-  attractionRange: 5
+  attractionRange: 2.5

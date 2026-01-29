@@ -45,22 +45,18 @@ public class Fence : TowerParent
         // Check each direction - store the collider result to avoid multiple calls
         Collider2D upCollider = Physics2D.OverlapCircle(transform.position + Vector3.up * gridSize, checkRadius, fenceLayer);
         up = upCollider != null && upCollider.GetComponent<Fence>() != null;
-        Debug.Log($"Up: {up} (collider: {upCollider != null}, fence: {(upCollider != null ? (upCollider.GetComponent<Fence>() != null).ToString() : "N/A")})");
     
         Collider2D downCollider = Physics2D.OverlapCircle(transform.position + Vector3.down * gridSize, checkRadius, fenceLayer);
         down = downCollider != null && downCollider.GetComponent<Fence>() != null;
-        Debug.Log($"Down: {down} (collider: {downCollider != null}, fence: {(downCollider != null ? (downCollider.GetComponent<Fence>() != null).ToString() : "N/A")})");
+    
     
         Collider2D leftCollider = Physics2D.OverlapCircle(transform.position + Vector3.left * gridSize, checkRadius, fenceLayer);
         left = leftCollider != null && leftCollider.GetComponent<Fence>() != null;
-        Debug.Log($"Left: {left} (collider: {leftCollider != null}, fence: {(leftCollider != null ? (leftCollider.GetComponent<Fence>() != null).ToString() : "N/A")})");
+        
     
         Collider2D rightCollider = Physics2D.OverlapCircle(transform.position + Vector3.right * gridSize, checkRadius, fenceLayer);
         right = rightCollider != null && rightCollider.GetComponent<Fence>() != null;
-        Debug.Log($"Right: {right} (collider: {rightCollider != null}, fence: {(rightCollider != null ? (rightCollider.GetComponent<Fence>() != null).ToString() : "N/A")})");
         
-        Debug.Log($"Checking positions from {transform.position}: Up={transform.position + Vector3.up * gridSize}, Down={transform.position + Vector3.down * gridSize}, Left={transform.position + Vector3.left * gridSize}, Right={transform.position + Vector3.right * gridSize}");
-        //Debug.Log($"Collider found: {upCollider.gameObject.name}");
     }
     private void AdjustFenceSprite()
     {
