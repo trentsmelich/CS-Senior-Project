@@ -51,10 +51,10 @@ public class PauseState : GameState
         quitButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);  
-            EnemyHealth enemyHealth = GameObject.FindFirstObjectByType<EnemyHealth>();
-            enemyHealth.resetEnemyCounts();
             Game.SetState(new gameIdleState());
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);  
+            EnemyHealth.resetEnemyCounts();
+            
             Debug.Log("quit Button Clicked");
         });
         

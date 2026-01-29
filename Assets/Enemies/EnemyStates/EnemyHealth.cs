@@ -127,7 +127,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     // Reset the counts of wave and normal enemies
-    public void resetEnemyCounts()
+    public static void resetEnemyCounts()
     {
         numEnemies = 0;
     }

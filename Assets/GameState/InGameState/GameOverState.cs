@@ -14,8 +14,7 @@ public class GameOverState : GameState
         // Declare and set the variables
         Game.GetUnlockController().CheckUnlocks();
         gameOverScreen = Game.GetGameOverScreen();
-        EnemyHealth enemyHealth = GameObject.FindFirstObjectByType<EnemyHealth>();
-        enemyHealth.resetEnemyCounts();
+        EnemyHealth.resetEnemyCounts();
         Game.ShowPlayerUI(false);
 
         Game.GetUnlockController().CheckUnlocks();
