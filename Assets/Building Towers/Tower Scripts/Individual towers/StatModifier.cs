@@ -1,13 +1,17 @@
 using UnityEngine;
-
+//Author:Trent and Jia
+//Description: This script manages the Stat Modifier tower which modifies player stats.
 public class StatModifier : TowerParent
 {
+    //variable set for stat modification tower
+
     [SerializeField] private string statToModify;
     [SerializeField] private float modificationAmount;
 
     private PlayerStats playerStats;
     void Start()
     {
+        //get player stats from player object
         Debug.Log("Stat Modifier Tower Created");
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         ApplyStatModification();
@@ -16,8 +20,9 @@ public class StatModifier : TowerParent
     public override void UpdateTower(Transform enemy)
     {
         // StatModifier does not attack
+        //it just modifies player stats
     }
-
+    // Apply the stat modification to the player's stats
     private void ApplyStatModification()
     {
         playerStats.ModifyStat(statToModify, modificationAmount);

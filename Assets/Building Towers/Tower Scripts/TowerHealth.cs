@@ -1,5 +1,9 @@
 using UnityEngine;
+/*
 
+PLAN TO IMPLEMENT FUNCTIONALITY IN FUTURE NO WHERE CLOSE TO DONE
+
+*/
 public class TowerHealth : MonoBehaviour
 {
     private float towerHealth = 250f;

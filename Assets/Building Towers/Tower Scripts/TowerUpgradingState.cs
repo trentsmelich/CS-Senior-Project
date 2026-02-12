@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/*
+PLAN TO IMPLEMENT IN THE FUTURE NO WHERE CLOSE TO BEING FUNCTIONAL
+*/
 public class TowerUpgradingState : TowerState
 {
     public override void EnterState(TowerAI tower)

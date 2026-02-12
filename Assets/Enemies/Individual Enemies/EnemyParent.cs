@@ -1,4 +1,6 @@
 using UnityEngine;
+//Author:Trent
+//Description: This abstract class serves as the base for all enemy types, defining common properties and an abstract attack method.
 
 public abstract class EnemyParent : MonoBehaviour
 {

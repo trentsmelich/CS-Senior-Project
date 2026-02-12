@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
-
+//Author:Trent 
+//Description: Manages the player's statistics including health, experience, and multipliers.
 public class PlayerStats : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    //All player stats are initialized here
     public float moveSpeed = 5f;
     public float currentHealth = 100f;
 
@@ -29,11 +32,12 @@ public class PlayerStats : MonoBehaviour
     private Animator anim;
     void Start()
     {
+        // Initialize player stats
         gameStateController = game.GetComponent<GameStateController>();
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
     }
-
+    //getters and setters for player stats
     public float GetMoveSpeed()
     {
         return moveSpeed;
@@ -78,6 +82,7 @@ public class PlayerStats : MonoBehaviour
     {
         return enemiesDefeated;
     }
+    //when an enemy is killed, it adds experience to the player from here
     public void AddExperience()
     {
         currentExperience += 1 * experienceMultiplier;
@@ -95,11 +100,16 @@ public class PlayerStats : MonoBehaviour
         coins += (int)(amount * profitMultiplier);
     }
 
+    public void AddBackBuildingCoins(int amount)
+    {
+        coins += amount;
+    }
+
     public int GetCoins()
     {
         return coins;
     }
-
+    // Modify a player stat by a given stat name and amount
     public void ModifyStat(String statName, float amount)
     {
         float multiplier = 1f + (amount / 100f);
@@ -130,7 +140,7 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
     }
-
+    // Take damage from an enemy
     public void TakeDamage(float damageAmount)
     {
         PlayerStateController player = GetComponent<PlayerStateController>();
@@ -164,10 +174,10 @@ public class PlayerStats : MonoBehaviour
         SR.color = Color.white;
     }
 
-
+    //when player health is 0 or less this triggers for the death
     private void Die()
     {
-        // Handle player death (e.g., trigger death animation, respawn, game over)
+        // Handle player death trigger death animation and sound effect and disable player movement
         Debug.Log("Player has died.");
 
         anim.SetTrigger("isDead");
@@ -191,5 +201,35 @@ public class PlayerStats : MonoBehaviour
     public void AddDefeatedEnemyCount()
     {
         enemiesDefeated += 1;
+    }
+
+    public void ApplySpeedBoost(float boostPercentage, float duration)
+    {
+        StartCoroutine(SpeedBoostCoroutine(boostPercentage, duration));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float boostPercentage, float duration)
+    {
+        float boostMultiplier = 1f + boostPercentage;
+        moveSpeed *= boostMultiplier;
+        
+        yield return new WaitForSeconds(duration);
+        
+        moveSpeed /= boostMultiplier;
+    }
+
+    public void ApplyAttackSpeedBoost(float cooldownRed, float duration)
+    {
+        StartCoroutine(AttackSpeedBoostCoroutine(cooldownRed, duration));
+    }
+
+    private IEnumerator AttackSpeedBoostCoroutine(float cooldownRed, float duration)
+    {
+        float boostMultiplier = 1f + cooldownRed;
+        attackSpeed *= boostMultiplier;
+        
+        yield return new WaitForSeconds(duration);
+        
+        attackSpeed /= boostMultiplier;
     }
 }

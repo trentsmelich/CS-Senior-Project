@@ -1,11 +1,16 @@
+
+// Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Author:Jia
+//Description: This script manages the in game tutorial, guiding players through the game's mechanics and UI.
 public class Game_Tutorial : MonoBehaviour
 {
+    // Declare lists for steps, playerPrefab, UI, SFX, and display game objects
     public GameObject[] tutorialSteps;
     public Button[] nextButtons;
+    public Button[] backButtons;
     private int currentStep;
     private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
     public GameObject GameTutorialObject;
@@ -41,6 +46,12 @@ public class Game_Tutorial : MonoBehaviour
             nextButton.onClick.AddListener(NextFunctionality);
         }
 
+        // Assign every back button the same functionality of previous step
+        foreach (Button backButton in backButtons)
+        {
+            backButton.onClick.AddListener(BackFunctionality);
+        }
+
         //Set all the texts for the tutorial
         SetTexts();
 
@@ -53,8 +64,16 @@ public class Game_Tutorial : MonoBehaviour
         ShowTutorialStep(currentStep);
     }
 
+    private void BackFunctionality()
+    {
+        // Play button SFX and go to previous step
+        buttonSFX.Play();
+        BackStep();
+    }
+
     private void NextFunctionality()
     {
+        // Play button SFX and go to next step
         buttonSFX.Play();
         NextStep();
     }
@@ -62,7 +81,7 @@ public class Game_Tutorial : MonoBehaviour
     private void SetTexts()
     {
         
-        //Setting the step texts
+        //Setting the step texts from the start to the end of the tutorial
         stepOneText = "Welcome to Cycle Of The Dead!" + "\n\n" + "This is a quick tutorial of the game" + "\n\n"
         + "This is a 2D Top Down defensive survival video game with a roguelike aspect. The main goal is to defeat as much enemies as you can and survival as long as possible. " 
         + "During the game, you can choose to buy different items from the shop or getting a upgrade offer to help you get stronger as you process the game.";
@@ -93,16 +112,18 @@ public class Game_Tutorial : MonoBehaviour
         + "* The Upgrade Offer screen will offer the player 3 different random upgrade offers, and the player is able to pick one of the three. "  + "\n"
         + "* That three offers include speed, damage, health, attack speed, profit multipllier, etc."  + "\n";
 
-        stepSixText = "Shop" + "\n\n"
+        stepSixText = "Shop & Building State" + "\n\n"
         + "* Access with F Key" + "\n"
         + "* Shop allows player to buy different items with coins." + "\n"
         + "* Damage, Farm, and Stat buttons help the player to filter different type of items." + "\n"
         + "* Player is able to buy towers for better defense, farms for generating coins, and stats for modify the player's stats. " + "\n"
         + "* The dark item buttons shows the item is locked, but will be unlocked after the requirements. " + "\n"
-        + "* A red message will display if the player don't have enough coins for the item." + "\n";
+        + "* A red message will display if the player don't have enough coins for the item." + "\n"
+        + "* During the building state, Left Click to place the building, Right Click to cancel placing." + "\n";
+
         
         stepSevenText = "Game Over Screen" + "\n\n"
-        + "* When the player died in the game, a Game Over screen will display for showing the player has lose the game." + "\n"
+        + "* When the player die in the game, a Game Over screen will display for showing the player has lose the game." + "\n"
         + "* Player will see the total time and the total enemies killed." + "\n"
         + "* Player will able to choose go back to main menu or restart the level." + "\n";
 
@@ -127,6 +148,17 @@ public class Game_Tutorial : MonoBehaviour
         GameTutorialObject.transform.Find("Step8_Waves/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = stepEightText;
         GameTutorialObject.transform.Find("Step9_EndOfTutorial/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = stepNineText;
 
+    }
+
+    private void BackStep()
+    {
+        // Move to the previous step
+        currentStep--;
+        if (currentStep < 0)
+        {
+            currentStep = 0;
+        }
+        ShowTutorialStep(currentStep);
     }
 
     private void NextStep()

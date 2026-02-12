@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Author:Jia and Trent
+//Description: This script manages the in shop state, including displaying the shop UI, filtering towers, and handling user interactions within the shop.
 public class InShopState : GameState
 {
     private GameObject shopScreen;
@@ -146,6 +147,7 @@ public class InShopState : GameState
                                 playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
 
                                 //If the building is purchased, set the tower to be placed and change state to building state
+                                Game.SetCurrentBuildingCost(tower.GetComponent<TowerParent>().TowerCost);
                                 Game.SetPlaceTower(tower);
                                 Game.SetState(new BuildingState());
                             }

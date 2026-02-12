@@ -1,8 +1,11 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Manages the player's running state, handling movement input and transitions to idle or attacking states.
 public class PlayerRunningState : PlayerState
 {
-    private float timer;
+    private float timer; // Timer to track idle transition delay
+
+    // When entering the running state, set animator and timer accordingly
     public override void EnterState(PlayerStateController player)
     {
         // Set animator to running by setting isMoving to true
@@ -11,6 +14,9 @@ public class PlayerRunningState : PlayerState
         timer = 0f;
     }
 
+    // Update is called once per frame
+    // Check for movement or attack input to transition to other states
+    // or continue moving the player
     public override void UpdateState(PlayerStateController player)
     {
         // Check for input
@@ -27,7 +33,6 @@ public class PlayerRunningState : PlayerState
                 return;
             }
             return;
-
         }
         else
         {
@@ -47,6 +52,7 @@ public class PlayerRunningState : PlayerState
         player.GetRigidbody().linearVelocity = moveDir * player.playerStats.GetMoveSpeed();    
     }
 
+    // When exiting the running state, set moving animator to false
     public override void ExitState(PlayerStateController player)
     {
         player.GetAnimator().SetBool("isMoving", false);

@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:trent
+//Description: This script manages the idle state of the game. Which also updates the waves to spawn enemies
 public class gameIdleState : GameState
 {
     public override void EnterState(GameStateController Game)

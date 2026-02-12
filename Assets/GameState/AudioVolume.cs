@@ -1,5 +1,8 @@
-using UnityEngine;
 
+// Library
+using UnityEngine;
+//Author:Jia
+//Description: This script manages the audio volume settings for music and sound effects in the game.
 public class AudioVolume : MonoBehaviour
 {
     //set the keys for Music and SFX volume
@@ -24,7 +27,7 @@ public class AudioVolume : MonoBehaviour
     {
         float volume = PlayerPrefs.GetFloat(VolumeMusicKey, 1f);
 
-        // Get all AudioSources in scene
+        // Get all Music Audio Sources in scene
         AudioSource[] sources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
 
         foreach (AudioSource src in sources)
@@ -42,6 +45,7 @@ public class AudioVolume : MonoBehaviour
     {
         float volume = PlayerPrefs.GetFloat(VolumeSFXKey, 1f);
 
+        // Get all the SFX Audio Sources in the scene
         AudioSource[] sources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
 
         foreach (AudioSource src in sources)

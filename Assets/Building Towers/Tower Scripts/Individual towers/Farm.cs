@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-
+//Author:Trent and Luis and Jia
+//Description: This script manages the Farm tower which generates coins over time.
 public class Farm : TowerParent
 {
     Animator anim;
@@ -9,22 +9,29 @@ public class Farm : TowerParent
     [SerializeField] Sprite[] sprites;
 
 
-    [SerializeField]private int profit;
-    private float harvestTimer;
-    private float spriteTimer;
+    [SerializeField]private int profit; // Amount of coins generated per harvest
+    private float harvestTimer; // Timer to track time since last harvest
+    private float spriteTimer; // Timer to track sprite animation timing
 
+    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Farm Tower Created");
         //anim = GetComponent<Animator>();
+
+        // Get reference to PlayerStats
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         
+        // Initialize timers for harvesting to control animation and profit generation
         harvestTimer = Time.realtimeSinceStartup;
         spriteTimer = attackCooldown / sprites.Length;
         
+        //Since farms have multiple sprites for animation due to their child objects,
+        // Get all child SpriteRenderers for animation
         int childCount = transform.childCount;
         spriteRenderers = new SpriteRenderer[childCount];
 
+        // Loop through each child to get its SpriteRenderer
         for (int i = 0; i < childCount; i++)
         {
             Transform child = transform.GetChild(i);
@@ -37,17 +44,22 @@ public class Farm : TowerParent
             }
         }
     }
+
+    // UpdateTower is called every frame to update tower behavior
     public override void UpdateTower(Transform enemy)
     {
         // Farms do not attack
         //farms update timer and when timer reaches cooldown, play animation and reset timer
         //Debug.Log("Farm Updating");
 
+        // Calculate time since last harvest
         float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;
         
+        // Determine which sprite to show based on time since last harvest
         int spriteIndex = (int)(timeSinceLastHarvest / spriteTimer);
         spriteIndex %= sprites.Length;
 
+        // Update all child SpriteRenderers to the current sprite for animation
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             if (spriteRenderers[i] != null)
@@ -56,6 +68,7 @@ public class Farm : TowerParent
             }
         }
 
+        // If cooldown has not been reached, do not harvest yet
         if (timeSinceLastHarvest < attackCooldown)
         {
             //Debug.Log("Farm Timer: " + timeSinceLastHarvest + " / " + attackCooldown);
@@ -69,7 +82,7 @@ public class Farm : TowerParent
 
 
     }
-
+    
     public override string GetName()
     {
         return towerName.ToString();

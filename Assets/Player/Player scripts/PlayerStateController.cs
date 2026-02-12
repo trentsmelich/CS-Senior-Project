@@ -1,11 +1,12 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Manages the player's state transitions and interactions with components like Animator and Rigidbody2D.
 public class PlayerStateController : MonoBehaviour
 {
-    private PlayerState currentState;
-    private Animator anim;
-    private Rigidbody2D rb;
-    private SpriteRenderer sprite;
+    private PlayerState currentState; // Current state of the player
+    private Animator anim; // Reference to the Animator component
+    private Rigidbody2D rb; // Reference to the Rigidbody2D component
+    private SpriteRenderer sprite; // Reference to the SpriteRenderer component
 
     [Header("Movement")]
     public Vector2 moveInput; // Current frame's movement input
@@ -21,8 +22,10 @@ public class PlayerStateController : MonoBehaviour
     [SerializeField] AudioSource hurtSound;
     [SerializeField] AudioSource deadSound;
 
+    // Start is called before the first frame update
     void Start()
     {
+        // Get component references
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -32,6 +35,7 @@ public class PlayerStateController : MonoBehaviour
         SetState(new PlayerIdleState());
     }
 
+    // Update is called once per frame
     void Update()
     {
         // Update the current state
@@ -42,6 +46,7 @@ public class PlayerStateController : MonoBehaviour
         anim.SetBool("isMoving", isMoving);
     }
 
+    // Method to change the current state of the player
     public void SetState(PlayerState newState)
     {
         if (currentState != null)

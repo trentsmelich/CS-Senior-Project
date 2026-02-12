@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5672652092366848523}
   - component: {fileID: 4632220169891554721}
   - component: {fileID: 7510275869217372887}
+  - component: {fileID: -2477626979300890018}
   m_Layer: 0
   m_Name: SlingShot3
   m_TagString: Untagged
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c0cac6a81e3ed224682462ef2005ac51, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 8a9756a176e610d42b72e7a2b0a2d33e, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,18 +173,34 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.16666663}
+  m_Offset: {x: 0, y: -0.266021}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 1.27}
+    oldSize: {x: 0.6425098, y: 1.27}
     newSize: {x: 0.64, y: 1.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.64, y: 0.5066667}
+  m_Size: {x: 0.64, y: 0.69226575}
   m_EdgeRadius: 0
+--- !u!208 &-2477626979300890018
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146517596455405730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.32000002, y: 0.355, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.27, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2840724824281314363
 PrefabInstance:
   m_ObjectHideFlags: 0

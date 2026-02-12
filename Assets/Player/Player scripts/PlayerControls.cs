@@ -1,12 +1,14 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Handles player movement input and applies movement to the Rigidbody2D component.
 public class PlayerControls : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;
+    public float moveSpeed = 5f; // Speed of the player movement
 
-    private Rigidbody2D rb;
-    private Vector2 moveInput;    
+    private Rigidbody2D rb; // Reference to the Rigidbody2D component
+    private Vector2 moveInput; // Store player input    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

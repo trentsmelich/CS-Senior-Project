@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Luis
+//Description: Abstract base class for player states
 public abstract class PlayerState
 {
     public abstract void EnterState(PlayerStateController player);

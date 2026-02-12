@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Author:Jia and Trent and Luis
+//Description: This script manages the DEAD state for all enemies
 public class EnemyDeadState : EnemyState
 {
     public override void EnterState(EnemyAI enemy)
@@ -17,6 +18,18 @@ public class EnemyDeadState : EnemyState
         if(Random.value <= 0.05f)
         {
             Object.Instantiate(enemy.GetHealPrefab(), enemy.transform.position, Quaternion.identity);
+        }
+
+        // 5% chance to drop speed or cooldown powerup
+        if(Random.value <= 0.05f)
+        {
+            Object.Instantiate(enemy.GetSpeedPrefab(), enemy.transform.position, Quaternion.identity);
+        }
+
+        // 5% chance to drop cooldown powerup
+        if(Random.value <= 0.05f)
+        {
+            Object.Instantiate(enemy.GetCooldownPrefab(), enemy.transform.position, Quaternion.identity);
         }
         
         //Add a defeated enemy count to the player's stats

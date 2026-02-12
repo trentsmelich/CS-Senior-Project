@@ -1,7 +1,9 @@
 using UnityEngine;
-
+//Author:Trent
+//Description: This script manages the AI behavior of enemies, including state management and interaction with the player.
 public class EnemyAI : MonoBehaviour
 {
+    //variables the enemyAI needs
     private Transform player;
     private float moveSpeed;
     private float attackRange;
@@ -12,10 +14,13 @@ public class EnemyAI : MonoBehaviour
     private EnemyState currentState;
     public GameObject coinPrefab;
     public GameObject healPrefab;
+    public GameObject speedPrefab;
+    public GameObject cooldownPrefab;
     private EnemyParent enemyParent;
 
     void Start()
     {
+        // Initialize enemy variables
         enemyParent = GetComponent<EnemyParent>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -30,16 +35,19 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        // Update the current state
         currentState?.UpdateState(this);
     }
 
     public void SetState(EnemyState newState)
     {
+        //set the new state by exiting current state and entering new state
         currentState?.ExitState(this);
         currentState = newState;
         currentState?.EnterState(this);
     }
-
+    // Getters and Setters for enemy variables with update direction used for enemy animators 
+    // and enemy states to help enemy face in correct direction when moving
     public Animator GetAnimator() => anim;
     public Rigidbody2D GetRigidbody() => rb;
 
@@ -60,6 +68,14 @@ public class EnemyAI : MonoBehaviour
     public GameObject GetHealPrefab()
     {
         return healPrefab;
+    }
+    public GameObject GetSpeedPrefab()
+    {
+        return speedPrefab;
+    }
+    public GameObject GetCooldownPrefab()
+    {
+        return cooldownPrefab;
     }
     public Transform GetPlayer()
     {

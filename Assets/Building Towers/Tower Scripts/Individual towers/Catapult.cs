@@ -1,3 +1,5 @@
+//Authors: Trent and Jia
+//Description: This script is for the Catapult tower. It handles the attack logic, including firing projectiles at enemies.
 using System.Collections;
 using UnityEngine;
 
@@ -47,9 +49,12 @@ public class Catapult : TowerParent
         {
             yield break;
         }
+        // Instantiate the projectile and set its initial position and target
         GameObject projectile = Instantiate(projectilePrefab, catapultArm.transform.position, catapultArm.transform.rotation);
         projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
+        //set stats for projectile
         projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage);
+        //set scale manually bc unity annoying
         projectile.transform.localScale = new Vector3(4, 4, 4);
         projectile.SetActive(true);
 

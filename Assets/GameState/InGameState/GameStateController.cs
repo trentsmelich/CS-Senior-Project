@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
 
+//Author:Trent and Jia and Luis
+//Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
 public class GameStateController : MonoBehaviour
 {
     [Header("Player Settings")]
@@ -43,6 +45,8 @@ public class GameStateController : MonoBehaviour
     public GameObject upgradeScreen;
     // Game Over Screen
     public GameObject gameOverScreen;
+    // Upgrade Offer Text
+    public GameObject upgradeOfferCountDownText;
 
     [Header("Player UI Display Elements")]
     public GameObject playerHealthBar;
@@ -51,7 +55,6 @@ public class GameStateController : MonoBehaviour
     public GameObject enemyDefeatCounter;
     public GameObject waveCounter;
     public GameObject timer;
-
     private GameObject placeTower;
 
     
@@ -64,6 +67,9 @@ public class GameStateController : MonoBehaviour
     private AudioSource keyClickSound;
     public AudioSource backgroundMusic;
     public AudioSource GameOverMusic;
+
+    //Other Variables
+    public int currentBuildingCost = 0;
 
     void Start()
     {
@@ -83,7 +89,6 @@ public class GameStateController : MonoBehaviour
 
         //Get the Player information
         playerStats = player.GetComponent<PlayerStats>();
-
         //Set SFX
         keyClickSound = GameObject.Find("SFX/Key_Click_SFX").GetComponent<AudioSource>();
     }
@@ -95,7 +100,7 @@ public class GameStateController : MonoBehaviour
         currentState.UpdateState(this);
 
         // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState)) // press Esc key
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press Esc key
         {
             keyClickSound.Play();
             SetState(new PauseState());
@@ -103,11 +108,12 @@ public class GameStateController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && (currentState is PauseState)) // press Esc key
         {
             keyClickSound.Play();
+            ShowPlayerUI(true);
             SetState(new gameIdleState());
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState)) // press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press F key to enter shop
         {
             keyClickSound.Play();
             SetState(new InShopState());
@@ -200,6 +206,19 @@ public class GameStateController : MonoBehaviour
     {
         placeTower = tower;
     }
+    public void SetCurrentBuildingCost(int cost)
+    {
+        currentBuildingCost = cost;
+    }
+    public void AddBackBuildingCoins(int amount)
+    {
+        playerStats.AddBackBuildingCoins(amount);
+    }
+
+    public int GetCurrentBuildingCost()
+    {
+        return currentBuildingCost;
+    }
     public GameObject GetPlaceTower()
     {
         return placeTower;
@@ -239,5 +258,10 @@ public class GameStateController : MonoBehaviour
     public void PlayButtonClickSound()
     {
         buttonClickSound.Play();
+    }
+
+    public GameObject GetUpgradeCountDownText()
+    {
+        return upgradeOfferCountDownText;
     }
 }
