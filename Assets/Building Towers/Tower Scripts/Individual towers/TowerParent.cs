@@ -21,6 +21,8 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected string towerName;
     [SerializeField] protected bool unlocked;
 
+    [SerializeField] protected int health;
+
     
     //getters and setters for the properties
     public float TowerRange => towerRange;
@@ -59,5 +61,12 @@ public abstract class TowerParent : MonoBehaviour
     public abstract string GetDescription();
     public abstract string GetAttributes();
     
-    
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

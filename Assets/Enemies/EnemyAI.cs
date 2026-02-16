@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject cooldownPrefab;
     private EnemyParent enemyParent;
 
+    private bool targetPlayer;
+
     void Start()
     {
         // Initialize enemy variables
@@ -28,6 +30,9 @@ public class EnemyAI : MonoBehaviour
         moveSpeed = enemyParent.Speed;
         attackRange = enemyParent.EnemyRange;
         damage = enemyParent.EnemyDamage;
+
+        //small chance for enemy to target buildings instead of player
+        targetPlayer = Random.value > 0.1f; // 90% chance to target player, 10% chance to target buildings
 
         // Start in Idle or Chase
         SetState(new EnemyChaseState());
@@ -136,5 +141,8 @@ public class EnemyAI : MonoBehaviour
     {
         moveSpeed = speed;
     }
-
+    public bool IsTargetingPlayer()
+    {
+        return targetPlayer;
+    }
 }

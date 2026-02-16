@@ -4,7 +4,7 @@ using UnityEngine.AI;
 //Description: This script manages the CHASE state for all enemies
 public class EnemyChaseState : EnemyState
 {
-    private NavMeshAgent agent;
+    private NavMeshAgent agent; 
      public override void EnterState(EnemyAI enemy)
     {
         //set the anim to walking
@@ -25,7 +25,23 @@ public class EnemyChaseState : EnemyState
         Vector2 moveDir = new Vector2(velocity.x, velocity.y).normalized;
         float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
 
-        // Move toward player
+        // Move toward player if enemy is targeting player otherwise move toward buildings
+        if (enemy.IsTargetingPlayer())
+        {
+            //agent.SetDestination(enemy.GetPlayer().position);
+        }
+        else
+        {
+            // Find the nearest building and set it as the destination
+            //if nearest building path is significantly longer than distance straight towards
+            //building find nearest fence and break it down instead
+            //get path to nearest building
+            //get distance of path to nearest building
+            //get distance straight towards nearest building
+            //if distance of path is significantly longer than distance straight towards building find nearest fence and break
+            
+
+        }
         agent.SetDestination(enemy.GetPlayer().position);
 
         // Update direction animation
