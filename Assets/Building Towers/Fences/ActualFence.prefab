@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6964976192592021844}
   m_Layer: 0
   m_Name: ActualFence
-  m_TagString: Untagged
+  m_TagString: Fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   towerType: Farm
   towerName: Fence
   unlocked: 1
+  health: 0
 --- !u!114 &6654409567372422999
 MonoBehaviour:
   m_ObjectHideFlags: 0

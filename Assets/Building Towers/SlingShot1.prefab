@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 6479388327246865521}
   m_Layer: 0
   m_Name: SlingShot1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,7 +328,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 371.21597, y: 220.38248}
-  m_SizeDelta: {x: 0.64, y: 0.97}
+  m_SizeDelta: {x: 1.19, y: 1.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7276476798313114114
 SpriteRenderer:
@@ -428,6 +428,7 @@ MonoBehaviour:
   towerType: Damage
   towerName: SlingShot
   unlocked: 1
+  health: 0
 --- !u!61 &5159145958060091897
 BoxCollider2D:
   m_ObjectHideFlags: 0

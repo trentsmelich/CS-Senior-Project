@@ -23,17 +23,45 @@ public class EnemyChaseState : EnemyState
         
         Vector3 velocity = agent.velocity;
         Vector2 moveDir = new Vector2(velocity.x, velocity.y).normalized;
-        float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+        
+        float distance;
 
         // Move toward player if enemy is targeting player otherwise move toward buildings
         if (enemy.IsTargetingPlayer())
         {
-            //agent.SetDestination(enemy.GetPlayer().position);
+            distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+            agent.SetDestination(enemy.GetPlayer().position);
         }
         else
         {
-            // Find the nearest building and set it as the destination
+            
+            // Find the nearest tower and set it as the destination
+            Transform nearestTower = enemy.GetNearestTower();
+            distance = Vector2.Distance(nearestTower.position, enemy.transform.position);
+
+            if (nearestTower != null)
+            {
+                agent.SetDestination(nearestTower.position);
+            }
+            else
+            {
+                // If no towers are found, target the player instead
+                agent.SetDestination(enemy.GetPlayer().position);
+                Debug.Log("No towers found, targeting player instead.");
+            }
+            
+
             //if nearest building path is significantly longer than distance straight towards
+            if(distance > agent.remainingDistance * 3.0f)
+            {
+                // If path is significantly longer, target nearest fence instead
+                Transform nearestFence = enemy.GetNearestFence();
+                if (nearestFence != null)
+                {
+                    agent.SetDestination(nearestFence.position);
+                }
+            }
+            
             //building find nearest fence and break it down instead
             //get path to nearest building
             //get distance of path to nearest building
@@ -42,7 +70,7 @@ public class EnemyChaseState : EnemyState
             
 
         }
-        agent.SetDestination(enemy.GetPlayer().position);
+        //agent.SetDestination(enemy.GetPlayer().position);
 
         // Update direction animation
         enemy.UpdateDirection(enemy, moveDir);
@@ -56,6 +84,7 @@ public class EnemyChaseState : EnemyState
 
     public override void ExitState(EnemyAI enemy)
     {
+        agent.isStopped = true;
         enemy.GetAnimator().SetBool("Walking", false);
     }
 }

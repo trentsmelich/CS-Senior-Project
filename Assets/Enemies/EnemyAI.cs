@@ -32,7 +32,13 @@ public class EnemyAI : MonoBehaviour
         damage = enemyParent.EnemyDamage;
 
         //small chance for enemy to target buildings instead of player
-        targetPlayer = Random.value > 0.1f; // 90% chance to target player, 10% chance to target buildings
+        //if enemy has component of goblin then always target buildings
+        
+        if (GetComponent<Goblin>())
+        {
+            targetPlayer = false;
+        }
+        
 
         // Start in Idle or Chase
         SetState(new EnemyChaseState());
@@ -144,5 +150,41 @@ public class EnemyAI : MonoBehaviour
     public bool IsTargetingPlayer()
     {
         return targetPlayer;
+    }
+    public Transform GetNearestTower()
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        Transform nearestTower = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject tower in towers)
+        {
+            float distance = Vector3.Distance(transform.position, tower.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestTower = tower.transform;
+            }
+        }
+
+        return nearestTower;
+    }
+    public Transform GetNearestFence()
+    {
+        GameObject[] fences = GameObject.FindGameObjectsWithTag("Fence");
+        Transform nearestFence = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject fence in fences)
+        {
+            float distance = Vector3.Distance(transform.position, fence.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestFence = fence.transform;
+            }
+        }
+
+        return nearestFence;
     }
 }

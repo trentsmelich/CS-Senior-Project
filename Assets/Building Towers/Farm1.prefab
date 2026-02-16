@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4253030858785016633}
   m_Layer: 0
   m_Name: Farm1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   towerType: Farm
   towerName: Farm
   unlocked: 1
+  health: 0
   sprites:
   - {fileID: 8369948372191450990, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   - {fileID: -3402868906910896487, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
