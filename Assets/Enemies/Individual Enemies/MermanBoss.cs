@@ -3,36 +3,73 @@ using System.Collections;
 
 public class MermanBoss : EnemyParent
 {
+    [Header("Special Settings")]
+    [SerializeField] private float specialAttackCooldown = 10f;
+    [SerializeField] private float warningDelay = 0.25f;
+
     [Header("Spike Attack")]
     [SerializeField] private GameObject spikePrefab;
     [SerializeField] private GameObject warningPrefab;
-    [SerializeField] private float specialDuration = 4f;
-    [SerializeField] private float spikeInterval = 0.1f;
-    [SerializeField] private float warningDelay = 0.25f;
+    [SerializeField] private float spawningDuration = 4f;
+    [SerializeField] private float spikeInterval = 0.05f;
     [SerializeField] private float specialRange = 5f;
 
     [Header("Spike Burst")]
-    [SerializeField] private int burstRings = 5;          
+    [SerializeField] private int spawnCount = 5;          
     [SerializeField] private float burstSpacing = 2.0f;   
     [SerializeField] private float burstInterval = 0.07f; 
-    [SerializeField] private float coneAngle = 20f;       
+    [SerializeField] private float angle = 20f;       
     [SerializeField] private float burstStartDist = 1.0f; 
 
     private bool specialActive;
+    private EnemyAI enemyAI;
+
+    void Start()
+    {
+        enemyAI = GetComponent<EnemyAI>();
+        StartCoroutine(SpecialAttackController());
+    }
 
     public override void Attack(EnemyAI enemy)
     {
-        // if (!specialActive && dist <= specialRange)
-        // {
-        //     specialActive = true;                 // IMPORTANT: set immediately so normal can't start this frame
-        //     StartCoroutine(SpikeBurst(enemy));     // or SpikeAttack(enemy)
-        //     return;                                // IMPORTANT: prevents normal attack
-        // }
-
-        // 2) Normal only if no special
         if (!specialActive)
         {
             enemy.StartCoroutine(NormalAttack(enemy, 0.5f));
+        }
+    }
+
+    IEnumerator SpecialAttackController()
+    {
+        var agent = enemyAI.GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        while (true)
+        {
+            yield return new WaitForSeconds(specialAttackCooldown);
+
+            float distanceToPlayer = Vector2.Distance(enemyAI.transform.position, enemyAI.GetPlayer().transform.position);
+            if (distanceToPlayer > specialRange) continue;
+
+            // pause navmesh
+            bool oldStopped = agent.isStopped;
+            float oldSpeed = agent.speed;
+
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.speed = 0f;
+
+            // do special (wait for completion)
+            if (Random.value < 0.5f)
+            {
+                yield return StartCoroutine(SpikeAttack(enemyAI));
+            }
+            else
+            {
+                yield return StartCoroutine(SpikeBurst(enemyAI));
+            }
+
+            // resume navmesh
+            agent.speed = oldSpeed;
+            agent.isStopped = oldStopped;
         }
     }
 
@@ -75,7 +112,7 @@ public class MermanBoss : EnemyParent
         specialActive = true;
         float timer = 0f;
 
-        while (timer < specialDuration)
+        while (timer < spawningDuration)
         {
             Vector2 playerPos = enemy.GetPlayer().transform.position;
 
@@ -104,13 +141,13 @@ public class MermanBoss : EnemyParent
 
         // 3 directions: center, left, right
         Vector2 dirCenter = dirToPlayer;
-        Vector2 dirLeft   = Rotate(dirToPlayer, -coneAngle);
-        Vector2 dirRight  = Rotate(dirToPlayer,  coneAngle);
+        Vector2 dirLeft   = Rotate(dirToPlayer, -angle);
+        Vector2 dirRight  = Rotate(dirToPlayer,  angle);
 
         // Show warnings first before spawning the spikes
         if (warningPrefab != null)
         {
-            for (int ring = 0; ring < burstRings; ring++)
+            for (int ring = 0; ring < spawnCount; ring++)
             {
                 float dist = burstStartDist + ring * burstSpacing;
 
@@ -126,7 +163,7 @@ public class MermanBoss : EnemyParent
         }
 
         // Spawn the spikes in intervals
-        for (int ring = 0; ring < burstRings; ring++)
+        for (int ring = 0; ring < spawnCount; ring++)
         {
             float dist = burstStartDist + ring * burstSpacing;
 
@@ -147,19 +184,4 @@ public class MermanBoss : EnemyParent
         float sin = Mathf.Sin(rad);
         return new Vector2(v.x * cos - v.y * sin, v.x * sin + v.y * cos).normalized;
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        // Visualize normal attack range in front of the boss.
-        Vector2 dir = transform.right;
-        if (transform.localScale.x < 0f)
-        {
-            dir = -dir;
-        }
-
-        Vector2 attackPosition = (Vector2)transform.position + dir.normalized * attackDistance;
-        Gizmos.color = new Color(1f, 0.5f, 0f, 0.5f);
-        Gizmos.DrawWireSphere(attackPosition, enemyRange);
-    }
-    
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 //Author:Luis
 //Description: This script manages the behavior of the Turtle Boss enemy, including its normal and special attacks.
 public class TurtleBoss : EnemyParent
@@ -14,6 +15,7 @@ public class TurtleBoss : EnemyParent
     private EnemyAI enemyAI;
     private EnemyHealth enemyHealth;
     private Rigidbody2D rb;
+    private NavMeshAgent agent;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class TurtleBoss : EnemyParent
         enemyAI = GetComponent<EnemyAI>();
         rb = GetComponent<Rigidbody2D>();
         enemyHealth = GetComponent<EnemyHealth>();
+         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(SpecialAttackController());
     }
 
@@ -87,8 +90,14 @@ public class TurtleBoss : EnemyParent
     {
         // Set up for special attack
         specialActive = true;
-        float originalSpeed = enemyAI.GetMoveSpeed();
-        enemyAI.SetMoveSpeed(0);
+        
+        bool oldStopped = agent.isStopped;
+        float oldSpeed = agent.speed;
+
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+        agent.speed = 0f;
+
         anim.SetBool("Walking", false);
         anim.SetTrigger("Special");
         enemyHealth.SetInvincible(true);
@@ -115,7 +124,14 @@ public class TurtleBoss : EnemyParent
         // Reset after special attack
         specialActive = false;
         enemyHealth.SetInvincible(false);
-        enemyAI.SetMoveSpeed(originalSpeed);
+        
+         // Resume NavMeshAgent
+        if (agent != null)
+        {
+            agent.speed = oldSpeed;
+            agent.isStopped = oldStopped;
+        }
+
         anim.SetBool("Walking", true);
     }
 }
