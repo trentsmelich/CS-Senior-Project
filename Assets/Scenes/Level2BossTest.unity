@@ -77506,6 +77506,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 59178448284976715, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339109564632494867, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: m_Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482035734980247406, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: enemyRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482035734980247406, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: enemyDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482035734980247406, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: burstSpacing
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049835844406912129, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3251304925630202258, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.75
@@ -77544,6 +77568,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3251304925630202258, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784765369843630091, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7055142749614219433, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
