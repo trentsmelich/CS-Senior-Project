@@ -41,6 +41,7 @@ public class EnemyChaseState : EnemyState
 
             if (nearestTower != null)
             {
+                enemy.setTarget(nearestTower);
                 agent.SetDestination(nearestTower.position);
                 distance = Vector2.Distance(nearestTower.position, enemy.transform.position);
             }

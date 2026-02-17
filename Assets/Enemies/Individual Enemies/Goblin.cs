@@ -14,6 +14,9 @@ public class Goblin : EnemyParent
     public override void Attack(EnemyAI enemy)
     {
         //small delay through coroutine could be added here for attack wind-up
+        //change attack range based on enemyAI targeting player or buildings
+        //normal for player but additional is needed for buildings
+        //default is 1, found 1.75 to be good for buildings but may need to be tweaked
         enemy.StartCoroutine(AttackDelay(enemy, 0.5f));
 
         
@@ -43,6 +46,11 @@ public class Goblin : EnemyParent
 
     IEnumerator AttackDelay(EnemyAI enemy, float delay)
     {
+        //NEED TO CHANGE THIS TO WORK WITH TARGETING BUILDINGS INSTEAD OF PLAYER, CURRENTLY JUST ATTACKS TOWARDS PLAYER
+        //CHANGE LAYER TO ATTACK PLAYER AND BUILDINGS 
+        //REMEMBER FENCES ONLY WORK WITH SPECIAL LAYER SO THEY WILL BREAK WHEN I CHANGE THIS AND WILL NEED TO FIX THAT
+        //should work when i am done
+        //hopefuly
         yield return new WaitForSeconds(delay);
         Vector2 dir = GetFacingDirection(enemy);
         Vector2 attackPosition = (Vector2)enemy.GetGameObject().transform.position + dir * attackDistance;

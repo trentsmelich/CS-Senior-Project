@@ -23,21 +23,21 @@ public class EnemyAttackState : EnemyState
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         //increase timer for cooldown
         timer += Time.deltaTime;
-        float distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+        float distance = Vector2.Distance(enemy.GetTarget().position, enemy.transform.position);
 
-        enemy.UpdateDirection(enemy, (enemy.GetPlayer().position - enemy.transform.position).normalized);
+        enemy.UpdateDirection(enemy, (enemy.GetTarget().position - enemy.transform.position).normalized);
 
         // After attacking, return to chase
         if (timer >= attackCooldown)
         {
             //reset timer
             timer = 0f;
-            //check if player is STILL in attack range
+            //check if target is STILL in attack range
             if (distance > enemy.GetAttackRange())
                 enemy.SetState(new EnemyChaseState());
 
             else
-                // re-attack if player still close
+                // re-attack if target still close
                 EnterState(enemy);
              // re-attack if still close
         }

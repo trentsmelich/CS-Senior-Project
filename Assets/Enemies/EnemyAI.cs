@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     private EnemyParent enemyParent;
 
     private bool targetPlayer;
+    private Transform target;
 
     void Start()
     {
@@ -34,10 +35,13 @@ public class EnemyAI : MonoBehaviour
         //small chance for enemy to target buildings instead of player
         //if enemy has component of goblin then always target buildings
         targetPlayer = true;
+
         if (GetComponent<Goblin>())
         {
             targetPlayer = false;
+
         }
+        //DOES NOT WORK WITH EVERYTHING JUST TESTING GOBLIN FOR NOW NO TARGETING PLAYER
         
 
         // Start in Idle or Chase
@@ -190,5 +194,13 @@ public class EnemyAI : MonoBehaviour
     public void SetTargetingPlayer(bool targeting)
     {
         targetPlayer = targeting;
+    }
+    public void setTarget(Transform t)
+    {
+        target = t;
+    }
+    public Transform GetTarget()
+    {
+        return target;
     }
 }
