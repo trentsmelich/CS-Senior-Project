@@ -25,6 +25,7 @@ public class LevelSelect : MainMenuState
         Button level1Button = levelSelectPanel.transform.Find("Level_1_Button").GetComponent<Button>();
         Button level2Button = levelSelectPanel.transform.Find("Level_2_Button").GetComponent<Button>();
         Button level3Button = levelSelectPanel.transform.Find("Level_3_Button").GetComponent<Button>();
+        Button levelBossButton = levelSelectPanel.transform.Find("Level_Boss_Button").GetComponent<Button>();
 
         // Give each button functionalities for level 1, level 2, level 3, main menu, and tutorial
         level1Button.onClick.AddListener(() =>
@@ -48,6 +49,14 @@ public class LevelSelect : MainMenuState
             Debug.Log("Level 3 Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        });
+
+        // Level Boss button
+        levelBossButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Level Boss Button Clicked");
+            m.PlayButtonClickSound();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
         });
 
         // Main menu button
