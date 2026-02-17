@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
 
         //small chance for enemy to target buildings instead of player
         //if enemy has component of goblin then always target buildings
-        
+        targetPlayer = true;
         if (GetComponent<Goblin>())
         {
             targetPlayer = false;
@@ -186,5 +186,9 @@ public class EnemyAI : MonoBehaviour
         }
 
         return nearestFence;
+    }
+    public void SetTargetingPlayer(bool targeting)
+    {
+        targetPlayer = targeting;
     }
 }

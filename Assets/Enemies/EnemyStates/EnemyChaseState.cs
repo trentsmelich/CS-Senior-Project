@@ -24,7 +24,7 @@ public class EnemyChaseState : EnemyState
         Vector3 velocity = agent.velocity;
         Vector2 moveDir = new Vector2(velocity.x, velocity.y).normalized;
         
-        float distance;
+        float distance = 0f;
 
         // Move toward player if enemy is targeting player otherwise move toward buildings
         if (enemy.IsTargetingPlayer())
@@ -37,16 +37,17 @@ public class EnemyChaseState : EnemyState
             
             // Find the nearest tower and set it as the destination
             Transform nearestTower = enemy.GetNearestTower();
-            distance = Vector2.Distance(nearestTower.position, enemy.transform.position);
+            
 
             if (nearestTower != null)
             {
                 agent.SetDestination(nearestTower.position);
+                distance = Vector2.Distance(nearestTower.position, enemy.transform.position);
             }
             else
             {
                 // If no towers are found, target the player instead
-                agent.SetDestination(enemy.GetPlayer().position);
+                enemy.SetTargetingPlayer(true);
                 Debug.Log("No towers found, targeting player instead.");
             }
             
