@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &135934561
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 97.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_Name
+      value: WormBoss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
 --- !u!1 &228650076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1182,63 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1001 &929131204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 90.81459
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.186306
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+      propertyPath: m_Name
+      value: WoodGolemBoss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
 --- !u!1 &971175238
 GameObject:
   m_ObjectHideFlags: 0
@@ -67651,3 +67765,5 @@ SceneRoots:
   - {fileID: 285281361}
   - {fileID: 286090369}
   - {fileID: 793172313}
+  - {fileID: 929131204}
+  - {fileID: 135934561}
