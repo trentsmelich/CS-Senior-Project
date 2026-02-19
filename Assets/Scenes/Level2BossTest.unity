@@ -127,13 +127,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 135934562}
+    - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: enemyDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1114417526654847487, guid: e0db7367fa581d84792113e50e780fb3, type: 3}
     - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.67
+      value: -6.6
       objectReference: {fileID: 0}
     - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.3
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -167,15 +187,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4353650368739510951, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: m_Name
       value: WormBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+--- !u!4 &135934562 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3975823991477318958, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+  m_PrefabInstance: {fileID: 135934561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &228650076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,63 +1223,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!1001 &929131204
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 90.81459
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -13.186306
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700584542902809305, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
-      propertyPath: m_Name
-      value: WoodGolemBoss
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
 --- !u!1 &971175238
 GameObject:
   m_ObjectHideFlags: 0
@@ -67765,5 +67749,4 @@ SceneRoots:
   - {fileID: 285281361}
   - {fileID: 286090369}
   - {fileID: 793172313}
-  - {fileID: 929131204}
   - {fileID: 135934561}
