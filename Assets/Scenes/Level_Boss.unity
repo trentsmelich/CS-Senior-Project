@@ -66217,7 +66217,7 @@ GameObject:
   - component: {fileID: 1424490342}
   - component: {fileID: 1424490343}
   m_Layer: 0
-  m_Name: Level_1_Music
+  m_Name: Level_Boss_Music
   m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66249,7 +66249,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 27419087a5a0c5b47932dfcfa7dc2abd, type: 3}
+  m_Resource: {fileID: 8300000, guid: 47d46ea0634aa464d8ae9ccbb199b474, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
