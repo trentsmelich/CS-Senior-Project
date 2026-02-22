@@ -62,6 +62,7 @@ public class GameStateController : MonoBehaviour
 
     [SerializeField] private UnlockController unlockController;
 
+    [Header("Audio Settings")]
     //Music and SFX
     public AudioSource buttonClickSound;
     private AudioSource keyClickSound;
@@ -70,6 +71,11 @@ public class GameStateController : MonoBehaviour
 
     //Other Variables
     public int currentBuildingCost = 0;
+
+    [Header("Story Settings")]
+    public string[] storyLines;
+    public GameObject storyUI;
+    [SerializeField] private TextMeshProUGUI storyText;
 
     void Start()
     {
@@ -98,6 +104,11 @@ public class GameStateController : MonoBehaviour
     {
         // Update the current state
         currentState.UpdateState(this);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SetState(new StoryState());
+        }
 
         // paused state transitions
         if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press Esc key
@@ -263,5 +274,20 @@ public class GameStateController : MonoBehaviour
     public GameObject GetUpgradeCountDownText()
     {
         return upgradeOfferCountDownText;
+    }
+
+    public string[] GetStoryLines()
+    {
+        return storyLines;
+    }
+
+    public void SetStoryUI(bool show)
+    {
+        storyUI.SetActive(show);
+    }
+
+    public TextMeshProUGUI GetStoryText()
+    {
+        return storyText;
     }
 }
