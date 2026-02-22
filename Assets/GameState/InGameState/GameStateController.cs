@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using TMPro;
 
 //Author:Trent and Jia and Luis
@@ -73,9 +74,13 @@ public class GameStateController : MonoBehaviour
     public int currentBuildingCost = 0;
 
     [Header("Story Settings")]
-    public string[] storyLines;
-    public GameObject storyUI;
+    [SerializeField] private string[] storyLines;
+    [SerializeField] private GameObject storyUI;
     [SerializeField] private TextMeshProUGUI storyText;
+    [SerializeField] private Sprite[] enemySprites;
+    [SerializeField] private Image enemyImage;
+    [SerializeField] private Image playerImage;
+    //private bool storyPlayed = false;
 
     void Start()
     {
@@ -105,8 +110,9 @@ public class GameStateController : MonoBehaviour
         // Update the current state
         currentState.UpdateState(this);
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (/*storyPlayed == false*/ Input.GetKeyDown(KeyCode.P) && !(currentState is StoryState)) // press Space key to play story
         {
+            //storyPlayed = true;
             SetState(new StoryState());
         }
 
@@ -289,5 +295,21 @@ public class GameStateController : MonoBehaviour
     public TextMeshProUGUI GetStoryText()
     {
         return storyText;
+    }
+
+    public Sprite[] GetStoryEnemySprites()
+    {
+        return enemySprites;
+    }
+
+    public void SetStoryEnemySprite(Sprite sprite)
+    {
+        enemyImage.sprite = sprite;
+    }
+
+    public void SetStoryPlayerSprite()
+    {
+        //Set the player's sprite to the corresponding sprite for the story (just set it to the player's current sprite)
+        playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
     }
 }

@@ -1,18 +1,18 @@
-
 // Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-//Author:Jia
-//Description: This script tells the story to the player before the level starts, including displaying story text, handling user interactions, and managing transitions to the next state.
+// Author:Jia
+// Description: This script tells the story to the player before the level starts, including displaying story text, handling user interactions, and managing transitions to the next state.
 
 public class StoryState : GameState
 {
     // Variables for the Story State
     private TextMeshProUGUI storyText;
     private string[] storyLines;
+    private Sprite[] enemySprites;
     private float textDisplaySpeed = 0.05f;
     private int index;
 
@@ -22,6 +22,7 @@ public class StoryState : GameState
         // Get references to the story text and lines from the GameStateController
         storyText = Game.GetStoryText();
         storyLines = Game.GetStoryLines();
+        enemySprites = Game.GetStoryEnemySprites();
 
         // Show the story UI and hide the player UI, and pause the game time
         Game.SetStoryUI(true);
@@ -29,6 +30,7 @@ public class StoryState : GameState
         Time.timeScale = 0;
 
         // Clear the story text and start the dialogue
+        Game.SetStoryPlayerSprite(); // set the player's sprite to the corresponding sprite for the story
         storyText.text = "";
         StartDialogue(Game);
     }
@@ -36,15 +38,16 @@ public class StoryState : GameState
     public override void UpdateState(GameStateController Game)
     {
         // Implementation for updating the story state
-        //If space is pressed or left mouse is clicked, display the next line of the story or transition to the next state if all lines have been displayed
-
+        // If space is pressed or left mouse is clicked, display the next line of the story or transition to the next state if all lines have been displayed
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             storyText.text = storyLines[index]; // do the full line of text 
             index++;
 
+            // If there are more lines of the story to display, update the enemy sprite and start the coroutine to type out the next line. Otherwise, transition to the next state (e.g., gameIdleState).
             if (index < storyLines.Length)
             {
+                Game.SetStoryEnemySprite(enemySprites[index]); // set the enemy sprite to the corresponding sprite for the next line of the story
                 Game.StopAllCoroutines(); // stop the current typing coroutine if it's still running (if the player clicks before the line is fully displayed)
                 storyText.text = ""; // clear the text to prepare for the next line
                 Game.StartCoroutine(TypeLine()); // start the coroutine to type out the next line of the story
@@ -67,9 +70,11 @@ public class StoryState : GameState
 
     void StartDialogue(GameStateController Game)
     {
-        //start the dialogue by initializing the index and starting the coroutine to type out the first line of the story
+        // start the dialogue by initializing the index and starting the coroutine to type out the first line of the story
         index = 0;
-        Game.StartCoroutine(TypeLine());
+        Game.SetStoryEnemySprite(enemySprites[index]); // set the enemy sprite to the corresponding sprite for the first line of the story to start the dialogue and avoid a blank enemy sprite at the beginning of the story
+        Game.StopAllCoroutines(); // stop any existing coroutines to ensure that the typing effect starts fresh for the first line of the story
+        Game.StartCoroutine(TypeLine()); // start the coroutine to type out the first line of the story
     }
 
     IEnumerator TypeLine()
