@@ -13,7 +13,7 @@ public class StoryState : GameState
     private TextMeshProUGUI storyText;
     private string[] storyLines;
     private Sprite[] enemySprites;
-    private float textDisplaySpeed = 0.05f;
+    private float textDisplaySpeed = 0.025f;
     private int index;
 
     public override void EnterState(GameStateController Game)
@@ -23,6 +23,15 @@ public class StoryState : GameState
         storyText = Game.GetStoryText();
         storyLines = Game.GetStoryLines();
         enemySprites = Game.GetStoryEnemySprites();
+
+        // Set Skip Story Button
+        Button skipButton = Game.GetStoryUI().transform.Find("Skip_Button").GetComponent<Button>();
+        skipButton.onClick.AddListener(() =>
+        {
+            Game.PlayButtonClickSound();
+            Game.SetState(new gameIdleState());
+            Debug.Log("Skip Button Clicked");
+        });
 
         // Show the story UI and hide the player UI, and pause the game time
         Game.SetStoryUI(true);

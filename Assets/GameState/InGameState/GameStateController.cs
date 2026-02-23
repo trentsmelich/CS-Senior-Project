@@ -287,6 +287,11 @@ public class GameStateController : MonoBehaviour
         return storyLines;
     }
 
+    public GameObject GetStoryUI()
+    {
+        return storyUI;
+    }
+
     public void SetStoryUI(bool show)
     {
         storyUI.SetActive(show);
