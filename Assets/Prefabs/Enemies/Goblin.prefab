@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958dea10a8e8cc744ab090d1f1791c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Goblin
-  enemyRange: 1
+  enemyRange: 1.5
   enemyDamage: 10
   attackCooldown: 1
   attackTimer: 0

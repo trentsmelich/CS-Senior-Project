@@ -9,7 +9,7 @@ public class Goblin : EnemyParent
     void Start()
     {
         //set player layer mask for attack detection
-        playerLayers = LayerMask.GetMask("Player");
+        playerLayers = LayerMask.GetMask("Player", "Default");
     }
     public override void Attack(EnemyAI enemy)
     {
@@ -55,12 +55,14 @@ public class Goblin : EnemyParent
         Vector2 dir = GetFacingDirection(enemy);
         Vector2 attackPosition = (Vector2)enemy.GetGameObject().transform.position + dir * attackDistance;
         //Check for collision with player in attack distance
+        //check for collision with buildings in attack distance
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
             attackPosition,
             enemyRange,
             playerLayers
         );
-
+        /*
         Debug.Log("Enemy is attacking!");
         //if hit Enemies is not empty, deal damage to player
         if (hitEnemies.Length > 0)
@@ -73,6 +75,25 @@ public class Goblin : EnemyParent
                 playerStats.TakeDamage(enemyDamage);
             }
             Debug.Log("Player hit by enemy attack!");
+        }
+        */
+        foreach (Collider2D hit in hitEnemies)
+        {
+            //check if hit is a building
+            if(hit.GetComponent<TowerParent>() != null)
+            {
+                //deal damage to building
+                TowerParent tower = hit.GetComponent<TowerParent>();
+                tower.TakeDamage((int)enemyDamage);
+                Debug.Log("Building hit by enemy attack!");
+            }
+            if(hit.GetComponent<PlayerStats>() != null)
+            {
+                //deal damage to player
+                PlayerStats playerStats = hit.GetComponent<PlayerStats>();
+                playerStats.TakeDamage(enemyDamage);
+                Debug.Log("Player hit by enemy attack!");
+            }
         }
         
     }

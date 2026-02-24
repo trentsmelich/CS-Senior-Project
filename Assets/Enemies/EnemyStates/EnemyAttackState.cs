@@ -20,6 +20,12 @@ public class EnemyAttackState : EnemyState
 
     public override void UpdateState(EnemyAI enemy)
     {
+        if(enemy.GetTarget() == null)
+        {
+            //if no target, return to idle
+            enemy.SetState(new EnemyChaseState());
+            return;
+        }
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         //increase timer for cooldown
         timer += Time.deltaTime;
