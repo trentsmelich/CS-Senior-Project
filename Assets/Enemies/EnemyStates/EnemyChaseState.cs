@@ -29,12 +29,14 @@ public class EnemyChaseState : EnemyState
         // Move toward player if enemy is targeting player otherwise move toward buildings
         if (enemy.IsTargetingPlayer())
         {
+
             distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+            enemy.setTarget(enemy.GetPlayer());
             agent.SetDestination(enemy.GetPlayer().position);
         }
         else
         {
-            
+            /*
             // Find the nearest tower and set it as the destination
             Transform nearestTower = enemy.GetNearestTower();
             
@@ -49,17 +51,22 @@ public class EnemyChaseState : EnemyState
             {
                 // If no towers are found, target the player instead
                 enemy.SetTargetingPlayer(true);
+                distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+                agent.SetDestination(enemy.GetPlayer().position);
+                enemy.setTarget(enemy.GetPlayer());
                 Debug.Log("No towers found, targeting player instead.");
             }
             
-
+            */
             //if nearest building path is significantly longer than distance straight towards
-            if(distance > agent.remainingDistance * 3.0f)
+            if(true)
             {
                 // If path is significantly longer, target nearest fence instead
                 Transform nearestFence = enemy.GetNearestFence();
                 if (nearestFence != null)
                 {
+                    enemy.setTarget(nearestFence);
+                    distance = Vector2.Distance(nearestFence.position, enemy.transform.position);
                     agent.SetDestination(nearestFence.position);
                 }
             }

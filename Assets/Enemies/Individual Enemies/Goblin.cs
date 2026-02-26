@@ -86,13 +86,16 @@ public class Goblin : EnemyParent
                 TowerParent tower = hit.GetComponent<TowerParent>();
                 tower.TakeDamage((int)enemyDamage);
                 Debug.Log("Building hit by enemy attack!");
+                break; // Only attack one building at a time
             }
             if(hit.GetComponent<PlayerStats>() != null)
             {
                 //deal damage to player
                 PlayerStats playerStats = hit.GetComponent<PlayerStats>();
                 playerStats.TakeDamage(enemyDamage);
+                
                 Debug.Log("Player hit by enemy attack!");
+                break; // Only attack one player at a time
             }
         }
         

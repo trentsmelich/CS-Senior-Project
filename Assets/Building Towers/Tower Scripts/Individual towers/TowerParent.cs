@@ -63,6 +63,7 @@ public abstract class TowerParent : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
+        Debug.Log($"{towerName} took {damage} damage!");
         health -= damage;
         if (health <= 0)
         {

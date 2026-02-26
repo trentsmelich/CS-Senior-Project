@@ -167,7 +167,7 @@ MonoBehaviour:
   towerType: Farm
   towerName: Fence
   unlocked: 1
-  health: 0
+  health: 100
 --- !u!114 &6654409567372422999
 MonoBehaviour:
   m_ObjectHideFlags: 0

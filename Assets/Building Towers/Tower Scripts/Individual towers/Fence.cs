@@ -68,11 +68,23 @@ public class Fence : TowerParent
             Debug.Log("Activated FenceUp");
 
         }
+        else
+        {
+            //get child in fence and deactivate game object FenceUp
+            transform.Find("FenceUp").gameObject.SetActive(false);
+            Debug.Log("Deactivated FenceUp");
+        }
         if (down)
         {
             //get child in fence and activate game object FenceDown
             transform.Find("FenceDown").gameObject.SetActive(true);
             Debug.Log("Activated FenceDown");
+        }
+        else
+        {
+            //get child in fence and deactivate game object FenceDown
+            transform.Find("FenceDown").gameObject.SetActive(false);
+            Debug.Log("Deactivated FenceDown");
         }
         if (left)
         {
@@ -80,12 +92,57 @@ public class Fence : TowerParent
             transform.Find("FenceLeft").gameObject.SetActive(true);
             Debug.Log("Activated FenceLeft");
         }
+        else
+        {
+            //get child in fence and deactivate game object FenceLeft
+            transform.Find("FenceLeft").gameObject.SetActive(false);
+            Debug.Log("Deactivated FenceLeft");
+        }
         if (right)
         {
             //get child in fence and activate game object FenceRight
             transform.Find("FenceRight").gameObject.SetActive(true);
             Debug.Log("Activated FenceRight");
         }
+        else
+        {
+            //get child in fence and deactivate game object FenceRight
+            transform.Find("FenceRight").gameObject.SetActive(false);
+            Debug.Log("Deactivated FenceRight");
+        }
     }
+
+    public void OnDestroy()
+    {
+        // update fences around this fence to adjust their sprites when this fence is destroyed
+        checkAroundFence();
+        float gridSize = 1f; // Distance between fence positions
+        float checkRadius = 0.5f; // Small radius to check
+        int fenceLayer = LayerMask.GetMask("Default");
     
+        // Check each direction - store the collider result to avoid multiple calls
+        
+        if(up)
+        {
+            Collider2D upCollider = Physics2D.OverlapCircle(transform.position + Vector3.up * gridSize, checkRadius, fenceLayer);
+            upCollider.GetComponent<Fence>().AdjustFenceSprite();
+        }
+        if(down)
+        {
+            Collider2D downCollider = Physics2D.OverlapCircle(transform.position + Vector3.down * gridSize, checkRadius, fenceLayer);
+            downCollider.GetComponent<Fence>().AdjustFenceSprite();
+        }
+        if(left)
+        {
+            Collider2D leftCollider = Physics2D.OverlapCircle(transform.position + Vector3.left * gridSize, checkRadius, fenceLayer);
+            leftCollider.GetComponent<Fence>().AdjustFenceSprite();
+        }
+        if(right)
+        {
+            Collider2D rightCollider = Physics2D.OverlapCircle(transform.position + Vector3.right * gridSize, checkRadius, fenceLayer);
+            rightCollider.GetComponent<Fence>().AdjustFenceSprite();
+        }
+        
+    }
+
 }
