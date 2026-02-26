@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3975823991477318958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -48,9 +48,9 @@ GameObject:
   - component: {fileID: 2788633589714275985}
   - component: {fileID: 956525361384147806}
   - component: {fileID: 8229819640444679120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WormBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,14 +265,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40864cc677e070459839988a54511dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WormBoss
-  enemyRange: 0
-  enemyDamage: 0
-  attackCooldown: 0
+  enemyRange: 1
+  enemyDamage: 5
+  attackCooldown: 1
   attackTimer: 0
   attackDistance: 0
-  speed: 0
+  speed: 3
   firePoint: {fileID: 3975823991477318958}
   projectilePrefab: {fileID: 1114417526654847487, guid: e0db7367fa581d84792113e50e780fb3, type: 3}
+  warningEffectPrefab: {fileID: 2772718445405135853, guid: 1b0af86513ece024c90f9a4664a77d30, type: 3}
   specialAttackCooldown: 5
   specialPrjCount: 8
 --- !u!195 &8229819640444679120

@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using Unity.VisualScripting;
 
 public class WormBoss : EnemyParent
 {
     [SerializeField] private Transform firePoint; // Point from which projectiles spawn
     [SerializeField] private GameObject projectilePrefab; // Prefab of the projectile to shoot
+    [SerializeField] private GameObject warningEffectPrefab; // Prefab of the warning effect to show where the boss will come out of the ground
 
     [Header("Poison Attack")]
-    [SerializeField] private float specialAttackCooldown = 10f;
+    [SerializeField] private float specialAttackCooldown = 20f;
     [SerializeField] private int specialPrjCount = 8;
 
     private float angle;
@@ -17,12 +19,18 @@ public class WormBoss : EnemyParent
     private Animator anim;
     private EnemyAI enemyAI;
     NavMeshAgent agent;
+    EnemyHealth enemyHealth;
+    SpriteRenderer sr;
+    BoxCollider2D boxCollider;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
         agent = GetComponent<NavMeshAgent>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        sr = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
         angle = 360 / specialPrjCount;
 
         StartCoroutine(SpecialAttackController());
@@ -75,7 +83,17 @@ public class WormBoss : EnemyParent
         while (true)
         {
             yield return new WaitForSeconds(specialAttackCooldown);
-            StartCoroutine(PoisonProjectiles());
+            //StartCoroutine(PoisonProjectiles());
+            if (specialActive) continue;
+
+            if (Random.value < 0.5f)
+            {
+                StartCoroutine(AttackFromGround());
+            }
+            else
+            {
+                StartCoroutine(PoisonProjectiles());
+            }
         }
     }
 
@@ -86,7 +104,40 @@ public class WormBoss : EnemyParent
         //attack is boss enters the ground, stays there for a bit, 
         // then comes out of the ground on player position
         // will do it 2 or 3 times in a row, immune while underground
-        yield return null;
+        specialActive = true;
+ 
+        for (int i = 0; i < 3; i++)
+        {
+            //get player position
+            Transform player = enemyAI.GetPlayer().transform;
+            anim.SetTrigger("Burrow");
+            enemyHealth.SetInvincible(true);
+            yield return new WaitForSeconds(1); // Wait for the burrow animation to play before moving underground
+
+            sr.enabled = false;
+            boxCollider.enabled = false;
+            agent.Warp(player.position);
+            // Move the boss to the player's position while underground
+            //show some sort of effect to show where the boss will come out
+            if (warningEffectPrefab != null)
+            {
+                GameObject w1 = Instantiate(warningEffectPrefab, player.position, Quaternion.identity);
+                yield return new WaitForSeconds(1); // Wait for the warning effect to be visible before emerging
+                Destroy(w1);
+            }
+
+            sr.enabled = true;
+            boxCollider.enabled = true;
+            anim.SetTrigger("Special");
+            yield return new WaitForSeconds(1);
+            enemyHealth.SetInvincible(false);
+
+            yield return new WaitForSeconds(1); // Wait for a moment before the next burrow
+        }
+
+        
+
+        specialActive = false;
     }
 
     private IEnumerator PoisonProjectiles()

@@ -132,9 +132,9 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 135934562}
+      propertyPath: enemyRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: enemyDamage
       value: 5
@@ -144,9 +144,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 956525361384147806, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
-      propertyPath: projectilePrefab
+      propertyPath: warningEffectPrefab
       value: 
-      objectReference: {fileID: 1114417526654847487, guid: e0db7367fa581d84792113e50e780fb3, type: 3}
+      objectReference: {fileID: 2772718445405135853, guid: 1b0af86513ece024c90f9a4664a77d30, type: 3}
     - target: {fileID: 1239214032033809043, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.6
@@ -200,10 +200,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -212,11 +208,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
---- !u!4 &135934562 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3975823991477318958, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
-  m_PrefabInstance: {fileID: 135934561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &228650076
 GameObject:
   m_ObjectHideFlags: 0
