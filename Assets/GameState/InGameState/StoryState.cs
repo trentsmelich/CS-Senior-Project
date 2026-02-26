@@ -57,6 +57,7 @@ public class StoryState : GameState
             if (index < storyLines.Length)
             {
                 Game.SetStoryEnemySprite(enemySprites[index]); // set the enemy sprite to the corresponding sprite for the next line of the story
+                Game.PlayStoryClickSFX(); // play the sound effect for the story text
                 Game.StopAllCoroutines(); // stop the current typing coroutine if it's still running (if the player clicks before the line is fully displayed)
                 storyText.text = ""; // clear the text to prepare for the next line
                 Game.StartCoroutine(TypeLine()); // start the coroutine to type out the next line of the story

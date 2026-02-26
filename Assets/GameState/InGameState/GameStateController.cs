@@ -80,6 +80,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Sprite[] enemySprites;
     [SerializeField] private Image enemyImage;
     [SerializeField] private Image playerImage;
+    [SerializeField] public AudioSource storyClickSFX;
     //private bool storyPlayed = false;
 
     void Start()
@@ -316,5 +317,10 @@ public class GameStateController : MonoBehaviour
     {
         //Set the player's sprite to the corresponding sprite for the story (just set it to the player's current sprite)
         playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
+    }
+
+    public void PlayStoryClickSFX()
+    {
+        storyClickSFX.Play();
     }
 }
