@@ -32,6 +32,12 @@ public class EnemyChaseState : EnemyState
 
             distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
             enemy.setTarget(enemy.GetPlayer());
+            //create condition by comparing distance of path to player to new distance to player
+            //if distance of path is significantly larger than old distance then set new path towards player to 
+            // prevent weird pathfinding issues where enemy constantly changes path if player is moving a lot
+            //found that this is problem when enemy finds a better path from player moving but if player finds 
+            //the correct point to change the path constantly enemy can get stuck from player making it choose the optimal path
+            //while path may be optimal it can be slower because as it changes the path it isnt moving towards the player
             agent.SetDestination(enemy.GetPlayer().position);
         }
         else
