@@ -103,10 +103,23 @@ public class BuildingState : GameState
                 renderer.sortingOrder = Mathf.RoundToInt(-cellCenter.y) + num;
                 num++;
             }
-            // Set the game state back to idle
-            //Play Building SFX???
-            Game.SetPlaceTower(null);
-            Game.SetState(new gameIdleState());
+            //if placed tower is a fence allow player to immediately place another tower without having to go back to shop state
+            if (placedTower.CompareTag("Fence"))
+            {
+                PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+                playerStats.coins -= Game.GetCurrentBuildingCost();
+                GameObject.Destroy(previewTower);
+                EnterState(Game);
+
+            }
+            else
+            {
+                // Set the game state back to idle
+                //Play Building SFX???
+                Game.SetPlaceTower(null);
+                Game.SetState(new gameIdleState());
+            }
+            
         }
 
         // Cancel building state if right mouse button is pressed and set the game state back to idle
