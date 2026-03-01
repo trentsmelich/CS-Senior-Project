@@ -20,6 +20,12 @@ public class WoodGolemBoss : EnemyParent
     [SerializeField] private float radiusRing2 = 4f;
     [SerializeField] private float radiusRing3 = 6f;
 
+    [Header("Cross Attack")]
+    [SerializeField] private int numRoots = 8;
+    [SerializeField] private float rootDistance = 1.5f;
+    [SerializeField] private float crossDelay = 1.0f;
+
+
     [Header("Spawn Adjustments")]
     [SerializeField] private float spawnZ = 0f;
     [SerializeField] private float angleOffsetDeg = 0f;
@@ -98,8 +104,15 @@ public class WoodGolemBoss : EnemyParent
             agent.velocity = Vector3.zero;
             agent.speed = 0f;
 
-            // call circular attack
-            yield return StartCoroutine(CircularRootAttack());
+            //call the special attacks
+            if (Random.value < 0.5f)
+            {
+                yield return StartCoroutine(CircularRootAttack());
+            }
+            else
+            {
+                yield return StartCoroutine(CrossRootAttack());
+            }
 
             // resume navmesh
             agent.speed = oldSpeed;
@@ -145,6 +158,51 @@ public class WoodGolemBoss : EnemyParent
             float y = Mathf.Sin(angle) * radius;
 
             Vector3 spawnPos = new Vector3(center.x + x, center.y + y, spawnZ);
+
+            Instantiate(rootPrefab, spawnPos, Quaternion.identity);
+        }
+    }
+
+    private IEnumerator CrossRootAttack()
+    {
+        specialActive = true;
+
+        anim.SetBool("Walking", false);
+        anim.SetTrigger("Special");
+
+        yield return new WaitForSeconds(1.2f);
+
+        Vector3 center = transform.position;
+
+        SpawnLine(center, Vector2.up, numRoots, rootDistance);
+        SpawnLine(center, Vector2.down, numRoots, rootDistance);
+        SpawnLine(center, Vector2.left, numRoots, rootDistance);
+        SpawnLine(center, Vector2.right, numRoots, rootDistance);
+
+        yield return new WaitForSeconds(crossDelay);
+
+        SpawnLine(center, new Vector2(1, 1).normalized, numRoots, rootDistance);
+        SpawnLine(center, new Vector2(1, -1).normalized, numRoots, rootDistance);
+        SpawnLine(center, new Vector2(-1, 1).normalized, numRoots, rootDistance);
+        SpawnLine(center, new Vector2(-1, -1).normalized, numRoots, rootDistance);
+
+        specialActive = false;
+        anim.SetBool("Walking", true);
+    }
+
+    private void SpawnLine(Vector3 center, Vector2 dir, int count, float spacing)
+    {
+        if (rootPrefab == null || count <= 0) return;
+
+        dir.Normalize();
+
+        for (int i = 1; i <= count; i++)
+        {
+            Vector3 spawnPos = new Vector3(
+                center.x + dir.x * spacing * i,
+                center.y + dir.y * spacing * i,
+                spawnZ
+            );
 
             Instantiate(rootPrefab, spawnPos, Quaternion.identity);
         }

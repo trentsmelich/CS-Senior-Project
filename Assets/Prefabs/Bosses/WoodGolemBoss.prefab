@@ -245,9 +245,12 @@ MonoBehaviour:
   rootsRing1: 6
   rootsRing2: 10
   rootsRing3: 14
-  radiusRing1: 2
-  radiusRing2: 4
-  radiusRing3: 6
+  radiusRing1: 3
+  radiusRing2: 6
+  radiusRing3: 9
+  numRoots: 15
+  rootDistance: 1.5
+  crossDelay: 1
   spawnZ: 0
   angleOffsetDeg: 0
 --- !u!195 &4886628828890836160
