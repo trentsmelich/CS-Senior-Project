@@ -233,12 +233,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f58c30faabbc74692131bd247be508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WoodGolemBoss
-  enemyRange: 0
-  enemyDamage: 0
-  attackCooldown: 0
+  enemyRange: 2
+  enemyDamage: 10
+  attackCooldown: 2
   attackTimer: 0
-  attackDistance: 0
-  speed: 0
+  attackDistance: 1
+  speed: 3
+  rootPrefab: {fileID: 1585801299219697385, guid: c11ffc82fd8d904459b9e1f4dc560217, type: 3}
+  specialCooldown: 10
+  timeBetweenRings: 1
+  rootsRing1: 6
+  rootsRing2: 10
+  rootsRing3: 14
+  radiusRing1: 2
+  radiusRing2: 4
+  radiusRing3: 6
+  spawnZ: 0
+  angleOffsetDeg: 0
 --- !u!195 &4886628828890836160
 NavMeshAgent:
   m_ObjectHideFlags: 0

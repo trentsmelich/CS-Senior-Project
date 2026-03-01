@@ -4,16 +4,40 @@ using UnityEngine.AI;
 
 public class WoodGolemBoss : EnemyParent
 {
+    [Header("Root Prefab")]
+    [SerializeField] private GameObject rootPrefab;
+
+    [Header("Special Attack Timing")]
+    [SerializeField] private float specialCooldown = 10f;
+    [SerializeField] private float timeBetweenRings = 1f;
+
+    [Header("Rings")]
+    [SerializeField] private int rootsRing1 = 6;
+    [SerializeField] private int rootsRing2 = 10;
+    [SerializeField] private int rootsRing3 = 14;
+
+    [SerializeField] private float radiusRing1 = 2.0f;
+    [SerializeField] private float radiusRing2 = 4f;
+    [SerializeField] private float radiusRing3 = 6f;
+
+    [Header("Spawn Adjustments")]
+    [SerializeField] private float spawnZ = 0f;
+    [SerializeField] private float angleOffsetDeg = 0f;
+
     private bool specialActive = false;
     private Animator anim;
     private EnemyAI enemyAI;
     NavMeshAgent agent;
 
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        enemyAI = GetComponent<EnemyAI>();
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
-        enemyAI = GetComponent<EnemyAI>();
-        agent = GetComponent<NavMeshAgent>();
 
         StartCoroutine(SpecialAttackController());
     }
@@ -64,8 +88,65 @@ public class WoodGolemBoss : EnemyParent
     {
         while (true)
         {
-            // whatever the logic is for the special attacks
-            // do later, no idea what I want the special attacks to be yet
+            yield return new WaitForSeconds(specialCooldown);
+
+            // pause navmesh
+            bool oldStopped = agent.isStopped;
+            float oldSpeed = agent.speed;
+
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.speed = 0f;
+
+            // call circular attack
+            yield return StartCoroutine(CircularRootAttack());
+
+            // resume navmesh
+            agent.speed = oldSpeed;
+            agent.isStopped = oldStopped;
+        }
+    }
+
+    private IEnumerator CircularRootAttack()
+    {
+        specialActive = true;
+
+        anim.SetBool("Walking", false);
+        anim.SetTrigger("Special");
+
+        yield return new WaitForSeconds(1.2f);
+
+        SpawnRing(rootsRing1, radiusRing1, angleOffsetDeg);
+
+        yield return new WaitForSeconds(timeBetweenRings);
+
+        SpawnRing(rootsRing2, radiusRing2, angleOffsetDeg + 10f);
+
+        yield return new WaitForSeconds(timeBetweenRings);
+
+        SpawnRing(rootsRing3, radiusRing3, angleOffsetDeg + 20f);
+
+        specialActive = false;
+        anim.SetBool("Walking", true);
+    }
+
+    private void SpawnRing(int count, float radius, float offsetDeg)
+    {
+        if (rootPrefab == null || count <= 0) return;
+
+        Vector3 center = transform.position;
+
+        float step = 360f / count;
+        for (int i = 0; i < count; i++)
+        {
+            float angle = (i * step + offsetDeg) * Mathf.Deg2Rad;
+
+            float x = Mathf.Cos(angle) * radius;
+            float y = Mathf.Sin(angle) * radius;
+
+            Vector3 spawnPos = new Vector3(center.x + x, center.y + y, spawnZ);
+
+            Instantiate(rootPrefab, spawnPos, Quaternion.identity);
         }
     }
 }

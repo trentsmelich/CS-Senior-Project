@@ -126,7 +126,7 @@ TextureImporter:
         width: 21
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -148,7 +148,7 @@ TextureImporter:
         width: 22
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Root_In_2
+      name: Root_In_4
       rect:
         serializedVersion: 2
         x: 426
@@ -170,7 +170,7 @@ TextureImporter:
         width: 8
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,7 +184,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Root_In_3
+      name: Root_In_5
       rect:
         serializedVersion: 2
         x: 523
@@ -192,7 +192,7 @@ TextureImporter:
         width: 7
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,7 +206,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Root_In_4
+      name: Root_In_2
       rect:
         serializedVersion: 2
         x: 230
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Root_In_5
+      name: Root_In_3
       rect:
         serializedVersion: 2
         x: 327
@@ -265,11 +265,10 @@ TextureImporter:
     nameFileIdTable:
       Root_In_0: 6551158374979435311
       Root_In_1: -3016070127558285598
-      Root_In_2: 4453566094199731626
-      Root_In_3: 491501635639012468
-      Root_In_4: 2080597889071920271
-      Root_In_5: 2356506259725418094
-      Root_In_6: -4702425378323774715
+      Root_In_2: 2080597889071920271
+      Root_In_3: 2356506259725418094
+      Root_In_4: 4453566094199731626
+      Root_In_5: 491501635639012468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
