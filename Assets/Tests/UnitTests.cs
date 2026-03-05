@@ -81,6 +81,7 @@ public class UnitTests
     [Test]
     public void UnitTestsMainMenuStateController()
     {
+        // create a game object and add the main menu state controller component to it
         GameObject mainMenuStateController = new GameObject("mainMenuStateController_Test");
         MainMenuStateController mmsc = mainMenuStateController.AddComponent<MainMenuStateController>();
 
@@ -96,6 +97,7 @@ public class UnitTests
         settingsPanel.SetActive(false);
         unlocksPanel.SetActive(false);
 
+        // Set the panels in the main menu state controller
         mmsc.mainMenuPanel = mainMenuPanel;
         mmsc.levelSelectPanel = levelSelectPanel;
         mmsc.settingsPanel = settingsPanel;
@@ -103,18 +105,20 @@ public class UnitTests
 
         // Test the state transition by calling the SetState function with different states and checking if the correct panel is active
         
-        // ---Testing Main Menu State On
+        // Testing Main Menu State On
         // create and set the buttons for main menu panel
         GameObject playButton = new GameObject("Play_Button");
         GameObject settingsButton = new GameObject("Settings_Button");
         GameObject unlocksButton = new GameObject("Unlocks_Button");
         GameObject exitButton = new GameObject("Exit_Button");
 
+        // Set the buttons as children of the main menu panel
         playButton.transform.SetParent(mainMenuPanel.transform);
         settingsButton.transform.SetParent(mainMenuPanel.transform);
         unlocksButton.transform.SetParent(mainMenuPanel.transform);
         exitButton.transform.SetParent(mainMenuPanel.transform);
 
+        // Add Button components to the buttons
         playButton.AddComponent<Button>();
         settingsButton.AddComponent<Button>();
         unlocksButton.AddComponent<Button>();
@@ -128,14 +132,12 @@ public class UnitTests
         Assert.IsFalse(settingsPanel.activeSelf);
         Assert.IsFalse(unlocksPanel.activeSelf);
 
-
-
-        // ---Testing Settings State On
+        // Testing Settings State On
         // create and set the buttons for settings panel
         GameObject optionsXButton = new GameObject("Options_XButton");
-
+        // Set the button as a child of the settings panel
         optionsXButton.transform.SetParent(settingsPanel.transform);
-
+        // Add Button component to the button 
         optionsXButton.AddComponent<Button>();
 
         // Set to Settings State On
@@ -146,9 +148,7 @@ public class UnitTests
         Assert.IsFalse(levelSelectPanel.activeSelf);
         Assert.IsFalse(unlocksPanel.activeSelf);
 
-
-
-        // ---Testing Level Select State On
+        // Testing Level Select State On
         // create and set the buttons for level select panel
         GameObject level1Button = new GameObject("Level_1_Button");
         GameObject level2Button = new GameObject("Level_2_Button");
@@ -156,12 +156,14 @@ public class UnitTests
         GameObject mainMenuButton = new GameObject("MainMenu_Button");
         GameObject tutorialButton = new GameObject("Tutorial_Button");
 
+        // Set the buttons as children of the level select panel
         level1Button.transform.SetParent(levelSelectPanel.transform);
         level2Button.transform.SetParent(levelSelectPanel.transform);
         level3Button.transform.SetParent(levelSelectPanel.transform);
         mainMenuButton.transform.SetParent(levelSelectPanel.transform);
         tutorialButton.transform.SetParent(levelSelectPanel.transform);
 
+        // Add Button components to the buttons
         level1Button.AddComponent<Button>();
         level2Button.AddComponent<Button>();
         level3Button.AddComponent<Button>();
@@ -177,16 +179,13 @@ public class UnitTests
         Assert.IsFalse(settingsPanel.activeSelf);
         Assert.IsFalse(unlocksPanel.activeSelf);
 
-
-
-        // ---Testing Main Menu State Back On
+        // Testing Main Menu State Back On
         mmsc.SetState(new MainMenu());
         // Check if the main menu panel is active and other panels are inactive
         Assert.IsTrue(mainMenuPanel.activeSelf);
         Assert.IsFalse(levelSelectPanel.activeSelf);
         Assert.IsFalse(settingsPanel.activeSelf);
         Assert.IsFalse(unlocksPanel.activeSelf);
-
 
         // Making sure the testing game objects are destroyed after the test
         Object.DestroyImmediate(mainMenuStateController);
