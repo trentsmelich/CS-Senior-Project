@@ -1,4 +1,7 @@
 using NUnit.Framework;
+using System.Collections;
+using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.TestTools;
@@ -144,4 +147,62 @@ public class UnitTests
         Object.DestroyImmediate(unlocksPanel);
     }
 
+
+    [Test]
+    public void WaveStateTest()
+    {
+        GameObject testObject = new GameObject("WaveState_Test");
+        GameObject countdownObject = new GameObject("Countdown_Test");
+        TextMeshProUGUI countdownText = countdownObject.AddComponent<TextMeshProUGUI>();
+
+        GameObject enemyPrefab = new GameObject("EnemyPrefab_Test");
+        enemyPrefab.AddComponent<EnemyHealth>();
+        enemyPrefab.AddComponent<EnemyAI>();
+
+        float minSpawnRadius = 5f;
+        float maxSpawnRadius = 7f;
+
+        WavesState waveState = new WavesState(
+            testObject.transform,
+            20,
+            10f,
+            new[] { enemyPrefab },
+            new[] { enemyPrefab },
+            minSpawnRadius,
+            maxSpawnRadius,
+            0f,
+            countdownText
+        );
+
+        MethodInfo spawnWaveMethod = typeof(WavesState).GetMethod("SpawnWave", BindingFlags.NonPublic | BindingFlags.Instance);
+        Assert.That(spawnWaveMethod, Is.Not.Null, "SpawnWave method not found.");
+
+        IEnumerator spawnWaveEnumerator = (IEnumerator)spawnWaveMethod.Invoke(waveState, null);
+        while (spawnWaveEnumerator.MoveNext())
+        {
+        }
+
+        Assert.That(EnemyHealth.GetNumEnemies(), Is.EqualTo(20), "Expected 20 enemies to be spawned.");
+
+        var spawnedEnemies = Object.FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None);
+    
+        foreach (EnemyHealth enemy in spawnedEnemies)
+        {
+            if (enemy.gameObject == enemyPrefab) continue;
+
+            float distance = Vector3.Distance(enemy.transform.position, testObject.transform.position);
+            Assert.That(distance, Is.InRange(minSpawnRadius, maxSpawnRadius), "Enemy spawned at distance " + distance + " which is outside the expected range.");
+        }
+    
+
+        foreach (EnemyHealth spawnedEnemy in Object.FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
+        {
+            Object.DestroyImmediate(spawnedEnemy.gameObject);
+        }
+
+        Object.DestroyImmediate(enemyPrefab);
+        Object.DestroyImmediate(countdownObject);
+        Object.DestroyImmediate(testObject);
+        EnemyHealth.resetEnemyCounts();
+    }
 }
