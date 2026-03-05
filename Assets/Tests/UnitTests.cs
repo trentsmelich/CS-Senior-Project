@@ -200,6 +200,7 @@ public class UnitTests
     [Test]
     public void WaveStateTest()
     {
+        //Create the test object and necessary components for the wave state test
         GameObject testObject = new GameObject("WaveState_Test");
         GameObject countdownObject = new GameObject("Countdown_Test");
         TextMeshProUGUI countdownText = countdownObject.AddComponent<TextMeshProUGUI>();
@@ -211,6 +212,7 @@ public class UnitTests
         float minSpawnRadius = 5f;
         float maxSpawnRadius = 7f;
 
+        // Create the wave state instance with the test parameters
         WavesState waveState = new WavesState(
             testObject.transform,
             20,
@@ -223,16 +225,20 @@ public class UnitTests
             countdownText
         );
 
+        // Get the SpawnWave method using reflection since its private
         MethodInfo spawnWaveMethod = typeof(WavesState).GetMethod("SpawnWave", BindingFlags.NonPublic | BindingFlags.Instance);
         Assert.That(spawnWaveMethod, Is.Not.Null, "SpawnWave method not found.");
 
+        // Invoke the SpawnWave method to spawn the enemies
         IEnumerator spawnWaveEnumerator = (IEnumerator)spawnWaveMethod.Invoke(waveState, null);
         while (spawnWaveEnumerator.MoveNext())
         {
         }
 
+        // Check that we have the expected number of enemies spawned
         Assert.That(EnemyHealth.GetNumEnemies(), Is.EqualTo(20), "Expected 20 enemies to be spawned.");
 
+        // Check that each spawned enemy is within the expected spawn radius range
         var spawnedEnemies = Object.FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None);
     
         foreach (EnemyHealth enemy in spawnedEnemies)
@@ -243,7 +249,7 @@ public class UnitTests
             Assert.That(distance, Is.InRange(minSpawnRadius, maxSpawnRadius), "Enemy spawned at distance " + distance + " which is outside the expected range.");
         }
     
-
+        // Cleanup
         foreach (EnemyHealth spawnedEnemy in Object.FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
         {
             Object.DestroyImmediate(spawnedEnemy.gameObject);
