@@ -10,20 +10,69 @@ public class UnitTests
 {
     // A Test behaves as an ordinary method
     [Test]
-    public void UnitTestsSimplePasses()
+    public void UnitTestsPlayerStats()
     {
         GameObject testObject = new GameObject("PlayerStats_Test");
         PlayerStats stats = testObject.AddComponent<PlayerStats>();
 
+        //Base values
+        stats.moveSpeed = 5f;
         stats.maxHealth = 100f;
         stats.currentHealth = 50f;
+        stats.damage = 10f;
+        stats.attackSpeed = 1f;
+        stats.profitMultiplier = 1f;
+        stats.experienceMultiplier = 1f;
+        stats.currentExperience = 0f;
+        stats.experienceToNextLevel = 10f;
+        stats.enemiesDefeated = 0;
+        stats.coins = 0;
 
+        //ModifyStat Speed
+        stats.ModifyStat("Speed", 20f);
+        Assert.That(stats.moveSpeed, Is.EqualTo(6f).Within(0.001f));
+
+        //ModifyStat Health
         stats.ModifyStat("Health", 20f);
-
         Assert.That(stats.maxHealth, Is.EqualTo(120f).Within(0.001f));
         Assert.That(stats.currentHealth, Is.EqualTo(60f).Within(0.001f));
 
-        
+        //ModifyStat Damage
+        stats.ModifyStat("Damage", 50f);
+        Assert.That(stats.damage, Is.EqualTo(15f).Within(0.001f));
+
+        //ModifyStat Attack Speed
+        stats.ModifyStat("Attack Speed", 50f);
+        Assert.That(stats.attackSpeed, Is.EqualTo(1.5f).Within(0.001f));
+
+        //ModifyStat Profit Multiplier
+        stats.ModifyStat("Profit Multiplier", 25f);
+        Assert.That(stats.profitMultiplier, Is.EqualTo(1.25f).Within(0.001f));
+
+        //ModifyStat Experience Multiplier
+        stats.ModifyStat("Experience Multiplier", 10f);
+        Assert.That(stats.experienceMultiplier, Is.EqualTo(1.1f).Within(0.001f));
+
+        //AddExperience with experience multiplier
+        stats.AddExperience();
+        Assert.That(stats.currentExperience, Is.EqualTo(1.1f).Within(0.001f));
+
+        //Coins methods with profit multiplier btw
+        stats.AddCoins(10);
+        Assert.That(stats.GetCoins(), Is.EqualTo(12));
+        stats.AddBackBuildingCoins(3);
+        Assert.That(stats.GetCoins(), Is.EqualTo(15));
+
+        //Enemies defeated method
+        stats.AddDefeatedEnemyCount();
+        Assert.That(stats.GetEnemiesDefeated(), Is.EqualTo(1));
+
+        //Unknown stat should not change values
+        float speedBeforeUnknown = stats.moveSpeed;
+        float damageBeforeUnknown = stats.damage;
+        stats.ModifyStat("NotAStat", 99f);
+        Assert.That(stats.moveSpeed, Is.EqualTo(speedBeforeUnknown).Within(0.001f));
+        Assert.That(stats.damage, Is.EqualTo(damageBeforeUnknown).Within(0.001f));
 
         Object.DestroyImmediate(testObject);
     }
