@@ -50726,7 +50726,7 @@ MonoBehaviour:
   - {fileID: 6808733625049879353, guid: 995b685ef9db27148836027aeefec0e5, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   - {fileID: 2958005836100429432, guid: f4b3dc57c75638e49966701899c89edd, type: 3}
-  - {fileID: -6486419780738374814, guid: c22da95aaba1d304a9d23fb94fc7fa2f, type: 3}
+  - {fileID: -7945270389654465922, guid: 2dc760444dd732d4b9ad40eade2a2f2f, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   enemyImage: {fileID: 1997022045}
   playerImage: {fileID: 346960522}

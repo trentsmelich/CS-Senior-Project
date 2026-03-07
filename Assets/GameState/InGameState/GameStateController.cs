@@ -81,7 +81,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Image enemyImage;
     [SerializeField] private Image playerImage;
     [SerializeField] public AudioSource storyClickSFX;
-    //private bool storyPlayed = false;
+    private bool storyPlayed = false;
 
     void Start()
     {
@@ -111,14 +111,15 @@ public class GameStateController : MonoBehaviour
         // Update the current state
         currentState.UpdateState(this);
 
-        if (/*storyPlayed == false*/ Input.GetKeyDown(KeyCode.P) && !(currentState is StoryState)) // press Space key to play story
+        // Check if the story has been played, if not, play the story state (only at the beginning of the game)
+        if (storyPlayed == false && !(currentState is StoryState))
         {
-            //storyPlayed = true;
+            storyPlayed = true;
             SetState(new StoryState());
         }
 
         // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press Esc key
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press Esc key
         {
             keyClickSound.Play();
             SetState(new PauseState());
@@ -131,7 +132,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press F key to enter shop
         {
             keyClickSound.Play();
             SetState(new InShopState());
