@@ -21,7 +21,8 @@ public class TowerIdleState : TowerState
             return;
         }
         // Check for nearby enemies to switch to attack state
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(tower.transform.position, tower.attackRange, tower.enemyLayer);
+        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(tower.GetTowerParent().transform.position, tower.GetTowerParent().TowerRange, tower.enemyLayer);
+        Debug.Log("Tower attack range: " + tower.GetTowerParent().TowerRange);
         if (enemiesInRange.Length > 0)
         {
             tower.targetEnemy = enemiesInRange[0].transform;

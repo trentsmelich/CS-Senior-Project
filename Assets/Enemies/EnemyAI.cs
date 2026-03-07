@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 //Author:Trent
 //Description: This script manages the AI behavior of enemies, including state management and interaction with the player.
 public class EnemyAI : MonoBehaviour
@@ -136,5 +137,16 @@ public class EnemyAI : MonoBehaviour
     {
         moveSpeed = speed;
     }
-
+    public void Freeze(float duration)
+    {
+        StartCoroutine(FreezeCoroutine(duration));
+    }
+    private System.Collections.IEnumerator FreezeCoroutine(float duration)
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        float originalSpeed = agent.speed;
+        agent.speed = 0f; // Freeze the enemy
+        yield return new WaitForSeconds(duration);
+        agent.speed = originalSpeed;
+    }
 }
