@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tower 07 - Level 01 - Weapon_Clip
+  m_Name: Tower 07 - Level X - Projectile_Clip
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,23 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 7175510620760229520, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 7886174901305753997, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
     - time: 0.1
-      value: {fileID: -5678566989354222625, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 9053508372744129776, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
     - time: 0.2
-      value: {fileID: -3346299626151482428, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: -2953000590363288291, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
     - time: 0.3
-      value: {fileID: -1499711868925661292, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 7442714292706691068, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
     - time: 0.4
-      value: {fileID: 4252727851851734477, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: -7976022820767898519, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
     - time: 0.5
-      value: {fileID: 6192058969256027991, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
-    - time: 0.59000003
-      value: {fileID: 6192058969256027991, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 7139620976738253659, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
+    - time: 0.6
+      value: {fileID: 3726655646088708674, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
+    - time: 0.7
+      value: {fileID: -3919576642237382416, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
+    - time: 0.79
+      value: {fileID: -3919576642237382416, guid: 09e21f661870fc2419a987120a1bd7ad, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,7 +56,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
