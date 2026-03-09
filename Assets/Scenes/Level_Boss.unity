@@ -119,6 +119,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &33197948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33197949}
+  - component: {fileID: 33197950}
+  m_Layer: 0
+  m_Name: FreezerUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33197949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33197948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1908070004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33197950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33197948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3508f41f93b306d4e8aa30daeef0eca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::FreezeUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
 --- !u!1 &56923644
 GameObject:
   m_ObjectHideFlags: 0
@@ -52845,7 +52892,7 @@ PrefabInstance:
       objectReference: {fileID: 2091304133}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: coins
-      value: 20
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: damage
@@ -85280,6 +85327,7 @@ MonoBehaviour:
   - {fileID: 1644551592}
   - {fileID: 521028895}
   - {fileID: 150910403}
+  - {fileID: 33197950}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -85292,6 +85340,9 @@ MonoBehaviour:
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
   - {fileID: 643403248037975920, guid: 159901a0275802f4ba03566a77a60537, type: 3}
+  - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
+  - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
+  - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
 --- !u!4 &1908070004
 Transform:
   m_ObjectHideFlags: 0
@@ -85311,6 +85362,7 @@ Transform:
   - {fileID: 1644551591}
   - {fileID: 521028896}
   - {fileID: 150910404}
+  - {fileID: 33197949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1916576399
@@ -87906,17 +87958,23 @@ MonoBehaviour:
   grassTilemap2: {fileID: 1842731415}
   dirtTilemap: {fileID: 269054880}
   playerBase: {fileID: 586973649}
-  enemiesPerWave: 1
+  enemiesPerWave: 10
   waveTimer: 5
   waveCountdown: 0
   enemyList:
   - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
   - {fileID: 8610489642223863417, guid: f14923bef180af04c84ff650f015581f, type: 3}
   - {fileID: 6337119327731695134, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
+  - {fileID: 7055142749614219433, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
+  - {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+  - {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
   bossList:
-  - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
   - {fileID: 8610489642223863417, guid: f14923bef180af04c84ff650f015581f, type: 3}
+  - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
+  - {fileID: 7055142749614219433, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
   - {fileID: 6337119327731695134, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
+  - {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+  - {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
   spawnInterval: 0.2

@@ -89367,6 +89367,7 @@ MonoBehaviour:
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   enemyImage: {fileID: 258341332}
   playerImage: {fileID: 407149016}
+  storyClickSFX: {fileID: 0}
 --- !u!1 &1075303722
 GameObject:
   m_ObjectHideFlags: 0
@@ -90398,6 +90399,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165799743}
   m_CullTransparentMesh: 1
+--- !u!1 &1177676935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177676937}
+  - component: {fileID: 1177676936}
+  m_Layer: 0
+  m_Name: FreezerUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1177676936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177676935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3508f41f93b306d4e8aa30daeef0eca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::FreezeUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &1177676937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177676935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781292269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1182843573
 GameObject:
   m_ObjectHideFlags: 0
@@ -96573,6 +96621,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642362210}
   m_CullTransparentMesh: 1
+--- !u!1 &1652794461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652794463}
+  - component: {fileID: 1652794462}
+  m_Layer: 0
+  m_Name: LevelUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1652794462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652794461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e1b455a0d3a744eb3395f29453958e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::LevelUnlock
+--- !u!4 &1652794463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652794461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781292269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1653289432 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1031000391286504215, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
@@ -110441,6 +110533,8 @@ MonoBehaviour:
   - {fileID: 1996019581}
   - {fileID: 385040087}
   - {fileID: 1194448370}
+  - {fileID: 1177676936}
+  - {fileID: 1652794462}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -110453,6 +110547,9 @@ MonoBehaviour:
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
   - {fileID: 643403248037975920, guid: 159901a0275802f4ba03566a77a60537, type: 3}
+  - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
+  - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
+  - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
 --- !u!4 &1781292269
 Transform:
   m_ObjectHideFlags: 0
@@ -110471,6 +110568,8 @@ Transform:
   - {fileID: 1996019582}
   - {fileID: 385040088}
   - {fileID: 1194448371}
+  - {fileID: 1177676937}
+  - {fileID: 1652794463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1806616786

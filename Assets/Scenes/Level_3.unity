@@ -33367,11 +33367,11 @@ MonoBehaviour:
   waveTimer: 5
   waveCountdown: 0
   enemyList:
-  - {fileID: 1474639053942944605, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
-  - {fileID: 919114048276854430, guid: eac7a6065a2c393419ccb73a29264b27, type: 3}
-  - {fileID: 1550629060444859054, guid: ab0825a40ef1cf948ba0d7d89e52db99, type: 3}
+  - {fileID: 7306006763130938909, guid: 2e473cc14c8fdbb468354ddfda3493af, type: 3}
+  - {fileID: 8905292825395819188, guid: 7795ac6f804f6024fa2adfce3dda16c4, type: 3}
   bossList:
-  - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
+  - {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
+  - {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
   minSpawnRadius: 30
   maxSpawnRadius: 50
   spawnInterval: 0.2
@@ -65661,6 +65661,9 @@ MonoBehaviour:
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
   - {fileID: 643403248037975920, guid: 159901a0275802f4ba03566a77a60537, type: 3}
+  - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
+  - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
+  - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
 --- !u!4 &1592777065
 Transform:
   m_ObjectHideFlags: 0

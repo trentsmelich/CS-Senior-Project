@@ -2036,6 +2036,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333873639}
   m_CullTransparentMesh: 1
+--- !u!1 &342433708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342433710}
+  - component: {fileID: 342433709}
+  m_Layer: 0
+  m_Name: FreezerUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &342433709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342433708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3508f41f93b306d4e8aa30daeef0eca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::FreezeUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &342433710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342433708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 740777463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346960520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,6 +3880,7 @@ MonoBehaviour:
   - {fileID: 1407491051}
   - {fileID: 1957808084}
   - {fileID: 2081056041}
+  - {fileID: 342433709}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -3845,6 +3893,9 @@ MonoBehaviour:
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
   - {fileID: 643403248037975920, guid: 159901a0275802f4ba03566a77a60537, type: 3}
+  - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
+  - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
+  - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
 --- !u!4 &740777463
 Transform:
   m_ObjectHideFlags: 0
@@ -3864,6 +3915,7 @@ Transform:
   - {fileID: 1407491052}
   - {fileID: 1957808085}
   - {fileID: 2081056042}
+  - {fileID: 342433710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779286882
@@ -47231,6 +47283,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1289018385}
+    - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
+      propertyPath: coins
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: damage
       value: 10
