@@ -107,9 +107,21 @@ public class BuildingState : GameState
             if (placedTower.CompareTag("Fence"))
             {
                 PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-                playerStats.coins -= Game.GetCurrentBuildingCost();
-                GameObject.Destroy(previewTower);
-                EnterState(Game);
+                if(Game.GetCurrentBuildingCost() <= playerStats.coins)
+                {
+                    
+                    playerStats.coins -= Game.GetCurrentBuildingCost();
+                    GameObject.Destroy(previewTower);
+                    EnterState(Game);
+
+                }
+                else
+                {
+                    Game.SetPlaceTower(null);
+                    Game.SetState(new gameIdleState());
+                    
+                }
+                
 
             }
             else

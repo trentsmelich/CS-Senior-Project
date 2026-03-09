@@ -33403,7 +33403,7 @@ MonoBehaviour:
   - "Player: I don\u2019t know what\u2019s under that house. But I won\u2019t let
     you reach it."
   - 'Golem: Stone remembers. Stone obeys the one below.'
-  - "Player: The one below\u2026?"
+  - 'Player: The one below?'
   - "Worm: Release\u2026 the Devourer\u2026"
   - "Player: So that\u2019s what this is about."
   - "Worm: The seal breaks\u2026 with your fall."
@@ -33414,14 +33414,14 @@ MonoBehaviour:
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6808733625049879353, guid: a7b180e5573e4f04ba5ca90a468fd357, type: 3}
+  - {fileID: -7945270389654465922, guid: 03d816de562f31d4196c2f117ba95973, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
-  - {fileID: 0}
+  - {fileID: 6808733625049879353, guid: dbadb6f50f3cc2f4d90e140734ad13a6, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
-  - {fileID: 0}
+  - {fileID: 6808733625049879353, guid: 29ad3e16a4be9114486b412e5e6e36ba, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
-  - {fileID: 0}
+  - {fileID: 6808733625049879353, guid: 29ad3e16a4be9114486b412e5e6e36ba, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   enemyImage: {fileID: 1825522384}
   playerImage: {fileID: 1384815412}

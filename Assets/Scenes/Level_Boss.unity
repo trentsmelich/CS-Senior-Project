@@ -85343,6 +85343,7 @@ MonoBehaviour:
   - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
   - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
   - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
+  - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
 --- !u!4 &1908070004
 Transform:
   m_ObjectHideFlags: 0
@@ -88023,10 +88024,10 @@ MonoBehaviour:
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   - {fileID: 8625802691097107856, guid: 286d2669ca3429143a4cb885b477efc7, type: 3}
   - {fileID: -7945270389654465922, guid: 2dc760444dd732d4b9ad40eade2a2f2f, type: 3}
-  - {fileID: 0}
+  - {fileID: 6808733625049879353, guid: dbadb6f50f3cc2f4d90e140734ad13a6, type: 3}
   - {fileID: -8262898993223470297, guid: 698013d404ddfd54bab43d8cf8fffd1e, type: 3}
   - {fileID: 6808733625049879353, guid: f4b3dc57c75638e49966701899c89edd, type: 3}
-  - {fileID: 0}
+  - {fileID: 6808733625049879353, guid: 29ad3e16a4be9114486b412e5e6e36ba, type: 3}
   - {fileID: -932697194445080084, guid: 6e3cd80ace903054386a16ce40509fd2, type: 3}
   enemyImage: {fileID: 787995512}
   playerImage: {fileID: 1800287447}
