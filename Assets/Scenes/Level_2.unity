@@ -3832,6 +3832,7 @@ MonoBehaviour:
   - {fileID: 1475510913}
   - {fileID: 1407491051}
   - {fileID: 1957808084}
+  - {fileID: 2081056041}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -3862,6 +3863,7 @@ Transform:
   - {fileID: 1475510914}
   - {fileID: 1407491052}
   - {fileID: 1957808085}
+  - {fileID: 2081056042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779286882
@@ -47686,7 +47688,7 @@ GameObject:
   - component: {fileID: 1190448722}
   m_Layer: 0
   m_Name: StoryClick_SFX
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77091,6 +77093,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2081056040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081056042}
+  - component: {fileID: 2081056041}
+  m_Layer: 0
+  m_Name: LevelUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2081056041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081056040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e1b455a0d3a744eb3395f29453958e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelUnlock
+--- !u!4 &2081056042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081056040}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.71677, y: -0.31364965, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 740777463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2082521106
 GameObject:
   m_ObjectHideFlags: 0

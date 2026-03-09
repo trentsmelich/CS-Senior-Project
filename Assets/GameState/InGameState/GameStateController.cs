@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 //Author:Trent and Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
@@ -143,13 +144,17 @@ public class GameStateController : MonoBehaviour
             SetState(new gameIdleState());
         }
         
-        //Game Over State Transition
-        //Get Player Health and stop the timer if health is 0
+        // Game Over State Transition
+        // Get Player Health and stop the timer if health is 0
         float playerCurrentHealth = playerStats.GetHealth();
         Timer timerScript = timer.GetComponent<Timer>();
         if (playerCurrentHealth <= 0 && !(currentState is GameOverState))
         {
+            // Stop the timer and set the time escaped for the level that the player is currently on
             timerScript.StopTimer();
+            playerStats.SetTimeSurvived(timerScript.GetTimeElapsed());
+
+            // Delay the game over screen by 1.5 seconds to allow the player to see their character die before the game over screen pops up
             StartCoroutine(DelayedGameOverScreen());
         } 
         else if (playerCurrentHealth > 0 && (currentState is GameOverState))
@@ -170,7 +175,7 @@ public class GameStateController : MonoBehaviour
 
     private System.Collections.IEnumerator DelayedGameOverScreen()
     {
-        //wait 1.5 seconds before showing the Game Over Screen
+        // wait 1.5 seconds before showing the Game Over Screen
         yield return new WaitForSeconds(1.5f);
         backgroundMusic.Stop();
         GameOverMusic.Play();
@@ -324,4 +329,5 @@ public class GameStateController : MonoBehaviour
     {
         storyClickSFX.Play();
     }
+    
 }

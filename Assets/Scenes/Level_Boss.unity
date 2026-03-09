@@ -994,6 +994,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139611670}
   m_CullTransparentMesh: 1
+--- !u!1 &150910402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 150910404}
+  - component: {fileID: 150910403}
+  m_Layer: 0
+  m_Name: LevelUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &150910403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150910402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e1b455a0d3a744eb3395f29453958e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelUnlock
+--- !u!4 &150910404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150910402}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.71677, y: -0.31364965, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1908070004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165731819
 GameObject:
   m_ObjectHideFlags: 0
@@ -53048,7 +53092,7 @@ GameObject:
   - component: {fileID: 835021348}
   m_Layer: 0
   m_Name: StoryClick_SFX
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85235,6 +85279,7 @@ MonoBehaviour:
   - {fileID: 525253128}
   - {fileID: 1644551592}
   - {fileID: 521028895}
+  - {fileID: 150910403}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
@@ -85265,6 +85310,7 @@ Transform:
   - {fileID: 525253127}
   - {fileID: 1644551591}
   - {fileID: 521028896}
+  - {fileID: 150910404}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1916576399

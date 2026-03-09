@@ -23,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     public float currentExperience = 0f;
     public float experienceToNextLevel = 1f;
     public int enemiesDefeated = 0;
+    public float timeSurvived = 0f;
 
     public int coins = 0;
 
@@ -231,5 +232,15 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(duration);
         
         attackSpeed /= boostMultiplier;
+    }
+
+    public void SetTimeSurvived(float time)
+    {
+        timeSurvived = time;
+    }
+
+    public float GetTimeSurvived()
+    {
+        return timeSurvived;
     }
 }
