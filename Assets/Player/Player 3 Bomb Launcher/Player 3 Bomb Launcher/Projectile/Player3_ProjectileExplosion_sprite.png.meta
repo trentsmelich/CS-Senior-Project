@@ -1,0 +1,530 @@
+fileFormatVersion: 2
+guid: cb7faac4a94f3c34d95efa1bf6cd2f3c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 261665531536659791
+    second: Player3_ProjectileExplosion_sprite_0
+  - first:
+      213: -8298985246021790681
+    second: Player3_ProjectileExplosion_sprite_1
+  - first:
+      213: -4995134197341522332
+    second: Player3_ProjectileExplosion_sprite_2
+  - first:
+      213: 2924822996207357932
+    second: Player3_ProjectileExplosion_sprite_3
+  - first:
+      213: -4306526754492543994
+    second: Player3_ProjectileExplosion_sprite_4
+  - first:
+      213: -5275455181830786534
+    second: Player3_ProjectileExplosion_sprite_5
+  - first:
+      213: 6439988130924383866
+    second: Player3_ProjectileExplosion_sprite_6
+  - first:
+      213: 8100612731444619117
+    second: Player3_ProjectileExplosion_sprite_7
+  - first:
+      213: 5831507637000589195
+    second: Player3_ProjectileExplosion_sprite_8
+  - first:
+      213: 350022371026706444
+    second: Player3_ProjectileExplosion_sprite_9
+  - first:
+      213: -1345910551004654995
+    second: Player3_ProjectileExplosion_sprite_10
+  - first:
+      213: -530431540391922515
+    second: Player3_ProjectileExplosion_sprite_11
+  - first:
+      213: 2765967564962775391
+    second: Player3_ProjectileExplosion_sprite_12
+  - first:
+      213: -1485042143629999480
+    second: Player3_ProjectileExplosion_sprite_13
+  - first:
+      213: -6312285676064185795
+    second: Player3_ProjectileExplosion_sprite_14
+  - first:
+      213: 688420356206331520
+    second: Player3_ProjectileExplosion_sprite_15
+  - first:
+      213: 8416768851296337759
+    second: Player3_ProjectileExplosion_sprite_16
+  - first:
+      213: -1623788417978128713
+    second: Player3_ProjectileExplosion_sprite_17
+  - first:
+      213: 4754084663385684609
+    second: Player3_ProjectileExplosion_sprite_18
+  - first:
+      213: 4939567842555487449
+    second: Player3_ProjectileExplosion_sprite_19
+  - first:
+      213: 6214665870858256229
+    second: Player3_ProjectileExplosion_sprite_20
+  - first:
+      213: -6008164948300146006
+    second: Player3_ProjectileExplosion_sprite_21
+  - first:
+      213: 631500552774348385
+    second: Player3_ProjectileExplosion_sprite_22
+  - first:
+      213: -2222854498282082042
+    second: Player3_ProjectileExplosion_sprite_23
+  - first:
+      213: -4262739040756697496
+    second: Player3_ProjectileExplosion_sprite_24
+  - first:
+      213: -3770698712432637335
+    second: Player3_ProjectileExplosion_sprite_25
+  - first:
+      213: 4554359193656631465
+    second: Player3_ProjectileExplosion_sprite_26
+  - first:
+      213: -8172506237723950349
+    second: Player3_ProjectileExplosion_sprite_27
+  - first:
+      213: 5124043416995895000
+    second: Player3_ProjectileExplosion_sprite_28
+  - first:
+      213: -5919441466196331998
+    second: Player3_ProjectileExplosion_sprite_29
+  - first:
+      213: 2287179754660541532
+    second: Player3_ProjectileExplosion_sprite_30
+  - first:
+      213: -4122637853076706920
+    second: Player3_ProjectileExplosion_sprite_31
+  - first:
+      213: -7808318934491751251
+    second: Player3_ProjectileExplosion_sprite_32
+  - first:
+      213: 1170881542319155486
+    second: Player3_ProjectileExplosion_sprite_33
+  - first:
+      213: 5188244873833608751
+    second: Player3_ProjectileExplosion_sprite_34
+  - first:
+      213: -2227442842744877536
+    second: Player3_ProjectileExplosion_sprite_35
+  - first:
+      213: -1795349474801922182
+    second: Player3_ProjectileExplosion_sprite_36
+  - first:
+      213: 6225006633358600750
+    second: Player3_ProjectileExplosion_sprite_37
+  - first:
+      213: 9161618785893154732
+    second: Player3_ProjectileExplosion_sprite_38
+  - first:
+      213: -3443475311182810436
+    second: Player3_ProjectileExplosion_sprite_39
+  - first:
+      213: -4896537234688395445
+    second: Player3_ProjectileExplosion_sprite_40
+  - first:
+      213: -4891772209924725811
+    second: Player3_ProjectileExplosion_sprite_41
+  - first:
+      213: -2318815058731564343
+    second: Player3_ProjectileExplosion_sprite_42
+  - first:
+      213: -640063771306833624
+    second: Player3_ProjectileExplosion_sprite_43
+  - first:
+      213: 2917554904805256530
+    second: Player3_ProjectileExplosion_sprite_44
+  - first:
+      213: -3368990254400613538
+    second: Player3_ProjectileExplosion_sprite_45
+  - first:
+      213: -2413248587699553121
+    second: Player3_ProjectileExplosion_sprite_46
+  - first:
+      213: -7536367813747112783
+    second: Player3_ProjectileExplosion_sprite_47
+  - first:
+      213: -1510412148951665449
+    second: Player3_ProjectileExplosion_sprite_48
+  - first:
+      213: -6549425645181513845
+    second: Player3_ProjectileExplosion_sprite_49
+  - first:
+      213: -7010375472951657851
+    second: Player3_ProjectileExplosion_sprite_50
+  - first:
+      213: 3349570126226983235
+    second: Player3_ProjectileExplosion_sprite_51
+  - first:
+      213: -4179787907816962698
+    second: Player3_ProjectileExplosion_sprite_52
+  - first:
+      213: 7930052964810389998
+    second: Player3_ProjectileExplosion_sprite_53
+  - first:
+      213: 825647879743792054
+    second: Player3_ProjectileExplosion_sprite_54
+  - first:
+      213: -387047494740215534
+    second: Player3_ProjectileExplosion_sprite_55
+  - first:
+      213: -5383354000940806345
+    second: Player3_ProjectileExplosion_sprite_56
+  - first:
+      213: 4023731477509079619
+    second: Player3_ProjectileExplosion_sprite_57
+  - first:
+      213: -4391769088666302730
+    second: Player3_ProjectileExplosion_sprite_58
+  - first:
+      213: -1541343943627476535
+    second: Player3_ProjectileExplosion_sprite_59
+  - first:
+      213: -2560498815034057132
+    second: Player3_ProjectileExplosion_sprite_60
+  - first:
+      213: -3048020086986413449
+    second: Player3_ProjectileExplosion_sprite_61
+  - first:
+      213: -9107377206622284596
+    second: Player3_ProjectileExplosion_sprite_62
+  - first:
+      213: 1848878596273366261
+    second: Player3_ProjectileExplosion_sprite_63
+  - first:
+      213: -4641765040401574631
+    second: Player3_ProjectileExplosion_sprite_64
+  - first:
+      213: -4392502192578532029
+    second: Player3_ProjectileExplosion_sprite_65
+  - first:
+      213: -4172505597927803556
+    second: Player3_ProjectileExplosion_sprite_66
+  - first:
+      213: -8279709659046215725
+    second: Player3_ProjectileExplosion_sprite_67
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 57
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45d4312a6f91a300800000000000000
+      internalID: 261665531536659791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 48
+        width: 57
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 724d9ae73e414dc80800000000000000
+      internalID: -8298985246021790681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 35
+        width: 94
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4667d02b9e7bdaab0800000000000000
+      internalID: -4995134197341522332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 26
+        width: 98
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cef45d7c40f079820800000000000000
+      internalID: 2924822996207357932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 23
+        width: 111
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c81c6dbb42c34c0800000000000000
+      internalID: -4306526754492543994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 12
+        width: 116
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a127b727671d9c6b0800000000000000
+      internalID: -5275455181830786534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 7
+        width: 134
+        height: 137
+      alignment: 9
+      pivot: {x: -1.2115974, y: 0.38760626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7eca75a51f6f5950800000000000000
+      internalID: 6439988130924383866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 9
+        width: 134
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bdfc99b6baa1a42811acdbe13f66ff
+      internalID: 8100612731444619117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player3_ProjectileExplosion_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 11
+        width: 127
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cfdb818f090252408aff6c8b5356514
+      internalID: 5831507637000589195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3a26384ce745f36459a3281d829955ba
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":150.0,"y":150.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Player3_ProjectileExplosion_sprite_0: 261665531536659791
+      Player3_ProjectileExplosion_sprite_1: -8298985246021790681
+      Player3_ProjectileExplosion_sprite_2: -4995134197341522332
+      Player3_ProjectileExplosion_sprite_3: 2924822996207357932
+      Player3_ProjectileExplosion_sprite_4: -4306526754492543994
+      Player3_ProjectileExplosion_sprite_5: -5275455181830786534
+      Player3_ProjectileExplosion_sprite_6: 6439988130924383866
+      Player3_ProjectileExplosion_sprite_7: 8100612731444619117
+      Player3_ProjectileExplosion_sprite_8: 5831507637000589195
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

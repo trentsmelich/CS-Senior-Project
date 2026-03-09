@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 //Author:Trent and Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
@@ -62,6 +64,7 @@ public class GameStateController : MonoBehaviour
 
     [SerializeField] private UnlockController unlockController;
 
+    [Header("Audio Settings")]
     //Music and SFX
     public AudioSource buttonClickSound;
     private AudioSource keyClickSound;
@@ -70,6 +73,16 @@ public class GameStateController : MonoBehaviour
 
     //Other Variables
     public int currentBuildingCost = 0;
+
+    [Header("Story Settings")]
+    [SerializeField] private string[] storyLines;
+    [SerializeField] private GameObject storyUI;
+    [SerializeField] private TextMeshProUGUI storyText;
+    [SerializeField] private Sprite[] enemySprites;
+    [SerializeField] private Image enemyImage;
+    [SerializeField] private Image playerImage;
+    [SerializeField] public AudioSource storyClickSFX;
+    private bool storyPlayed = false;
 
     void Start()
     {
@@ -99,8 +112,15 @@ public class GameStateController : MonoBehaviour
         // Update the current state
         currentState.UpdateState(this);
 
+        // Check if the story has been played, if not, play the story state (only at the beginning of the game)
+        if (storyPlayed == false && !(currentState is StoryState))
+        {
+            storyPlayed = true;
+            SetState(new StoryState());
+        }
+
         // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press Esc key
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press Esc key
         {
             keyClickSound.Play();
             SetState(new PauseState());
@@ -113,7 +133,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState)) // press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press F key to enter shop
         {
             keyClickSound.Play();
             SetState(new InShopState());
@@ -124,13 +144,17 @@ public class GameStateController : MonoBehaviour
             SetState(new gameIdleState());
         }
         
-        //Game Over State Transition
-        //Get Player Health and stop the timer if health is 0
+        // Game Over State Transition
+        // Get Player Health and stop the timer if health is 0
         float playerCurrentHealth = playerStats.GetHealth();
         Timer timerScript = timer.GetComponent<Timer>();
         if (playerCurrentHealth <= 0 && !(currentState is GameOverState))
         {
+            // Stop the timer and set the time escaped for the level that the player is currently on
             timerScript.StopTimer();
+            playerStats.SetTimeSurvived(timerScript.GetTimeElapsed());
+
+            // Delay the game over screen by 1.5 seconds to allow the player to see their character die before the game over screen pops up
             StartCoroutine(DelayedGameOverScreen());
         } 
         else if (playerCurrentHealth > 0 && (currentState is GameOverState))
@@ -151,7 +175,7 @@ public class GameStateController : MonoBehaviour
 
     private System.Collections.IEnumerator DelayedGameOverScreen()
     {
-        //wait 1.5 seconds before showing the Game Over Screen
+        // wait 1.5 seconds before showing the Game Over Screen
         yield return new WaitForSeconds(1.5f);
         backgroundMusic.Stop();
         GameOverMusic.Play();
@@ -264,4 +288,46 @@ public class GameStateController : MonoBehaviour
     {
         return upgradeOfferCountDownText;
     }
+
+    public string[] GetStoryLines()
+    {
+        return storyLines;
+    }
+
+    public GameObject GetStoryUI()
+    {
+        return storyUI;
+    }
+
+    public void SetStoryUI(bool show)
+    {
+        storyUI.SetActive(show);
+    }
+
+    public TextMeshProUGUI GetStoryText()
+    {
+        return storyText;
+    }
+
+    public Sprite[] GetStoryEnemySprites()
+    {
+        return enemySprites;
+    }
+
+    public void SetStoryEnemySprite(Sprite sprite)
+    {
+        enemyImage.sprite = sprite;
+    }
+
+    public void SetStoryPlayerSprite()
+    {
+        //Set the player's sprite to the corresponding sprite for the story (just set it to the player's current sprite)
+        playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
+    }
+
+    public void PlayStoryClickSFX()
+    {
+        storyClickSFX.Play();
+    }
+    
 }

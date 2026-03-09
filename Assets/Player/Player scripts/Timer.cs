@@ -49,4 +49,9 @@ public class Timer : MonoBehaviour
         // Stop the timer after the game is over
         isRunning = false;
     }
+
+    public float GetTimeElapsed()
+    {
+        return timeElapsed;
+    }
 }

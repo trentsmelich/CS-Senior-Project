@@ -24,8 +24,10 @@ public class LevelSelect : MainMenuState
         Button tutorialButton = levelSelectPanel.transform.Find("Tutorial_Button").GetComponent<Button>();
         Button level1Button = levelSelectPanel.transform.Find("Level_1_Button").GetComponent<Button>();
         Button level2Button = levelSelectPanel.transform.Find("Level_2_Button").GetComponent<Button>();
+        Button level3Button = levelSelectPanel.transform.Find("Level_3_Button").GetComponent<Button>();
+        Button levelBossButton = levelSelectPanel.transform.Find("Level_Boss_Button").GetComponent<Button>();
 
-        // Give each button functionalities for level 1, level 2, main menu, and tutorial
+        // Give each button functionalities for level 1, level 2, level 3, main menu, and tutorial
         level1Button.onClick.AddListener(() =>
         {
             Debug.Log("Level 1 Button Clicked");
@@ -39,6 +41,22 @@ public class LevelSelect : MainMenuState
             Debug.Log("Level 2 Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        });
+
+        // Level 3 button
+        level3Button.onClick.AddListener(() =>
+        {
+            Debug.Log("Level 3 Button Clicked");
+            m.PlayButtonClickSound();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        });
+
+        // Level Boss button
+        levelBossButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Level Boss Button Clicked");
+            m.PlayButtonClickSound();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
         });
 
         // Main menu button
@@ -56,7 +74,7 @@ public class LevelSelect : MainMenuState
             PlayerPrefs.SetInt(PREF_TUTORIAL_DONE, 0);
             PlayerPrefs.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Debug.Log("Main Menu Button Clicked");
+            Debug.Log("Tutorial Button Clicked");
         });
     }
 
