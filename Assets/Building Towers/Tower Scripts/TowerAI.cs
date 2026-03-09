@@ -13,7 +13,6 @@ public class TowerAI : MonoBehaviour
     private Rigidbody rb;
     private TowerState currentState;
 
-    public float attackRange = 5f;
     public LayerMask enemyLayer;
 
    
