@@ -305,31 +305,27 @@ GameObject:
   - component: {fileID: 6479388327246865521}
   m_Layer: 0
   m_Name: SlingShot1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &8233103263000229814
-RectTransform:
+--- !u!4 &8233103263000229814
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7700592830201623609}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 371.21597, y: 220.38248, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8166014997358572333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 371.21597, y: 220.38248}
-  m_SizeDelta: {x: 0.64, y: 0.97}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7276476798313114114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -419,7 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlingShotTower
   level: 1
   towerRange: 7
-  towerDamage: 15
+  towerDamage: 0
   attackCooldown: 1.5
   attackTimer: 0
   speed: 20
@@ -428,6 +424,7 @@ MonoBehaviour:
   towerType: Damage
   towerName: SlingShot
   unlocked: 1
+  health: 0
 --- !u!61 &5159145958060091897
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -484,7 +481,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.32000002, y: 0.345, z: 0.1}
+  m_Extents: {x: 0.2, y: 0.21, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

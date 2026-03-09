@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Music
   - SFX
+  - Tower
+  - Fence
   layers:
   - Default
   - TransparentFX

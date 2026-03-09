@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4367890048662479186}
   m_Layer: 0
   m_Name: Catapult2
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   towerType: Damage
   towerName: Catapult
   unlocked: 0
+  health: 0
 --- !u!61 &7089082295262859280
 BoxCollider2D:
   m_ObjectHideFlags: 0
