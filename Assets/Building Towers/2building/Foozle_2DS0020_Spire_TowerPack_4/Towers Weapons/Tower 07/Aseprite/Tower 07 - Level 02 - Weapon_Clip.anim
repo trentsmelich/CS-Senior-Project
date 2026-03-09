@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tower 07 - Level 01 - Weapon_Clip
+  m_Name: Tower 07 - Level 02 - Weapon_Clip
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,21 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 7175510620760229520, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 1156098377184100622, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
     - time: 0.1
-      value: {fileID: -5678566989354222625, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 7840203547201377770, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
     - time: 0.2
-      value: {fileID: -3346299626151482428, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: -931086003793537112, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
     - time: 0.3
-      value: {fileID: -1499711868925661292, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 8446517538325733164, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
     - time: 0.4
-      value: {fileID: 4252727851851734477, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 1187500664591862347, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
     - time: 0.5
-      value: {fileID: 6192058969256027991, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
-    - time: 0.59000003
-      value: {fileID: 6192058969256027991, guid: 0bb7636e7d7c9f24c8a5c83f406e3a3f, type: 3}
+      value: {fileID: 3639406423794323880, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
+    - time: 0.6
+      value: {fileID: 47268510176209286, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
+    - time: 0.69000006
+      value: {fileID: 47268510176209286, guid: 48e4f43d7ffaed84facfc5efe8318d3f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,7 +54,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6
+    m_StopTime: 0.70000005
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
