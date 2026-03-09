@@ -80,13 +80,16 @@ public class Goblin : EnemyParent
         foreach (Collider2D hit in hitEnemies)
         {
             //check if hit is a building
-            if(hit.GetComponent<TowerParent>() != null)
+            //check if it is target from enemyAI targeting
+            //things are interfering such as other fences and buildings that are not the target, so need to check if it is the target building before attacking
+            if(hit.GetComponent<TowerParent>() != null && hit.transform == enemy.GetTarget())
             {
                 //deal damage to building
                 TowerParent tower = hit.GetComponent<TowerParent>();
                 tower.TakeDamage((int)enemyDamage);
                 Debug.Log("Building hit by enemy attack!");
                 break; // Only attack one building at a time
+
             }
             if(hit.GetComponent<PlayerStats>() != null)
             {
