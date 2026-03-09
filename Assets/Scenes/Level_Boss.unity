@@ -85344,6 +85344,7 @@ MonoBehaviour:
   - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
   - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
   - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
+  - {fileID: 5882449777920923934, guid: b9cb50c8e1e79df479df2e98da686f1f, type: 3}
 --- !u!4 &1908070004
 Transform:
   m_ObjectHideFlags: 0
@@ -87998,22 +87999,20 @@ MonoBehaviour:
   GameOverMusic: {fileID: 122390676}
   currentBuildingCost: 0
   storyLines:
-  - 'Player: The plains are cracked. The sea floods parts of the land. Autumn trees
-    burn with cursed energy.'
-  - 'Player: The forest, the sea, and the ancient earth were never separate disasters,
-    they were warnings.'
-  - "Player: All biomes collide into one broken battlefield.  The house still stands
-    in the center\u2026"
-  - 'Player: Now every boss returns. Not to fight each other. To finish breaking
-    the seal.'
-  - "Player: So this is it\u2026 you were never invading."
-  - 'Mage: You finally understand.'
-  - 'Merman King: The tides were drawn here.'
-  - 'Golem: The earth answered the call.'
-  - 'Bomb Goblin: Big boom time!'
-  - 'Big Turtle: The surface age ends.'
-  - "Worm: The Devourer awakens\u2026"
-  - "Player: You\u2019re all trying to free it."
+  - 'Player: Wait...! What happens to the ground? It''s collapsing!'
+  - 'Player: This land now is a combination of forest, beach, and autumn. How is
+    this even possible?'
+  - 'Player: At least my house is still standing...'
+  - 'Player: Wait...I saw those creatures before, Mage, Merman King, and...'
+  - 'Player: So this is it, invading again...now they are all coming back.'
+  - 'Mage: This time...You are not going anywhere!'
+  - 'Merman King: I couldn''t take the island last time, I will get this land from
+    you then...'
+  - 'Golem: The land! It belongs to me.'
+  - 'Bomb Goblin: I want to bomb more! This place will be bombed! Let''s play!'
+  - 'Big Turtle: There is no water here, what happened.'
+  - 'Worm: The land is not yours.'
+  - 'Player: I''m the strongest, YOU CAN''T DEFEAT ME!'
   storyUI: {fileID: 1901938593}
   storyText: {fileID: 187836268}
   enemySprites:

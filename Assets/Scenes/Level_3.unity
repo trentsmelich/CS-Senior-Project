@@ -33394,20 +33394,19 @@ MonoBehaviour:
   GameOverMusic: {fileID: 1812957917}
   currentBuildingCost: 0
   storyLines:
-  - "Player: The autumn never ends because the land itself is rotting from below.
-    The house is no longer just a structure \u2014 it is a seal"
-  - 'Player: And something is trying to break it.'
-  - "Player: The forest isn\u2019t just angry\u2026 it\u2019s dying."
-  - "Witch: Because beneath it\u2026 something ancient stirs."
-  - 'Crocodile: The ground cracks. The hunger rises.'
-  - "Player: I don\u2019t know what\u2019s under that house. But I won\u2019t let
-    you reach it."
-  - 'Golem: Stone remembers. Stone obeys the one below.'
-  - 'Player: The one below?'
-  - "Worm: Release\u2026 the Devourer\u2026"
-  - "Player: So that\u2019s what this is about."
-  - "Worm: The seal breaks\u2026 with your fall."
-  - "Player: Then I guess I\u2019m not falling."
+  - 'Player: The autumn is here, look at all those leaves.'
+  - 'Player: It''s time to preparing for the Halloween.'
+  - 'Player: This time, there can''t be any animals or creatures attack me, right?'
+  - 'Witch: Ohh, hello little boy...do you want to try my potion?'
+  - 'Crocodile: I''m so hungry, I need food now!'
+  - 'Player: You can''t be serious! Why there''s always creatures attacking me no
+    matter where I go???'
+  - 'Golem: I belong to the land here...the land don''t like you...'
+  - 'Player: The land? potion? What do you want from me???'
+  - 'Worm: Help this land and its soil...you are not helping'
+  - "Player: So that\u2019s what this is about???"
+  - 'Worm: I need to fix the land that is ruined by you, human.'
+  - 'Player: I''m just a person that lives here! Stop attacking me...! '
   storyUI: {fileID: 493226888}
   storyText: {fileID: 586000852}
   enemySprites:
@@ -65664,6 +65663,8 @@ MonoBehaviour:
   - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
   - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
   - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
+  - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
+  - {fileID: 5882449777920923934, guid: b9cb50c8e1e79df479df2e98da686f1f, type: 3}
 --- !u!4 &1592777065
 Transform:
   m_ObjectHideFlags: 0

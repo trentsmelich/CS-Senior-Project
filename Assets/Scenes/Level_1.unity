@@ -89472,16 +89472,16 @@ MonoBehaviour:
   GameOverMusic: {fileID: 960492183}
   currentBuildingCost: 0
   storyLines:
-  - 'Player: The forest once protected this land.'
-  - 'Player: Now something is pushing its creatures toward the house.'
-  - "Player: This place\u2026 it feels wrong. The forest is too quiet."
-  - 'Goblin: Shiny house in middle! Chief wants it!'
-  - 'Wolf: The wild answers to a new master...'
-  - "Player: If you want this land\u2026 you\u2019ll have to take it from me."
+  - 'Player: I have living here for a few years...but recently something is off'
+  - 'Player: Now something is here, I can feel it.'
+  - "Player: But recently...this place\u2026it feels wrong. The forest is too quiet."
+  - 'Goblin: Hey! You, I want all your money.'
+  - 'Wolf: woooooooo!'
+  - 'Player: Wait...where are your guys coming from.'
   - 'Mage: You defend what you do not understand.'
-  - "Player: I\u2019m not letting you near it."
-  - 'Bomb Goblin: Then BOOM house! BOOM you!'
-  - 'Player: Here we go.'
+  - 'Player: You are not going to destroy my house.'
+  - 'Bomb Goblin: Then bomb house! BOOM you!'
+  - 'Player: Well...You can''t beat ME!'
   storyUI: {fileID: 1827842782}
   storyText: {fileID: 2009661090}
   enemySprites:
@@ -110680,6 +110680,8 @@ MonoBehaviour:
   - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
   - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
   - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
+  - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
+  - {fileID: 5882449777920923934, guid: b9cb50c8e1e79df479df2e98da686f1f, type: 3}
 --- !u!4 &1781292269
 Transform:
   m_ObjectHideFlags: 0
