@@ -239,7 +239,7 @@ MonoBehaviour:
   attackCooldown: 10
   attackTimer: 0
   speed: 0
-  towerImage: {fileID: 0}
+  towerImage: {fileID: 5394458788008888237, guid: cec36328b8a2c0049bcf36b698d6993e, type: 3}
   towerCost: 0
   towerType: Damage
   towerName: Freezer

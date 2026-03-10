@@ -89444,9 +89444,6 @@ MonoBehaviour:
   waveCountdown: 0
   enemyList:
   - {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
-  - {fileID: 1550629060444859054, guid: ab0825a40ef1cf948ba0d7d89e52db99, type: 3}
-  - {fileID: 919114048276854430, guid: eac7a6065a2c393419ccb73a29264b27, type: 3}
-  - {fileID: 1474639053942944605, guid: 9fe7086ac8002ff448073c748606b51e, type: 3}
   bossList:
   - {fileID: 8610489642223863417, guid: f14923bef180af04c84ff650f015581f, type: 3}
   - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}
@@ -119641,7 +119638,7 @@ PrefabInstance:
       objectReference: {fileID: 1046596825}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: coins
-      value: 0
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: damage
