@@ -47287,7 +47287,7 @@ PrefabInstance:
       objectReference: {fileID: 1289018385}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: coins
-      value: 10000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8683041722731535399, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: damage
