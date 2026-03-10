@@ -19,6 +19,9 @@ public class UnlockController : MonoBehaviour
     private static int numStatMod1 = 0;
     private static int numStatMod2 = 0;
     private static int numStatMod3 = 0;
+    private static int numFreeze1 = 0;
+    private static int numFreeze2 = 0;
+    private static int numFreeze3 = 0;
 
     // Start is called before the first frame update
     private void Start()
@@ -114,6 +117,21 @@ public class UnlockController : MonoBehaviour
                 numStatMod3++;
             }
         }
+        else if (towerParent is Freezer)
+        {
+            if (level == 1)
+            {
+                numFreeze1++;
+            }
+            else if (level == 2)
+            {
+                numFreeze2++;
+            }
+            else if (level == 3)
+            {
+                numFreeze3++;
+            }
+        }
     }
 
     // Get the number of towers built for a specific tower type and level
@@ -177,6 +195,21 @@ public class UnlockController : MonoBehaviour
             else if (level == 3)
             {
                 return numStatMod3;
+            }
+        }
+        else if (towerType == "Freezer")
+        {
+            if (level == 1)
+            {
+                return numFreeze1;
+            }
+            else if (level == 2)
+            {
+                return numFreeze2;
+            }
+            else if (level == 3)
+            {
+                return numFreeze3;
             }
         }
         return 0;
