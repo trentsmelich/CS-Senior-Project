@@ -89495,6 +89495,36 @@ MonoBehaviour:
   enemyImage: {fileID: 258341332}
   playerImage: {fileID: 407149016}
   storyClickSFX: {fileID: 925319739}
+  tutorialSteps:
+  - {fileID: 1117345417}
+  - {fileID: 937134384}
+  - {fileID: 227274970}
+  - {fileID: 1397266789}
+  - {fileID: 468822631}
+  - {fileID: 1909157028}
+  - {fileID: 730540870}
+  - {fileID: 1709324032}
+  - {fileID: 2104403117}
+  nextButtons:
+  - {fileID: 1956479199}
+  - {fileID: 1212390830}
+  - {fileID: 1746577454}
+  - {fileID: 1777957686}
+  - {fileID: 933654238}
+  - {fileID: 1458130526}
+  - {fileID: 843474077}
+  - {fileID: 1254477022}
+  - {fileID: 2071878720}
+  backButtons:
+  - {fileID: 1190505517}
+  - {fileID: 522772512}
+  - {fileID: 245925466}
+  - {fileID: 152188362}
+  - {fileID: 859080292}
+  - {fileID: 715736289}
+  - {fileID: 545584943}
+  - {fileID: 43454839}
+  GameTutorialObject: {fileID: 2057972550}
 --- !u!1 &1075303722
 GameObject:
   m_ObjectHideFlags: 0
@@ -96473,7 +96503,6 @@ GameObject:
   - component: {fileID: 1640672943}
   - component: {fileID: 1640672942}
   - component: {fileID: 1640672946}
-  - component: {fileID: 1640672947}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -96585,49 +96614,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioController
   musicSlider: {fileID: 1808388389}
   sfxSlider: {fileID: 1938347045}
---- !u!114 &1640672947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640672941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9e108e7132c614a8ece865e29f3fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game_Tutorial
-  tutorialSteps:
-  - {fileID: 1117345417}
-  - {fileID: 937134384}
-  - {fileID: 227274970}
-  - {fileID: 1397266789}
-  - {fileID: 468822631}
-  - {fileID: 1909157028}
-  - {fileID: 730540870}
-  - {fileID: 1709324032}
-  - {fileID: 2104403117}
-  nextButtons:
-  - {fileID: 1956479199}
-  - {fileID: 1212390830}
-  - {fileID: 1746577454}
-  - {fileID: 1777957686}
-  - {fileID: 933654238}
-  - {fileID: 1458130526}
-  - {fileID: 843474077}
-  - {fileID: 1254477022}
-  - {fileID: 2071878720}
-  backButtons:
-  - {fileID: 1190505517}
-  - {fileID: 522772512}
-  - {fileID: 245925466}
-  - {fileID: 152188362}
-  - {fileID: 859080292}
-  - {fileID: 715736289}
-  - {fileID: 545584943}
-  - {fileID: 43454839}
-  GameTutorialObject: {fileID: 2057972550}
-  PlayerUI: {fileID: 1156336862}
 --- !u!1 &1642362210
 GameObject:
   m_ObjectHideFlags: 0
