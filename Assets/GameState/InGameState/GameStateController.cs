@@ -84,6 +84,14 @@ public class GameStateController : MonoBehaviour
     [SerializeField] public AudioSource storyClickSFX;
     private bool storyPlayed = false;
 
+    [Header("Tutorial Settings")]
+    public GameObject[] tutorialSteps;
+    public Button[] nextButtons;
+    public Button[] backButtons;
+    public GameObject GameTutorialObject;
+    private bool tutorialPlayed = false;
+    private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
+
     void Start()
     {
         waveManager = new WavesState(
@@ -112,8 +120,15 @@ public class GameStateController : MonoBehaviour
         // Update the current state
         currentState.UpdateState(this);
 
+        // Check if the tutorial has been played, if not, play the tutorial state (only at the beginning of the game)
+        if (tutorialPlayed == false && !(currentState is TutorialState))
+        {
+            tutorialPlayed = true;
+            SetState(new TutorialState());
+        }
+
         // Check if the story has been played, if not, play the story state (only at the beginning of the game)
-        if (storyPlayed == false && !(currentState is StoryState))
+        if (storyPlayed == false && !(currentState is StoryState) && PlayerPrefs.GetInt(PREF_TUTORIAL_DONE) == 1) // Only play the story if the tutorial has been completed or skipped
         {
             storyPlayed = true;
             SetState(new StoryState());
@@ -328,6 +343,26 @@ public class GameStateController : MonoBehaviour
     public void PlayStoryClickSFX()
     {
         storyClickSFX.Play();
+    }
+
+    public GameObject[] GetTutorialSteps()
+    {
+        return tutorialSteps;
+    }
+
+    public Button[] GetTutorialNextButtons()
+    {
+        return nextButtons;
+    }
+
+    public Button[] GetTutorialBackButtons()
+    {
+        return backButtons;
+    }
+
+    public GameObject GetGameTutorialObject()
+    {
+        return GameTutorialObject;
     }
     
 }

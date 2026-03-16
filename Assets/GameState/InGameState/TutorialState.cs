@@ -1,20 +1,18 @@
-
 // Libraries
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 //Author:Jia
 //Description: This script manages the in game tutorial, guiding players through the game's mechanics and UI.
-public class Game_Tutorial : MonoBehaviour
+public class TutorialState : GameState
 {
     // Declare lists for steps, playerPrefab, UI, SFX, and display game objects
-    public GameObject[] tutorialSteps;
-    public Button[] nextButtons;
-    public Button[] backButtons;
+    private GameObject[] tutorialSteps;
+    private Button[] nextButtons;
+    private Button[] backButtons;
     private int currentStep;
     private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
-    public GameObject GameTutorialObject;
-    public GameObject PlayerUI;
+    private GameObject GameTutorialObject;
     private AudioSource buttonSFX;
 
     //String Variables for texts of different steps
@@ -29,8 +27,14 @@ public class Game_Tutorial : MonoBehaviour
     private string stepNineText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void EnterState(GameStateController Game)
     {
+        // Setting up the tutorial variables and other UI
+        tutorialSteps = Game.GetTutorialSteps();
+        nextButtons = Game.GetTutorialNextButtons();
+        backButtons = Game.GetTutorialBackButtons();
+        GameTutorialObject = Game.GetGameTutorialObject();
+
         // If tutorial was already completed, skip showing in level 1
         if (PlayerPrefs.GetInt(PREF_TUTORIAL_DONE, 0) == 1)
         {
@@ -59,9 +63,14 @@ public class Game_Tutorial : MonoBehaviour
         Time.timeScale = 0; 
         currentStep = 0;
         GameTutorialObject.SetActive(true);
-        PlayerUI.SetActive(false);
+        Game.ShowPlayerUI(false);
         buttonSFX = GameObject.Find("SFX/Tutorial_ClickSFX").GetComponent<AudioSource>();
         ShowTutorialStep(currentStep);
+    }
+
+    public override void UpdateState(GameStateController Game)
+    {
+        // Implementation for updating the game over state
     }
 
     private void BackFunctionality()
@@ -192,11 +201,14 @@ public class Game_Tutorial : MonoBehaviour
         // Finish the tutorial
         PlayerPrefs.SetInt(PREF_TUTORIAL_DONE, 1);
         PlayerPrefs.Save();
+    }
 
+    public override void ExitState(GameStateController Game)
+    {
         // Disable tutorial UI
         GameTutorialObject.SetActive(false);
         // Put the time back to normal
-        PlayerUI.SetActive(true);
+        Game.ShowPlayerUI(true);
         Time.timeScale = 1; 
     }
 }
