@@ -135,7 +135,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press Esc key
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState)) // press Esc key
         {
             keyClickSound.Play();
             SetState(new PauseState());
@@ -148,7 +148,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState)) // press F key to enter shop
         {
             keyClickSound.Play();
             SetState(new InShopState());
