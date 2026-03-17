@@ -3586,6 +3586,9 @@ MonoBehaviour:
   buttonClickAudio: {fileID: 1678979879}
   towerButtonPrefab: {fileID: 4440208757228867778, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
   unlockController: {fileID: 1074728678}
+  normalCursorTexture: {fileID: 2800000, guid: a0aafda3437054a40a972d3aa3283054, type: 3}
+  hotSpot: {x: 0, y: 0}
+  cursorMode: 0
 --- !u!114 &915860905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3796,7 +3799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.6064453, y: -5.0333557}
+  m_AnchoredPosition: {x: 0.6064453, y: -5.033325}
   m_SizeDelta: {x: -106.35571, y: -70.06677}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938146122

@@ -55410,6 +55410,10 @@ MonoBehaviour:
   - {fileID: 2104035195}
   - {fileID: 973970355}
   GameTutorialObject: {fileID: 43733050}
+  normalCursorTexture: {fileID: 2800000, guid: a0aafda3437054a40a972d3aa3283054, type: 3}
+  redCursorTexture: {fileID: 2800000, guid: 1a64248fd5be693408fd98a759700e4b, type: 3}
+  hotSpot: {x: 0, y: 0}
+  cursorMode: 0
 --- !u!4 &1289018387
 Transform:
   m_ObjectHideFlags: 0

@@ -17,11 +17,18 @@ public class MainMenuStateController : MonoBehaviour
     [SerializeField] GameObject towerButtonPrefab;
     [SerializeField] private UnlockController unlockController;
 
+    [Header("Cursor Settings")]
+    [SerializeField] private Texture2D normalCursorTexture; // image here in the Inspector
+    [SerializeField] private Vector2 hotSpot = Vector2.zero; // Hotspot for clicks (32x32 center)
+    [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
+
     private MainMenuState currentState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetState(new MainMenu());
+        // Set the custom normal cursor while the player is in the main menu
+        Cursor.SetCursor(normalCursorTexture, hotSpot, cursorMode);
     }
 
     // Update is called once per frame

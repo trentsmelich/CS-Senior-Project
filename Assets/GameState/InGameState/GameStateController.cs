@@ -92,6 +92,13 @@ public class GameStateController : MonoBehaviour
     private bool tutorialPlayed = false;
     private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
 
+    [Header("Cursor Settings")]
+    [SerializeField] private Texture2D normalCursorTexture; // image here in the Inspector
+    [SerializeField] private Texture2D redCursorTexture; // image here in the Inspector
+    [SerializeField] private Vector2 normalHotSpot = Vector2.zero; // Hotspot for clicks (0 x 0 center)
+    [SerializeField] private Vector2 redHotSpot = new Vector2(14.5f, 14.5f); // Hotspot for clicks (14.5 x 14.5 center)
+    [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
+
     void Start()
     {
         waveManager = new WavesState(
@@ -112,6 +119,8 @@ public class GameStateController : MonoBehaviour
         playerStats = player.GetComponent<PlayerStats>();
         //Set SFX
         keyClickSound = GameObject.Find("SFX/Key_Click_SFX").GetComponent<AudioSource>();
+        // Set the cursor to the normal cursor at the start of the game
+        Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
     }
 
     // Update is called once per frame
@@ -119,6 +128,16 @@ public class GameStateController : MonoBehaviour
     {
         // Update the current state
         currentState.UpdateState(this);
+
+        // Change cursor to normal or red depending on which state the player is in (red cursor for building state, normal cursor for all other states)
+        if (currentState is gameIdleState || currentState is LevelUpState || currentState is WavesState)
+        {
+            Cursor.SetCursor(redCursorTexture, redHotSpot, cursorMode);
+        }
+        else
+        {
+            Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
+        }
 
         // Check if the tutorial has been played, if not, play the tutorial state (only at the beginning of the game)
         if (tutorialPlayed == false && !(currentState is TutorialState))
