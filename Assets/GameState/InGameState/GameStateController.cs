@@ -95,8 +95,8 @@ public class GameStateController : MonoBehaviour
     [Header("Cursor Settings")]
     [SerializeField] private Texture2D normalCursorTexture; // image here in the Inspector
     [SerializeField] private Texture2D redCursorTexture; // image here in the Inspector
-    [SerializeField] private Vector2 normalHotSpot = Vector2.zero; // Hotspot for clicks (0 x 0 center)
-    [SerializeField] private Vector2 redHotSpot = new Vector2(14.5f, 14.5f); // Hotspot for clicks (14.5 x 14.5 center)
+    [SerializeField] private Vector2 normalHotSpot = new Vector2(0, 0); // Hotspot for clicks (0 x 0 top left corner)
+    [SerializeField] private Vector2 redHotSpot = new Vector2(64, 64); // Hotspot for clicks (14.5 x 14.5 center)
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
 
     void Start()
