@@ -86,8 +86,8 @@ public class GameStateController : MonoBehaviour
 
     [Header("Tutorial Settings")]
     public GameObject[] tutorialSteps;
-    public Button[] nextButtons;
-    public Button[] backButtons;
+    public Button nextButton;
+    public Button backButton;
     public GameObject GameTutorialObject;
     private bool tutorialPlayed = false;
     private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
@@ -154,7 +154,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState)) // press Esc key
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState) && !(currentState is TutorialState)) // press Esc key
         {
             keyClickSound.Play();
             SetState(new PauseState());
@@ -167,7 +167,7 @@ public class GameStateController : MonoBehaviour
         }
 
         // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState)) // press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState) && !(currentState is TutorialState)) // press F key to enter shop
         {
             keyClickSound.Play();
             SetState(new InShopState());
@@ -369,14 +369,14 @@ public class GameStateController : MonoBehaviour
         return tutorialSteps;
     }
 
-    public Button[] GetTutorialNextButtons()
+    public Button GetTutorialNextButton()
     {
-        return nextButtons;
+        return nextButton;
     }
 
-    public Button[] GetTutorialBackButtons()
+    public Button GetTutorialBackButton()
     {
-        return backButtons;
+        return backButton;
     }
 
     public GameObject GetGameTutorialObject()
