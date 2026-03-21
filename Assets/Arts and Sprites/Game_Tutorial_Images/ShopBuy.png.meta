@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6a580b955cab09f45ac4e82320282265
+guid: 7820a7ffe2a002741aeffc7b2f17c11b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1199959443329451114
-    second: PlayerUI_0
+      213: 300400943178289846
+    second: ShopBuy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerUI_0
+      name: ShopBuy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69bf8737e33e85fe0800000000000000
-      internalID: -1199959443329451114
+      spriteID: 6b29554f01d3b2400800000000000000
+      internalID: 300400943178289846
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerUI_0: -1199959443329451114
+      ShopBuy_0: 300400943178289846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

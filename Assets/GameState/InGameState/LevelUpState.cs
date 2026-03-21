@@ -23,6 +23,7 @@ public class LevelUpState : GameState
     {
         // Start the level-up countdown coroutine then do the level up logic
         Game.StartCoroutine(LevelUpCountdown(Game));
+        Game.ShowPlayerUI(false);
     }
 
     public override void UpdateState(GameStateController Game)
@@ -40,6 +41,7 @@ public class LevelUpState : GameState
         offer1.onClick.RemoveAllListeners();
         offer2.onClick.RemoveAllListeners();
         offer3.onClick.RemoveAllListeners();
+        Game.ShowPlayerUI(true);
         Time.timeScale = 1;
         //resume time
     }
