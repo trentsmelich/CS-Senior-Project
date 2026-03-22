@@ -99,6 +99,9 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Vector2 redHotSpot = new Vector2(64, 64); // Hotspot for clicks (14.5 x 14.5 center)
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
 
+    // Main Menu Background Number
+    private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
+
     void Start()
     {
         waveManager = new WavesState(
@@ -138,6 +141,9 @@ public class GameStateController : MonoBehaviour
         {
             Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
         }
+
+        // Set the main menu background number based on the current scene index 
+        SetMainMenuBackground();
 
         // Check if the tutorial has been played, if not, play the tutorial state (only at the beginning of the game)
         if (tutorialPlayed == false && !(currentState is TutorialState))
@@ -214,6 +220,33 @@ public class GameStateController : MonoBehaviour
         backgroundMusic.Stop();
         GameOverMusic.Play();
         SetState(new GameOverState());
+    }
+
+    private void SetMainMenuBackground()
+    {
+        // Set the main menu background number based on the current scene index so that the correct background can be displayed in the main menu 
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 1);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 2);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 3);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 4); 
+        }
+        else
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 1); // Default to the first background option
+        }
+
+        PlayerPrefs.Save();
     }
 
     public GameState GetWaveManager()
