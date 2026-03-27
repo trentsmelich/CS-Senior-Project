@@ -1853,7 +1853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -303, y: -147}
+  m_AnchoredPosition: {x: -227, y: -149}
   m_SizeDelta: {x: 65, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332745806
@@ -4528,6 +4528,7 @@ MonoBehaviour:
   levelSelectPanel: {fileID: 1467573068}
   settingsPanel: {fileID: 938146120}
   unlocksPanel: {fileID: 1096129399}
+  playerSelectPanel: {fileID: 1289897898}
   buttonClickAudio: {fileID: 1678979879}
   towerButtonPrefab: {fileID: 4440208757228867778, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
   unlockController: {fileID: 1074728678}
