@@ -22,6 +22,8 @@ public class MainMenu : MainMenuState
         Button unlocksButton = mainMenuPanel.transform.Find("Unlocks_Button").GetComponent<Button>();
         Button exitButton = mainMenuPanel.transform.Find("Exit_Button").GetComponent<Button>();
 
+        Button playerSelectButton = mainMenuPanel.transform.Find("Player_Select_Button").GetComponent<Button>();
+
         // set the buttons with the functionalities, such as play, settings, unlocks, and exit.
         playButton.onClick.AddListener(() =>
         {
@@ -48,6 +50,13 @@ public class MainMenu : MainMenuState
         {
             m.PlayButtonClickSound();
             Application.Quit();
+        });
+
+        playerSelectButton.onClick.AddListener(() =>
+        {
+            m.PlayButtonClickSound();
+            m.SetState(new PlayerSelect());
+            Debug.Log("Player Select Button Clicked");
         });
     }
     

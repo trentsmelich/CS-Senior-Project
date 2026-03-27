@@ -12,6 +12,7 @@ public class MainMenuStateController : MonoBehaviour
     public GameObject levelSelectPanel;
     public GameObject settingsPanel;
     public GameObject unlocksPanel;
+    public GameObject playerSelectPanel;
 
     public AudioSource buttonClickAudio;
 
@@ -93,6 +94,11 @@ public class MainMenuStateController : MonoBehaviour
         return levelSelectPanel;
     }
 
+    public GameObject GetPlayerSelectPanel()
+    {
+        return playerSelectPanel;
+    }
+
     public GameObject GetUnlocksPanel()
     {
         return unlocksPanel;
@@ -111,6 +117,11 @@ public class MainMenuStateController : MonoBehaviour
     public UnlockController GetUnlockController()
     {
         return unlockController;
+    }
+
+    public void DisplayMainMenu(bool display)
+    {
+        mainMenuPanel.SetActive(display);
     }
 
     // Play the sound of the button
