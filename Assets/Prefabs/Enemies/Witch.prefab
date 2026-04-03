@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dbe60117f00c94f83d4c6b448d300e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Archer
-  enemyRange: 8
+  enemyRange: 7
   enemyDamage: 6
   attackCooldown: 2.5
   attackTimer: 0
