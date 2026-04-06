@@ -102,6 +102,9 @@ public class GameStateController : MonoBehaviour
     // Main Menu Background Number
     private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
 
+    // Towers
+    private GameObject[] towers;
+
     void Start()
     {
         waveManager = new WavesState(
@@ -124,6 +127,14 @@ public class GameStateController : MonoBehaviour
         keyClickSound = GameObject.Find("SFX/Key_Click_SFX").GetComponent<AudioSource>();
         // Set the cursor to the normal cursor at the start of the game
         Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
+
+        // Reset Each Tower's Placement at the start of the game
+        towers = unlockController.GetTowers();
+        foreach (GameObject tower in towers)
+        {
+            tower.GetComponent<TowerParent>().ResetPlacedTowers();
+        }
+
     }
 
     // Update is called once per frame

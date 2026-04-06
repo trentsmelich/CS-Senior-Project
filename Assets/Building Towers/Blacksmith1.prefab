@@ -134,6 +134,9 @@ MonoBehaviour:
   towerName: StatModifier
   unlocked: 1
   health: 0
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 3
   statToModify: Damage
   modificationAmount: 10
 --- !u!61 &-8856103883279618278

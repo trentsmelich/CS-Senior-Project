@@ -424,6 +424,9 @@ MonoBehaviour:
   towerName: SlingShot
   unlocked: 1
   health: 20
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 100
 --- !u!61 &5159145958060091897
 BoxCollider2D:
   m_ObjectHideFlags: 0
