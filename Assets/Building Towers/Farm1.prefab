@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAI
   targetEnemy: {fileID: 0}
-  attackRange: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -171,6 +170,9 @@ MonoBehaviour:
   towerName: Farm
   unlocked: 1
   health: 0
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 100
   sprites:
   - {fileID: 8369948372191450990, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   - {fileID: -3402868906910896487, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}

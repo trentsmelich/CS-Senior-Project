@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAI
   targetEnemy: {fileID: 0}
-  attackRange: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -136,6 +135,9 @@ MonoBehaviour:
   towerName: Catapult
   unlocked: 0
   health: 0
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 100
 --- !u!208 &7769129708212230012
 NavMeshObstacle:
   m_ObjectHideFlags: 0

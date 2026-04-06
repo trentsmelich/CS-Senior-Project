@@ -135,6 +135,9 @@ MonoBehaviour:
   towerName: Freezer
   unlocked: 0
   health: 0
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 100
   freezeDuration: 10
 --- !u!208 &-6391447720280942312
 NavMeshObstacle:
