@@ -143,7 +143,22 @@ public class GameStateController : MonoBehaviour
             keyClickSound.Play();
             SetState(new gameIdleState());
         }
-        
+        //if in shop and wavestate waveinprogress is false
+        //if player presses b key, enter destroy state
+        if(Input.GetKeyDown(KeyCode.B) && (currentState is InShopState)){
+            keyClickSound.Play();
+            SetState(new DestroyState());
+        }
+        else if (Input.GetKeyDown(KeyCode.B) && (currentState is DestroyState)) // press B key to exit destroy state and go back to shop state
+        {
+            keyClickSound.Play();
+            SetState(new InShopState());
+        }
+
+
+
+
+
         // Game Over State Transition
         // Get Player Health and stop the timer if health is 0
         float playerCurrentHealth = playerStats.GetHealth();
