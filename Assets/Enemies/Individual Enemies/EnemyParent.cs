@@ -21,4 +21,9 @@ public abstract class EnemyParent : MonoBehaviour
 
 
     public abstract void Attack(EnemyAI enemy);
+
+    public void setRange(float range)
+    {
+        enemyRange = range;
+    }
 }

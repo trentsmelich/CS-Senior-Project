@@ -5,7 +5,10 @@ using UnityEngine.AI;
 public class EnemyChaseState : EnemyState
 {
     private const float PathTooLongRatio = 1.45f;
+    private const float RepathInterval = 0.25f;
     private NavMeshAgent agent;
+    private float nextRepathTime;
+    private bool isDirectAssault;
 
     public override void EnterState(EnemyAI enemy)
     {
@@ -16,6 +19,8 @@ public class EnemyChaseState : EnemyState
         agent.updateUpAxis = false;
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         enemy.GetAnimator().SetBool("Walking", true);
+        nextRepathTime = 0f;
+        isDirectAssault = false;
     }
 
     public override void UpdateState(EnemyAI enemy)
@@ -23,25 +28,28 @@ public class EnemyChaseState : EnemyState
 
         if (enemy == null || enemy.GetPlayer() == null) return;
         //get the direction in which the enemy is moving
-        Vector3 velocity = agent.velocity;
-        Vector2 moveDir = new Vector2(velocity.x, velocity.y).normalized;
+        Vector2 moveDir = isDirectAssault
+            ? enemy.GetRigidbody().linearVelocity.normalized
+            : new Vector2(agent.velocity.x, agent.velocity.y).normalized;
         
         float distance = 0f;
+        bool shouldRepath = Time.time >= nextRepathTime;
 
         // Move toward player if enemy is targeting player otherwise move toward buildings
         if (enemy.IsTargetingPlayer())
         {
-            enemy.GetRigidbody().linearVelocity = Vector2.zero;
-            agent.isStopped = false;
+            enemy.GetEnemyParent().setRange(1.0f);
             distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
-            enemy.setTarget(enemy.GetPlayer());
-            //create condition by comparing distance of path to player to new distance to player
-            //if distance of path is significantly larger than old distance then set new path towards player to 
-            // prevent weird pathfinding issues where enemy constantly changes path if player is moving a lot
-            //found that this is problem when enemy finds a better path from player moving but if player finds 
-            //the correct point to change the path constantly enemy can get stuck from player making it choose the optimal path
-            //while path may be optimal it can be slower because as it changes the path it isnt moving towards the player
-            agent.SetDestination(enemy.GetPlayer().position);
+
+            if (shouldRepath || enemy.GetTarget() != enemy.GetPlayer())
+            {
+                enemy.GetRigidbody().linearVelocity = Vector2.zero;
+                agent.isStopped = false;
+                enemy.setTarget(enemy.GetPlayer());
+                agent.SetDestination(enemy.GetPlayer().position);
+                nextRepathTime = Time.time + RepathInterval;
+                isDirectAssault = false;
+            }
         }
         else
         {
@@ -50,21 +58,38 @@ public class EnemyChaseState : EnemyState
 
             if (nearestTower != null)
             {
-                bool forceDirectAssault = IsPathTooLong(enemy, enemy.transform.position, nearestTower.position);
-
-                if (forceDirectAssault)
+                if (shouldRepath || enemy.GetTarget() != nearestTower)
                 {
-                    // Direct mode: move straight at the building and stop to break fence blockers.
-                    Debug.Log("Path to tower is too long, using direct assault.");
+                    bool forceDirectAssault = IsPathTooLong(enemy, enemy.transform.position, nearestTower.position);
+
+                    if (forceDirectAssault)
+                    {
+                        enemy.GetEnemyParent().setRange(1.0f);
+                        // Direct mode: move straight at the building and stop to break fence blockers.
+                        HandleDirectAssault(enemy, nearestTower, ref distance, ref moveDir);
+                        isDirectAssault = true;
+                    }
+                    else
+                    {
+                        enemy.GetEnemyParent().setRange(1.7f);
+                        enemy.GetRigidbody().linearVelocity = Vector2.zero;
+                        agent.isStopped = false;
+                        enemy.setTarget(nearestTower);
+                        agent.SetDestination(nearestTower.position);
+                        distance = Vector2.Distance(nearestTower.position, enemy.transform.position);
+                        isDirectAssault = false;
+                    }
+
+                    nextRepathTime = Time.time + RepathInterval;
+                }
+                else if (isDirectAssault)
+                {
+                    enemy.GetEnemyParent().setRange(1.0f);
                     HandleDirectAssault(enemy, nearestTower, ref distance, ref moveDir);
                 }
                 else
                 {
-                    Debug.Log("Path to tower is acceptable, using NavMeshAgent.");
-                    enemy.GetRigidbody().linearVelocity = Vector2.zero;
-                    agent.isStopped = false;
-                    enemy.setTarget(nearestTower);
-                    agent.SetDestination(nearestTower.position);
+                    enemy.GetEnemyParent().setRange(1.7f);
                     distance = Vector2.Distance(nearestTower.position, enemy.transform.position);
                 }
             }
@@ -72,21 +97,23 @@ public class EnemyChaseState : EnemyState
             {
                 // If no towers are found, target the player instead
                 enemy.SetTargetingPlayer(true);
-                enemy.GetRigidbody().linearVelocity = Vector2.zero;
-                agent.isStopped = false;
                 distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
-                agent.SetDestination(enemy.GetPlayer().position);
-                enemy.setTarget(enemy.GetPlayer());
-                Debug.Log("No towers found, targeting player instead.");
+
+                if (shouldRepath || enemy.GetTarget() != enemy.GetPlayer())
+                {
+                    enemy.GetRigidbody().linearVelocity = Vector2.zero;
+                    agent.isStopped = false;
+                    agent.SetDestination(enemy.GetPlayer().position);
+                    enemy.setTarget(enemy.GetPlayer());
+                    nextRepathTime = Time.time + RepathInterval;
+                    isDirectAssault = false;
+                }
             }
         }
 
         // Update direction animation
         enemy.UpdateDirection(enemy, moveDir);
         // Check if player is within attack range
-        Debug.Log($"Distance to target: {distance}");
-        Debug.Log($"Enemy position: {enemy.transform.position}, Target position: {enemy.GetTarget().position}");
-        Debug.Log($"Enemy attack range: {enemy.GetAttackRange()}");
         if (distance < enemy.GetAttackRange())
         {
             //when player is within attack range change to attack state.
@@ -99,12 +126,13 @@ public class EnemyChaseState : EnemyState
         enemy.GetRigidbody().linearVelocity = Vector2.zero;
         agent.isStopped = true;
         enemy.GetAnimator().SetBool("Walking", false);
+        isDirectAssault = false;
     }
 
     private bool IsPathTooLong(EnemyAI enemy, Vector3 from, Vector3 to)
     {
         float straightDistance = Vector2.Distance(from, to);
-        if (straightDistance <= 0.01f)
+        if (straightDistance <= 1.7f)
         {
             return false;
         }
@@ -171,7 +199,6 @@ public class EnemyChaseState : EnemyState
                 nearestFence = hit.transform;
             }
         }
-
         return nearestFence;
     }
 
