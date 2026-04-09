@@ -281,5 +281,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Scripts::ShotgunPlayer
   projDelay: 0.3
-  projNum: 3
+  projNum: 5
   sprAngle: 10
