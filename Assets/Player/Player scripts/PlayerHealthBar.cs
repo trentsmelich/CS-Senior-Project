@@ -32,4 +32,9 @@ public class PlayerHealthBar : MonoBehaviour
         currentHealthBarFill.fillAmount = (float)playerStats.getCurrentHealth() / playerStats.getMaxHealth();
         displayCounter.text = playerStats.getCurrentHealth().ToString("F2") + "/" + playerStats.getMaxHealth().ToString("F2");
     }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
 }

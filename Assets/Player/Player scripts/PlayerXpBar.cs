@@ -35,4 +35,9 @@ public class PlayerXpBar : MonoBehaviour
         currentXpBarFill.fillAmount = (float)playerStats.GetCurrentExperience() / playerStats.GetExperienceToNextLevel();
         displayCounter.text = playerStats.GetCurrentExperience().ToString("F2") + "/" + playerStats.GetExperienceToNextLevel().ToString("F2");
     }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
 }

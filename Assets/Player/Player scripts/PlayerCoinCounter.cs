@@ -23,4 +23,9 @@ public class PlayerCoinCounter : MonoBehaviour
         // Keep displaying coin value during the game
         displayCounter.text = playerStats.GetCoins().ToString(); 
     }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
 }

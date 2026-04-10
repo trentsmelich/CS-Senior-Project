@@ -24,4 +24,9 @@ public class PlayerEnemyCounter : MonoBehaviour
         // Keep display the enemy killed value during the game
         displayCounter.text = playerStats.GetEnemiesDefeated().ToString(); 
     }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
 }

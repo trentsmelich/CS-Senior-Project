@@ -3,8 +3,9 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
 
-//Author:Trent and Jia and Luis
+//Author:Trent, Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
 public class GameStateController : MonoBehaviour
 {
@@ -17,6 +18,18 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Tilemap grassTilemap;
     [SerializeField] private Tilemap grassTilemap2;
     [SerializeField] private Tilemap dirtTilemap;
+
+    // Variable to hold the player prefabs for different characters (set in the Inspector)
+    /*[SerializeField] private GameObject[] players;
+    [SerializeField] private GameObject playerHealth;
+    [SerializeField] private GameObject playerXP;
+    [SerializeField] private GameObject playercoin;
+    [SerializeField] private GameObject playerEnemyDefeatCounter;
+    [SerializeField] private GameObject playerCoinShop;
+    [SerializeField] private CinemachineCamera cinemaCamera;
+    private const string PlayerSelected = "PlayerSelected";
+    private int currentPlayerSelected;*/
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Wave Settings")]
@@ -101,7 +114,6 @@ public class GameStateController : MonoBehaviour
 
     // Main Menu Background Number
     private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
-
     // Towers
     private GameObject[] towers;
 
@@ -121,6 +133,9 @@ public class GameStateController : MonoBehaviour
         
         SetState(new gameIdleState());
 
+        // Update Player Selected
+        //SetupSelectedPlayer();
+
         //Get the Player information
         playerStats = player.GetComponent<PlayerStats>();
         //Set SFX
@@ -128,13 +143,15 @@ public class GameStateController : MonoBehaviour
         // Set the cursor to the normal cursor at the start of the game
         Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
 
+        // Set the main menu background number based on the current scene index 
+        SetMainMenuBackground();
+
         // Reset Each Tower's Placement at the start of the game
         towers = unlockController.GetTowers();
         foreach (GameObject tower in towers)
         {
             tower.GetComponent<TowerParent>().ResetPlacedTowers();
         }
-
     }
 
     // Update is called once per frame
@@ -152,9 +169,6 @@ public class GameStateController : MonoBehaviour
         {
             Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
         }
-
-        // Set the main menu background number based on the current scene index 
-        SetMainMenuBackground();
 
         // Check if the tutorial has been played, if not, play the tutorial state (only at the beginning of the game)
         if (tutorialPlayed == false && !(currentState is TutorialState))
@@ -401,6 +415,7 @@ public class GameStateController : MonoBehaviour
     {
         //Set the player's sprite to the corresponding sprite for the story (just set it to the player's current sprite)
         playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
+        //playerImage.sprite = players[currentPlayerSelected].GetComponent<SpriteRenderer>().sprite;
     }
 
     public void PlayStoryClickSFX()
@@ -427,5 +442,26 @@ public class GameStateController : MonoBehaviour
     {
         return GameTutorialObject;
     }
-    
+
+    /*public void SetupSelectedPlayer()
+    {
+        // Load the current player selected from PlayerPrefs, if not found, default to 0 (first player)
+        currentPlayerSelected = PlayerPrefs.GetInt(PlayerSelected, 0);
+
+        // Activate the selected player prefab only
+        players[currentPlayerSelected].SetActive(true);
+        // Set the player's sprite and stats based on the selected player
+        //player = players[currentPlayerSelected]; // Set the player GameObject to the selected player prefab in GameStateController
+        //Get the Player stats information
+        playerStats = players[currentPlayerSelected].GetComponent<PlayerStats>();
+
+        playerHealth.GetComponent<PlayerHealthBar>().SetPlayer(players[currentPlayerSelected]);
+        playerXP.GetComponent<PlayerXpBar>().SetPlayer(players[currentPlayerSelected]);
+        playercoin.GetComponent<PlayerCoinCounter>().SetPlayer(players[currentPlayerSelected]);
+        playerEnemyDefeatCounter.GetComponent<PlayerEnemyCounter>().SetPlayer(players[currentPlayerSelected]);
+        playerCoinShop.GetComponent<PlayerCoinCounter>().SetPlayer(players[currentPlayerSelected]);
+       
+        cinemaCamera.Follow = players[currentPlayerSelected].transform;
+    }*/
+
 }
