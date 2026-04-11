@@ -227,8 +227,8 @@ MonoBehaviour:
   moveSpeed: 5
   currentHealth: 100
   maxHealth: 100
-  damage: 10
-  attackSpeed: 1
+  damage: 15
+  attackSpeed: 1.25
   profitMultiplier: 1
   experienceMultiplier: 1
   currentExperience: 0
