@@ -10,7 +10,7 @@ using Unity.Cinemachine;
 public class GameStateController : MonoBehaviour
 {
     [Header("Player Settings")]
-    public GameObject player;
+    //public GameObject player;
     private PlayerStats playerStats;
     [SerializeField] private Grid grid;
     [SerializeField] private Grid grid2;
@@ -20,15 +20,16 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Tilemap dirtTilemap;
 
     // Variable to hold the player prefabs for different characters (set in the Inspector)
-    /*[SerializeField] private GameObject[] players;
+    [SerializeField] private GameObject[] players;
     [SerializeField] private GameObject playerHealth;
     [SerializeField] private GameObject playerXP;
     [SerializeField] private GameObject playercoin;
     [SerializeField] private GameObject playerEnemyDefeatCounter;
     [SerializeField] private GameObject playerCoinShop;
+    [SerializeField] private GameObject gameOverEnemyDefeatCounter;
     [SerializeField] private CinemachineCamera cinemaCamera;
     private const string PlayerSelected = "PlayerSelected";
-    private int currentPlayerSelected;*/
+    private int currentPlayerSelected;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -134,10 +135,10 @@ public class GameStateController : MonoBehaviour
         SetState(new gameIdleState());
 
         // Update Player Selected
-        //SetupSelectedPlayer();
+        SetupSelectedPlayer();
 
         //Get the Player information
-        playerStats = player.GetComponent<PlayerStats>();
+        //playerStats = player.GetComponent<PlayerStats>();
         //Set SFX
         keyClickSound = GameObject.Find("SFX/Key_Click_SFX").GetComponent<AudioSource>();
         // Set the cursor to the normal cursor at the start of the game
@@ -414,8 +415,8 @@ public class GameStateController : MonoBehaviour
     public void SetStoryPlayerSprite()
     {
         //Set the player's sprite to the corresponding sprite for the story (just set it to the player's current sprite)
-        playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
-        //playerImage.sprite = players[currentPlayerSelected].GetComponent<SpriteRenderer>().sprite;
+        //playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
+        playerImage.sprite = players[currentPlayerSelected].GetComponent<SpriteRenderer>().sprite;
     }
 
     public void PlayStoryClickSFX()
@@ -443,13 +444,21 @@ public class GameStateController : MonoBehaviour
         return GameTutorialObject;
     }
 
-    /*public void SetupSelectedPlayer()
+    public void SetupSelectedPlayer()
     {
         // Load the current player selected from PlayerPrefs, if not found, default to 0 (first player)
         currentPlayerSelected = PlayerPrefs.GetInt(PlayerSelected, 0);
 
         // Activate the selected player prefab only
         players[currentPlayerSelected].SetActive(true);
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (players[i].activeSelf && i != currentPlayerSelected)
+            {
+                players[i].tag = "Untagged"; // Set the tag of the active player to "Player" and the others to "Untagged"
+            }
+        }
         // Set the player's sprite and stats based on the selected player
         //player = players[currentPlayerSelected]; // Set the player GameObject to the selected player prefab in GameStateController
         //Get the Player stats information
@@ -460,8 +469,14 @@ public class GameStateController : MonoBehaviour
         playercoin.GetComponent<PlayerCoinCounter>().SetPlayer(players[currentPlayerSelected]);
         playerEnemyDefeatCounter.GetComponent<PlayerEnemyCounter>().SetPlayer(players[currentPlayerSelected]);
         playerCoinShop.GetComponent<PlayerCoinCounter>().SetPlayer(players[currentPlayerSelected]);
+        gameOverEnemyDefeatCounter.GetComponent<PlayerEnemyCounter>().SetPlayer(players[currentPlayerSelected]);
        
         cinemaCamera.Follow = players[currentPlayerSelected].transform;
-    }*/
+    }
+
+    public PlayerStats GetPlayerStats()
+    {
+        return playerStats;
+    }
 
 }

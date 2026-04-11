@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6101346158846610565}
   - component: {fileID: 2391066921406568199}
   - component: {fileID: 7100593095703047228}
-  - component: {fileID: 2032522729210039305}
+  - component: {fileID: -107292165641319325}
   m_Layer: 7
   m_Name: RocketPlayer
   m_TagString: Player
@@ -237,7 +237,7 @@ MonoBehaviour:
   timeSurvived: 0
   coins: 0
   game: {fileID: 0}
---- !u!114 &2032522729210039305
+--- !u!114 &-107292165641319325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,9 +246,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4442831247383598302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e290f02920c92964fb2712369280678d, type: 3}
+  m_Script: {fileID: 11500000, guid: c05e681a7bc29b1418723226af3bda6c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Scripts::GunPlayer
+  m_EditorClassIdentifier: Scripts::RocketPlayer
   projDelay: 0.3
 --- !u!1 &8663956968063063170
 GameObject:

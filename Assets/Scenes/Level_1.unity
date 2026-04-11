@@ -69163,6 +69163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4456b15cb1a59034bbc0a1d6ee647577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatapultUnlock
+  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -69421,6 +69422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8b2e1d6a0d0764c88eea31f7ef67e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatModUnlock
+  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -82412,6 +82414,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1476582799305979509, guid: f3d72cc5772140c42908732aa320e801, type: 3}
   m_PrefabInstance: {fileID: 615897056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &615897058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4442831247383598302, guid: f3d72cc5772140c42908732aa320e801, type: 3}
+  m_PrefabInstance: {fileID: 615897056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &620024491
 GameObject:
   m_ObjectHideFlags: 0
@@ -89618,13 +89625,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7106ba445c8713c4e8d813ea1c241b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateController
-  player: {fileID: 98333653}
   grid: {fileID: 741622584}
   grid2: {fileID: 938274880}
   grid3: {fileID: 2040033080}
   grassTilemap: {fileID: 2116943267}
   grassTilemap2: {fileID: 407236789}
   dirtTilemap: {fileID: 1731449716}
+  players:
+  - {fileID: 98333653}
+  - {fileID: 2042652795}
+  - {fileID: 615897058}
+  playerHealth: {fileID: 1007290315}
+  playerXP: {fileID: 856697780}
+  playercoin: {fileID: 1854616751}
+  playerEnemyDefeatCounter: {fileID: 2039509557}
+  playerCoinShop: {fileID: 930619934}
+  gameOverEnemyDefeatCounter: {fileID: 911959182}
+  cinemaCamera: {fileID: 979828039}
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 20
   waveTimer: 10
@@ -90993,6 +91010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3508f41f93b306d4e8aa30daeef0eca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::FreezeUnlock
+  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -91454,6 +91472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd4cf0df71b30649be289672eec488a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FenceUnlock
+  playerSelected: {fileID: 68902491}
   unlocked: 0
 --- !u!4 &1194448371
 Transform:
@@ -97426,6 +97445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e1b455a0d3a744eb3395f29453958e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::LevelUnlock
+  playerSelected: {fileID: 68902491}
 --- !u!4 &1652794463
 Transform:
   m_ObjectHideFlags: 0
@@ -111626,6 +111646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5bfbfc891ef6b44bdb5a47d7262d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingshotUnlock
+  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -112491,6 +112512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd9b248c158edb4ea3a2dcf91aefa11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmUnlock
+  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -113124,6 +113146,11 @@ PrefabInstance:
 --- !u!4 &2042652794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7836287895592201470, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
+  m_PrefabInstance: {fileID: 2042652793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2042652795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3863696490869809779, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
   m_PrefabInstance: {fileID: 2042652793}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2055575627
@@ -120134,7 +120161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4180670317199987588, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5666590798122142125, guid: ab23e927da7a4244db9b2ad2e3f98238, type: 3}
       propertyPath: m_SortingOrder
