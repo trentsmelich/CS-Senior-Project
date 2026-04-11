@@ -36,7 +36,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText; // UI Text to display wave countdown
 
     private GameState currentState;
-    private GameState waveManager;
+    private WavesState waveManager;
 
     //Screen Panel GameObjects
     // Pause
@@ -197,7 +197,7 @@ public class GameStateController : MonoBehaviour
         SetState(new GameOverState());
     }
 
-    public GameState GetWaveManager()
+    public WavesState GetWaveManager()
     {
         return waveManager;
     }
