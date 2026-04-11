@@ -69163,7 +69163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4456b15cb1a59034bbc0a1d6ee647577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatapultUnlock
-  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -69422,7 +69421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8b2e1d6a0d0764c88eea31f7ef67e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatModUnlock
-  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -91010,7 +91008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3508f41f93b306d4e8aa30daeef0eca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::FreezeUnlock
-  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -91472,7 +91469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd4cf0df71b30649be289672eec488a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FenceUnlock
-  playerSelected: {fileID: 68902491}
   unlocked: 0
 --- !u!4 &1194448371
 Transform:
@@ -97445,7 +97441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e1b455a0d3a744eb3395f29453958e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Scripts::LevelUnlock
-  playerSelected: {fileID: 68902491}
 --- !u!4 &1652794463
 Transform:
   m_ObjectHideFlags: 0
@@ -111256,6 +111251,7 @@ MonoBehaviour:
   - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
   - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
   - {fileID: 5882449777920923934, guid: b9cb50c8e1e79df479df2e98da686f1f, type: 3}
+  gameStateController: {fileID: 1046596827}
 --- !u!4 &1781292269
 Transform:
   m_ObjectHideFlags: 0
@@ -111646,7 +111642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5bfbfc891ef6b44bdb5a47d7262d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlingshotUnlock
-  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0
@@ -112512,7 +112507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd9b248c158edb4ea3a2dcf91aefa11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmUnlock
-  playerSelected: {fileID: 68902491}
   lvl1Unlocked: 0
   lvl2Unlocked: 0
   lvl3Unlocked: 0

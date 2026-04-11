@@ -29,7 +29,7 @@ public class FenceUnlock : UnlockParent
     }
 
     // Check and unlock towers based on the conditions and tower counts
-    public override void Unlock(UnlockController unlockController)
+    public override void Unlock(UnlockController unlockController, PlayerStats playerStats)
     {
     }
 }
