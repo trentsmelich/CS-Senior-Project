@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class SpeedPowerup : MonoBehaviour
+public class CooldownPowerUp : MonoBehaviour
 {
     private PlayerStats player;
-    private float speedBoostPercentage = 0.30f; // 30% boost
+    private float cooldownRed = 1f;
 
     private Vector3 startPos;
+
     [SerializeField] private float moveHeight = 0.2f;
     [SerializeField] private float moveSpeed = 2f;
-
 
     void Start()
     {
@@ -20,14 +20,13 @@ public class SpeedPowerup : MonoBehaviour
     {
         float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * moveHeight;
         transform.position = new Vector3(startPos.x, newY, startPos.z);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            player.ApplySpeedBoost(speedBoostPercentage, 5f);
+            player.ApplyAttackSpeedBoost(cooldownRed, 5f);
             Destroy(gameObject);
         }
     }

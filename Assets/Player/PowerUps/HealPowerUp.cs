@@ -6,10 +6,21 @@ public class HealPowerUp : MonoBehaviour
     private PlayerStats player;
     private float healAmount = 20;
 
+    private Vector3 startPos;
+    [SerializeField] private float moveHeight = 0.2f;
+    [SerializeField] private float moveSpeed = 2f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+        startPos = transform.position; // store initial position
+    }
+
+    void Update()
+    {
+        float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * moveHeight;
+        transform.position = new Vector3(startPos.x, newY, startPos.z);
     }
 
     // Check if what collided with the object is the player, if it is then
