@@ -14,6 +14,7 @@ public class MainMenuStateController : MonoBehaviour
     public GameObject unlocksPanel;
     public GameObject playerSelectPanel;
     public GameObject informationPanel;
+    public GameObject codexPanel;
 
     public AudioSource buttonClickAudio;
 
@@ -103,6 +104,11 @@ public class MainMenuStateController : MonoBehaviour
     public GameObject GetInformationPanel()
     {
         return informationPanel;
+    }
+
+    public GameObject GetCodexPanel()
+    {
+        return codexPanel;
     }
 
     public GameObject GetUnlocksPanel()

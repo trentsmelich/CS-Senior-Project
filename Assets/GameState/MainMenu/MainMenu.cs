@@ -22,8 +22,10 @@ public class MainMenu : MainMenuState
         Button unlocksButton = mainMenuPanel.transform.Find("Unlocks_Button").GetComponent<Button>();
         Button exitButton = mainMenuPanel.transform.Find("Exit_Button").GetComponent<Button>();
 
+        // find the small buttons in the buttom of the main menu panel
         Button playerSelectButton = mainMenuPanel.transform.Find("Player_Select_Button").GetComponent<Button>();
         Button informationButton = mainMenuPanel.transform.Find("Information_Button").GetComponent<Button>();
+        Button codexButton = mainMenuPanel.transform.Find("Codex_Button").GetComponent<Button>();
 
         // set the buttons with the functionalities, such as play, settings, unlocks, and exit.
         playButton.onClick.AddListener(() =>
@@ -65,6 +67,13 @@ public class MainMenu : MainMenuState
             m.PlayButtonClickSound();
             m.SetState(new Information());
             Debug.Log("Information Button Clicked");
+        });
+
+        codexButton.onClick.AddListener(() =>
+        {
+            m.PlayButtonClickSound();
+            m.SetState(new Codex());
+            Debug.Log("Codex Button Clicked");
         });
     }
     
