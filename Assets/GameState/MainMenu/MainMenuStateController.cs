@@ -34,6 +34,15 @@ public class MainMenuStateController : MonoBehaviour
     private Sprite backgroundImage; // Sprite component to change the background image
     private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
 
+    // Codex Settings
+    [Header("Codex Settings")]
+    [SerializeField] private Sprite[] enemySprites;
+    [SerializeField] private string[] enemyNames;
+    [SerializeField] private string[] enemyDamages;
+    [SerializeField] private string[] enemyHealths;
+    [SerializeField] private string[] enemySpeeds;
+    [SerializeField] private string[] enemyAbilities;
+
     private MainMenuState currentState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -140,6 +149,36 @@ public class MainMenuStateController : MonoBehaviour
     public void PlayButtonClickSound()
     {
         buttonClickAudio.Play();
+    }
+
+    public Sprite[] GetEnemySprites()
+    {
+        return enemySprites;
+    }
+
+    public string[] GetEnemyNames()
+    {
+        return enemyNames;
+    }
+
+    public string[] GetEnemyDamages()
+    {
+        return enemyDamages;
+    }
+
+    public string[] GetEnemyHealths()
+    {
+        return enemyHealths;
+    }
+
+    public string[] GetEnemySpeeds()
+    {
+        return enemySpeeds;
+    }
+
+    public string[] GetEnemyAbilities()
+    {
+        return enemyAbilities;
     }
     
 }

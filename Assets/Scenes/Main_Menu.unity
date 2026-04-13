@@ -1559,7 +1559,7 @@ GameObject:
   - component: {fileID: 164996461}
   - component: {fileID: 164996460}
   m_Layer: 0
-  m_Name: Level_Text
+  m_Name: Speed_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1581,7 +1581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -775, y: -312}
+  m_AnchoredPosition: {x: -736, y: -312}
   m_SizeDelta: {x: 268.3981, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164996460
@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Level:  \n"
+  m_text: "Running Speed:  \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2499,7 +2499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: health_value
+  m_text: 25
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4290,7 +4290,7 @@ GameObject:
   - component: {fileID: 448810879}
   - component: {fileID: 448810878}
   m_Layer: 0
-  m_Name: Button_2
+  m_Name: Button_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5031,7 +5031,7 @@ GameObject:
   - component: {fileID: 496647367}
   - component: {fileID: 496647366}
   m_Layer: 0
-  m_Name: Button_12
+  m_Name: Button_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7353,7 +7353,7 @@ GameObject:
   - component: {fileID: 837972646}
   - component: {fileID: 837972645}
   m_Layer: 0
-  m_Name: Button_11
+  m_Name: Button_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7989,6 +7989,96 @@ MonoBehaviour:
   - {fileID: 5121386825573828318, guid: 86330c4316d2dd7479ad984add94bddf, type: 3}
   - {fileID: -1326168382396243367, guid: 25e4d05e35d424747831bac97e0ef372, type: 3}
   - {fileID: -1950026713583402549, guid: e7a67e3a1f038fe4192b2ff271e1e6be, type: 3}
+  enemySprites:
+  - {fileID: -7945270389654465922, guid: f578c13ad9c154a43ba10ff73a149393, type: 3}
+  - {fileID: 4723107735738678597, guid: 85ed32e5cdb17274e9642984e03c780c, type: 3}
+  - {fileID: -7945270389654465922, guid: 48af8ec526fdcbc46900795ec5f9b521, type: 3}
+  - {fileID: 8972106443540372477, guid: 4e5d07c82104f0c4a9af153fa4d1cb06, type: 3}
+  - {fileID: -6486419780738374814, guid: c22da95aaba1d304a9d23fb94fc7fa2f, type: 3}
+  - {fileID: 2958005836100429432, guid: 995b685ef9db27148836027aeefec0e5, type: 3}
+  - {fileID: 6808733625049879353, guid: 434b96b27fee58d4bbefbdf36394f2fd, type: 3}
+  - {fileID: 6808733625049879353, guid: a7b180e5573e4f04ba5ca90a468fd357, type: 3}
+  - {fileID: 8625802691097107856, guid: 286d2669ca3429143a4cb885b477efc7, type: 3}
+  - {fileID: -8262898993223470297, guid: 698013d404ddfd54bab43d8cf8fffd1e, type: 3}
+  - {fileID: 6808733625049879353, guid: e404a5df909f8cb49b30f68e68108d91, type: 3}
+  - {fileID: 6808733625049879353, guid: f4b3dc57c75638e49966701899c89edd, type: 3}
+  - {fileID: 6808733625049879353, guid: dbadb6f50f3cc2f4d90e140734ad13a6, type: 3}
+  - {fileID: 6808733625049879353, guid: 29ad3e16a4be9114486b412e5e6e36ba, type: 3}
+  enemyNames:
+  - Goblin
+  - Archer
+  - Wolf
+  - Bee
+  - Merman
+  - Turtle
+  - Crocodile
+  - Witch
+  - Mage (Boss)
+  - Bomb Goblin (Boss)
+  - Merman King (Boss)
+  - Big Turtle (Boss)
+  - Wood Golem (Boss)
+  - Giant Worm (Boss)
+  enemyDamages:
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  enemyHealths:
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  enemySpeeds:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  enemyAbilities:
+  - a
+  - ab
+  - ac
+  - ad
+  - at
+  - ax
+  - av
+  - af
+  - ah
+  - ak
+  - ag
+  - au
+  - aq
+  - aw
 --- !u!114 &915860905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8036,7 +8126,7 @@ GameObject:
   - component: {fileID: 917138814}
   - component: {fileID: 917138813}
   m_Layer: 0
-  m_Name: Button_9
+  m_Name: Button_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8232,7 +8322,7 @@ GameObject:
   - component: {fileID: 921058290}
   - component: {fileID: 921058289}
   m_Layer: 0
-  m_Name: Button_5
+  m_Name: Button_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9172,7 +9262,7 @@ GameObject:
   - component: {fileID: 991825119}
   - component: {fileID: 991825118}
   m_Layer: 0
-  m_Name: Button_14
+  m_Name: Button_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9939,7 +10029,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name
+  m_text: 'Goblin
 
 '
   m_isRightToLeft: 0
@@ -14204,7 +14294,7 @@ GameObject:
   - component: {fileID: 1418851832}
   - component: {fileID: 1418851831}
   m_Layer: 0
-  m_Name: Button_4
+  m_Name: Button_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15866,7 +15956,7 @@ GameObject:
   - component: {fileID: 1581709022}
   - component: {fileID: 1581709021}
   m_Layer: 0
-  m_Name: Button_13
+  m_Name: Button_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16653,7 +16743,7 @@ GameObject:
   - component: {fileID: 1643317566}
   - component: {fileID: 1643317565}
   m_Layer: 0
-  m_Name: Button_8
+  m_Name: Button_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17299,7 +17389,7 @@ GameObject:
   - component: {fileID: 1684335541}
   - component: {fileID: 1684335540}
   m_Layer: 0
-  m_Name: Button_3
+  m_Name: Button_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17570,7 +17660,7 @@ GameObject:
   - component: {fileID: 1692247775}
   - component: {fileID: 1692247774}
   m_Layer: 0
-  m_Name: Button_10
+  m_Name: Button_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18036,7 +18126,7 @@ GameObject:
   - component: {fileID: 1736890502}
   - component: {fileID: 1736890501}
   m_Layer: 0
-  m_Name: Level_ValueText
+  m_Name: Speed_ValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18058,7 +18148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -595, y: -276}
+  m_AnchoredPosition: {x: -486, y: -276}
   m_SizeDelta: {x: 231.0902, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736890501
@@ -18081,7 +18171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: level_value
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19114,7 +19204,7 @@ GameObject:
   - component: {fileID: 1824776133}
   - component: {fileID: 1824776132}
   m_Layer: 0
-  m_Name: Button_1
+  m_Name: Button_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19235,7 +19325,7 @@ GameObject:
   - component: {fileID: 1825655716}
   - component: {fileID: 1825655715}
   m_Layer: 0
-  m_Name: Button_7
+  m_Name: Button_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19785,7 +19875,7 @@ GameObject:
   - component: {fileID: 1881919985}
   - component: {fileID: 1881919984}
   m_Layer: 0
-  m_Name: Button_6
+  m_Name: Button_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20133,7 +20223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: damage_value
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20308,7 +20398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ability_value
+  m_text: 'Run towards the player and attack with the wooden stick. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21506,8 +21596,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700.3315, y: 161.6813}
-  m_SizeDelta: {x: 107.0355, y: 110.3638}
+  m_AnchoredPosition: {x: -697.6729, y: 161.6813}
+  m_SizeDelta: {x: 104.8201, y: 110.3638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2142121742
 MonoBehaviour:
