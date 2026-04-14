@@ -41,6 +41,7 @@ public class MainMenuStateController : MonoBehaviour
     [SerializeField] private string[] enemyDamages;
     [SerializeField] private string[] enemyHealths;
     [SerializeField] private string[] enemySpeeds;
+    [SerializeField] private string[] enemyLevels;
     [SerializeField] private string[] enemyAbilities;
 
     private MainMenuState currentState;
@@ -174,6 +175,11 @@ public class MainMenuStateController : MonoBehaviour
     public string[] GetEnemySpeeds()
     {
         return enemySpeeds;
+    }
+
+    public string[] GetEnemyLevels()
+    {
+        return enemyLevels;
     }
 
     public string[] GetEnemyAbilities()

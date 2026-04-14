@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 //Author:Jia
 //Description: This script manages the codex screen in the main menu. It will display information about the different enemies
 public class Codex : MainMenuState
@@ -13,8 +14,8 @@ public class Codex : MainMenuState
     private string[] enemyDamages;
     private string[] enemyHealths;
     private string[] enemySpeeds;
+    private string[] enemyLevels;
     private string[] enemyAbilities;
-    //private int arrayIndex;
 
     public override void EnterState(MainMenuStateController m)
     {
@@ -27,8 +28,8 @@ public class Codex : MainMenuState
         enemyDamages = m.GetEnemyDamages();
         enemyHealths = m.GetEnemyHealths();
         enemySpeeds = m.GetEnemySpeeds();
+        enemyLevels = m.GetEnemyLevels();
         enemyAbilities = m.GetEnemyAbilities();
-        //arrayIndex = 0;
 
         // Display the codex panel and hide the main menu panel
         m.DisplayMainMenu(false);
@@ -61,6 +62,7 @@ public class Codex : MainMenuState
                 codexPanel.transform.Find("Value_Text/Health_ValueText").GetComponent<TextMeshProUGUI>().text = enemyHealths[arrayIndex];
                 codexPanel.transform.Find("Value_Text/Damage_ValueText").GetComponent<TextMeshProUGUI>().text = enemyDamages[arrayIndex];
                 codexPanel.transform.Find("Value_Text/Speed_ValueText").GetComponent<TextMeshProUGUI>().text = enemySpeeds[arrayIndex];
+                codexPanel.transform.Find("Value_Text/Level_ValueText").GetComponent<TextMeshProUGUI>().text = enemyLevels[arrayIndex];
                 codexPanel.transform.Find("Value_Text/Ability_ValueText").GetComponent<TextMeshProUGUI>().text = enemyAbilities[arrayIndex];
             });
         }
