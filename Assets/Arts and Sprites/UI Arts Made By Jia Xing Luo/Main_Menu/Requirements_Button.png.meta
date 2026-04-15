@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 118e24c081ab0ba4c996362e0c24e06b
+guid: 2ebeb987fc995cc4ea9c1ca7a8698170
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6448032803233310545
-    second: Achievement_Button_0
+      213: 6057437093819097238
+    second: Requirements_Button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Achievement_Button_0
+      name: Requirements_Button_0
       rect:
         serializedVersion: 2
         x: 3
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 157a9c0eba30c7950800000000000000
-      internalID: 6448032803233310545
+      spriteID: 690ac5271f6501450800000000000000
+      internalID: 6057437093819097238
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Achievement_Button_0: 6448032803233310545
+      Requirements_Button_0: 6057437093819097238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
