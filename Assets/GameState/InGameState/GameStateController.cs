@@ -185,8 +185,8 @@ public class GameStateController : MonoBehaviour
             SetState(new StoryState());
         }
 
-        // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState) && !(currentState is TutorialState)) // press Esc key
+        // paused state transitions, press Esc key to enter paused menu
+        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
         {
             keyClickSound.Play();
             SetState(new PauseState());
@@ -198,8 +198,8 @@ public class GameStateController : MonoBehaviour
             SetState(new gameIdleState());
         }
 
-        // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState) && !(currentState is TutorialState)) // press F key to enter shop
+        // Shop State Transitions, press F key to enter shop
+        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
         {
             keyClickSound.Play();
             SetState(new InShopState());
@@ -214,7 +214,7 @@ public class GameStateController : MonoBehaviour
         // Get Player Health and stop the timer if health is 0
         float playerCurrentHealth = playerStats.GetHealth();
         Timer timerScript = timer.GetComponent<Timer>();
-        if (playerCurrentHealth <= 0 && !(currentState is GameOverState))
+        if (playerCurrentHealth <= 0 && !(currentState is GameOverState)) // If the player's health is 0 or less and the current state is not already the Game Over State, transition to the Game Over State (also check if not in Story State to prevent game over during story)
         {
             // Stop the timer and set the time escaped for the level that the player is currently on
             timerScript.StopTimer();
