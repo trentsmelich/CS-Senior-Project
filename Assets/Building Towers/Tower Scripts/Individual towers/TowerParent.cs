@@ -87,4 +87,9 @@ public abstract class TowerParent : MonoBehaviour
     {
         placedTowers = 0;
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
 }

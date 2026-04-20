@@ -1,8 +1,6 @@
-
 // Libraries
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 //Author:Jia
 //Description: Displays the enemy's current health in health bar
 

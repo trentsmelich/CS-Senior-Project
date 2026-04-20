@@ -82402,6 +82402,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1046596825}
+    - target: {fileID: 7100593095703047228, guid: f3d72cc5772140c42908732aa320e801, type: 3}
+      propertyPath: coins
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
