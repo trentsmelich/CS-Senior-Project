@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5040000014874852612}
   m_Layer: 0
   m_Name: Freezer1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   unlocked: 1
   health: 0
   currentPlacedTowers: 0
-  placedTowers: 0
+  placedTowers: 1
   maxTowersCount: 100
   freezeDuration: 5
 --- !u!208 &-6851969053866719498
