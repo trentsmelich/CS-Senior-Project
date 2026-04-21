@@ -168,6 +168,9 @@ MonoBehaviour:
   towerName: Fence
   unlocked: 1
   health: 100
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 3
 --- !u!114 &6654409567372422999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAI
   targetEnemy: {fileID: 0}
-  attackRange: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0

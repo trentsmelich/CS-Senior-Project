@@ -18,6 +18,7 @@ public class BuildingState : GameState
 
     public override void EnterState(GameStateController Game)
     {
+        Game.GetBuildingScreen().SetActive(true);
         towerToPlace = Game.GetPlaceTower();
 
         previewTower = GameObject.Instantiate(towerToPlace);
@@ -146,6 +147,7 @@ public class BuildingState : GameState
 
     public override void ExitState(GameStateController Game)
     {
+        Game.GetBuildingScreen().SetActive(false);
         GameObject.Destroy(previewTower);
     }
 

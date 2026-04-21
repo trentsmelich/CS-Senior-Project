@@ -61,6 +61,8 @@ public class GameStateController : MonoBehaviour
     public GameObject upgradeScreen;
     // Game Over Screen
     public GameObject gameOverScreen;
+    public GameObject buildingScreen;
+    public GameObject destroyScreen;
     // Upgrade Offer Text
     public GameObject upgradeOfferCountDownText;
 
@@ -109,8 +111,10 @@ public class GameStateController : MonoBehaviour
     [Header("Cursor Settings")]
     [SerializeField] private Texture2D normalCursorTexture; // image here in the Inspector
     [SerializeField] private Texture2D redCursorTexture; // image here in the Inspector
+    [SerializeField] private Texture2D destroyCursorTexture; // image here in the Inspector
     [SerializeField] private Vector2 normalHotSpot = new Vector2(0, 0); // Hotspot for clicks (0 x 0 top left corner)
-    [SerializeField] private Vector2 redHotSpot = new Vector2(64, 64); // Hotspot for clicks (14.5 x 14.5 center)
+    [SerializeField] private Vector2 redHotSpot = new Vector2(64, 64); // Hotspot for clicks (64 x 64 center)
+    [SerializeField] private Vector2 destroyHotSpot = new Vector2(46.5f, 46.5f); // Hotspot for clicks (46.5f x 46.5f center)
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
 
     // Main Menu Background Number
@@ -165,6 +169,10 @@ public class GameStateController : MonoBehaviour
         if (currentState is gameIdleState || currentState is LevelUpState || currentState is WavesState)
         {
             Cursor.SetCursor(redCursorTexture, redHotSpot, cursorMode);
+        }
+        else if (currentState is DestroyState)
+        {
+            Cursor.SetCursor(destroyCursorTexture, destroyHotSpot, cursorMode);
         }
         else
         {
@@ -314,6 +322,16 @@ public class GameStateController : MonoBehaviour
     public GameObject GetGameOverScreen()
     {
         return gameOverScreen;
+    }
+
+    public GameObject GetBuildingScreen()
+    {
+        return buildingScreen;
+    }
+
+    public GameObject GetDestroyScreen()
+    {
+        return destroyScreen;
     }
 
     public GameObject[] GetTowers()

@@ -13,6 +13,8 @@ public class DestroyState : GameState
             return;
         }
 
+        Game.GetDestroyScreen().SetActive(true);
+
         previousBackgroundColor = cam.backgroundColor;
         cam.backgroundColor = Color.red;
     }
@@ -76,5 +78,6 @@ public class DestroyState : GameState
         }
 
         cam.backgroundColor = previousBackgroundColor;
+        Game.GetDestroyScreen().SetActive(false);
     }
 }
