@@ -23,6 +23,7 @@ public class DestroyState : GameState
     {
         if (Input.GetMouseButtonDown(1))
         {
+            Game.PlayDestroyBuildingSFX();
             Camera cam = Camera.main;
             if (cam == null)
             {

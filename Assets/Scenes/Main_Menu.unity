@@ -3250,7 +3250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 25
+  m_text: 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8857,9 +8857,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4456b15cb1a59034bbc0a1d6ee647577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatapultUnlock
-  lvl1Unlocked: 0
-  lvl2Unlocked: 0
-  lvl3Unlocked: 0
+  lvl1Unlocked: 1
+  lvl2Unlocked: 1
+  lvl3Unlocked: 1
 --- !u!4 &679858300
 Transform:
   m_ObjectHideFlags: 0
@@ -9188,6 +9188,51 @@ Transform:
   - {fileID: 991825117}
   m_Father: {fileID: 1838000778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &763325545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 763325547}
+  - component: {fileID: 763325546}
+  m_Layer: 0
+  m_Name: FenceUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &763325546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763325545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd4cf0df71b30649be289672eec488a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::FenceUnlock
+  unlocked: 0
+--- !u!4 &763325547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763325545}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.716799, y: -0.027929306, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1074728679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765345015
 GameObject:
   m_ObjectHideFlags: 0
@@ -9301,7 +9346,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0004021814}
-  m_SizeDelta: {x: 2500, y: 188.88}
+  m_SizeDelta: {x: 1507.0928, y: 188.88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &790705705
 MonoBehaviour:
@@ -14520,20 +14565,28 @@ MonoBehaviour:
   unlocks:
   - {fileID: 1852070737}
   - {fileID: 679858299}
+  - {fileID: 1501400042}
   - {fileID: 1734218235}
+  - {fileID: 763325546}
   - {fileID: 1814011842}
   - {fileID: 2064933181}
   towers:
   - {fileID: 7700592830201623609, guid: 9d50c384c721adf418d0d626f24d034c, type: 3}
   - {fileID: 1045634263418035838, guid: 48a91a5c042eea641bbd92e8de0eed8c, type: 3}
   - {fileID: 146517596455405730, guid: 12e913355c624564ba7c81915b79231d, type: 3}
-  - {fileID: 965917807470210177, guid: bf1017a18eefa2c428229fb2bb30d129, type: 3}
-  - {fileID: 6770428916232597138, guid: c9b568dd9c0315e499ed6234cfa12a35, type: 3}
-  - {fileID: 4659362562171334871, guid: 5b8a82dd627167c44bea9e0ef267aed6, type: 3}
-  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
   - {fileID: 4449575510196601865, guid: a7ceeaad5dc4b794aa08ae0b5518d752, type: 3}
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
+  - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
+  - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
+  - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
+  - {fileID: 965917807470210177, guid: bf1017a18eefa2c428229fb2bb30d129, type: 3}
+  - {fileID: 6770428916232597138, guid: c9b568dd9c0315e499ed6234cfa12a35, type: 3}
+  - {fileID: 4659362562171334871, guid: 5b8a82dd627167c44bea9e0ef267aed6, type: 3}
+  - {fileID: 643403248037975920, guid: 159901a0275802f4ba03566a77a60537, type: 3}
+  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
+  - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
+  - {fileID: 5882449777920923934, guid: b9cb50c8e1e79df479df2e98da686f1f, type: 3}
   gameStateController: {fileID: 0}
 --- !u!4 &1074728679
 Transform:
@@ -14550,8 +14603,10 @@ Transform:
   m_Children:
   - {fileID: 1852070738}
   - {fileID: 679858300}
+  - {fileID: 1501400043}
   - {fileID: 1734218236}
   - {fileID: 1814011843}
+  - {fileID: 763325547}
   - {fileID: 2064933180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20629,6 +20684,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491842891}
   m_CullTransparentMesh: 1
+--- !u!1 &1501400041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501400043}
+  - component: {fileID: 1501400042}
+  m_Layer: 0
+  m_Name: FreezeUnlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1501400042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501400041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3508f41f93b306d4e8aa30daeef0eca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::FreezeUnlock
+  lvl1Unlocked: 0
+  lvl2Unlocked: 0
+  lvl3Unlocked: 0
+--- !u!4 &1501400043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501400041}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.716799, y: -0.027929306, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1074728679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506173599
 GameObject:
   m_ObjectHideFlags: 0
@@ -27584,7 +27686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Run towards the player and attack with the wooden stick. '
+  m_text: Charge toward the player and strike with the wooden stick.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

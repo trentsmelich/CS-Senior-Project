@@ -169,8 +169,8 @@ MonoBehaviour:
   unlocked: 1
   health: 100
   currentPlacedTowers: 0
-  placedTowers: 0
-  maxTowersCount: 3
+  placedTowers: 1
+  maxTowersCount: 1000000000
 --- !u!114 &6654409567372422999
 MonoBehaviour:
   m_ObjectHideFlags: 0

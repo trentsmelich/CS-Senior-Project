@@ -110,7 +110,7 @@ public class BuildingState : GameState
                 PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
                 if(Game.GetCurrentBuildingCost() <= playerStats.coins)
                 {
-                    
+                    Game.PlayPlaceBuildingSFX();
                     playerStats.coins -= Game.GetCurrentBuildingCost();
                     GameObject.Destroy(previewTower);
                     EnterState(Game);
@@ -128,7 +128,7 @@ public class BuildingState : GameState
             else
             {
                 // Set the game state back to idle
-                //Play Building SFX???
+                Game.PlayPlaceBuildingSFX();
                 Game.SetPlaceTower(null);
                 Game.SetState(new gameIdleState());
             }

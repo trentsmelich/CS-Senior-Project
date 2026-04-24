@@ -86,6 +86,8 @@ public class GameStateController : MonoBehaviour
     private AudioSource keyClickSound;
     public AudioSource backgroundMusic;
     public AudioSource GameOverMusic;
+    public AudioSource placeBuildingSFX;
+    public AudioSource destroyBuildingSFX;
 
     //Other Variables
     public int currentBuildingCost = 0;
@@ -510,6 +512,16 @@ public class GameStateController : MonoBehaviour
     public PlayerStats GetPlayerStats()
     {
         return playerStats;
+    }
+
+    public void PlayPlaceBuildingSFX()
+    {
+        placeBuildingSFX.Play();
+    }
+
+    public void PlayDestroyBuildingSFX()
+    {
+        destroyBuildingSFX.Play();
     }
 
 }
