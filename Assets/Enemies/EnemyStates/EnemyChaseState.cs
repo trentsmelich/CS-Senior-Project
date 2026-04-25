@@ -38,8 +38,14 @@ public class EnemyChaseState : EnemyState
         // Move toward player if enemy is targeting player otherwise move toward buildings
         if (enemy.IsTargetingPlayer())
         {
-            enemy.GetEnemyParent().setRange(1.0f);
-            distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+            if (enemy.GetEnemyParent() is Goblin)
+            {
+                enemy.GetEnemyParent().setRange(1.0f);
+            }
+            else {
+                distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
+            }
+
 
             if (shouldRepath || enemy.GetTarget() != enemy.GetPlayer())
             {

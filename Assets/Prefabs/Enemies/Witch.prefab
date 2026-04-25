@@ -310,13 +310,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::Witch
   enemyRange: 8
   enemyDamage: 6
-  attackCooldown: 2
+  attackCooldown: 3
   attackTimer: 0
   attackDistance: 0
   speed: 1
   firePoint: {fileID: 1388361164912871216}
   projectilePrefab: {fileID: 3156169112144637, guid: 4f02d00a1d281d7428fa67365976000a, type: 3}
-  attackToTel: 2
-  telRadius: 7
+  telCooldown: 3
+  telRadius: 6
+  fadeDuration: 0.25
+  postTelDelay: 0.2
   shootDelay: 0.75
-  telDelay: 0.15
