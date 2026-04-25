@@ -20,7 +20,6 @@ public class SpeedPowerup : MonoBehaviour
     {
         float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * moveHeight;
         transform.position = new Vector3(startPos.x, newY, startPos.z);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

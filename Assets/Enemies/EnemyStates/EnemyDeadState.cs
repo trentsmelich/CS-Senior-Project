@@ -31,6 +31,12 @@ public class EnemyDeadState : EnemyState
         {
             Object.Instantiate(enemy.GetCooldownPrefab(), enemy.transform.position, Quaternion.identity);
         }
+        // 5% chance to drop magnet powerup
+        if (Random.value <= 0.05f)
+        {
+            Object.Instantiate(enemy.GetMagnetPrefab(), enemy.transform.position, Quaternion.identity);
+        }
+
         
         //Add a defeated enemy count to the player's stats
         enemy.GetPlayer().GetComponent<PlayerStats>().AddDefeatedEnemyCount();
