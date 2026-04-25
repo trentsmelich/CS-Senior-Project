@@ -17,6 +17,7 @@ public class Settings : MainMenuState
 
         // Find the options close button
         Button backButton = settingsPanel.transform.Find("Options_XButton").GetComponent<Button>();
+        Button keybindsButton = settingsPanel.transform.Find("Keybinds_Button").GetComponent<Button>();
 
         // Set the functionality for the back button
         backButton.onClick.AddListener(() =>
@@ -24,6 +25,14 @@ public class Settings : MainMenuState
             Main.PlayButtonClickSound();
             Main.SetState(new MainMenu());
             Debug.Log("Back Button Clicked");
+        });
+
+        // Set the functionality for the keybinds button
+        keybindsButton.onClick.AddListener(() =>
+        {
+            Main.PlayButtonClickSound();
+            Main.SetState(new Keybinds());
+            Debug.Log("Keybinds Button Clicked");
         });
     }
     public override void ExitState(MainMenuStateController Main)
