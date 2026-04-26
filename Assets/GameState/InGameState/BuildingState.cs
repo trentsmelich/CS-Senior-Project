@@ -248,6 +248,7 @@ public class BuildingState : GameState
 
                 }
             }
+            Debug.Log("Passed the super stuff...");
         }
         
         
@@ -297,13 +298,15 @@ public class BuildingState : GameState
                 {
                     if(hit1.GetComponent<StatModifier>().getStatModifier() == "Damage")
                     {
+                        Debug.Log("one true");
                         one = true; 
                     }
                 }
                 if(hit2.GetComponent<StatModifier>() != null)
                 {
-                    if(hit1.GetComponent<StatModifier>().getStatModifier() == "Speed")
+                    if(hit2.GetComponent<StatModifier>().getStatModifier() == "Speed")
                     {
+                        Debug.Log("two true");
                         two = true; 
                     }
                 }
@@ -311,6 +314,7 @@ public class BuildingState : GameState
                 {
                     if(hit3.GetComponent<Catapult>().Level == 3)
                     {
+                        Debug.Log("three true");
                         three = true;
                     }
                 }
