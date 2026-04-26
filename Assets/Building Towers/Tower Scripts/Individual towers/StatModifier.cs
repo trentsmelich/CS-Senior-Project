@@ -46,4 +46,9 @@ public class StatModifier : TowerParent
                 "Mod Amt:" + "<pos=125>" + modificationAmount.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
     }
+
+    public string getStatModifier()
+    {
+        return statToModify;
+    }
 }

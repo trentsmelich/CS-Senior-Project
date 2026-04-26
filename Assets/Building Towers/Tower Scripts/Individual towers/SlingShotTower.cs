@@ -74,4 +74,12 @@ public class SlingShotTower : TowerParent
                 "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
     }
+
+    public void SetSuperMode()
+    {
+        // Implement logic to set the tower to super mode, which could involve increasing its stats or changing its behavior
+        towerDamage *= 2;
+        //change color of sling shot arm to indicate super mode
+        slingShotArm.GetComponent<SpriteRenderer>().color = Color.red;
+    }
 }

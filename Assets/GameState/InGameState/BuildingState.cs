@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 //Author:Trent and Jia
@@ -129,6 +130,7 @@ public class BuildingState : GameState
             {
                 // Set the game state back to idle
                 Game.PlayPlaceBuildingSFX();
+                CheckForSuperBuilding(placedTower);
                 Game.SetPlaceTower(null);
                 Game.SetState(new gameIdleState());
             }
@@ -177,4 +179,150 @@ public class BuildingState : GameState
         //return true if hit found a collider, false if it did not
         return hit != null;
     }
+
+    //When a building is placed check to see if surrounding buildings are in an orientation to create SUPER buildings.
+    //If they are then find building to be powered up and make it powerful idk wtf to do here yet. 
+    private void CheckForSuperBuilding(GameObject buildingPlaced)
+    {
+        Debug.Log("Checking for Super Building...");
+        if(buildingPlaced.GetComponent<TowerParent>().TowerName == "SlingShot" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
+        {
+            Debug.Log("Checking by SlingShot");
+            if(checkSlingShotPowerUp(buildingPlaced))
+            {
+                
+                //find the slingshot tower and set it to super mode
+                buildingPlaced.GetComponent<SlingShotTower>().SetSuperMode();
+                Debug.Log("Super Slingshot Activated!");
+            }
+        }
+        if(buildingPlaced.GetComponent<TowerParent>().TowerName == "Catapult" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
+        {
+            Debug.Log("Checking by catapult");
+            Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(-2, 0, 0), 0.1f, buildingLayer);
+            if(hit != null)
+            {
+                if(checkSlingShotPowerUp(hit.gameObject))
+                {
+                    //find the slingshot tower and set it to super mode
+                    hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
+                    Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
+                }
+            
+
+            }
+        }
+        if(buildingPlaced.GetComponent<StatModifier>() != null)
+        {
+            if(buildingPlaced.GetComponent<StatModifier>().getStatModifier() == "Damage")
+            {
+                Debug.Log("Checking by damager");
+
+                Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(0, 2, 0), 0.1f, buildingLayer);
+                if(hit != null)
+                {
+                    if(checkSlingShotPowerUp(hit.gameObject))
+                    {
+                        //find the slingshot tower and set it to super mode
+                        hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
+                        Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
+                    }
+                
+
+                }
+            }
+            if(buildingPlaced.GetComponent<StatModifier>().getStatModifier() == "Speed")
+            {
+                Debug.Log("Checking by speeder");
+
+                Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(-2, 2, 0), 0.1f, buildingLayer);
+                if(hit != null)
+                {
+                    if(checkSlingShotPowerUp(hit.gameObject))
+                    {
+                        //find the slingshot tower and set it to super mode
+                        hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
+                        Debug.Log("Super Slingshot Activated by Speed Stat Modifier!");
+                    }
+                
+
+                }
+            }
+        }
+        
+        
+
+        
+        
+        
+
+        
+    }
+    private bool checkSlingShotPowerUp(GameObject buildingPlaced)
+    {
+        Debug.Log("Checking slingshot Power up...");
+        bool one = false;
+        bool two = false;
+        bool three = false;
+        Debug.Log("SlingShotBuilding at " + buildingPlaced.transform.position);
+        Debug.Log("Building placed: " + buildingPlaced.GetComponent<TowerParent>().TowerName + " at " + buildingPlaced.transform.position);
+
+        if(buildingPlaced.GetComponent<TowerParent>().TowerName  == "SlingShot" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
+        {
+
+            //check down, down right, and right for slingshot super building
+            Collider2D hit1 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(0, -2, 0), 0.1f, buildingLayer);
+            Collider2D hit2 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, -2, 0), 0.1f, buildingLayer);
+            Collider2D hit3 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, 0, 0), 0.1f, buildingLayer);
+            //debug log all world positions checked by hit123
+            Debug.Log("Checking hit123 positions: " + (buildingPlaced.transform.position + new Vector3(0, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, 0, 0)));
+            
+
+
+            //debug log all positions of buildings placed and hit123
+            Debug.Log("Checking for buildings at: " + buildingPlaced.transform.position + " with offsets (0, -2), (2, -2), (2, 0)");
+            Debug.Log("Hit1: " + (hit1 != null ? hit1.gameObject.name : "None") + " at " + (hit1 != null ? hit1.transform.position.ToString() : "N/A"));
+            Debug.Log("Hit2: " + (hit2 != null ? hit2.gameObject.name : "None") + " at " + (hit2 != null ? hit2.transform.position.ToString() : "N/A"));
+            Debug.Log("Hit3: " + (hit3 != null ? hit3.gameObject.name : "None") + " at " + (hit3 != null ? hit3.transform.position.ToString() : "N/A"));
+            
+            if(hit1 != null && hit2 != null && hit3 != null)
+            {
+                Debug.Log("Hit1: " + hit1.gameObject.name + " at " + hit1.transform.position);
+                Debug.Log("Hit2: " + hit2.gameObject.name + " at " + hit2.transform.position);
+                Debug.Log("Hit3: " + hit3.gameObject.name + " at " + hit3.transform.position);
+                //debug log all positions of buildings placed and hit123
+                
+                //check if hit1 has component of statmodifier return bool
+                if(hit1.GetComponent<StatModifier>() != null)
+                {
+                    if(hit1.GetComponent<StatModifier>().getStatModifier() == "Damage")
+                    {
+                        one = true; 
+                    }
+                }
+                if(hit2.GetComponent<StatModifier>() != null)
+                {
+                    if(hit1.GetComponent<StatModifier>().getStatModifier() == "Speed")
+                    {
+                        two = true; 
+                    }
+                }
+                if(hit3.GetComponent<Catapult>() != null)
+                {
+                    if(hit3.GetComponent<Catapult>().Level == 3)
+                    {
+                        three = true;
+                    }
+                }
+                
+
+                
+            }
+            
+        }
+        return (one && two && three);
+    }
+
+    
+
 }

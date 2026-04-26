@@ -209,7 +209,7 @@ MonoBehaviour:
   towerCost: 160
   towerType: Damage
   towerName: Catapult
-  unlocked: 0
+  unlocked: 1
   health: 750
   currentPlacedTowers: 0
   placedTowers: 0
