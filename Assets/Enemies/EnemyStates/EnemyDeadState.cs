@@ -37,6 +37,13 @@ public class EnemyDeadState : EnemyState
             Object.Instantiate(enemy.GetMagnetPrefab(), enemy.transform.position, Quaternion.identity);
         }
 
+        // 5% chance to drop a single shield powerup for the whole run
+        if (Random.value <= 0.05f && ShieldPowerUp.CanDropShield())
+        {
+            Object.Instantiate(enemy.GetShieldPrefab(), enemy.transform.position, Quaternion.identity);
+            ShieldPowerUp.MarkShieldDropped();
+        }
+
         
         //Add a defeated enemy count to the player's stats
         enemy.GetPlayer().GetComponent<PlayerStats>().AddDefeatedEnemyCount();

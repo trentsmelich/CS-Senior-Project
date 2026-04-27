@@ -136,6 +136,7 @@ MonoBehaviour:
   speedPrefab: {fileID: 7549482915154555136, guid: 05dbd6043c7e26d479ac59bf2077a9eb, type: 3}
   cooldownPrefab: {fileID: 4144941683259756929, guid: aa40d79e390b7bd478a8890615a4588b, type: 3}
   magnetPrefab: {fileID: 8396249315879505082, guid: a6e90f528950a1049a5c7e7a600d5b2a, type: 3}
+  shieldPrefab: {fileID: 6435161137648557077, guid: 139d004656717624b85e067d0111781d, type: 3}
 --- !u!50 &6800590198088273001
 Rigidbody2D:
   serializedVersion: 5

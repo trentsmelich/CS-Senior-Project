@@ -27,14 +27,19 @@ public class PlayerStats : MonoBehaviour
 
     public int coins = 0;
 
+    [SerializeField] private float shieldCooldown = 10f;
+    private bool shieldAvailable = false;
+    private bool shieldOnCooldown = false;
+
     public GameObject game;
     private GameStateController gameStateController;
+    private Coroutine shieldCooldownRoutine;
 
     private Animator anim;
     void Start()
     {
-        // Initialize player stats
-        gameStateController = game.GetComponent<GameStateController>();
+        // Initialize player stats    
+        gameStateController = game.GetComponent<GameStateController>();        
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
     }
@@ -144,6 +149,18 @@ public class PlayerStats : MonoBehaviour
     // Take damage from an enemy
     public void TakeDamage(float damageAmount)
     {
+        if (shieldAvailable)
+        {
+            shieldAvailable = false;
+            if (!shieldOnCooldown)
+            {
+                shieldCooldownRoutine = StartCoroutine(ShieldCooldownCoroutine());
+            }
+
+            Debug.Log("Shield blocked incoming damage.");
+            return;
+        }
+
         PlayerStateController player = GetComponent<PlayerStateController>();
 
         if (currentHealth > 0)
@@ -163,7 +180,7 @@ public class PlayerStats : MonoBehaviour
         return;
     }
 
-    private System.Collections.IEnumerator HurtPlayerColor(PlayerStateController player)
+    private IEnumerator HurtPlayerColor(PlayerStateController player)
     {
         SpriteRenderer SR = player.GetSpriteRenderer();
 
@@ -181,11 +198,37 @@ public class PlayerStats : MonoBehaviour
         // Handle player death trigger death animation and sound effect and disable player movement
         Debug.Log("Player has died.");
 
-        anim.SetTrigger("isDead");
+        if (anim != null)
+        {
+            anim.SetTrigger("isDead");
+        }
+
         PlayerStateController player = GetComponent<PlayerStateController>();
         player.DeadSFX();
         player.enabled = false;
-        player.GetRigidbody().linearVelocity = Vector2.zero;
+
+        Rigidbody2D playerRigidbody = player.GetRigidbody();
+        playerRigidbody.linearVelocity = Vector2.zero;
+
+        StopCoroutine(shieldCooldownRoutine);
+        shieldCooldownRoutine = null;
+
+        shieldAvailable = false;
+        shieldOnCooldown = false;
+    }
+
+    public void ActivateShield()
+    {
+        shieldAvailable = true;
+    }
+
+    private IEnumerator ShieldCooldownCoroutine()
+    {
+        shieldOnCooldown = true;
+        yield return new WaitForSeconds(shieldCooldown);
+        shieldAvailable = true;
+        shieldOnCooldown = false;
+        shieldCooldownRoutine = null;
     }
 
     public float getCurrentHealth()

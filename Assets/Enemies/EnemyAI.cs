@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject speedPrefab;
     public GameObject cooldownPrefab;
     public GameObject magnetPrefab;
+    public GameObject shieldPrefab;
     private EnemyParent enemyParent;
 
     private bool targetPlayer;
@@ -97,6 +98,10 @@ public class EnemyAI : MonoBehaviour
     public GameObject GetMagnetPrefab()
     {
         return magnetPrefab;
+    }
+    public GameObject GetShieldPrefab()
+    {
+        return shieldPrefab;
     }
     public Transform GetPlayer()
     {
