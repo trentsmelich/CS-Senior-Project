@@ -94,12 +94,11 @@ public class PauseState : GameState
 
     public override void ExitState(GameStateController Game)
     {
-        //close pause UI
-        //resume time
+        //Implementation for exiting the pause state
+        //reload keybinds in case they were changed in the options menu
+        Game.ReloadKeybinds();
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
-        
-        // Implementation for exiting the pause state
     }
 
 }

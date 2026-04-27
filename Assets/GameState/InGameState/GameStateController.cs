@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Samples.RebindUI;
+using System;
 
 //Author:Trent, Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
@@ -130,6 +131,12 @@ public class GameStateController : MonoBehaviour
     // Towers
     private GameObject[] towers;
 
+    // Declare keys for keybinds
+    private KeyCode pauseKey;
+    private KeyCode shopKey;
+    private KeyCode destroyKey;
+
+
     void Start()
     {
         waveManager = new WavesState(
@@ -170,6 +177,15 @@ public class GameStateController : MonoBehaviour
         rebindUI.LoadActionBinding();
 
         inputActions.Enable();
+
+        // Load the keybinds from PlayerPrefs and convert them to KeyCodes
+        string pausedSaved = PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString());
+        string shopSaved = PlayerPrefs.GetString("Shop", KeyCode.F.ToString());
+        string destroySaved = PlayerPrefs.GetString("Destroy", KeyCode.B.ToString());
+
+        pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode), pausedSaved);
+        shopKey = (KeyCode)Enum.Parse(typeof(KeyCode), shopSaved);
+        destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode), destroySaved);
     }
 
     // Update is called once per frame
@@ -206,13 +222,14 @@ public class GameStateController : MonoBehaviour
             SetState(new StoryState());
         }
 
+
         // paused state transitions, press Esc key to enter paused menu
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
+        if (Input.GetKeyDown(pauseKey) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
         {
             keyClickSound.Play();
             SetState(new PauseState());
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && (currentState is PauseState)) // press Esc key
+        else if (Input.GetKeyDown(pauseKey) && (currentState is PauseState)) // press Esc key
         {
             keyClickSound.Play();
             ShowPlayerUI(true);
@@ -220,23 +237,23 @@ public class GameStateController : MonoBehaviour
         }
 
         // Shop State Transitions, press F key to enter shop
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
+        if (Input.GetKeyDown(shopKey) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
         {
             keyClickSound.Play();
             SetState(new InShopState());
         }
-        else if (Input.GetKeyDown(KeyCode.F) && (currentState is InShopState)) // press F key to exit shop
+        else if (Input.GetKeyDown(shopKey) && (currentState is InShopState)) // press F key to exit shop
         {
             keyClickSound.Play();
             SetState(new gameIdleState());
         }
         //if in shop and wavestate waveinprogress is false
         //if player presses b key, enter destroy state
-        if(Input.GetKeyDown(KeyCode.B) && (currentState is InShopState)){
+        if(Input.GetKeyDown(destroyKey) && (currentState is InShopState)){
             keyClickSound.Play();
             SetState(new DestroyState());
         }
-        else if (Input.GetKeyDown(KeyCode.B) && (currentState is DestroyState)) // press B key to exit destroy state and go back to shop state
+        else if (Input.GetKeyDown(destroyKey) && (currentState is DestroyState)) // press B key to exit destroy state and go back to shop state
         {
             keyClickSound.Play();
             SetState(new InShopState());
@@ -533,6 +550,18 @@ public class GameStateController : MonoBehaviour
     public void PlayDestroyBuildingSFX()
     {
         destroyBuildingSFX.Play();
+    }
+
+    public void ReloadKeybinds()
+    {
+        pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode),
+        PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString()));
+
+        shopKey = (KeyCode)Enum.Parse(typeof(KeyCode),
+        PlayerPrefs.GetString("Shop", KeyCode.F.ToString()));
+
+        destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode),
+        PlayerPrefs.GetString("Destroy", KeyCode.B.ToString()));
     }
 
 }
