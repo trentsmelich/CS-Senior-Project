@@ -26,11 +26,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             var currentBindings = actionReference.action.actionMap.SaveBindingOverridesAsJson();
             PlayerPrefs.SetString(m_Action.action.name + bindingId, currentBindings);
         }
-        private void LoadActionBinding()
-        {
-            var savedBindings = PlayerPrefs.GetString(m_Action.action.name + bindingId);
-            if (!string.IsNullOrEmpty(savedBindings))
-                actionReference.action.actionMap.LoadBindingOverridesFromJson(savedBindings);
+        public void LoadActionBinding() { 
+            var savedBindings = PlayerPrefs.GetString(m_Action.action.name + bindingId); 
+            if (!string.IsNullOrEmpty(savedBindings)) 
+                actionReference.action.actionMap.LoadBindingOverridesFromJson(savedBindings); 
+        
         }
 
 

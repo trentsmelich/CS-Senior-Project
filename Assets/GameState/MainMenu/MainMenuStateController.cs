@@ -2,6 +2,8 @@
 // Library
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Samples.RebindUI;
 
 //Author:Jia
 //Description: This script controls the state of the main menu. It manages different panels and UI elements, and handles state transitions.
@@ -19,6 +21,9 @@ public class MainMenuStateController : MonoBehaviour
     public GameObject keybindsPanel;
 
     public AudioSource buttonClickAudio;
+
+    public InputActionAsset inputActions;
+    private InputAction attackAction;
 
     //[SerializeField] GameObject[] towers;
     [SerializeField] GameObject towerButtonPrefab;
@@ -75,12 +80,21 @@ public class MainMenuStateController : MonoBehaviour
         {
             mainMenuBackground.GetComponent<Image>().sprite = backgroundOptions[0]; // Default to the first background if no preference is set
         }
+
+        RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
+        rebindUI.LoadActionBinding();
+
+        inputActions.Enable();
+        attackAction = inputActions.FindAction("Attack");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(attackAction.WasPressedThisFrame())
+        {
+            Debug.Log("Attack action was pressed in the main menu.");
+        }
     }
 
     public void SetState(MainMenuState newState)
