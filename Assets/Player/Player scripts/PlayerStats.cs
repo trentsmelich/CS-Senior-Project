@@ -33,6 +33,7 @@ public class PlayerStats : MonoBehaviour
     private int currShieldHits = 0;
     private bool shieldAvailable = false;
     private bool shieldOnCooldown = false;
+    private bool poisonAvailable = false;
 
     public GameObject game;
     private GameStateController gameStateController;
@@ -292,6 +293,16 @@ public class PlayerStats : MonoBehaviour
         currShieldHits = maxShieldHits;
         shieldAvailable = true;
         shieldImage.SetActive(true);
+    }
+
+    public void ActivatePoison()
+    {
+        poisonAvailable = true;
+    }
+
+    public bool HasPoison()
+    {
+        return poisonAvailable;
     }
 
     private IEnumerator ShieldCooldownCoroutine()

@@ -29,7 +29,12 @@ public class EnemyDeadState : EnemyState
                         continue;
                     }
 
-                    if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDropShield())
+                    if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDrop())
+                    {
+                        continue;
+                    }
+
+                    if (powerUp == enemy.GetPoisonPrefab() && !PoisonPowerUp.CanDrop())
                     {
                         continue;
                     }
@@ -44,7 +49,12 @@ public class EnemyDeadState : EnemyState
 
                     if (droppedPowerUp == enemy.GetShieldPrefab())
                     {
-                        ShieldPowerUp.MarkShieldDropped();
+                        ShieldPowerUp.MarkDropped();
+                    }
+
+                    if (droppedPowerUp == enemy.GetPoisonPrefab())
+                    {
+                        PoisonPowerUp.MarkDropped();
                     }
                 }
             }

@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class ShieldPowerUp : MonoBehaviour
+public class PoisonPowerUp : MonoBehaviour
 {
     [SerializeField] private float moveHeight = 0.2f;
     [SerializeField] private float moveSpeed = 2f;
 
     private Vector3 startPos;
-    private static bool shieldDropped = false;
-    PlayerStats player;
+    private static bool poisonDropped = false;
+    private PlayerStats player;
 
     void Start()
     {
@@ -25,10 +25,10 @@ public class ShieldPowerUp : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player = collision.GetComponent<PlayerStats>();
-            
+
             if (player != null)
             {
-                player.ActivateShield();
+                player.ActivatePoison();
             }
 
             Destroy(gameObject);
@@ -37,11 +37,11 @@ public class ShieldPowerUp : MonoBehaviour
 
     public static bool CanDrop()
     {
-        return !shieldDropped;
+        return !poisonDropped;
     }
 
     public static void MarkDropped()
     {
-        shieldDropped = true;
+        poisonDropped = true;
     }
 }

@@ -103,6 +103,7 @@ public class PlayerAttackState : PlayerState
         if (projectileScript != null)
         {
             projectileScript.SetDamage(player.playerStats.GetDamage());
+            projectileScript.SetPoison(player.playerStats.HasPoison());
         }
     }
 
