@@ -14,11 +14,8 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyState currentState;
     public GameObject coinPrefab;
-    public GameObject healPrefab;
-    public GameObject speedPrefab;
-    public GameObject cooldownPrefab;
-    public GameObject magnetPrefab;
     public GameObject shieldPrefab;
+    [SerializeField] private GameObject[] powerUpList;
     private EnemyParent enemyParent;
 
     private bool targetPlayer;
@@ -82,26 +79,13 @@ public class EnemyAI : MonoBehaviour
     {
         return coinPrefab;
     }
-
-    public GameObject GetHealPrefab()
-    {
-        return healPrefab;
-    }
-    public GameObject GetSpeedPrefab()
-    {
-        return speedPrefab;
-    }
-    public GameObject GetCooldownPrefab()
-    {
-        return cooldownPrefab;
-    }
-    public GameObject GetMagnetPrefab()
-    {
-        return magnetPrefab;
-    }
     public GameObject GetShieldPrefab()
     {
         return shieldPrefab;
+    }
+    public GameObject[] GetPowerUpList()
+    {
+        return powerUpList;
     }
     public Transform GetPlayer()
     {

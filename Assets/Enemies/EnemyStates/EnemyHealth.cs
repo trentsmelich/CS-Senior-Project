@@ -73,10 +73,9 @@ public class EnemyHealth : MonoBehaviour
     // Coroutine to flash the enemy red when taking damage
     private IEnumerator FlashRed()
     {
-        Color originalColor = spriteRenderer.color;
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = Color.white;
     }
     
     // Method to handle enemy death

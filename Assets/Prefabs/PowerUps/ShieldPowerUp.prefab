@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7847357389454107011}
   - component: {fileID: 5765298729231988437}
   m_Layer: 0
-  m_Name: shieldTest
+  m_Name: ShieldPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
