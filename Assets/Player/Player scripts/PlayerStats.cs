@@ -28,12 +28,14 @@ public class PlayerStats : MonoBehaviour
     public int coins = 0;
 
     [SerializeField] private float shieldCooldown = 10f;
+    [SerializeField] private GameObject shieldImage;
     private bool shieldAvailable = false;
     private bool shieldOnCooldown = false;
 
     public GameObject game;
     private GameStateController gameStateController;
     private Coroutine shieldCooldownRoutine;
+    
 
     private Animator anim;
     void Start()
@@ -42,6 +44,7 @@ public class PlayerStats : MonoBehaviour
         gameStateController = game.GetComponent<GameStateController>();        
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
+        shieldImage.SetActive(false);
     }
     //getters and setters for player stats
     public float GetMoveSpeed()
@@ -152,6 +155,7 @@ public class PlayerStats : MonoBehaviour
         if (shieldAvailable)
         {
             shieldAvailable = false;
+            shieldImage.SetActive(false);
             if (!shieldOnCooldown)
             {
                 shieldCooldownRoutine = StartCoroutine(ShieldCooldownCoroutine());
@@ -220,6 +224,7 @@ public class PlayerStats : MonoBehaviour
     public void ActivateShield()
     {
         shieldAvailable = true;
+        shieldImage.SetActive(true);
     }
 
     private IEnumerator ShieldCooldownCoroutine()
@@ -229,6 +234,7 @@ public class PlayerStats : MonoBehaviour
         shieldAvailable = true;
         shieldOnCooldown = false;
         shieldCooldownRoutine = null;
+        shieldImage.SetActive(true);
     }
 
     public float getCurrentHealth()
