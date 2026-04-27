@@ -12516,6 +12516,7 @@ MonoBehaviour:
   requirementsPanel: {fileID: 867692610}
   keybindsPanel: {fileID: 883725320}
   buttonClickAudio: {fileID: 1678979879}
+  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   towerButtonPrefab: {fileID: 4440208757228867778, guid: 330da52a5cde7594a9785c772b06e2b5, type: 3}
   unlockController: {fileID: 1074728678}
   normalCursorTexture: {fileID: 2800000, guid: a0aafda3437054a40a972d3aa3283054, type: 3}
