@@ -89530,7 +89530,7 @@ MonoBehaviour:
   dirtTilemap: {fileID: 1731449716}
   playerBase: {fileID: 1188910855}
   enemiesPerWave: 20
-  waveTimer: 10
+  waveTimer: 1
   waveCountdown: 0
   enemyList:
   - {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}

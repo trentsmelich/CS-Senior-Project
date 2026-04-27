@@ -29,12 +29,15 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] private float shieldCooldown = 10f;
     [SerializeField] private GameObject shieldImage;
+    [SerializeField] private int maxShieldHits = 3;
+    private int currShieldHits = 0;
     private bool shieldAvailable = false;
     private bool shieldOnCooldown = false;
 
     public GameObject game;
     private GameStateController gameStateController;
-    private Coroutine shieldCooldownRoutine;
+    //private Coroutine shieldCooldownRoutine;
+    SpriteRenderer shieldSprite;
     
 
     private Animator anim;
@@ -45,6 +48,7 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
         shieldImage.SetActive(false);
+        shieldSprite = shieldImage.GetComponent<SpriteRenderer>();
     }
     //getters and setters for player stats
     public float GetMoveSpeed()
@@ -152,16 +156,23 @@ public class PlayerStats : MonoBehaviour
     // Take damage from an enemy
     public void TakeDamage(float damageAmount)
     {
-        if (shieldAvailable)
+        if (shieldAvailable && currShieldHits > 0)
         {
-            shieldAvailable = false;
-            shieldImage.SetActive(false);
-            if (!shieldOnCooldown)
+            currShieldHits--;
+            StartCoroutine(shieldHit());
+
+            if (currShieldHits <= 0)
             {
-                shieldCooldownRoutine = StartCoroutine(ShieldCooldownCoroutine());
+                shieldAvailable = false;
+                shieldImage.SetActive(false);
+
+                if (!shieldOnCooldown)
+                {
+                    StartCoroutine(ShieldCooldownCoroutine());
+                }
             }
 
-            Debug.Log("Shield blocked incoming damage.");
+            Debug.Log("Shield blocked damage.");
             return;
         }
 
@@ -214,27 +225,10 @@ public class PlayerStats : MonoBehaviour
         Rigidbody2D playerRigidbody = player.GetRigidbody();
         playerRigidbody.linearVelocity = Vector2.zero;
 
-        StopCoroutine(shieldCooldownRoutine);
-        shieldCooldownRoutine = null;
+        StopCoroutine(ShieldCooldownCoroutine());
 
         shieldAvailable = false;
         shieldOnCooldown = false;
-    }
-
-    public void ActivateShield()
-    {
-        shieldAvailable = true;
-        shieldImage.SetActive(true);
-    }
-
-    private IEnumerator ShieldCooldownCoroutine()
-    {
-        shieldOnCooldown = true;
-        yield return new WaitForSeconds(shieldCooldown);
-        shieldAvailable = true;
-        shieldOnCooldown = false;
-        shieldCooldownRoutine = null;
-        shieldImage.SetActive(true);
     }
 
     public float getCurrentHealth()
@@ -291,5 +285,33 @@ public class PlayerStats : MonoBehaviour
     public float GetTimeSurvived()
     {
         return timeSurvived;
+    }
+
+    public void ActivateShield()
+    {
+        currShieldHits = maxShieldHits;
+        shieldAvailable = true;
+        shieldImage.SetActive(true);
+    }
+
+    private IEnumerator ShieldCooldownCoroutine()
+    {
+        shieldOnCooldown = true;
+        yield return new WaitForSeconds(shieldCooldown);
+        currShieldHits = maxShieldHits;
+        shieldAvailable = true;
+        shieldOnCooldown = false;
+        shieldImage.SetActive(true);
+    }
+
+    private IEnumerator shieldHit()
+    {
+        Color alpha = shieldSprite.color;
+        // Change shield color to red
+        shieldSprite.color = new Color(1f, 0f, 0f, alpha.a);
+        // Wait for the color duration
+        yield return new WaitForSeconds(0.15f);
+        // Reset to original color white
+        shieldSprite.color = new Color(1f, 1f, 1f, alpha.a);
     }
 }
