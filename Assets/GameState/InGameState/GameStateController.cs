@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Samples.RebindUI;
 
 //Author:Trent, Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
@@ -119,6 +121,10 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Vector2 destroyHotSpot = new Vector2(46.5f, 46.5f); // Hotspot for clicks (46.5f x 46.5f center)
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
 
+    [Header("Input System Settings")]
+    public InputActionAsset inputActions;
+    public GameObject keybindsPanel;
+
     // Main Menu Background Number
     private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
     // Towers
@@ -159,6 +165,11 @@ public class GameStateController : MonoBehaviour
         {
             tower.GetComponent<TowerParent>().ResetPlacedTowers();
         }
+
+        RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
+        rebindUI.LoadActionBinding();
+
+        inputActions.Enable();
     }
 
     // Update is called once per frame

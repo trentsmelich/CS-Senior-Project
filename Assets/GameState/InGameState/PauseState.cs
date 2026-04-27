@@ -30,6 +30,9 @@ public class PauseState : GameState
         //find X button in options panel and set its listener
         Button optionsXButton = pauseMenu.transform.Find("Options_Panel").Find("Options_XButton").GetComponent<Button>();
 
+        Button keybindsButton = pauseMenu.transform.Find("Options_Panel").Find("Keybinds_Button").GetComponent<Button>();
+        Button KeybindSettingsBackButton = pauseMenu.transform.Find("Options_Panel").Find("Keybinds_Setting/Keybinds_XButton").GetComponent<Button>();
+
         //resume button
         resumeButton.onClick.AddListener(() =>
         {
@@ -64,6 +67,22 @@ public class PauseState : GameState
             Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(false);
             Debug.Log("options X Button Clicked");
+        });
+
+        //keybinds button in options panel
+        keybindsButton.onClick.AddListener(() =>
+        {
+            Game.PlayButtonClickSound();
+            pauseMenu.transform.Find("Options_Panel/Keybinds_Setting").gameObject.SetActive(true);
+            Debug.Log("keybinds Button Clicked");
+        });
+
+        //keybinds settings back button
+        KeybindSettingsBackButton.onClick.AddListener(() =>
+        {
+            Game.PlayButtonClickSound();
+            pauseMenu.transform.Find("Options_Panel/Keybinds_Setting").gameObject.SetActive(false);
+            Debug.Log("keybinds settings back Button Clicked");
         });
 
     }

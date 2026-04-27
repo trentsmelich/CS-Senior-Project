@@ -22,6 +22,7 @@ public class PlayerRunningState : PlayerState
         // Check for input
         player.moveInput.x = Input.GetAxisRaw("Horizontal");
         player.moveInput.y = Input.GetAxisRaw("Vertical");
+        //player.moveInput = player.GetMoveAction().ReadValue<Vector2>();
 
         // Transition to Idle state if there's no movement input for a short duration
         if (player.moveInput.sqrMagnitude < 0.005f)
@@ -40,7 +41,8 @@ public class PlayerRunningState : PlayerState
         }
 
         // Transition to Attacking state if left click is detected
-        if (Input.GetMouseButton(0))
+        //if (Input.GetMouseButton(0))
+        if (player.GetAttackAction().triggered)
         {
             player.SetState(new PlayerAttackState());
             return;

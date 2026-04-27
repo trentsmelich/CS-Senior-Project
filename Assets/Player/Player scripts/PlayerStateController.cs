@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Samples.RebindUI;
 //Author:Luis
 //Description: Manages the player's state transitions and interactions with components like Animator and Rigidbody2D.
 public class PlayerStateController : MonoBehaviour
@@ -24,6 +26,12 @@ public class PlayerStateController : MonoBehaviour
     [SerializeField] AudioSource hurtSound;
     [SerializeField] AudioSource deadSound;
 
+    [Header("Input System Settings")]
+    public InputActionAsset inputActions;
+    public GameObject keybindsPanel;
+    private InputAction attackAction;
+    private InputAction moveAction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +43,20 @@ public class PlayerStateController : MonoBehaviour
 
         // Start in Idle state
         SetState(new PlayerIdleState());
+
+        //Setup the input system keybindings
+        RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
+        rebindUI.LoadActionBinding();
+
+        /*var rebindUIs = keybindsPanel.GetComponentsInChildren<RebindActionUI>();
+        foreach (var ui in rebindUIs)
+        {
+            ui.LoadActionBinding();
+        }*/
+
+        inputActions.Enable();
+        attackAction = inputActions.FindAction("Attack");
+        //moveAction = inputActions.FindAction("Move");
     }
 
     // Update is called once per frame
@@ -67,6 +89,9 @@ public class PlayerStateController : MonoBehaviour
     public GameObject GetGameObject() => gameObject;
     public PlayerParent GetPlayerParent() => playerParent;
 
+    public InputAction GetAttackAction() => attackAction;
+    public InputAction GetMoveAction() => moveAction;
+
     // Update the player's facing direction based on input
     public void UpdateDirection(Vector2 dir)
     {
@@ -80,7 +105,7 @@ public class PlayerStateController : MonoBehaviour
         // to make the player face
         anim.SetFloat("Horizontal", lastDir.x);
         anim.SetFloat("Vertical", lastDir.y);
-        anim.SetBool("isMoving", moveInput.sqrMagnitude > 0.1f);
+        //anim.SetBool("isMoving", moveInput.sqrMagnitude > 0.1f);
     }
 
     public void AttackSFX()
