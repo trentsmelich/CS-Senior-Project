@@ -12,8 +12,10 @@ public class CoinScript : MonoBehaviour
     public float coinMovingSpeed = 7.5f;
     private Transform playerTransform;
     public float attractionRange = 5f;
-
-    private bool magnetActive = false;
+    public float magnetAttractionRange = 100f;
+    private float currentCoinSpeed;
+    private float currAttractRange;
+    bool playerMagnetActive;
 
     void Start()
     {
@@ -27,11 +29,30 @@ public class CoinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move the coin towards the player If the Player is close enough in the attraction range
-        if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= attractionRange)
+        playerMagnetActive = playerStats != null && playerStats.HasMagnet();
+
+        if (playerMagnetActive)        {
+            currAttractRange = magnetAttractionRange;
+        }
+        else
+        {
+            currAttractRange = attractionRange;
+        }
+
+        if (playerMagnetActive)
+        {
+            currentCoinSpeed = playerStats.GetMagnetCoinSpeed();
+        }
+        else
+        {
+            currentCoinSpeed = coinMovingSpeed;
+        }
+
+        // Move the coin towards the player If the player is close enough in the attraction range
+        if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= currAttractRange)
         {
             Vector3 direction = (playerTransform.position - transform.position).normalized;
-            transform.position += direction * coinMovingSpeed * Time.deltaTime;
+            transform.position += direction * currentCoinSpeed * Time.deltaTime;
         }
     }
 
@@ -43,28 +64,8 @@ public class CoinScript : MonoBehaviour
             // Play the coin sound effect and add a coin to the player's total coins
             coinSFX.Play();
             playerStats.AddCoins(1);
-            Debug.Log("Coin collected. Total coins: " + playerStats.coins);
             // Destroy the coin object to remove it from the game
             Destroy(gameObject);
         }
-    }
-
-    public void ActivateMagnet(float duration, float speed)
-    {
-        if (!magnetActive)
-        {
-            StartCoroutine(MagnetEffect(duration, speed));
-        }
-    }
-
-    private IEnumerator MagnetEffect(float duration, float speed)
-    {
-        magnetActive = true;
-        attractionRange = 100f;
-        coinMovingSpeed = speed;
-        yield return new WaitForSeconds(duration);
-        attractionRange = 5f;
-        coinMovingSpeed = 7.5f;
-        magnetActive = false;
     }
 }

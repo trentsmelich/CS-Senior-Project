@@ -1,40 +1,38 @@
 using UnityEngine;
 
-public class MagnetPowerUp : MonoBehaviour
+public class MagnetPowerUp : PowerUpParent
 {
+    [Header("Magnet Settings")]
     [SerializeField] private float duration = 5f;
-
-    [SerializeField] private float moveHeight = 0.2f;
-    [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float coinSpeed = 10f;
-    private Vector3 startPos;
-    private AudioSource powerUpSFX;
+    private static bool magnetDropped = false;
 
-    void Start()
+    protected override void ApplyEffect(PlayerStats player)
     {
-        startPos = transform.position;
-        powerUpSFX = GameObject.Find("SFX/PowerUp_SFX").GetComponent<AudioSource>();
+        powerUpSFX.Play();
+        player.ActivateMagnet(duration, coinSpeed);
     }
 
-    void Update()
+    public static bool CanDrop()
     {
-        float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * moveHeight;
-        transform.position = new Vector3(startPos.x, newY, transform.position.z);
+        return !magnetDropped;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public static void MarkDropped()
     {
-        if (collision.CompareTag("Player"))
+        magnetDropped = true;
+    }
+
+    public static void ResetDrop()
+    {
+        magnetDropped = false;
+    }
+
+    private void OnDestroy()
+    {
+        if (!collected)
         {
-            powerUpSFX.Play();
-            CoinScript[] coins = FindObjectsByType<CoinScript>(FindObjectsSortMode.None);
-
-            foreach (CoinScript coin in coins)
-            {
-                coin.ActivateMagnet(duration, coinSpeed);
-            }
-
-            Destroy(gameObject);
+            ResetDrop();
         }
     }
 }

@@ -104,6 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3c7249bc621294cae3210befd7140a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedPowerup
+  moveHeight: 0.2
+  moveSpeed: 2
+  lifetime: 15
+  blinkStartTime: 5
+  blinkInterval: 0.2
+  speedBoostPercentage: 0.3
 --- !u!61 &7867882679067671423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +144,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.027278319, y: 0.009093165}
+  m_Offset: {x: -0.0076024234, y: 0.007219285}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -148,5 +154,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.64907074, y: 0.94300675}
+  m_Size: {x: 0.6884225, y: 0.9804836}
   m_EdgeRadius: 0

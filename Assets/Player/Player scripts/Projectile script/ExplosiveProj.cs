@@ -7,10 +7,14 @@ public class ExplosiveProj : MonoBehaviour
     [SerializeField] private float lifetime = 3f;
     [SerializeField] private float explosionRadius = 4f;
     [SerializeField] private float explosionDuration = 0.5f;
+    [SerializeField] private float poisonDamage = 3f;
+    [SerializeField] private int poisonTicks = 3;
+    [SerializeField] private float poisonTickInterval = 1f;
 
     private float damage;
 
     private bool hasExploded = false;
+    private bool canPoison = false;
 
     private Animator anim;
     private CircleCollider2D col;
@@ -71,7 +75,10 @@ public class ExplosiveProj : MonoBehaviour
                 if (enemyHealth != null)
                 {
                     enemyHealth.TakeDamage(damage);
-                    Debug.Log("Explosion hit enemy for " + damage + " damage.");
+                    if (canPoison)
+                    {
+                        enemyHealth.Poison(poisonDamage, poisonTicks, poisonTickInterval);
+                    }
                 }
             }
         }
@@ -83,6 +90,11 @@ public class ExplosiveProj : MonoBehaviour
     public void SetDamage(float newDamage)
     {
         damage = newDamage;
+    }
+
+    public void SetPoison(bool value)
+    {
+        canPoison = value;
     }
 
     private void OnDrawGizmosSelected()

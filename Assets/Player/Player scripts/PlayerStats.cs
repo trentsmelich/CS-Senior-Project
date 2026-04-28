@@ -33,11 +33,14 @@ public class PlayerStats : MonoBehaviour
     private int currShieldHits = 0;
     private bool shieldAvailable = false;
     private bool shieldOnCooldown = false;
-    private bool poisonAvailable = false;
+    private bool hasPoison = false;
+    private bool hasMagnet = false;
+    private bool magnetActive = false;
+    [SerializeField] private float magnetCooldown = 60f;
+    private float magnetCoinSpeed = 10f;
 
     public GameObject game;
     private GameStateController gameStateController;
-    //private Coroutine shieldCooldownRoutine;
     SpriteRenderer shieldSprite;
     
 
@@ -169,7 +172,7 @@ public class PlayerStats : MonoBehaviour
 
                 if (!shieldOnCooldown)
                 {
-                    StartCoroutine(ShieldCooldownCoroutine());
+                    StartCoroutine(ShieldCooldown());
                 }
             }
 
@@ -214,11 +217,7 @@ public class PlayerStats : MonoBehaviour
         // Handle player death trigger death animation and sound effect and disable player movement
         Debug.Log("Player has died.");
 
-        if (anim != null)
-        {
-            anim.SetTrigger("isDead");
-        }
-
+        anim.SetTrigger("isDead");
         PlayerStateController player = GetComponent<PlayerStateController>();
         player.DeadSFX();
         player.enabled = false;
@@ -226,7 +225,7 @@ public class PlayerStats : MonoBehaviour
         Rigidbody2D playerRigidbody = player.GetRigidbody();
         playerRigidbody.linearVelocity = Vector2.zero;
 
-        StopCoroutine(ShieldCooldownCoroutine());
+        StopCoroutine(ShieldCooldown());
 
         shieldAvailable = false;
         shieldOnCooldown = false;
@@ -295,17 +294,7 @@ public class PlayerStats : MonoBehaviour
         shieldImage.SetActive(true);
     }
 
-    public void ActivatePoison()
-    {
-        poisonAvailable = true;
-    }
-
-    public bool HasPoison()
-    {
-        return poisonAvailable;
-    }
-
-    private IEnumerator ShieldCooldownCoroutine()
+    private IEnumerator ShieldCooldown()
     {
         shieldOnCooldown = true;
         yield return new WaitForSeconds(shieldCooldown);
@@ -324,6 +313,49 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         // Reset to original color white
         shieldSprite.color = new Color(1f, 1f, 1f, alpha.a);
+    }
+
+    public void ActivatePoison()
+    {
+        hasPoison = true;
+    }
+
+    public bool HasPoison()
+    {
+        return hasPoison;
+    }
+
+    public void ActivateMagnet(float duration, float coinSpeed)
+    {
+        magnetCoinSpeed = coinSpeed;
+
+        if (hasMagnet) {
+            return;
+        }
+
+        hasMagnet = true;
+        StartCoroutine(MagnetLoop(duration));
+    }
+
+    private IEnumerator MagnetLoop(float duration)
+    {
+        while (true)
+        {
+            magnetActive = true;
+            yield return new WaitForSeconds(duration);
+            magnetActive = false;
+            yield return new WaitForSeconds(magnetCooldown - duration);
+        }
+    }
+
+    public bool HasMagnet()
+    {
+        return magnetActive;
+    }
+
+    public float GetMagnetCoinSpeed()
+    {
+        return magnetCoinSpeed;
     }
 
     public void KillPlayer()

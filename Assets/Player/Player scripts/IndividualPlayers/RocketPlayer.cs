@@ -17,8 +17,10 @@ public class RocketPlayer : PlayerParent
         GameObject projectile = Instantiate(player.projectilePrefab, player.firePoint.position, Quaternion.Euler(0, 0, angle));
 
         ExplosiveProj projectileScript = projectile.GetComponent<ExplosiveProj>();
-        if (projectileScript != null)        {
+        if (projectileScript != null)
+        {
             projectileScript.SetDamage(player.playerStats.GetDamage());
+            projectileScript.SetPoison(player.playerStats.HasPoison());
         }
     }
 }
