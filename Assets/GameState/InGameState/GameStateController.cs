@@ -148,6 +148,7 @@ public class GameStateController : MonoBehaviour
     {
         ShieldPowerUp.ResetDrop();
         PoisonPowerUp.ResetDrop();
+        MagnetPowerUp.ResetDrop();
 
         waveManager = new WavesState(
             playerBase,

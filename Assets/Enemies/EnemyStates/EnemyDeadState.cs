@@ -39,6 +39,11 @@ public class EnemyDeadState : EnemyState
                         continue;
                     }
 
+                    if (powerUp == enemy.GetMagnetPrefab() && !MagnetPowerUp.CanDrop())
+                    {
+                        continue;
+                    }
+
                     availPowerUps.Add(powerUp);
                 }
 
@@ -55,6 +60,11 @@ public class EnemyDeadState : EnemyState
                     if (droppedPowerUp == enemy.GetPoisonPrefab())
                     {
                         PoisonPowerUp.MarkDropped();
+                    }
+
+                    if (droppedPowerUp == enemy.GetMagnetPrefab())
+                    {
+                        MagnetPowerUp.MarkDropped();
                     }
                 }
             }

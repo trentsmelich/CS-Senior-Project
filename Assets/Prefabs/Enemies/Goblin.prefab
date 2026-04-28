@@ -328,6 +328,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 3683637954113399530, guid: ae46eb2b0f3287e459c238df5a1c6723, type: 3}
   shieldPrefab: {fileID: 6435161137648557077, guid: 139d004656717624b85e067d0111781d, type: 3}
   poisonPrefab: {fileID: 2110618855395160473, guid: b89c1e18a32496e45b31e5ec93a4198f, type: 3}
+  magnetPrefab: {fileID: 8396249315879505082, guid: a6e90f528950a1049a5c7e7a600d5b2a, type: 3}
   powerUpList:
   - {fileID: 4144941683259756929, guid: aa40d79e390b7bd478a8890615a4588b, type: 3}
   - {fileID: 8396249315879505082, guid: a6e90f528950a1049a5c7e7a600d5b2a, type: 3}

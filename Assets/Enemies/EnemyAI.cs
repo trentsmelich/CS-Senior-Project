@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject shieldPrefab;
     public GameObject poisonPrefab;
+    public GameObject magnetPrefab;
     [SerializeField] private GameObject[] powerUpList;
     private EnemyParent enemyParent;
     //[SerializeField] private GameStateController gameStateController;
@@ -101,6 +102,10 @@ public class EnemyAI : MonoBehaviour
     public GameObject GetPoisonPrefab()
     {
         return poisonPrefab;
+    }
+    public GameObject GetMagnetPrefab()
+    {
+        return magnetPrefab;
     }
     public GameObject[] GetPowerUpList()
     {
