@@ -80,4 +80,10 @@ public class Catapult : TowerParent
                 "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
     }
+
+
+    public override void UpgradeTower()
+    {
+       
+    }
 }

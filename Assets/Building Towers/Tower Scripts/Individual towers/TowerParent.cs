@@ -27,6 +27,9 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected int placedTowers;
     [SerializeField] protected int maxTowersCount;
 
+    protected int kills;
+    protected int requiredKills = 10;
+
     
     //getters and setters for the properties
     public float TowerRange => towerRange;
@@ -45,6 +48,8 @@ public abstract class TowerParent : MonoBehaviour
 
     public int PlacedTowers => placedTowers;
     public int MaxTowersCount => maxTowersCount;
+
+    public int Kills => kills;
 
     public void SetUnlock(bool unlock)
     {
@@ -67,6 +72,11 @@ public abstract class TowerParent : MonoBehaviour
     public abstract string GetName();
     public abstract string GetDescription();
     public abstract string GetAttributes();
+
+    public virtual void UpgradeTower()
+    {
+        
+    }
     
     public void TakeDamage(int damage)
     {
@@ -91,5 +101,15 @@ public abstract class TowerParent : MonoBehaviour
     public int GetHealth()
     {
         return health;
+    }
+    public void increaseKills()
+    {
+        kills++;
+        if(kills >= requiredKills)
+        {
+            requiredKills = requiredKills + 20;
+            UpgradeTower();
+        }
+
     }
 }

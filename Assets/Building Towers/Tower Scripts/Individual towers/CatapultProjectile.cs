@@ -94,6 +94,15 @@ public class CatapultProjectile : MonoBehaviour
             if (hit.CompareTag("Enemy")){
                 EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
                 enemy.TakeDamage(damage);
+                if(enemy.GetCurrentHealth() <= 0)
+                {
+                    //increment kills for tower
+                    TowerParent tower = GetComponentInParent<TowerParent>();
+                    if (tower != null)
+                    {
+                        tower.increaseKills();
+                    }
+                }
             }
         }
     }
