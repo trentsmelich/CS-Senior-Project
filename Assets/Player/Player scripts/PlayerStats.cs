@@ -363,4 +363,24 @@ public class PlayerStats : MonoBehaviour
         currentHealth = 0;
         Die();
     }
+
+    public void PoisonPlayer(float poisonDamage, int ticksNum, float tickInterval)
+    {
+        StartCoroutine(PoisonDamage(poisonDamage, ticksNum, tickInterval));
+    }
+
+    private IEnumerator PoisonDamage(float poisonDamage, int ticksNum, float tickInterval)
+    {
+        for (int i = 0; i < ticksNum; i++)
+        {
+            yield return new WaitForSeconds(tickInterval);
+
+            if (currentHealth <= 0)
+            {
+                yield break;
+            }
+
+            TakeDamage(poisonDamage);
+        }
+    }
 }

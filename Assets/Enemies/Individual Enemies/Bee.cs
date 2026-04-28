@@ -50,12 +50,7 @@ public class Bee : EnemyParent
                 playerStats.TakeDamage(enemyDamage);
 
                 // poison damage over time
-                for (int i = 0; i < ticksNum; i++)
-                {
-                    yield return new WaitForSeconds(1f);
-                    playerStats.TakeDamage(poisonDamage); // poison damage
-                    Debug.Log("Player took poison damage from bee!");
-                }   
+                playerStats.PoisonPlayer(poisonDamage, ticksNum, 1f);
             }
         }
     }
