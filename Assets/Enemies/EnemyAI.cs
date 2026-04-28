@@ -53,6 +53,9 @@ public class EnemyAI : MonoBehaviour
     {
         // Update the current state
         currentState?.UpdateState(this);
+        moveSpeed = enemyParent.Speed;
+        attackRange = enemyParent.EnemyRange;
+        damage = enemyParent.EnemyDamage;
     }
 
     public void SetState(EnemyState newState)
