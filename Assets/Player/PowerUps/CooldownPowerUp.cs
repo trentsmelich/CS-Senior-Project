@@ -4,6 +4,7 @@ public class CooldownPowerUp : MonoBehaviour
 {
     private PlayerStats player;
     private float cooldownRed = 1f;
+    private AudioSource powerUpSFX;
 
     private Vector3 startPos;
 
@@ -14,6 +15,7 @@ public class CooldownPowerUp : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
         startPos = transform.position; // store initial position
+        powerUpSFX = GameObject.Find("SFX/PowerUp_SFX").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,6 +28,7 @@ public class CooldownPowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            powerUpSFX.Play();
             player.ApplyAttackSpeedBoost(cooldownRed, 5f);
             Destroy(gameObject);
         }

@@ -7,11 +7,13 @@ public class ShieldPowerUp : MonoBehaviour
 
     private Vector3 startPos;
     private static bool shieldDropped = false;
+    private AudioSource powerUpSFX;
     PlayerStats player;
 
     void Start()
     {
         startPos = transform.position;
+        powerUpSFX = GameObject.Find("SFX/PowerUp_SFX").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class ShieldPowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            powerUpSFX.Play();
             player = collision.GetComponent<PlayerStats>();
             
             if (player != null)

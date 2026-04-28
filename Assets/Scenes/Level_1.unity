@@ -92989,7 +92989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: 266}
+  m_AnchoredPosition: {x: -294, y: 266}
   m_SizeDelta: {x: 380.9743, y: 83.0752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997278299
@@ -119164,7 +119164,6 @@ MonoBehaviour:
   - {fileID: 965917807470210177, guid: bf1017a18eefa2c428229fb2bb30d129, type: 3}
   - {fileID: 6770428916232597138, guid: c9b568dd9c0315e499ed6234cfa12a35, type: 3}
   - {fileID: 4659362562171334871, guid: 5b8a82dd627167c44bea9e0ef267aed6, type: 3}
-  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
   - {fileID: 4449575510196601865, guid: a7ceeaad5dc4b794aa08ae0b5518d752, type: 3}
   - {fileID: 8971047154334926690, guid: fe3ba0930fc0f5946b0b3ae551db2855, type: 3}
   - {fileID: 2241687074828901136, guid: 7dc808f08863b774f87710a601102c48, type: 3}
@@ -119172,8 +119171,12 @@ MonoBehaviour:
   - {fileID: 404667458572657143, guid: e3730eb533feaa844bb7c12295048d38, type: 3}
   - {fileID: 4491155016980185563, guid: e0826010907a8b641a563e271730d1de, type: 3}
   - {fileID: 3317708200662551583, guid: c0bfaec5fb742ad41869d6bae5b9f04b, type: 3}
+  - {fileID: 5882449777920923934, guid: a042914511d176a40adacb121b468f5d, type: 3}
   - {fileID: 5882449777920923934, guid: 6cff0ca5ab6689b4c8cf4d0a3e41150c, type: 3}
   - {fileID: 5882449777920923934, guid: b9cb50c8e1e79df479df2e98da686f1f, type: 3}
+  - {fileID: 5882449777920923934, guid: 9a2790128a4a05a43b7338da6edb35f8, type: 3}
+  - {fileID: 5882449777920923934, guid: 1482ad6cd3b010c41b95392643f3230c, type: 3}
+  - {fileID: 5882449777920923934, guid: 3123b2a6ef97fd143bc351fb82599332, type: 3}
   gameStateController: {fileID: 1046596827}
 --- !u!4 &1781292269
 Transform:
@@ -122148,17 +122151,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1046596825}
     - target: {fileID: 1614758912776842359, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
+      propertyPath: coins
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614758912776842359, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
       propertyPath: shieldImage
       value: 
       objectReference: {fileID: 674381471}
     - target: {fileID: 2684032670955559525, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
       propertyPath: deadSound
       value: 
-      objectReference: {fileID: 1026249865}
+      objectReference: {fileID: 237710419}
     - target: {fileID: 2684032670955559525, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
       propertyPath: hurtSound
       value: 
-      objectReference: {fileID: 995914101}
+      objectReference: {fileID: 1257058053}
     - target: {fileID: 2684032670955559525, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
       propertyPath: attackSound
       value: 

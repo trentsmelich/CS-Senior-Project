@@ -8,10 +8,12 @@ public class MagnetPowerUp : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float coinSpeed = 10f;
     private Vector3 startPos;
+    private AudioSource powerUpSFX;
 
     void Start()
     {
         startPos = transform.position;
+        powerUpSFX = GameObject.Find("SFX/PowerUp_SFX").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class MagnetPowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            powerUpSFX.Play();
             CoinScript[] coins = FindObjectsByType<CoinScript>(FindObjectsSortMode.None);
 
             foreach (CoinScript coin in coins)

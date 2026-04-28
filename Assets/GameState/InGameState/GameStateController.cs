@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using System;
-using UnityEditorInternal;
+//using UnityEditorInternal;
 
 //Author:Trent, Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
