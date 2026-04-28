@@ -48,12 +48,12 @@ public class SlingShotTower : TowerParent
         GameObject projectile = Instantiate(projectilePrefab, slingShotArm.transform.position, slingShotArm.transform.rotation);
         if (!superMode)
         {
-            projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
+            projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy, this);
             projectile.GetComponent<SlingShotProjectile>().setStats(speed, towerDamage);
         }
         else
         {
-            projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
+            projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy, this);
             projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage, level);
         }
         
@@ -92,5 +92,33 @@ public class SlingShotTower : TowerParent
         projectilePrefab = slingShotArm.transform.Find("ProjectileSuper").gameObject;
         slingShotArm.GetComponent<SpriteRenderer>().color = Color.red;
         superMode = true;
+    }
+
+    public override void UpgradeTower()
+    {
+       //pick from random attribute to upgrade at small random percentage
+        int attributeToUpgrade = Random.Range(0, 4);
+        float upgradeAmount = Random.Range(0.1f, 0.3f);
+        switch (attributeToUpgrade)
+        {
+            case 0:
+                towerDamage += Mathf.RoundToInt(towerDamage * upgradeAmount);
+                Debug.Log("Upgraded damage by " + Mathf.RoundToInt(towerDamage * upgradeAmount));
+                break;
+            case 1:
+                towerRange += Mathf.RoundToInt(towerRange * upgradeAmount);
+                Debug.Log("Upgraded range by " + Mathf.RoundToInt(towerRange * upgradeAmount));
+                break;
+            case 2:
+                speed += speed * upgradeAmount;
+                Debug.Log("Upgraded speed by " + speed * upgradeAmount);
+                break;
+            case 3:
+                attackCooldown -= attackCooldown * upgradeAmount;
+                Debug.Log("Upgraded cooldown by " + attackCooldown * upgradeAmount);
+                break;
+        }
+        //display upgrade text above tower for 2 seconds
+        
     }
 }

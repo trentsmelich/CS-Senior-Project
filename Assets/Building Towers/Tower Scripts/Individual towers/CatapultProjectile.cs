@@ -16,11 +16,13 @@ public class CatapultProjectile : MonoBehaviour
     private float lifetime = 3f; //How long the projectile lasts before disappearing
 
     private EnemyHealth enemyTarget; // Target enemy to apply damage to
+    TowerParent towerOwner;
 
     // Initialize the projectile with direction and target enemy
-    public void Begin(Vector2 direction, Transform enemyTarget)
+    public void Begin(Vector2 direction, Transform enemyTarget, TowerParent towerOwner)
     {
         this.direction = direction;
+        this.towerOwner = towerOwner;
         this.enemyTarget = enemyTarget.GetComponent<EnemyHealth>();
         anim = GetComponent<Animator>();
     }
@@ -49,6 +51,14 @@ public class CatapultProjectile : MonoBehaviour
             {
                 // Apply damage to the enemy
                 enemyTarget.TakeDamage((int)damage);
+                if(enemyTarget.GetCurrentHealth() <= 0)
+                {
+                    //increment kills for tower
+                    if (towerOwner != null)
+                    {
+                        towerOwner.increaseKills();
+                    }
+                }
                 // Play explosion animation
                 if(level == 2)
                 {
@@ -97,10 +107,9 @@ public class CatapultProjectile : MonoBehaviour
                 if(enemy.GetCurrentHealth() <= 0)
                 {
                     //increment kills for tower
-                    TowerParent tower = GetComponentInParent<TowerParent>();
-                    if (tower != null)
+                    if (towerOwner != null)
                     {
-                        tower.increaseKills();
+                        towerOwner.increaseKills();
                     }
                 }
             }

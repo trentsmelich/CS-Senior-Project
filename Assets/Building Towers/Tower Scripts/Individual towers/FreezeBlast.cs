@@ -7,6 +7,7 @@ public class FreezeBlast : MonoBehaviour
     private float damage;
     private float freezeDuration;
     private Animator anim;
+    private TowerParent towerOwner;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -44,9 +45,10 @@ public class FreezeBlast : MonoBehaviour
 
     }
 
-    public void setStats(float radius, float damage, float freezeDuration)
+    public void setStats(float radius, float damage, float freezeDuration, TowerParent tower)
     {
         this.radius = radius;
+        this.towerOwner = tower;
         this.damage = damage;
         this.freezeDuration = freezeDuration;
     }

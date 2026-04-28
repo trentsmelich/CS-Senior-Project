@@ -38,7 +38,7 @@ public class Freezer : TowerParent
         // Implement firing logic here
         Debug.Log("Freezer tower making blast");
         GameObject blast = Instantiate(freezerBlast, freezerCharge.transform.position, freezerCharge.transform.rotation);
-        blast.GetComponent<FreezeBlast>().setStats(towerRange, towerDamage, freezeDuration);
+        blast.GetComponent<FreezeBlast>().setStats(towerRange, towerDamage, freezeDuration, this);
         blast.SetActive(true);
     }
 
@@ -67,5 +67,29 @@ public class Freezer : TowerParent
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, towerRange);
+    }
+
+    public override void UpgradeTower()
+    {
+       //pick from random attribute to upgrade at small random percentage
+        int attributeToUpgrade = Random.Range(0, 4);
+        float upgradeAmount = Random.Range(0.1f, 0.3f);
+        switch (attributeToUpgrade)
+        {
+            case 0:
+                towerDamage += Mathf.RoundToInt(towerDamage * upgradeAmount);
+                break;
+            case 1:
+                towerRange += Mathf.RoundToInt(towerRange * upgradeAmount);
+                break;
+            case 2:
+                speed += speed * upgradeAmount;
+                break;
+            case 3:
+                attackCooldown -= attackCooldown * upgradeAmount;
+                break;
+        }
+        //display upgrade text above tower for 2 seconds
+        
     }
 }

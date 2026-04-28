@@ -51,7 +51,7 @@ public class Catapult : TowerParent
         }
         // Instantiate the projectile and set its initial position and target
         GameObject projectile = Instantiate(projectilePrefab, catapultArm.transform.position, catapultArm.transform.rotation);
-        projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
+        projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy, this);
         //set stats for projectile
         projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage, level);
         //set scale manually bc unity annoying
@@ -84,6 +84,27 @@ public class Catapult : TowerParent
 
     public override void UpgradeTower()
     {
-       
+       //pick from random attribute to upgrade at small random percentage
+        int attributeToUpgrade = Random.Range(0, 4);
+        float upgradeAmount = Random.Range(0.1f, 0.3f);
+        switch (attributeToUpgrade)
+        {
+            case 0:
+                towerDamage += Mathf.RoundToInt(towerDamage * upgradeAmount);
+                break;
+            case 1:
+                towerRange += Mathf.RoundToInt(towerRange * upgradeAmount);
+                break;
+            case 2:
+                speed += speed * upgradeAmount;
+                break;
+            case 3:
+                attackCooldown -= attackCooldown * upgradeAmount;
+                break;
+        }
+        //display upgrade text above tower for 2 seconds
+        
     }
+
+
 }
