@@ -8,6 +8,7 @@ public class Catapult : TowerParent
     private GameObject projectilePrefab;
     private GameObject catapultArm;
 
+    private bool superMode = false;
     private Animator anim;
 
     void Start()
@@ -105,6 +106,19 @@ public class Catapult : TowerParent
         //display upgrade text above tower for 2 seconds
         
     }
+    public void SetSuperMode()
+    {
+        Debug.Log("Catapult Super Mode Activated!");
+        superMode = true;
+        // Implement logic to set the tower to super mode, which could involve increasing its stats or changing its behavior
+        towerDamage *= 2;
+        //change color of catapult arm to indicate super mode
+        //projectilePrefab = catapultArm.transform.Find("ProjectileSuper").gameObject;
+        catapultArm.GetComponent<SpriteRenderer>().color = Color.red;
 
-
+    }
+    public bool IsSuperMode()
+    {
+        return superMode;
+    }
 }
