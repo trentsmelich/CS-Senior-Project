@@ -49,25 +49,10 @@ public class PoisonProjectile : MonoBehaviour
             if (player != null)
             {
                 player.TakeDamage(damage);
-                StartCoroutine(ApplyPoison(player));
-                sr.enabled = false; // Hide the projectile sprite
-                GetComponent<Collider2D>().enabled = false; // Disable the collider to prevent multiple
+                player.PoisonPlayer(poisonDamage, ticksNum, tickInterval);
             }
             
-            //Destroy(gameObject);  
-        }
-    }
-
-    private IEnumerator ApplyPoison(PlayerStats player)
-    {
-        for (int i = 0; i < ticksNum; i++)
-        {
-            yield return new WaitForSeconds(tickInterval);
-
-            // in case player died / got destroyed
-            if (player == null) yield break;
-
-            player.TakeDamage(poisonDamage);
+            Destroy(gameObject);  
         }
     }
 }

@@ -57,7 +57,7 @@ public class MermanBoss : EnemyParent
             agent.velocity = Vector3.zero;
             agent.speed = 0f;
 
-            // do special (wait for completion)
+            // do special
             if (Random.value < 0.5f)
             {
                 yield return StartCoroutine(SpikeAttack(enemyAI));
