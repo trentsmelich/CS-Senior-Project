@@ -4,6 +4,7 @@ using System.Collections.Generic;
 //Description: This script manages the DEAD state for all enemies
 public class EnemyDeadState : EnemyState
 {
+    float dropChance;
     public override void EnterState(EnemyAI enemy)
     {
         enemy.GetAnimator().SetTrigger("Dying");
@@ -15,57 +16,60 @@ public class EnemyDeadState : EnemyState
         Object.Instantiate(enemy.GetCoinPrefab(), enemy.transform.position, Quaternion.identity);
         Debug.Log("Enemy defeated. Experience added to player.");
 
-        // Roll once per enemy death, then pick one powerup from the list.
-        if (Random.value <= 0.9f)
+        GameObject[] powerUpList = enemy.GetPowerUpList();
+        if (powerUpList != null && powerUpList.Length > 0)
         {
-            GameObject[] powerUpList = enemy.GetPowerUpList();
-            if (powerUpList != null && powerUpList.Length > 0)
+            foreach (GameObject powerUp in powerUpList)
             {
-                List<GameObject> availPowerUps = new List<GameObject>();
-                foreach (GameObject powerUp in powerUpList)
+                if (powerUp == null)
                 {
-                    if (powerUp == null)
-                    {
-                        continue;
-                    }
-
-                    if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDrop())
-                    {
-                        continue;
-                    }
-
-                    if (powerUp == enemy.GetPoisonPrefab() && !PoisonPowerUp.CanDrop())
-                    {
-                        continue;
-                    }
-
-                    if (powerUp == enemy.GetMagnetPrefab() && !MagnetPowerUp.CanDrop())
-                    {
-                        continue;
-                    }
-
-                    availPowerUps.Add(powerUp);
+                    continue;
                 }
 
-                if (availPowerUps.Count > 0)
+                if (powerUp.GetComponent<HealPowerUp>() != null || powerUp.GetComponent<SpeedPowerup>() != null || powerUp.GetComponent<CooldownPowerUp>() != null)
                 {
-                    GameObject droppedPowerUp = availPowerUps[Random.Range(0, availPowerUps.Count)];
-                    Object.Instantiate(droppedPowerUp, enemy.transform.position, Quaternion.identity);
+                    dropChance = 0.1f;
+                }
+                else
+                {
+                    dropChance = 0.05f;
+                }
 
-                    if (droppedPowerUp == enemy.GetShieldPrefab())
-                    {
-                        ShieldPowerUp.MarkDropped();
-                    }
+                if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDrop())
+                {
+                    continue;
+                }
 
-                    if (droppedPowerUp == enemy.GetPoisonPrefab())
-                    {
-                        PoisonPowerUp.MarkDropped();
-                    }
+                if (powerUp == enemy.GetPoisonPrefab() && !PoisonPowerUp.CanDrop())
+                {
+                    continue;
+                }
 
-                    if (droppedPowerUp == enemy.GetMagnetPrefab())
-                    {
-                        MagnetPowerUp.MarkDropped();
-                    }
+                if (powerUp == enemy.GetMagnetPrefab() && !MagnetPowerUp.CanDrop())
+                {
+                    continue;
+                }
+
+                if (Random.value > dropChance)
+                {
+                    continue;
+                }
+
+                Object.Instantiate(powerUp, enemy.transform.position, Quaternion.identity);
+
+                if (powerUp == enemy.GetShieldPrefab())
+                {
+                    ShieldPowerUp.MarkDropped();
+                }
+
+                if (powerUp == enemy.GetPoisonPrefab())
+                {
+                    PoisonPowerUp.MarkDropped();
+                }
+
+                if (powerUp == enemy.GetMagnetPrefab())
+                {
+                    MagnetPowerUp.MarkDropped();
                 }
             }
         }
