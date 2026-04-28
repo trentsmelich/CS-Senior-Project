@@ -26,7 +26,7 @@ public class MainBuilding : TowerParent
         // Implement game over logic here
         //find game state object then enter death state
         GameStateController gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
-        PlayerStats playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        PlayerStats playerStats = gameStateController.GetPlayerStats();
         playerStats.TakeDamage(100000000.0f);
 
         gameStateController.SetState(new GameOverState());
