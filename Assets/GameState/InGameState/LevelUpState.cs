@@ -23,6 +23,8 @@ public class LevelUpState : GameState
     {
         // Start the level-up countdown coroutine then do the level up logic
         Game.StartCoroutine(LevelUpCountdown(Game));
+        Game.ShowPlayerUI(false);
+        levelUpUI = Game.GetUpgradeScreen();
     }
 
     public override void UpdateState(GameStateController Game)
@@ -40,6 +42,7 @@ public class LevelUpState : GameState
         offer1.onClick.RemoveAllListeners();
         offer2.onClick.RemoveAllListeners();
         offer3.onClick.RemoveAllListeners();
+        Game.ShowPlayerUI(true);
         Time.timeScale = 1;
         //resume time
     }
@@ -67,7 +70,7 @@ public class LevelUpState : GameState
 
         // Implementation for entering the level-up state
         //open level-up UI
-        levelUpUI = Game.GetUpgradeScreen();
+        //levelUpUI = Game.GetUpgradeScreen();
         levelUpUI.SetActive(true);
         //make 3 random stats to increase
         List<string> selectedStats = playerStats.OrderBy(s => UnityEngine.Random.value).Take(3).ToList();

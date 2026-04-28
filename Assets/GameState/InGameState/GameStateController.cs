@@ -3,13 +3,16 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
+using UnityEngine.InputSystem;
+using System;
 
-//Author:Trent and Jia and Luis
+//Author:Trent, Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
 public class GameStateController : MonoBehaviour
 {
     [Header("Player Settings")]
-    public GameObject player;
+    //public GameObject player;
     private PlayerStats playerStats;
     [SerializeField] private Grid grid;
     [SerializeField] private Grid grid2;
@@ -17,6 +20,19 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Tilemap grassTilemap;
     [SerializeField] private Tilemap grassTilemap2;
     [SerializeField] private Tilemap dirtTilemap;
+
+    // Variable to hold the player prefabs for different characters (set in the Inspector)
+    [SerializeField] private GameObject[] players;
+    [SerializeField] private GameObject playerHealth;
+    [SerializeField] private GameObject playerXP;
+    [SerializeField] private GameObject playercoin;
+    [SerializeField] private GameObject playerEnemyDefeatCounter;
+    [SerializeField] private GameObject playerCoinShop;
+    [SerializeField] private GameObject gameOverEnemyDefeatCounter;
+    [SerializeField] private CinemachineCamera cinemaCamera;
+    private const string PlayerSelected = "PlayerSelected";
+    private int currentPlayerSelected;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Wave Settings")]
@@ -36,7 +52,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText; // UI Text to display wave countdown
 
     private GameState currentState;
-    private GameState waveManager;
+    private WavesState waveManager;
 
     //Screen Panel GameObjects
     // Pause
@@ -47,6 +63,8 @@ public class GameStateController : MonoBehaviour
     public GameObject upgradeScreen;
     // Game Over Screen
     public GameObject gameOverScreen;
+    public GameObject buildingScreen;
+    public GameObject destroyScreen;
     // Upgrade Offer Text
     public GameObject upgradeOfferCountDownText;
 
@@ -70,6 +88,8 @@ public class GameStateController : MonoBehaviour
     private AudioSource keyClickSound;
     public AudioSource backgroundMusic;
     public AudioSource GameOverMusic;
+    public AudioSource placeBuildingSFX;
+    public AudioSource destroyBuildingSFX;
 
     //Other Variables
     public int currentBuildingCost = 0;
@@ -83,6 +103,45 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Image playerImage;
     [SerializeField] public AudioSource storyClickSFX;
     private bool storyPlayed = false;
+
+    [Header("Tutorial Settings")]
+    public GameObject[] tutorialSteps;
+    public Button nextButton;
+    public Button backButton;
+    public GameObject GameTutorialObject;
+    private bool tutorialPlayed = false;
+    private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
+
+    [Header("Cursor Settings")]
+    [SerializeField] private Texture2D normalCursorTexture; // image here in the Inspector
+    [SerializeField] private Texture2D redCursorTexture; // image here in the Inspector
+    [SerializeField] private Texture2D destroyCursorTexture; // image here in the Inspector
+    [SerializeField] private Vector2 normalHotSpot = new Vector2(0, 0); // Hotspot for clicks (0 x 0 top left corner)
+    [SerializeField] private Vector2 redHotSpot = new Vector2(64, 64); // Hotspot for clicks (64 x 64 center)
+    [SerializeField] private Vector2 destroyHotSpot = new Vector2(46.5f, 46.5f); // Hotspot for clicks (46.5f x 46.5f center)
+    [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
+
+
+    // Main Menu Background Number
+    private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
+    // Towers
+    private GameObject[] towers;
+
+    [Header("Input System Settings")]
+    public GameObject keybindsPanel;
+    public TextMeshProUGUI shopDestroyReminderText;
+    public TextMeshProUGUI destroyReminderText;
+    // Declare Player State Keybinds
+    private KeyCode attackKey;
+    private KeyCode moveUpKey;
+    private KeyCode moveDownKey;
+    private KeyCode moveLeftKey;
+    private KeyCode moveRightKey;
+    // Declare Game State Keybinds
+    private KeyCode pauseKey;
+    private KeyCode shopKey;
+    private KeyCode destroyKey;
+
 
     void Start()
     {
@@ -100,10 +159,50 @@ public class GameStateController : MonoBehaviour
         
         SetState(new gameIdleState());
 
+        // Update Player Selected
+        SetupSelectedPlayer();
+
         //Get the Player information
-        playerStats = player.GetComponent<PlayerStats>();
+        //playerStats = player.GetComponent<PlayerStats>();
         //Set SFX
         keyClickSound = GameObject.Find("SFX/Key_Click_SFX").GetComponent<AudioSource>();
+        // Set the cursor to the normal cursor at the start of the game
+        Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
+
+        // Set the main menu background number based on the current scene index 
+        SetMainMenuBackground();
+
+        // Reset Each Tower's Placement at the start of the game
+        towers = unlockController.GetTowers();
+        foreach (GameObject tower in towers)
+        {
+            tower.GetComponent<TowerParent>().ResetPlacedTowers();
+        }
+
+        // Load the keybinds from PlayerPrefs and convert them to KeyCodes
+        // Player State Keybinds
+        string attackSaved = PlayerPrefs.GetString("Attack", KeyCode.Mouse0.ToString());
+        string moveUpSaved = PlayerPrefs.GetString("MoveUp", KeyCode.W.ToString());
+        string moveDownSaved = PlayerPrefs.GetString("MoveDown", KeyCode.S.ToString());
+        string moveLeftSaved = PlayerPrefs.GetString("MoveLeft", KeyCode.A.ToString());
+        string moveRightSaved = PlayerPrefs.GetString("MoveRight", KeyCode.D.ToString());
+
+        attackKey = (KeyCode)Enum.Parse(typeof(KeyCode), attackSaved);
+        moveUpKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveUpSaved);
+        moveDownKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveDownSaved);
+        moveLeftKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveLeftSaved);
+        moveRightKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveRightSaved);
+        SetKeybindsToPlayer();
+
+        // In Game State
+        string pausedSaved = PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString());
+        string shopSaved = PlayerPrefs.GetString("Shop", KeyCode.F.ToString());
+        string destroySaved = PlayerPrefs.GetString("Destroy", KeyCode.B.ToString());
+
+        pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode), pausedSaved);
+        shopKey = (KeyCode)Enum.Parse(typeof(KeyCode), shopSaved);
+        destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode), destroySaved);
+        SetKeybindsRelatedUITexts();
     }
 
     // Update is called once per frame
@@ -112,43 +211,80 @@ public class GameStateController : MonoBehaviour
         // Update the current state
         currentState.UpdateState(this);
 
+        // Change cursor to normal or red depending on which state the player is in (red cursor for building state, normal cursor for all other states)
+        if (currentState is gameIdleState || currentState is LevelUpState || currentState is WavesState)
+        {
+            Cursor.SetCursor(redCursorTexture, redHotSpot, cursorMode);
+        }
+        else if (currentState is DestroyState)
+        {
+            Cursor.SetCursor(destroyCursorTexture, destroyHotSpot, cursorMode);
+        }
+        else
+        {
+            Cursor.SetCursor(normalCursorTexture, normalHotSpot, cursorMode);
+        }
+
+        // Check if the tutorial has been played, if not, play the tutorial state (only at the beginning of the game)
+        if (tutorialPlayed == false && !(currentState is TutorialState))
+        {
+            tutorialPlayed = true;
+            SetState(new TutorialState());
+        }
+
         // Check if the story has been played, if not, play the story state (only at the beginning of the game)
-        if (storyPlayed == false && !(currentState is StoryState))
+        if (storyPlayed == false && !(currentState is StoryState) && PlayerPrefs.GetInt(PREF_TUTORIAL_DONE) == 1) // Only play the story if the tutorial has been completed or skipped
         {
             storyPlayed = true;
             SetState(new StoryState());
         }
 
-        // paused state transitions
-        if (Input.GetKeyDown(KeyCode.Escape) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press Esc key
+
+        // paused state transitions, press Esc key to enter paused menu
+        if (Input.GetKeyDown(pauseKey) && !(currentState is PauseState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is InShopState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
         {
             keyClickSound.Play();
             SetState(new PauseState());
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && (currentState is PauseState)) // press Esc key
+        else if (Input.GetKeyDown(pauseKey) && (currentState is PauseState)) // press Esc key
         {
             keyClickSound.Play();
             ShowPlayerUI(true);
             SetState(new gameIdleState());
         }
 
-        // Shop State Transitions
-        if (Input.GetKeyDown(KeyCode.F) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState)) // press F key to enter shop
+        // Shop State Transitions, press F key to enter shop
+        if (Input.GetKeyDown(shopKey) && !(currentState is InShopState) && !(currentState is BuildingState) && !(currentState is GameOverState) && !(currentState is BuildingState) && !(currentState is StoryState) && !(currentState is PauseState) && !(currentState is TutorialState) && !(currentState is LevelUpState))
         {
             keyClickSound.Play();
             SetState(new InShopState());
         }
-        else if (Input.GetKeyDown(KeyCode.F) && (currentState is InShopState)) // press F key to exit shop
+        else if (Input.GetKeyDown(shopKey) && (currentState is InShopState)) // press F key to exit shop
         {
             keyClickSound.Play();
             SetState(new gameIdleState());
         }
-        
+        //if in shop and wavestate waveinprogress is false
+        //if player presses b key, enter destroy state
+        if(Input.GetKeyDown(destroyKey) && (currentState is InShopState)){
+            keyClickSound.Play();
+            SetState(new DestroyState());
+        }
+        else if (Input.GetKeyDown(destroyKey) && (currentState is DestroyState)) // press B key to exit destroy state and go back to shop state
+        {
+            keyClickSound.Play();
+            SetState(new InShopState());
+        }
+
+
+
+
+
         // Game Over State Transition
         // Get Player Health and stop the timer if health is 0
         float playerCurrentHealth = playerStats.GetHealth();
         Timer timerScript = timer.GetComponent<Timer>();
-        if (playerCurrentHealth <= 0 && !(currentState is GameOverState))
+        if (playerCurrentHealth <= 0 && !(currentState is GameOverState)) // If the player's health is 0 or less and the current state is not already the Game Over State, transition to the Game Over State (also check if not in Story State to prevent game over during story)
         {
             // Stop the timer and set the time escaped for the level that the player is currently on
             timerScript.StopTimer();
@@ -182,6 +318,33 @@ public class GameStateController : MonoBehaviour
         SetState(new GameOverState());
     }
 
+    private void SetMainMenuBackground()
+    {
+        // Set the main menu background number based on the current scene index so that the correct background can be displayed in the main menu 
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 1);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 2);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 3);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 4); 
+        }
+        else
+        {
+            PlayerPrefs.SetInt(PREF_MAIN_MENU_BACKGROUND, 1); // Default to the first background option
+        }
+
+        PlayerPrefs.Save();
+    }
+
     public GameState GetWaveManager()
     {
         return waveManager;
@@ -206,6 +369,16 @@ public class GameStateController : MonoBehaviour
     public GameObject GetGameOverScreen()
     {
         return gameOverScreen;
+    }
+
+    public GameObject GetBuildingScreen()
+    {
+        return buildingScreen;
+    }
+
+    public GameObject GetDestroyScreen()
+    {
+        return destroyScreen;
     }
 
     public GameObject[] GetTowers()
@@ -322,12 +495,107 @@ public class GameStateController : MonoBehaviour
     public void SetStoryPlayerSprite()
     {
         //Set the player's sprite to the corresponding sprite for the story (just set it to the player's current sprite)
-        playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
+        //playerImage.sprite = player.GetComponent<SpriteRenderer>().sprite;
+        playerImage.sprite = players[currentPlayerSelected].GetComponent<SpriteRenderer>().sprite;
     }
 
     public void PlayStoryClickSFX()
     {
         storyClickSFX.Play();
     }
-    
+
+    public GameObject[] GetTutorialSteps()
+    {
+        return tutorialSteps;
+    }
+
+    public Button GetTutorialNextButton()
+    {
+        return nextButton;
+    }
+
+    public Button GetTutorialBackButton()
+    {
+        return backButton;
+    }
+
+    public GameObject GetGameTutorialObject()
+    {
+        return GameTutorialObject;
+    }
+
+    public void SetupSelectedPlayer()
+    {
+        // Load the current player selected from PlayerPrefs, if not found, default to 0 (first player)
+        currentPlayerSelected = PlayerPrefs.GetInt(PlayerSelected, 0);
+
+        // Activate the selected player prefab only
+        players[currentPlayerSelected].SetActive(true);
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (players[i].activeSelf && i != currentPlayerSelected)
+            {
+                players[i].tag = "Untagged"; // Set the tag of the active player to "Player" and the others to "Untagged"
+            }
+        }
+        // Set the player's sprite and stats based on the selected player
+        //player = players[currentPlayerSelected]; // Set the player GameObject to the selected player prefab in GameStateController
+        //Get the Player stats information
+        playerStats = players[currentPlayerSelected].GetComponent<PlayerStats>();
+
+        playerHealth.GetComponent<PlayerHealthBar>().SetPlayer(players[currentPlayerSelected]);
+        playerXP.GetComponent<PlayerXpBar>().SetPlayer(players[currentPlayerSelected]);
+        playercoin.GetComponent<PlayerCoinCounter>().SetPlayer(players[currentPlayerSelected]);
+        playerEnemyDefeatCounter.GetComponent<PlayerEnemyCounter>().SetPlayer(players[currentPlayerSelected]);
+        playerCoinShop.GetComponent<PlayerCoinCounter>().SetPlayer(players[currentPlayerSelected]);
+        gameOverEnemyDefeatCounter.GetComponent<PlayerEnemyCounter>().SetPlayer(players[currentPlayerSelected]);
+       
+        cinemaCamera.Follow = players[currentPlayerSelected].transform;
+    }
+
+    public PlayerStats GetPlayerStats()
+    {
+        return playerStats;
+    }
+
+    public void PlayPlaceBuildingSFX()
+    {
+        placeBuildingSFX.Play();
+    }
+
+    public void PlayDestroyBuildingSFX()
+    {
+        destroyBuildingSFX.Play();
+    }
+
+    public void ReloadKeybinds()
+    {
+        // Player State Keybinds
+        attackKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Attack", KeyCode.Mouse0.ToString()));
+        moveUpKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveUp", KeyCode.W.ToString()));
+        moveDownKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveDown", KeyCode.S.ToString()));
+        moveLeftKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveLeft", KeyCode.A.ToString()));
+        moveRightKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveRight", KeyCode.D.ToString()));
+        SetKeybindsToPlayer();
+
+        // In Game State Keybinds
+        pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString()));
+        shopKey = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Shop", KeyCode.F.ToString()));
+        destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Destroy", KeyCode.B.ToString()));
+        SetKeybindsRelatedUITexts();
+    }
+
+    public void SetKeybindsToPlayer()
+    {
+        PlayerStateController playerStateController = players[currentPlayerSelected].GetComponent<PlayerStateController>();
+        playerStateController.SetPlayerKeyBinds(attackKey, moveUpKey, moveDownKey, moveLeftKey, moveRightKey);
+    }
+
+    public void SetKeybindsRelatedUITexts()
+    {
+        shopDestroyReminderText.text = "Press " + destroyKey.ToString() + " key to enter destroy state";
+        destroyReminderText.text = " * Mouse right click to remove a building" + "\n" + "* Press " + destroyKey.ToString() + " key to exit destroy state";
+    }
+
 }

@@ -131,6 +131,8 @@ public class InShopState : GameState
                         xButton.onClick.AddListener(() =>
                         {
                             Game.PlayButtonClickSound();
+                            shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
+                            shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_MaxTowersReached").gameObject.SetActive(false);
                             shopScreen.transform.Find("Tower_Info_Screen").gameObject.SetActive(false);
                         });
 
@@ -142,14 +144,24 @@ public class InShopState : GameState
                             //check if player has enough coins to purchase tower
                             if(playerStats.coins >= tower.GetComponent<TowerParent>().TowerCost)
                             {
-                                Debug.Log("Purchasing tower");
-                                shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
-                                playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
+                                if (tower.GetComponent<TowerParent>().PlacedTowers >= tower.GetComponent<TowerParent>().MaxTowersCount)
+                                {
+                                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_MaxTowersReached").gameObject.SetActive(true);
+                                }
+                                else
+                                {
+                                    Debug.Log("Purchasing tower");
+                                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
+                                    shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_MaxTowersReached").gameObject.SetActive(false);
+                                    playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
+                                    
+                                    tower.GetComponent<TowerParent>().IncreasePlacedTowers();
 
-                                //If the building is purchased, set the tower to be placed and change state to building state
-                                Game.SetCurrentBuildingCost(tower.GetComponent<TowerParent>().TowerCost);
-                                Game.SetPlaceTower(tower);
-                                Game.SetState(new BuildingState());
+                                    //If the building is purchased, set the tower to be placed and change state to building state
+                                    Game.SetCurrentBuildingCost(tower.GetComponent<TowerParent>().TowerCost);
+                                    Game.SetPlaceTower(tower);
+                                    Game.SetState(new BuildingState());
+                                }
                             }
                             else
                             {

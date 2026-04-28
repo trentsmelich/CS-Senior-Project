@@ -23,7 +23,7 @@ public class LevelUnlock : UnlockParent
     }
 
     // Check and unlock towers based on the conditions and tower counts
-    public override void Unlock(UnlockController unlockController)
+    public override void Unlock(UnlockController unlockController, PlayerStats playerStats)
     {
 
         //if the longest time survived is greater than current time, replace the longest time survived with the current time

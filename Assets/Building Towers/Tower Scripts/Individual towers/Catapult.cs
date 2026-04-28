@@ -72,7 +72,8 @@ public class Catapult : TowerParent
 
     public override string GetAttributes()
     {
-        return "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
+        return  "Attack Attributes\n" +
+                "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
                 "Damage:" + "<pos=125>" + towerDamage.ToString() + "</pos>\n" + "\n" +
                 "Range:" + "<pos=125>" + towerRange.ToString() + "</pos>\n" + "\n" +
                 "Speed:" + "<pos=125>" + speed.ToString() + "</pos>\n" + "\n" +

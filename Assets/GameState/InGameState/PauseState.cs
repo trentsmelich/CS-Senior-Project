@@ -30,6 +30,9 @@ public class PauseState : GameState
         //find X button in options panel and set its listener
         Button optionsXButton = pauseMenu.transform.Find("Options_Panel").Find("Options_XButton").GetComponent<Button>();
 
+        Button keybindsButton = pauseMenu.transform.Find("Options_Panel").Find("Keybinds_Button").GetComponent<Button>();
+        Button KeybindSettingsBackButton = pauseMenu.transform.Find("Options_Panel").Find("Keybinds_Setting/Keybinds_XButton").GetComponent<Button>();
+
         //resume button
         resumeButton.onClick.AddListener(() =>
         {
@@ -66,6 +69,22 @@ public class PauseState : GameState
             Debug.Log("options X Button Clicked");
         });
 
+        //keybinds button in options panel
+        keybindsButton.onClick.AddListener(() =>
+        {
+            Game.PlayButtonClickSound();
+            pauseMenu.transform.Find("Options_Panel/Keybinds_Setting").gameObject.SetActive(true);
+            Debug.Log("keybinds Button Clicked");
+        });
+
+        //keybinds settings back button
+        KeybindSettingsBackButton.onClick.AddListener(() =>
+        {
+            Game.PlayButtonClickSound();
+            pauseMenu.transform.Find("Options_Panel/Keybinds_Setting").gameObject.SetActive(false);
+            Debug.Log("keybinds settings back Button Clicked");
+        });
+
     }
 
     public override void UpdateState(GameStateController Game)
@@ -75,12 +94,11 @@ public class PauseState : GameState
 
     public override void ExitState(GameStateController Game)
     {
-        //close pause UI
-        //resume time
+        //Implementation for exiting the pause state
+        //reload keybinds in case they were changed in the options menu
+        Game.ReloadKeybinds();
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
-        
-        // Implementation for exiting the pause state
     }
 
 }

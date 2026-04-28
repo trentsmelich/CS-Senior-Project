@@ -17,6 +17,7 @@ public class Unlocks : MainMenuState
     {
         // Set the panel and get the towers
         unlocksPanel = Main.GetUnlocksPanel();
+        Main.DisplayMainMenu(false);
         towers = Main.GetTowers();
         unlocksPanel.SetActive(true);
 
@@ -143,6 +144,7 @@ public class Unlocks : MainMenuState
     {
         // Close the panel when the player clicked the X button
         unlocksPanel.SetActive(false);
+        Main.DisplayMainMenu(true);
     }
     
     

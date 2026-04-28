@@ -49,7 +49,7 @@ public class SlingshotUnlock : UnlockParent
     }
 
     // Check and unlock towers based on the conditions and tower counts
-    public override void Unlock(UnlockController unlockController)
+    public override void Unlock(UnlockController unlockController, PlayerStats playerStats)
     {
         if (!lvl2Unlocked && unlockController.GetNumTowers("SlingShot", 1) >= 5)
         {

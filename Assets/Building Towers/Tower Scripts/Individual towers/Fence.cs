@@ -33,7 +33,10 @@ public class Fence : TowerParent
     }
     public override string GetAttributes()
     {
-        return "none lmao rn";
+        return  "Attributes\n" +
+                "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
+                "Hit Points:" + "<pos=125>" + health.ToString() + "</pos>\n" + "\n" +
+                "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
     }
     // AdjustFenceSprite checks for adjacent fences and updates the sprite accordingly
     private void checkAroundFence()

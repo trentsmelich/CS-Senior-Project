@@ -21,7 +21,8 @@ public class Farm : TowerParent
 
         // Get reference to PlayerStats
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        
+
+
         // Initialize timers for harvesting to control animation and profit generation
         harvestTimer = Time.realtimeSinceStartup;
         spriteTimer = attackCooldown / sprites.Length;
@@ -51,6 +52,7 @@ public class Farm : TowerParent
         // Farms do not attack
         //farms update timer and when timer reaches cooldown, play animation and reset timer
         //Debug.Log("Farm Updating");
+
 
         // Calculate time since last harvest
         float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;

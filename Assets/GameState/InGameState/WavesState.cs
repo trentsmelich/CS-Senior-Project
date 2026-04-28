@@ -213,4 +213,9 @@ public class WavesState : GameState
 
         return new Vector2(x, y);
     }
+
+    public bool IsWaveInProgress()
+    {
+        return waveInProgress;
+    }
 }

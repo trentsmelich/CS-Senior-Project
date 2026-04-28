@@ -20,8 +20,28 @@ public class PlayerRunningState : PlayerState
     public override void UpdateState(PlayerStateController player)
     {
         // Check for input
-        player.moveInput.x = Input.GetAxisRaw("Horizontal");
-        player.moveInput.y = Input.GetAxisRaw("Vertical");
+        //player.moveInput.x = Input.GetAxisRaw("Horizontal");
+        //player.moveInput.y = Input.GetAxisRaw("Vertical");
+
+        player.moveInput = Vector2.zero;
+
+        // Checking if the keys are pressed and updating moveinput if is pressed
+        if (Input.GetKey(player.GetMoveUpKey()))
+        {
+            player.moveInput.y += 1f;
+        }
+        if (Input.GetKey(player.GetMoveDownKey()))
+        {
+            player.moveInput.y -= 1f;
+        }
+        if (Input.GetKey(player.GetMoveLeftKey()))
+        {
+            player.moveInput.x -= 1f;
+        }
+        if (Input.GetKey(player.GetMoveRightKey()))
+        {
+            player.moveInput.x += 1f;
+        }
 
         // Transition to Idle state if there's no movement input for a short duration
         if (player.moveInput.sqrMagnitude < 0.005f)
@@ -40,7 +60,8 @@ public class PlayerRunningState : PlayerState
         }
 
         // Transition to Attacking state if left click is detected
-        if (Input.GetMouseButton(0))
+        //if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(player.GetAttackKey()))
         {
             player.SetState(new PlayerAttackState());
             return;

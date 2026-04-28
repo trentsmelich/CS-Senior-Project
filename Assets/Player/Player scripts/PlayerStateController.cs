@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem.Samples.RebindUI;
+using System;
 //Author:Luis
 //Description: Manages the player's state transitions and interactions with components like Animator and Rigidbody2D.
 public class PlayerStateController : MonoBehaviour
@@ -7,6 +10,8 @@ public class PlayerStateController : MonoBehaviour
     private Animator anim; // Reference to the Animator component
     private Rigidbody2D rb; // Reference to the Rigidbody2D component
     private SpriteRenderer sprite; // Reference to the SpriteRenderer component
+
+    private PlayerParent playerParent; // Reference to the player parent class for specific player behavior
 
     [Header("Movement")]
     public Vector2 moveInput; // Current frame's movement input
@@ -22,6 +27,13 @@ public class PlayerStateController : MonoBehaviour
     [SerializeField] AudioSource hurtSound;
     [SerializeField] AudioSource deadSound;
 
+    [Header("Input System Settings")]
+    private KeyCode attackKey;
+    private KeyCode moveUpKey;
+    private KeyCode moveDownKey;
+    private KeyCode moveLeftKey;
+    private KeyCode moveRightKey;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +41,16 @@ public class PlayerStateController : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-
+        playerParent = GetComponent<PlayerParent>();
 
         // Start in Idle state
         SetState(new PlayerIdleState());
+
+        //Setup the input system keybindings
+        //RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
+        //rebindUI.LoadActionBinding();
+
+        
     }
 
     // Update is called once per frame
@@ -50,7 +68,10 @@ public class PlayerStateController : MonoBehaviour
     public void SetState(PlayerState newState)
     {
         if (currentState != null)
+        {
             currentState.ExitState(this);
+        }
+
         currentState = newState;
         currentState.EnterState(this);
     }
@@ -60,6 +81,15 @@ public class PlayerStateController : MonoBehaviour
     public SpriteRenderer GetSpriteRenderer() => sprite;
 
     public GameObject GetGameObject() => gameObject;
+    public PlayerParent GetPlayerParent() => playerParent;
+
+    // Get player keybinds
+    public KeyCode GetAttackKey() => attackKey;
+    public KeyCode GetMoveUpKey() => moveUpKey;
+    public KeyCode GetMoveDownKey() => moveDownKey;
+    public KeyCode GetMoveLeftKey() => moveLeftKey;
+    public KeyCode GetMoveRightKey() => moveRightKey;
+
 
     // Update the player's facing direction based on input
     public void UpdateDirection(Vector2 dir)
@@ -74,7 +104,7 @@ public class PlayerStateController : MonoBehaviour
         // to make the player face
         anim.SetFloat("Horizontal", lastDir.x);
         anim.SetFloat("Vertical", lastDir.y);
-        anim.SetBool("isMoving", moveInput.sqrMagnitude > 0.1f);
+        //anim.SetBool("isMoving", moveInput.sqrMagnitude > 0.1f);
     }
 
     public void AttackSFX()
@@ -91,4 +121,14 @@ public class PlayerStateController : MonoBehaviour
     {
         deadSound.Play();
     }
+
+    public void SetPlayerKeyBinds(KeyCode attack, KeyCode up, KeyCode down, KeyCode left, KeyCode right)
+    {
+        attackKey = attack;
+        moveUpKey = up;
+        moveDownKey = down;
+        moveLeftKey = left;
+        moveRightKey = right;
+    }
+
 }

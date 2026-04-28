@@ -23,6 +23,8 @@ public class UnlockController : MonoBehaviour
     private static int numFreeze2 = 0;
     private static int numFreeze3 = 0;
 
+    [SerializeField] private GameStateController gameStateController;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -33,10 +35,12 @@ public class UnlockController : MonoBehaviour
     // Check the unlock conditions for each unlock script
     public void CheckUnlocks()
     {
+        PlayerStats currentPlayerStats = gameStateController.GetPlayerStats();
+        
         // Loop through each unlock script and check unlock conditions
         foreach (UnlockParent unlock in unlocks)
         {
-            unlock.Unlock(this);
+            unlock.Unlock(this, currentPlayerStats);
         }
     }
 

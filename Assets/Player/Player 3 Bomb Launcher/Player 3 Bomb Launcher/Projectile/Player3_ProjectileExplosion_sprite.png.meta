@@ -304,10 +304,10 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 57
-        width: 40
-        height: 46
+        x: 23
+        y: 70
+        width: 20
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,10 +326,10 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 48
-        width: 57
-        height: 60
+        x: 74
+        y: 61
+        width: 40
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,10 +348,10 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_2
       rect:
         serializedVersion: 2
-        x: 135
-        y: 35
-        width: 94
-        height: 89
+        x: 145
+        y: 45
+        width: 75
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,10 +370,10 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_3
       rect:
         serializedVersion: 2
-        x: 249
-        y: 26
-        width: 98
-        height: 104
+        x: 260
+        y: 35
+        width: 74
+        height: 82
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,10 +392,10 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_4
       rect:
         serializedVersion: 2
-        x: 366
-        y: 23
-        width: 111
-        height: 115
+        x: 375
+        y: 34
+        width: 91
+        height: 87
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,10 +414,10 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_5
       rect:
         serializedVersion: 2
-        x: 496
-        y: 12
-        width: 116
-        height: 127
+        x: 510
+        y: 32
+        width: 93
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,12 +436,12 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_6
       rect:
         serializedVersion: 2
-        x: 624
-        y: 7
-        width: 134
-        height: 137
-      alignment: 9
-      pivot: {x: -1.2115974, y: 0.38760626}
+        x: 646
+        y: 27
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -458,12 +458,12 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_7
       rect:
         serializedVersion: 2
-        x: 776
-        y: 9
-        width: 134
-        height: 133
+        x: 791
+        y: 27
+        width: 96
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -480,12 +480,12 @@ TextureImporter:
       name: Player3_ProjectileExplosion_sprite_8
       rect:
         serializedVersion: 2
-        x: 929
-        y: 11
-        width: 127
-        height: 132
+        x: 946
+        y: 35
+        width: 96
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

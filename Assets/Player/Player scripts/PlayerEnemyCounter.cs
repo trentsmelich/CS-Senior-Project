@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 //Author:Jia
 //Description: Displays the player's current enemy defeat count in the UI.
+
 public class PlayerEnemyCounter : MonoBehaviour
 {
     // Declare the variables for the player and UI
@@ -13,15 +14,33 @@ public class PlayerEnemyCounter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Get the player stats and start displaying the value
-        playerStats = player.GetComponent<PlayerStats>();
-        displayCounter.text = playerStats.GetEnemiesDefeated().ToString(); 
+        // Making sure the player variable is assigned before initializing the enemy counter
+        if (player != null)
+        {
+            InitializeEnemyCounter();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Keep display the enemy killed value during the game
-        displayCounter.text = playerStats.GetEnemiesDefeated().ToString(); 
+        // The enemy counter will display the current enemy count, if the player stats is not assigned, it will return and do nothing
+        if (playerStats == null) return;
+        displayCounter.text = playerStats.GetEnemiesDefeated().ToString();
     }
+
+    private void InitializeEnemyCounter()
+    {
+        // Get player's stats and set the enemy counter text to the current enemy count
+        playerStats = player.GetComponent<PlayerStats>();
+        displayCounter.text = playerStats.GetEnemiesDefeated().ToString();
+    }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        // Set the player variable and initialize the enemy counter with the new player's stats
+        player = newPlayer;
+        InitializeEnemyCounter();
+    }
+    
 }
