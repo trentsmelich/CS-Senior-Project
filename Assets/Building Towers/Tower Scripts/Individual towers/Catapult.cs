@@ -53,7 +53,7 @@ public class Catapult : TowerParent
         GameObject projectile = Instantiate(projectilePrefab, catapultArm.transform.position, catapultArm.transform.rotation);
         projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
         //set stats for projectile
-        projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage);
+        projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage, level);
         //set scale manually bc unity annoying
         projectile.transform.localScale = new Vector3(4, 4, 4);
         projectile.SetActive(true);
@@ -79,5 +79,11 @@ public class Catapult : TowerParent
                 "Speed:" + "<pos=125>" + speed.ToString() + "</pos>\n" + "\n" +
                 "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
+    }
+
+
+    public override void UpgradeTower()
+    {
+       
     }
 }

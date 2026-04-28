@@ -8,6 +8,7 @@ public class CatapultProjectile : MonoBehaviour
 {
     public float speed; // Speed of the projectile
     public float damage; // Damage dealt by the projectile
+    public int level;
 
     [SerializeField] float explosionRadius; // Radius of the explosion
     private Vector2 direction; // Direction of the projectile
@@ -49,6 +50,16 @@ public class CatapultProjectile : MonoBehaviour
                 // Apply damage to the enemy
                 enemyTarget.TakeDamage((int)damage);
                 // Play explosion animation
+                if(level == 2)
+                {
+                    //scale ball a little for explosion
+                    transform.localScale += new Vector3(2f, 2f, 1);
+                }
+                if(level == 3)
+                {
+                    //scale ball more for bigger explosion
+                    transform.localScale += new Vector3(3f, 3f, 1);
+                }
                 anim.SetTrigger("Explode");
                 //wait .3 seconds then destroy projectile
                 //velocity = Vector2.zero;
@@ -61,10 +72,12 @@ public class CatapultProjectile : MonoBehaviour
     }
 
     // Set the stats of the projectile (speed and damage)
-    public void setStats(float speed, float damage)
+    public void setStats(float speed, float damage, int level)
     {
         this.speed = speed;
         this.damage = damage;
+        this.level = level;
+
 
     }
 
@@ -81,6 +94,15 @@ public class CatapultProjectile : MonoBehaviour
             if (hit.CompareTag("Enemy")){
                 EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
                 enemy.TakeDamage(damage);
+                if(enemy.GetCurrentHealth() <= 0)
+                {
+                    //increment kills for tower
+                    TowerParent tower = GetComponentInParent<TowerParent>();
+                    if (tower != null)
+                    {
+                        tower.increaseKills();
+                    }
+                }
             }
         }
     }

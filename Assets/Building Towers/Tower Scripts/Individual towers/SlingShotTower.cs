@@ -6,7 +6,7 @@ public class SlingShotTower : TowerParent
 {
     private GameObject projectilePrefab;
     private GameObject slingShotArm;
-
+    private bool superMode = false;
     private Animator anim;
 
 
@@ -46,8 +46,17 @@ public class SlingShotTower : TowerParent
         //Set up the direction of the projectile
         //Set up the speed and damage of the projectile
         GameObject projectile = Instantiate(projectilePrefab, slingShotArm.transform.position, slingShotArm.transform.rotation);
-        projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
-        projectile.GetComponent<SlingShotProjectile>().setStats(speed, towerDamage);
+        if (!superMode)
+        {
+            projectile.GetComponent<SlingShotProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
+            projectile.GetComponent<SlingShotProjectile>().setStats(speed, towerDamage);
+        }
+        else
+        {
+            projectile.GetComponent<CatapultProjectile>().Begin((enemy.position - new Vector3(0, 0.8f, 0) - transform.position).normalized, enemy);
+            projectile.GetComponent<CatapultProjectile>().setStats(speed, towerDamage, level);
+        }
+        
         //change scale bc unity annoying
         projectile.transform.localScale = new Vector3(3, 3, 3);
         projectile.SetActive(true);
@@ -73,5 +82,15 @@ public class SlingShotTower : TowerParent
                 "Speed:" + "<pos=125>" + speed.ToString() + "</pos>\n" + "\n" +
                 "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
+    }
+
+    public void SetSuperMode()
+    {
+        // Implement logic to set the tower to super mode, which could involve increasing its stats or changing its behavior
+        towerDamage *= 2;
+        //change color of sling shot arm to indicate super mode
+        projectilePrefab = slingShotArm.transform.Find("ProjectileSuper").gameObject;
+        slingShotArm.GetComponent<SpriteRenderer>().color = Color.red;
+        superMode = true;
     }
 }

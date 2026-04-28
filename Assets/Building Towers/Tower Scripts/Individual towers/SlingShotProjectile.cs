@@ -41,6 +41,15 @@ public class SlingShotProjectile : MonoBehaviour
             if(enemyTarget != null)
             {
                 enemyTarget.TakeDamage((int)damage);
+                if(enemyTarget.GetCurrentHealth() <= 0)
+                {
+                    //increment kills for tower
+                    TowerParent tower = GetComponentInParent<TowerParent>();
+                    if (tower != null)
+                    {
+                        tower.increaseKills();
+                    }
+                }
                 Destroy(gameObject);
             }
             

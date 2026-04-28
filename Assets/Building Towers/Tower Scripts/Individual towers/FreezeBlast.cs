@@ -18,6 +18,15 @@ public class FreezeBlast : MonoBehaviour
                 // Freeze the enemy and deal damage
                 enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
                 enemy.GetComponent<EnemyAI>().Freeze(freezeDuration);
+                if(enemy.GetComponent<EnemyHealth>().GetCurrentHealth() <= 0)
+                {
+                    //increment kills for tower
+                    TowerParent tower = GetComponentInParent<TowerParent>();
+                    if (tower != null)
+                    {
+                        tower.increaseKills();
+                    }
+                }
             }
         }
 
