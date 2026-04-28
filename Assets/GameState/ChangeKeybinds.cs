@@ -86,6 +86,26 @@ public class KeybindUI : MonoBehaviour
         {
             key = PlayerPrefs.GetString("Destroy", KeyCode.B.ToString());
         }
+        else if (keyName == "Attack")
+        {
+            key = PlayerPrefs.GetString("Attack", KeyCode.Mouse0.ToString());
+        }
+        else if (keyName == "MoveUp")
+        {
+            key = PlayerPrefs.GetString("MoveUp", KeyCode.W.ToString());
+        }
+        else if (keyName == "MoveDown")
+        {
+            key = PlayerPrefs.GetString("MoveDown", KeyCode.S.ToString());
+        }
+        else if (keyName == "MoveLeft")
+        {
+            key = PlayerPrefs.GetString("MoveLeft", KeyCode.A.ToString());
+        }
+        else if (keyName == "MoveRight")
+        {
+            key = PlayerPrefs.GetString("MoveRight", KeyCode.D.ToString());
+        }
 
         keyText.text = key;
     }

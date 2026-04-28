@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Samples.RebindUI;
 using System;
 
 //Author:Trent, Jia and Luis
@@ -122,16 +121,23 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private Vector2 destroyHotSpot = new Vector2(46.5f, 46.5f); // Hotspot for clicks (46.5f x 46.5f center)
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto; // How the cursor is rendered (Auto or ForceSoftware)
 
-    [Header("Input System Settings")]
-    public InputActionAsset inputActions;
-    public GameObject keybindsPanel;
 
     // Main Menu Background Number
     private const string PREF_MAIN_MENU_BACKGROUND = "Main_Menu_Background";
     // Towers
     private GameObject[] towers;
 
-    // Declare keys for keybinds
+    [Header("Input System Settings")]
+    public GameObject keybindsPanel;
+    public TextMeshProUGUI shopDestroyReminderText;
+    public TextMeshProUGUI destroyReminderText;
+    // Declare Player State Keybinds
+    private KeyCode attackKey;
+    private KeyCode moveUpKey;
+    private KeyCode moveDownKey;
+    private KeyCode moveLeftKey;
+    private KeyCode moveRightKey;
+    // Declare Game State Keybinds
     private KeyCode pauseKey;
     private KeyCode shopKey;
     private KeyCode destroyKey;
@@ -173,12 +179,22 @@ public class GameStateController : MonoBehaviour
             tower.GetComponent<TowerParent>().ResetPlacedTowers();
         }
 
-        RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
-        rebindUI.LoadActionBinding();
-
-        inputActions.Enable();
-
         // Load the keybinds from PlayerPrefs and convert them to KeyCodes
+        // Player State Keybinds
+        string attackSaved = PlayerPrefs.GetString("Attack", KeyCode.Mouse0.ToString());
+        string moveUpSaved = PlayerPrefs.GetString("MoveUp", KeyCode.W.ToString());
+        string moveDownSaved = PlayerPrefs.GetString("MoveDown", KeyCode.S.ToString());
+        string moveLeftSaved = PlayerPrefs.GetString("MoveLeft", KeyCode.A.ToString());
+        string moveRightSaved = PlayerPrefs.GetString("MoveRight", KeyCode.D.ToString());
+
+        attackKey = (KeyCode)Enum.Parse(typeof(KeyCode), attackSaved);
+        moveUpKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveUpSaved);
+        moveDownKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveDownSaved);
+        moveLeftKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveLeftSaved);
+        moveRightKey = (KeyCode)Enum.Parse(typeof(KeyCode), moveRightSaved);
+        SetKeybindsToPlayer();
+
+        // In Game State
         string pausedSaved = PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString());
         string shopSaved = PlayerPrefs.GetString("Shop", KeyCode.F.ToString());
         string destroySaved = PlayerPrefs.GetString("Destroy", KeyCode.B.ToString());
@@ -186,6 +202,7 @@ public class GameStateController : MonoBehaviour
         pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode), pausedSaved);
         shopKey = (KeyCode)Enum.Parse(typeof(KeyCode), shopSaved);
         destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode), destroySaved);
+        SetKeybindsRelatedUITexts();
     }
 
     // Update is called once per frame
@@ -554,14 +571,31 @@ public class GameStateController : MonoBehaviour
 
     public void ReloadKeybinds()
     {
-        pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode),
-        PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString()));
+        // Player State Keybinds
+        attackKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Attack", KeyCode.Mouse0.ToString()));
+        moveUpKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveUp", KeyCode.W.ToString()));
+        moveDownKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveDown", KeyCode.S.ToString()));
+        moveLeftKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveLeft", KeyCode.A.ToString()));
+        moveRightKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("MoveRight", KeyCode.D.ToString()));
+        SetKeybindsToPlayer();
 
-        shopKey = (KeyCode)Enum.Parse(typeof(KeyCode),
-        PlayerPrefs.GetString("Shop", KeyCode.F.ToString()));
+        // In Game State Keybinds
+        pauseKey = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Pause", KeyCode.Escape.ToString()));
+        shopKey = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Shop", KeyCode.F.ToString()));
+        destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode),PlayerPrefs.GetString("Destroy", KeyCode.B.ToString()));
+        SetKeybindsRelatedUITexts();
+    }
 
-        destroyKey = (KeyCode)Enum.Parse(typeof(KeyCode),
-        PlayerPrefs.GetString("Destroy", KeyCode.B.ToString()));
+    public void SetKeybindsToPlayer()
+    {
+        PlayerStateController playerStateController = players[currentPlayerSelected].GetComponent<PlayerStateController>();
+        playerStateController.SetPlayerKeyBinds(attackKey, moveUpKey, moveDownKey, moveLeftKey, moveRightKey);
+    }
+
+    public void SetKeybindsRelatedUITexts()
+    {
+        shopDestroyReminderText.text = "Press " + destroyKey.ToString() + " key to enter destroy state";
+        destroyReminderText.text = " * Mouse right click to remove a building" + "\n" + "* Press " + destroyKey.ToString() + " key to exit destroy state";
     }
 
 }

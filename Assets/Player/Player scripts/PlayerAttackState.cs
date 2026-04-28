@@ -35,9 +35,30 @@ public class PlayerAttackState : PlayerState
         timer += Time.deltaTime;
 
         // Allow movement while attacking otherwise player doesnt move when attacking and moving
-        player.moveInput.x = Input.GetAxisRaw("Horizontal");
-        player.moveInput.y = Input.GetAxisRaw("Vertical");
+        //player.moveInput.x = Input.GetAxisRaw("Horizontal");
+        //player.moveInput.y = Input.GetAxisRaw("Vertical");
+
         Vector2 moveDir = player.moveInput.normalized;
+        player.moveInput = Vector2.zero;
+
+        // Checking if the keys are pressed and updating moveinput if is pressed
+        if (Input.GetKey(player.GetMoveUpKey()))
+        {
+            player.moveInput.y += 1f;
+        }
+        if (Input.GetKey(player.GetMoveDownKey()))
+        {
+            player.moveInput.y -= 1f;
+        }
+        if (Input.GetKey(player.GetMoveLeftKey()))
+        {
+            player.moveInput.x -= 1f;
+        }
+        if (Input.GetKey(player.GetMoveRightKey()))
+        {
+            player.moveInput.x += 1f;
+        }
+
 
         // Move player
         player.GetRigidbody().linearVelocity = moveDir * player.playerStats.GetMoveSpeed();
@@ -61,7 +82,8 @@ public class PlayerAttackState : PlayerState
         if (timer >= attackCooldown)
         {
             //Only stay attacking if mouse is still held
-            if (Input.GetMouseButton(0))
+            //if (Input.GetMouseButton(0))
+            if (Input.GetKey(player.GetAttackKey()))
             {
                 // Restart attack
                 player.SetState(new PlayerAttackState());

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Samples.RebindUI;
+//using UnityEngine.InputSystem.Samples.RebindUI;
+using System;
 //Author:Luis
 //Description: Manages the player's state transitions and interactions with components like Animator and Rigidbody2D.
 public class PlayerStateController : MonoBehaviour
@@ -27,10 +28,11 @@ public class PlayerStateController : MonoBehaviour
     [SerializeField] AudioSource deadSound;
 
     [Header("Input System Settings")]
-    public InputActionAsset inputActions;
-    public GameObject keybindsPanel;
-    private InputAction attackAction;
-    private InputAction moveAction;
+    private KeyCode attackKey;
+    private KeyCode moveUpKey;
+    private KeyCode moveDownKey;
+    private KeyCode moveLeftKey;
+    private KeyCode moveRightKey;
 
     // Start is called before the first frame update
     void Start()
@@ -45,18 +47,10 @@ public class PlayerStateController : MonoBehaviour
         SetState(new PlayerIdleState());
 
         //Setup the input system keybindings
-        RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
-        rebindUI.LoadActionBinding();
+        //RebindActionUI rebindUI = keybindsPanel.GetComponentInChildren<RebindActionUI>();
+        //rebindUI.LoadActionBinding();
 
-        /*var rebindUIs = keybindsPanel.GetComponentsInChildren<RebindActionUI>();
-        foreach (var ui in rebindUIs)
-        {
-            ui.LoadActionBinding();
-        }*/
-
-        inputActions.Enable();
-        attackAction = inputActions.FindAction("Attack");
-        //moveAction = inputActions.FindAction("Move");
+        
     }
 
     // Update is called once per frame
@@ -89,8 +83,13 @@ public class PlayerStateController : MonoBehaviour
     public GameObject GetGameObject() => gameObject;
     public PlayerParent GetPlayerParent() => playerParent;
 
-    public InputAction GetAttackAction() => attackAction;
-    public InputAction GetMoveAction() => moveAction;
+    // Get player keybinds
+    public KeyCode GetAttackKey() => attackKey;
+    public KeyCode GetMoveUpKey() => moveUpKey;
+    public KeyCode GetMoveDownKey() => moveDownKey;
+    public KeyCode GetMoveLeftKey() => moveLeftKey;
+    public KeyCode GetMoveRightKey() => moveRightKey;
+
 
     // Update the player's facing direction based on input
     public void UpdateDirection(Vector2 dir)
@@ -122,4 +121,14 @@ public class PlayerStateController : MonoBehaviour
     {
         deadSound.Play();
     }
+
+    public void SetPlayerKeyBinds(KeyCode attack, KeyCode up, KeyCode down, KeyCode left, KeyCode right)
+    {
+        attackKey = attack;
+        moveUpKey = up;
+        moveDownKey = down;
+        moveLeftKey = left;
+        moveRightKey = right;
+    }
+
 }
