@@ -1,20 +1,18 @@
 using UnityEngine;
 
-public class SpeedPowerup : MonoBehaviour
+public class CooldownPowerUp : MonoBehaviour
 {
     private PlayerStats player;
-    private float speedBoostPercentage = 0.30f; // 30% boost
-    private AudioSource powerUpSFX;
+    private float cooldownRed = 1f;
 
     private Vector3 startPos;
+
     [SerializeField] private float moveHeight = 0.2f;
     [SerializeField] private float moveSpeed = 2f;
-
 
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-        powerUpSFX = GameObject.Find("SFX/PowerUp_SFX").GetComponent<AudioSource>();
         startPos = transform.position; // store initial position
     }
 
@@ -28,8 +26,7 @@ public class SpeedPowerup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            powerUpSFX.Play();
-            player.ApplySpeedBoost(speedBoostPercentage, 5f);
+            player.ApplyAttackSpeedBoost(cooldownRed, 5f);
             Destroy(gameObject);
         }
     }

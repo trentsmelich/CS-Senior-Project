@@ -10,6 +10,8 @@ public class PlayerAttackState : PlayerState
     private bool attackTriggered = false; // Whether attack was triggered
     private Vector2 faceDir; // Direction the player is facing
 
+    private Vector2 shootDir; // Direction to shoot the projectile
+
     public override void EnterState(PlayerStateController player)
     {
         // Cooldown depends on attackSpeed
@@ -24,6 +26,7 @@ public class PlayerAttackState : PlayerState
         // Face towards mouse direction at the start of the attack
         faceDir = GetMouseDirection(player.transform.position);
         player.UpdateDirection(faceDir);
+        shootDir = GetMouseDirection(player.firePoint.position);
         player.GetAnimator().SetTrigger("Attacking");
 
         timer = 0f;
@@ -110,4 +113,28 @@ public class PlayerAttackState : PlayerState
         // Return normalized direction from start position to mouse position
         return ((Vector2)(mousePos - startPosition)).normalized;
     }
+
+    //Shoot a projectile in the given direction
+    private void ShootProjectile(PlayerStateController player)
+    {
+        // Calculate angle based on mouse position
+        float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
+
+        player.AttackSFX();
+        // Instantiate projectile at fire point
+        GameObject projectile = GameObject.Instantiate(
+            player.projectilePrefab,
+            player.firePoint.position,
+            Quaternion.Euler(0, 0, angle)
+        );
+
+        // Set projectile damage
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            projectileScript.SetDamage(player.playerStats.GetDamage());
+            projectileScript.SetPoison(player.playerStats.HasPoison());
+        }
+    }
+
 }

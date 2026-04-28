@@ -14,9 +14,9 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyState currentState;
     public GameObject coinPrefab;
-    public GameObject healPrefab;
-    public GameObject speedPrefab;
-    public GameObject cooldownPrefab;
+    public GameObject shieldPrefab;
+    public GameObject poisonPrefab;
+    [SerializeField] private GameObject[] powerUpList;
     private EnemyParent enemyParent;
 
     private bool targetPlayer;
@@ -83,18 +83,17 @@ public class EnemyAI : MonoBehaviour
     {
         return coinPrefab;
     }
-
-    public GameObject GetHealPrefab()
+    public GameObject GetShieldPrefab()
     {
-        return healPrefab;
+        return shieldPrefab;
     }
-    public GameObject GetSpeedPrefab()
+    public GameObject GetPoisonPrefab()
     {
-        return speedPrefab;
+        return poisonPrefab;
     }
-    public GameObject GetCooldownPrefab()
+    public GameObject[] GetPowerUpList()
     {
-        return cooldownPrefab;
+        return powerUpList;
     }
     public Transform GetPlayer()
     {

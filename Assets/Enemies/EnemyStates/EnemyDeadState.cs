@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 //Author:Jia and Trent and Luis
 //Description: This script manages the DEAD state for all enemies
 public class EnemyDeadState : EnemyState
@@ -14,23 +15,51 @@ public class EnemyDeadState : EnemyState
         Object.Instantiate(enemy.GetCoinPrefab(), enemy.transform.position, Quaternion.identity);
         Debug.Log("Enemy defeated. Experience added to player.");
 
-        // 5% chance to drop a powerup
-        if(Random.value <= 0.05f)
+        // Roll once per enemy death, then pick one powerup from the list.
+        if (Random.value <= 0.05f)
         {
-            Object.Instantiate(enemy.GetHealPrefab(), enemy.transform.position, Quaternion.identity);
+            GameObject[] powerUpList = enemy.GetPowerUpList();
+            if (powerUpList != null && powerUpList.Length > 0)
+            {
+                List<GameObject> availPowerUps = new List<GameObject>();
+                foreach (GameObject powerUp in powerUpList)
+                {
+                    if (powerUp == null)
+                    {
+                        continue;
+                    }
+
+                    if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDrop())
+                    {
+                        continue;
+                    }
+
+                    if (powerUp == enemy.GetPoisonPrefab() && !PoisonPowerUp.CanDrop())
+                    {
+                        continue;
+                    }
+
+                    availPowerUps.Add(powerUp);
+                }
+
+                if (availPowerUps.Count > 0)
+                {
+                    GameObject droppedPowerUp = availPowerUps[Random.Range(0, availPowerUps.Count)];
+                    Object.Instantiate(droppedPowerUp, enemy.transform.position, Quaternion.identity);
+
+                    if (droppedPowerUp == enemy.GetShieldPrefab())
+                    {
+                        ShieldPowerUp.MarkDropped();
+                    }
+
+                    if (droppedPowerUp == enemy.GetPoisonPrefab())
+                    {
+                        PoisonPowerUp.MarkDropped();
+                    }
+                }
+            }
         }
 
-        // 5% chance to drop speed or cooldown powerup
-        if(Random.value <= 0.05f)
-        {
-            Object.Instantiate(enemy.GetSpeedPrefab(), enemy.transform.position, Quaternion.identity);
-        }
-
-        // 5% chance to drop cooldown powerup
-        if(Random.value <= 0.05f)
-        {
-            Object.Instantiate(enemy.GetCooldownPrefab(), enemy.transform.position, Quaternion.identity);
-        }
         
         //Add a defeated enemy count to the player's stats
         enemy.GetPlayer().GetComponent<PlayerStats>().AddDefeatedEnemyCount();

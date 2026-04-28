@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 //Author:Trent and Jia
 //Description: Manages the collection of coins by the player, including playing sound effects and updating the player's coin count.
@@ -11,6 +12,8 @@ public class CoinScript : MonoBehaviour
     public float coinMovingSpeed = 7.5f;
     private Transform playerTransform;
     public float attractionRange = 5f;
+
+    private bool magnetActive = false;
 
     void Start()
     {
@@ -44,5 +47,24 @@ public class CoinScript : MonoBehaviour
             // Destroy the coin object to remove it from the game
             Destroy(gameObject);
         }
+    }
+
+    public void ActivateMagnet(float duration, float speed)
+    {
+        if (!magnetActive)
+        {
+            StartCoroutine(MagnetEffect(duration, speed));
+        }
+    }
+
+    private IEnumerator MagnetEffect(float duration, float speed)
+    {
+        magnetActive = true;
+        attractionRange = 100f;
+        coinMovingSpeed = speed;
+        yield return new WaitForSeconds(duration);
+        attractionRange = 5f;
+        coinMovingSpeed = 7.5f;
+        magnetActive = false;
     }
 }

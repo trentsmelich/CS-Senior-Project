@@ -27,16 +27,29 @@ public class PlayerStats : MonoBehaviour
 
     public int coins = 0;
 
+    [SerializeField] private float shieldCooldown = 10f;
+    [SerializeField] private GameObject shieldImage;
+    [SerializeField] private int maxShieldHits = 3;
+    private int currShieldHits = 0;
+    private bool shieldAvailable = false;
+    private bool shieldOnCooldown = false;
+    private bool poisonAvailable = false;
+
     public GameObject game;
     private GameStateController gameStateController;
+    //private Coroutine shieldCooldownRoutine;
+    SpriteRenderer shieldSprite;
+    
 
     private Animator anim;
     void Start()
     {
-        // Initialize player stats
-        gameStateController = game.GetComponent<GameStateController>();
+        // Initialize player stats    
+        gameStateController = game.GetComponent<GameStateController>();        
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
+        shieldImage.SetActive(false);
+        shieldSprite = shieldImage.GetComponent<SpriteRenderer>();
     }
     //getters and setters for player stats
     public float GetMoveSpeed()
@@ -144,6 +157,26 @@ public class PlayerStats : MonoBehaviour
     // Take damage from an enemy
     public void TakeDamage(float damageAmount)
     {
+        if (shieldAvailable && currShieldHits > 0)
+        {
+            currShieldHits--;
+            StartCoroutine(shieldHit());
+
+            if (currShieldHits <= 0)
+            {
+                shieldAvailable = false;
+                shieldImage.SetActive(false);
+
+                if (!shieldOnCooldown)
+                {
+                    StartCoroutine(ShieldCooldownCoroutine());
+                }
+            }
+
+            Debug.Log("Shield blocked damage.");
+            return;
+        }
+
         PlayerStateController player = GetComponent<PlayerStateController>();
 
         if (currentHealth > 0)
@@ -163,7 +196,7 @@ public class PlayerStats : MonoBehaviour
         return;
     }
 
-    private System.Collections.IEnumerator HurtPlayerColor(PlayerStateController player)
+    private IEnumerator HurtPlayerColor(PlayerStateController player)
     {
         SpriteRenderer SR = player.GetSpriteRenderer();
 
@@ -181,11 +214,22 @@ public class PlayerStats : MonoBehaviour
         // Handle player death trigger death animation and sound effect and disable player movement
         Debug.Log("Player has died.");
 
-        anim.SetTrigger("isDead");
+        if (anim != null)
+        {
+            anim.SetTrigger("isDead");
+        }
+
         PlayerStateController player = GetComponent<PlayerStateController>();
         player.DeadSFX();
         player.enabled = false;
-        player.GetRigidbody().linearVelocity = Vector2.zero;
+
+        Rigidbody2D playerRigidbody = player.GetRigidbody();
+        playerRigidbody.linearVelocity = Vector2.zero;
+
+        StopCoroutine(ShieldCooldownCoroutine());
+
+        shieldAvailable = false;
+        shieldOnCooldown = false;
     }
 
     public float getCurrentHealth()
@@ -242,5 +286,43 @@ public class PlayerStats : MonoBehaviour
     public float GetTimeSurvived()
     {
         return timeSurvived;
+    }
+
+    public void ActivateShield()
+    {
+        currShieldHits = maxShieldHits;
+        shieldAvailable = true;
+        shieldImage.SetActive(true);
+    }
+
+    public void ActivatePoison()
+    {
+        poisonAvailable = true;
+    }
+
+    public bool HasPoison()
+    {
+        return poisonAvailable;
+    }
+
+    private IEnumerator ShieldCooldownCoroutine()
+    {
+        shieldOnCooldown = true;
+        yield return new WaitForSeconds(shieldCooldown);
+        currShieldHits = maxShieldHits;
+        shieldAvailable = true;
+        shieldOnCooldown = false;
+        shieldImage.SetActive(true);
+    }
+
+    private IEnumerator shieldHit()
+    {
+        Color alpha = shieldSprite.color;
+        // Change shield color to red
+        shieldSprite.color = new Color(1f, 0f, 0f, alpha.a);
+        // Wait for the color duration
+        yield return new WaitForSeconds(0.15f);
+        // Reset to original color white
+        shieldSprite.color = new Color(1f, 1f, 1f, alpha.a);
     }
 }

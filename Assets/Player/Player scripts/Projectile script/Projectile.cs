@@ -6,12 +6,23 @@ public class Projectile : MonoBehaviour
     private float speed = 10f; // Speed of the projectile
     private float lifetime = 3f; // How long before the projectile is destroyed
     private float damage; // Damage dealt by the projectile
+    private bool canPoison = false;
+    [SerializeField] private float poisonDamage = 3f;
+    [SerializeField] private int poisonTicks = 3;
+    [SerializeField] private float poisonTickInterval = 1f;
+    private SpriteRenderer sr;
+
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         // Destroy the projectile after its lifetime expires
         Destroy(gameObject, lifetime); 
+        ChangeColor();
     }
 
     // Update is called once per frame
@@ -33,6 +44,10 @@ public class Projectile : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damage);
+                if (canPoison)
+                {
+                    enemyHealth.Poison(poisonDamage, poisonTicks, poisonTickInterval);
+                }
                 Destroy(gameObject);
                 Debug.Log("Projectile hit enemy for " + damage + " damage.");
             }
@@ -44,5 +59,25 @@ public class Projectile : MonoBehaviour
         damage = newDamage;
     }
 
+    public void SetPoison(bool x)
+    {
+        canPoison = x;
+        ChangeColor();
+    }
+    private void ChangeColor()
+    {
+        if (sr == null) {
+            return;
+        }
+
+        if (canPoison)
+        {
+            sr.color = Color.green;
+        }
+        else
+        {
+            sr.color = Color.white;
+        }
+    }
 
 }

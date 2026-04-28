@@ -5,14 +5,13 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 30; // Maximum health of the enemy
+    [SerializeField] private float currentHealth; // Current health of the enemy
 
     private EnemyAI enemyAI;  // Reference to the EnemyAI script
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer of the enemy
 
     private bool isDead; // Whether the enemy is dead
     private bool isInvincible = false; // Whether the enemy is currently invincible
-
-    private float currentHealth; // Current health of the enemy
 
     private static int numEnemies = 0; // Count of wave enemies
 
@@ -69,14 +68,23 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
     }
+
+    public void Poison(float poisonDamage, int ticksNum, float tickInterval)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        StartCoroutine(ApplyPoison(poisonDamage, ticksNum, tickInterval));
+    }
     
     // Coroutine to flash the enemy red when taking damage
     private IEnumerator FlashRed()
     {
-        Color originalColor = spriteRenderer.color;
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = Color.white;
     }
     
     // Method to handle enemy death
@@ -84,9 +92,25 @@ public class EnemyHealth : MonoBehaviour
     {
         // Decrease the count of enemies
         numEnemies--;
+        isDead = true;
 
         // Call the EnemyDie method from EnemyAI to handle death behavior
         enemyAI.EnemyDie();
+    }
+
+    private IEnumerator ApplyPoison(float poisonDamage, int ticksNum, float tickInterval)
+    {
+        for (int i = 0; i < ticksNum; i++)
+        {
+            yield return new WaitForSeconds(tickInterval);
+
+            if (isDead)
+            {
+                break;
+            }
+
+            TakeDamage(poisonDamage);
+        }
     }
 
     // Getter and setter methods for health and enemy type

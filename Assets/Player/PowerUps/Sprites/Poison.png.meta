@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2ab0afdcf538d5945b555b04247c1b64
+guid: e775cf710b6439047a690ed71aebefe2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6313111733348947815
-    second: speed powerup sprite_0
+      213: -4347532159779508366
+    second: Poison_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: speed powerup sprite_0
+      name: Poison_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 4
-        width: 74
-        height: 104
+        x: 4
+        y: 0
+        width: 24
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 998a26aa3525368a0800000000000000
-      internalID: -6313111733348947815
+      spriteID: 27f61cee8867aa3c0800000000000000
+      internalID: -4347532159779508366
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      speed powerup sprite_0: -6313111733348947815
+      Poison_0: -4347532159779508366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
