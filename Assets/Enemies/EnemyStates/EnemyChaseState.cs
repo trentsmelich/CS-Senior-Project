@@ -42,9 +42,8 @@ public class EnemyChaseState : EnemyState
             {
                 enemy.GetEnemyParent().setRange(1.0f);
             }
-            else {
-                distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
-            }
+            
+            distance = Vector2.Distance(enemy.GetPlayer().position, enemy.transform.position);
 
 
             if (shouldRepath || enemy.GetTarget() != enemy.GetPlayer())

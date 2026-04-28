@@ -85014,14 +85014,10 @@ PrefabInstance:
       propertyPath: attackSound
       value: 
       objectReference: {fileID: 234476945}
-    - target: {fileID: 2391066921406568199, guid: f3d72cc5772140c42908732aa320e801, type: 3}
-      propertyPath: inputActions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    - target: {fileID: 2391066921406568199, guid: f3d72cc5772140c42908732aa320e801, type: 3}
-      propertyPath: keybindsPanel
-      value: 
-      objectReference: {fileID: 1353921189}
+    - target: {fileID: 3601462198070213236, guid: f3d72cc5772140c42908732aa320e801, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4442831247383598302, guid: f3d72cc5772140c42908732aa320e801, type: 3}
       propertyPath: m_Name
       value: RocketPlayer
@@ -85034,10 +85030,6 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1046596825}
-    - target: {fileID: 7100593095703047228, guid: f3d72cc5772140c42908732aa320e801, type: 3}
-      propertyPath: coins
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -86121,6 +86113,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662728312}
   m_CullTransparentMesh: 1
+--- !u!1 &674381471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3485353683865308337, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
+  m_PrefabInstance: {fileID: 2042652793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &690003154
 GameObject:
   m_ObjectHideFlags: 0
@@ -122151,9 +122148,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1046596825}
     - target: {fileID: 1614758912776842359, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
-      propertyPath: coins
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: shieldImage
+      value: 
+      objectReference: {fileID: 674381471}
     - target: {fileID: 2684032670955559525, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
       propertyPath: deadSound
       value: 
@@ -122166,14 +122163,6 @@ PrefabInstance:
       propertyPath: attackSound
       value: 
       objectReference: {fileID: 234476945}
-    - target: {fileID: 2684032670955559525, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
-      propertyPath: inputActions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    - target: {fileID: 2684032670955559525, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
-      propertyPath: keybindsPanel
-      value: 
-      objectReference: {fileID: 1353921189}
     - target: {fileID: 3863696490869809779, guid: 05b31dd3aae1a0f4fb79dfd6804a1c9d, type: 3}
       propertyPath: m_Name
       value: ShotgunPlayer

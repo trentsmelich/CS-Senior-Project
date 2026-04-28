@@ -165,5 +165,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Scripts::ExplosiveProj
   speed: 10
   lifetime: 3
-  explosionRadius: 1.4
+  explosionRadius: 3
   explosionDuration: 0.4

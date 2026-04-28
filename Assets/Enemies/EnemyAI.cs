@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject poisonPrefab;
     [SerializeField] private GameObject[] powerUpList;
     private EnemyParent enemyParent;
+    //[SerializeField] private GameStateController gameStateController;
 
     private bool targetPlayer;
     private Transform target;
@@ -25,10 +26,20 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         // Initialize enemy variables
+
         enemyParent = GetComponent<EnemyParent>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //Search within childs of player_select and whichever object with player tag is active is the player
+        foreach (Transform child in GameObject.Find("Player_Select").transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                player = child;
+                break;
+            }
+        }
+
         moveSpeed = enemyParent.Speed;
         attackRange = enemyParent.EnemyRange;
         damage = enemyParent.EnemyDamage;

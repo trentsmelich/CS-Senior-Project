@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using System;
+using UnityEditorInternal;
 
 //Author:Trent, Jia and Luis
 //Description: This script manages the overall game state, including player settings, wave management, UI, and transitions between different game states.
@@ -596,6 +597,11 @@ public class GameStateController : MonoBehaviour
     {
         shopDestroyReminderText.text = "Press " + destroyKey.ToString() + " key to enter destroy state";
         destroyReminderText.text = " * Mouse right click to remove a building" + "\n" + "* Press " + destroyKey.ToString() + " key to exit destroy state";
+    }
+
+    public GameState GetState()
+    {
+        return currentState;
     }
 
 }

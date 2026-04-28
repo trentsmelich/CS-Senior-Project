@@ -2,6 +2,23 @@ using UnityEngine;
 
 public class MainBuilding : TowerParent
 {
+    private GameStateController gameStateController;
+    private PlayerStats playerStats;
+    void Start()
+    {
+        gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
+        playerStats = gameStateController.GetPlayerStats();
+    }
+
+    void Update()
+    {
+        // Check if the main building's health has reached 0
+        if (GetHealth() <= 0 && playerStats.GetHealth() > 0)
+        {
+            // Trigger game over state
+            playerStats.KillPlayer();
+        }
+    }
 
     public override void UpdateTower(Transform enemy)
     {
@@ -18,18 +35,5 @@ public class MainBuilding : TowerParent
     public override string GetAttributes()
     {
         return "";
-    }
-
-    //on destroy, end the game
-    private void OnDestroy()
-    {
-        // Implement game over logic here
-        //find game state object then enter death state
-        GameStateController gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
-        PlayerStats playerStats = gameStateController.GetPlayerStats();
-        playerStats.TakeDamage(100000000.0f);
-
-        gameStateController.SetState(new GameOverState());
-        Debug.Log("Main building destroyed. Game Over!");
     }
 }

@@ -35579,8 +35579,9 @@ MonoBehaviour:
   waveTimer: 5
   waveCountdown: 0
   enemyList:
-  - {fileID: 7306006763130938909, guid: 2e473cc14c8fdbb468354ddfda3493af, type: 3}
+  - {fileID: 8377360111276220878, guid: 2e473cc14c8fdbb468354ddfda3493af, type: 3}
   - {fileID: 8905292825395819188, guid: 7795ac6f804f6024fa2adfce3dda16c4, type: 3}
+  - {fileID: 6883571558850643441, guid: 913cbf6f1a751b9468949663c7961801, type: 3}
   bossList:
   - {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
   - {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
@@ -85097,6 +85098,8 @@ GameObject:
   - component: {fileID: 2088322302}
   - component: {fileID: 2088322301}
   - component: {fileID: 2088322300}
+  - component: {fileID: 2088322305}
+  - component: {fileID: 2088322304}
   m_Layer: 0
   m_Name: Center_House
   m_TagString: Untagged
@@ -85245,6 +85248,49 @@ Transform:
   - {fileID: 1269583369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088322304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088322299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6106ed7e8f1bda4baabb8f690618943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::TowerAI
+  targetEnemy: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &2088322305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088322299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170fb2d0975fe08459b7b94597698a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Scripts::MainBuilding
+  level: 0
+  towerRange: 0
+  towerDamage: 0
+  attackCooldown: 0
+  attackTimer: 0
+  speed: 0
+  towerImage: {fileID: 0}
+  towerCost: 0
+  towerType: Main Building
+  towerName: Main Building
+  unlocked: 0
+  health: 1000
+  currentPlacedTowers: 0
+  placedTowers: 0
+  maxTowersCount: 0
 --- !u!1 &2091520046
 GameObject:
   m_ObjectHideFlags: 0

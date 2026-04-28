@@ -100,7 +100,7 @@ public class PlayerStats : MonoBehaviour
     public void AddExperience()
     {
         currentExperience += 1 * experienceMultiplier;
-        if (currentExperience >= experienceToNextLevel)
+        if (currentExperience >= experienceToNextLevel && gameStateController.GetState() is not LevelUpState)
         {
             // Level up
             gameStateController.SetState(new LevelUpState());
@@ -324,5 +324,11 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         // Reset to original color white
         shieldSprite.color = new Color(1f, 1f, 1f, alpha.a);
+    }
+
+    public void KillPlayer()
+    {
+        currentHealth = 0;
+        Die();
     }
 }

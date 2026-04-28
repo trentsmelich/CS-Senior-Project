@@ -5,7 +5,7 @@ public class ExplosiveProj : MonoBehaviour
     [Header("Projectile Settings")]
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifetime = 3f;
-    [SerializeField] private float explosionRadius = 2f;
+    [SerializeField] private float explosionRadius = 4f;
     [SerializeField] private float explosionDuration = 0.5f;
 
     private float damage;
@@ -60,6 +60,7 @@ public class ExplosiveProj : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         // Play explosion animation
+        gameObject.transform.localScale = new Vector3(6, 6, 0);
         anim.SetTrigger("Explode");
 
         foreach (Collider2D hit in hits)
