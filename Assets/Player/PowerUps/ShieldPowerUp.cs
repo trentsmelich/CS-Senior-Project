@@ -44,4 +44,9 @@ public class ShieldPowerUp : MonoBehaviour
     {
         shieldDropped = true;
     }
+
+    public static void ResetDrop()
+    {
+        shieldDropped = false;
+    }
 }

@@ -16,7 +16,7 @@ public class EnemyDeadState : EnemyState
         Debug.Log("Enemy defeated. Experience added to player.");
 
         // Roll once per enemy death, then pick one powerup from the list.
-        if (Random.value <= 0.05f)
+        if (Random.value <= 0.9f)
         {
             GameObject[] powerUpList = enemy.GetPowerUpList();
             if (powerUpList != null && powerUpList.Length > 0)

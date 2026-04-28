@@ -44,4 +44,9 @@ public class PoisonPowerUp : MonoBehaviour
     {
         poisonDropped = true;
     }
+
+    public static void ResetDrop()
+    {
+        poisonDropped = false;
+    }
 }

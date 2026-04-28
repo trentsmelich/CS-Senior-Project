@@ -27,6 +27,7 @@ public class ShotgunPlayer : PlayerParent
             if (projectileScript != null)
             {
                 projectileScript.SetDamage(player.playerStats.GetDamage());
+                projectileScript.SetPoison(player.playerStats.HasPoison());
             }
         }
     }
