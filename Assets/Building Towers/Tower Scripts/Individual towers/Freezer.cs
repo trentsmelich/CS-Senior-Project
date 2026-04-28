@@ -48,11 +48,11 @@ public class Freezer : TowerParent
     }
     public override string GetDescription()
     {
-        return "Freezes enemies in place for a short duration";
+        return "Freezes enemies in place for a short duration. \n\n" + " Hit points: " + health.ToString();
     }
     public override string GetAttributes()
     {
-        //return "Damage: " + towerDamage + "\n" + "Attack Speed: " + attackCooldown + "\n" + "Freeze Duration: " + freezeDuration;
+        
         return  "Attack Attributes\n" +
                 "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
                 "Damage:" + "<pos=125>" + towerDamage.ToString() + "</pos>\n" + "\n" +

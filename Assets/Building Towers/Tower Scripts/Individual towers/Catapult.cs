@@ -67,7 +67,7 @@ public class Catapult : TowerParent
 
     public override string GetDescription()
     {
-        return "A powerful tower that hurls projectiles at enemies.";
+        return "A powerful tower that hurls projectiles at enemies. \n\n" + " Hit points: " + health.ToString();
     }
 
     public override string GetAttributes()

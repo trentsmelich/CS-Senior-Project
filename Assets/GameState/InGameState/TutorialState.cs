@@ -30,6 +30,7 @@ public class TutorialState : GameState
     private string step12Text;
     private string step13Text;
     private string step14Text;
+    private string step15Text;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void EnterState(GameStateController Game)
@@ -115,7 +116,7 @@ public class TutorialState : GameState
         step5Text = "Paused Menu" + "\n\n"
         + "* Access by pressing ESC Key." + "\n"
         + "* Resume: go back to the current game." + "\n"
-        + "* Options: change the Music/SFX settings of the game." + "\n"
+        + "* Options: change the Music/SFX and keybinds settings of the game." + "\n"
         + "* Quit: go back to the main menu." + "\n";
 
         step6Text = "Upgrade Offer" + "\n\n"
@@ -145,28 +146,36 @@ public class TutorialState : GameState
         + "* Press the B key on the keyboard to exit the destroy state and return to the shop." + "\n";
 
         step10Text = "Enemy Waves" + "\n\n"
-        + "* The more waves that the player survives, the more enemies spawn in the next waves." + "\n"
+        + "* The more waves that the player survives, the more enemies spawn and stronger in the next waves." + "\n"
         + "* There will be a boss enemy in a certain numbers of waves (except boss level)." + "\n"
         + "* Each enemy will drop a coin, gain experience points, and a small chance to drop power up items such as health, speed, or other attributes after the enemy is killed." + "\n";
 
-        step11Text = "Game Over Screen" + "\n\n"
+        step11Text = "Power Ups" + "\n\n"
+        + "* Power ups are special items that can be collected by the player to enhance their abilities." + "\n"
+        + "* CoolDown Power Up: increase the attack speed." + "\n"
+        + "* Magnet Power Up: increase the attraction range for nearby coins" + "\n"
+        + "* Poison Power Up: add a poison effect to the player's attack, dealing damage over time." + "\n"
+        + "* Health Power Up: restore a portion of the player's health." + "\n"
+        + "* Shield Power Up: provide temporary invincibility to the player." + "\n"
+        + "* Speed Power Up: increase the player's movement speed." + "\n";
+
+        step12Text = "Game Over Screen" + "\n\n"
         + "* After the player dies in the game, a game over screen will display for showing the player has lost the game." + "\n"
         + "* Player will see the total time and the total enemies killed." + "\n"
         + "* Player will able to choose go back to main menu or restart the level." + "\n";
 
-        step12Text = "Score Update" + "\n\n"
+        step13Text = "Score Update" + "\n\n"
         + "* After the player died and the game is over, the player's longest survival time and highest kill count will be updated." + "\n"
         + "* The player can check the longest survival time and highest kill count in the level select of the main menu." + "\n"
         + "* The game will only update the longest survival time and highest kill count than the previous record." + "\n";
 
-        step13Text = "Unlocks" + "\n\n"
+        step14Text = "Unlocks" + "\n\n"
         + "* The locked buildings will be shown as dark buttons and cannot be accessed by the player until they are unlocked." + "\n"
         + "* As the player progresses through the game, they will unlock new buildings by completing certain requirements such as killing a certain number of enemies, place the same building number of times, etc." + "\n"
         + "* If the player meets the requirements, the player can see it in unlock screen from the main menu after the game over." + "\n"
         + "* To see the unlocked buildings, you can view it by pressing the unlocks button in the main menu." + "\n";
 
-        step14Text = "The End Of The Tutorial" + "\n\n"
-        + "Congratulations!" + "\n"
+        step15Text = "Congratulations!" + "\n\n"
         + "You have finished the tutorial!" + "\n"
         + "Good Luck!" + "\n";
 
@@ -181,10 +190,11 @@ public class TutorialState : GameState
         GameTutorialObject.transform.Find("Step8_BuildingState/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step8Text;
         GameTutorialObject.transform.Find("Step9_DestroyState/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step9Text;
         GameTutorialObject.transform.Find("Step10_Waves/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step10Text;
-        GameTutorialObject.transform.Find("Step11_GameOver/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step11Text;
-        GameTutorialObject.transform.Find("Step12_ScoreUpdate/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step12Text;
-        GameTutorialObject.transform.Find("Step13_Unlocks/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step13Text;
-        GameTutorialObject.transform.Find("Step14_EndOfTutorial/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step14Text;
+        GameTutorialObject.transform.Find("Step11_PowerUps/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step11Text;
+        GameTutorialObject.transform.Find("Step12_GameOver/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step12Text;
+        GameTutorialObject.transform.Find("Step13_ScoreUpdate/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step13Text;
+        GameTutorialObject.transform.Find("Step14_Unlocks/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step14Text;
+        GameTutorialObject.transform.Find("Step15_EndOfTutorial/Paragraph_Text").GetComponent<TextMeshProUGUI>().text = step15Text;
     }
 
     private void BackStep()

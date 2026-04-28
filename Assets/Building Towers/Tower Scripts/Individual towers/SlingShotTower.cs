@@ -70,7 +70,7 @@ public class SlingShotTower : TowerParent
 
     public override string GetDescription()
     {
-        return "A basic tower that shoots projectiles at enemies.";
+        return "A basic tower that shoots projectiles at enemies. \n\n" + " Hit points: " + health.ToString();
     }
 
     public override string GetAttributes()

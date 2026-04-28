@@ -99,6 +99,7 @@ public class Farm : TowerParent
                 "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
                 "Profit:" + "<pos=125>" + profit.ToString() + "</pos>\n" + "\n" +
                 "Cooldown:" + "<pos=125>" + attackCooldown.ToString() + "</pos>\n" + "\n" +
+                "Hit Points:" + "<pos=125>" + health.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
     }
 }

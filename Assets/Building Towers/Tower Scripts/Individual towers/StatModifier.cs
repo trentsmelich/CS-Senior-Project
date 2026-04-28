@@ -41,9 +41,11 @@ public class StatModifier : TowerParent
     public override string GetAttributes()
     {
         return "Stat Attributes\n" +
-                "Level:"+ "<pos=125>" + level.ToString() + "</pos>\n" + "\n" +
-                "Stat Mod:" + "<pos=125>" + statToModify + "</pos>\n" + "\n" +
+                "Level:"+ "<pos=100>" + level.ToString() + "</pos>\n" + "\n" +
+                "Stat Mod:" + "<pos=100>" + statToModify + "</pos>\n" + "\n" +
+                "Max Placements:" + "<pos=190>" + maxTowersCount.ToString() + "</pos>\n" + "\n" +
                 "Mod Amt:" + "<pos=125>" + modificationAmount.ToString() + "</pos>\n" + "\n" +
+                "Hit Points:" + "<pos=125>" + health.ToString() + "</pos>\n" + "\n" +
                 "Cost:" + "<pos=125>" + towerCost.ToString() + "</pos>";
     }
 
