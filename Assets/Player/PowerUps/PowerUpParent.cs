@@ -13,8 +13,8 @@ public abstract class PowerUpParent : MonoBehaviour
 
     [Header("Lifetime")]
     [SerializeField] protected float lifetime = 15f;
-    [SerializeField] protected float blinkStartTime = 5f;
-    [SerializeField] protected float blinkInterval = 0.2f;
+    [SerializeField] protected float blinkStart = 5f;
+    [SerializeField] protected float blinkInt = 0.2f;
 
     protected Vector3 startPos;
     protected SpriteRenderer spriteRenderer;
@@ -68,16 +68,15 @@ public abstract class PowerUpParent : MonoBehaviour
 
     private IEnumerator LifetimeRoutine()
     {
-        yield return new WaitForSeconds(lifetime - blinkStartTime);
+        yield return new WaitForSeconds(lifetime - blinkStart);
 
         float elapsed = 0f;
-        while (elapsed < blinkStartTime)
+        while (elapsed < blinkStart)
         {
-            if (spriteRenderer != null)
-                spriteRenderer.enabled = !spriteRenderer.enabled;
+            spriteRenderer.enabled = !spriteRenderer.enabled;
 
-            yield return new WaitForSeconds(blinkInterval);
-            elapsed += blinkInterval;
+            yield return new WaitForSeconds(blinkInt);
+            elapsed += blinkInt;
         }
 
         Destroy(gameObject);
