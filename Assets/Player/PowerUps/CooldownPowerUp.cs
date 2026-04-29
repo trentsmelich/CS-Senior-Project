@@ -10,4 +10,9 @@ public class CooldownPowerUp : PowerUpParent
         powerUpSFX.Play();
         player.ApplyAttackSpeedBoost(cooldownRed, 5f);
     }
+
+    public override float GetDropChance()
+    {
+        return 0.05f;
+    }
 }

@@ -9,4 +9,9 @@ public class SpeedPowerup : PowerUpParent
         powerUpSFX.Play();
         player.ApplySpeedBoost(speedBoostPercentage, 5f);
     }
+
+    public override float GetDropChance()
+    {
+        return 0.05f;
+    }
 }

@@ -17,4 +17,9 @@ public class HealPowerUp : PowerUpParent
         }
     }
 
+    public override float GetDropChance()
+    {
+        return 0.05f;
+    }
+
 }
