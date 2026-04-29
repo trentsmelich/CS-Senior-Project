@@ -13,11 +13,13 @@ public class KeybindUI : MonoBehaviour
     public GameObject keybindOverlayScreen;
     public string keyName = "";
     private bool isListening = false;
+    private Button keybindButton;
 
     private void Start()
     {
         // Find the buttons for each keybind and set their listeners
-        Button keybindButton = keybindSetting.transform.Find("Rebinding_" + keyName).GetComponent<Button>();
+        keybindButton = keybindSetting.transform.Find("Rebinding_" + keyName).GetComponent<Button>();
+        keybindButton.onClick.RemoveAllListeners();
 
         keybindButton.onClick.AddListener(() =>
         {

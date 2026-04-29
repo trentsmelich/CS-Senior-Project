@@ -13,6 +13,10 @@ public class Unlocks : MainMenuState
     private GameObject[] towers;
     private String towerType;
 
+    private Button damageButton;
+    private Button farmButton;
+    private Button statButton;
+
     public override void EnterState(MainMenuStateController Main)
     {
         // Set the panel and get the towers
@@ -37,9 +41,9 @@ public class Unlocks : MainMenuState
         });
 
         // Find the button
-        Button damageButton = unlocksPanel.transform.Find("Damage_Button").GetComponent<Button>();
-        Button farmButton = unlocksPanel.transform.Find("Farm_Button").GetComponent<Button>();
-        Button statButton = unlocksPanel.transform.Find("Stat_Button").GetComponent<Button>();
+        damageButton = unlocksPanel.transform.Find("Damage_Button").GetComponent<Button>();
+        farmButton = unlocksPanel.transform.Find("Farm_Button").GetComponent<Button>();
+        statButton = unlocksPanel.transform.Find("Stat_Button").GetComponent<Button>();
 
         // Give the filter buttons functionality
         damageButton.onClick.AddListener(() =>
@@ -143,6 +147,11 @@ public class Unlocks : MainMenuState
     public override void ExitState(MainMenuStateController Main)
     {
         // Close the panel when the player clicked the X button
+
+        damageButton.onClick.RemoveAllListeners();
+        farmButton.onClick.RemoveAllListeners();
+        statButton.onClick.RemoveAllListeners();
+        
         unlocksPanel.SetActive(false);
         Main.DisplayMainMenu(true);
     }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Keybinds : MainMenuState
 {
     GameObject keybindsPanel;
+    private Button backButton;
 
     public override void EnterState(MainMenuStateController Main)
     {
@@ -16,7 +17,7 @@ public class Keybinds : MainMenuState
         keybindsPanel.SetActive(true);
 
         // Find the options close button
-        Button backButton = keybindsPanel.transform.Find("Keybinds_XButton").GetComponent<Button>();
+        backButton = keybindsPanel.transform.Find("Keybinds_XButton").GetComponent<Button>();
 
         // Set the functionality for the back button
         backButton.onClick.AddListener(() =>
@@ -29,6 +30,7 @@ public class Keybinds : MainMenuState
     public override void ExitState(MainMenuStateController Main)
     {
         //Close the panel
+        backButton.onClick.RemoveAllListeners();
         keybindsPanel.SetActive(false);
     }
     

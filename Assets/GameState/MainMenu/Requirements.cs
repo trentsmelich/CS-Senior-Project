@@ -30,6 +30,8 @@ public class Requirements : MainMenuState
     private const string farmLvl2 = "unlock_farm_lvl2";
     private const string farmLvl3 = "unlock_farm_lvl3";
 
+    private Button cancelButton;
+
 
     public override void EnterState(MainMenuStateController m)
     {
@@ -38,7 +40,7 @@ public class Requirements : MainMenuState
         requirementsPanel.SetActive(true);
 
         // Find Cancel button in requirements panel
-        Button cancelButton = requirementsPanel.transform.Find("Requirements_XButton").GetComponent<Button>();
+        cancelButton = requirementsPanel.transform.Find("Requirements_XButton").GetComponent<Button>();
 
         // Set the buttons with the functionalities
         cancelButton.onClick.AddListener(() =>
@@ -68,6 +70,7 @@ public class Requirements : MainMenuState
 
     public override void ExitState(MainMenuStateController m)
     {
+        cancelButton.onClick.RemoveAllListeners();
         requirementsPanel.SetActive(false);
         m.DisplayMainMenu(true);
         Debug.Log("Exiting Requirements State");

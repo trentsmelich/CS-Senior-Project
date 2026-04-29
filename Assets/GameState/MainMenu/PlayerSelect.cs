@@ -8,9 +8,14 @@ using TMPro;
 
 public class PlayerSelect : MainMenuState
 {
-    GameObject playerSelectPanel;
+    private GameObject playerSelectPanel;
     private int currentPlayerSelected;
     private const string PlayerSelected = "PlayerSelected";
+
+    private Button cancelButton;
+    private Button leftArrowButton;
+    private Button rightArrowButton;
+    private Button selectButton;
 
 
     public override void EnterState(MainMenuStateController m)
@@ -26,10 +31,10 @@ public class PlayerSelect : MainMenuState
         UpdatePlayerSelectPanel();
 
         // Find Player Select buttons in player select panel
-        Button cancelButton = playerSelectPanel.transform.Find("Player_Select_XButton").GetComponent<Button>();
-        Button leftArrowButton = playerSelectPanel.transform.Find("Left_Button").GetComponent<Button>();
-        Button rightArrowButton = playerSelectPanel.transform.Find("Right_Button").GetComponent<Button>();
-        Button selectButton = playerSelectPanel.transform.Find("Select_Button").GetComponent<Button>();
+        cancelButton = playerSelectPanel.transform.Find("Player_Select_XButton").GetComponent<Button>();
+        leftArrowButton = playerSelectPanel.transform.Find("Left_Button").GetComponent<Button>();
+        rightArrowButton = playerSelectPanel.transform.Find("Right_Button").GetComponent<Button>();
+        selectButton = playerSelectPanel.transform.Find("Select_Button").GetComponent<Button>();
 
         // Set the buttons with the functionalities
         cancelButton.onClick.AddListener(() =>
@@ -72,9 +77,13 @@ public class PlayerSelect : MainMenuState
 
     public override void ExitState(MainMenuStateController m)
     {
+        cancelButton.onClick.RemoveAllListeners();
+        leftArrowButton.onClick.RemoveAllListeners();
+        rightArrowButton.onClick.RemoveAllListeners();
+        selectButton.onClick.RemoveAllListeners();
+
         playerSelectPanel.SetActive(false);
         m.DisplayMainMenu(true);
-        Debug.Log("Exited Player Select State");
     }
 
     private void UpdatePlayerSelectPanel()

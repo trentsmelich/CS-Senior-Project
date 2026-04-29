@@ -7,6 +7,16 @@ using UnityEngine.UI;
 public class MainMenu : MainMenuState
 {
     GameObject mainMenuPanel;
+    private Button playButton;
+    private Button settingsButton;
+    private Button unlocksButton;
+    private Button exitButton;
+
+    // find the small buttons in the buttom of the main menu panel
+    private Button playerSelectButton;
+    private Button informationButton;
+    private Button codexButton;
+    private Button requirementsButton;
     public override void EnterState(MainMenuStateController m)
     {
         Debug.Log("Entered Main Menu State");
@@ -17,16 +27,16 @@ public class MainMenu : MainMenuState
         mainMenuPanel.SetActive(true);
 
         // find main mneu buttons in main mneu panel
-        Button playButton = mainMenuPanel.transform.Find("Play_Button").GetComponent<Button>();
-        Button settingsButton = mainMenuPanel.transform.Find("Settings_Button").GetComponent<Button>();
-        Button unlocksButton = mainMenuPanel.transform.Find("Unlocks_Button").GetComponent<Button>();
-        Button exitButton = mainMenuPanel.transform.Find("Exit_Button").GetComponent<Button>();
+        playButton = mainMenuPanel.transform.Find("Play_Button").GetComponent<Button>();
+        settingsButton = mainMenuPanel.transform.Find("Settings_Button").GetComponent<Button>();
+        unlocksButton = mainMenuPanel.transform.Find("Unlocks_Button").GetComponent<Button>();
+        exitButton = mainMenuPanel.transform.Find("Exit_Button").GetComponent<Button>();
 
         // find the small buttons in the buttom of the main menu panel
-        Button playerSelectButton = mainMenuPanel.transform.Find("Player_Select_Button").GetComponent<Button>();
-        Button informationButton = mainMenuPanel.transform.Find("Information_Button").GetComponent<Button>();
-        Button codexButton = mainMenuPanel.transform.Find("Codex_Button").GetComponent<Button>();
-        Button requirementsButton = mainMenuPanel.transform.Find("Requirements_Button").GetComponent<Button>();
+        playerSelectButton = mainMenuPanel.transform.Find("Player_Select_Button").GetComponent<Button>();
+        informationButton = mainMenuPanel.transform.Find("Information_Button").GetComponent<Button>();
+        codexButton = mainMenuPanel.transform.Find("Codex_Button").GetComponent<Button>();
+        requirementsButton = mainMenuPanel.transform.Find("Requirements_Button").GetComponent<Button>();
 
         // set the buttons with the functionalities, such as play, settings, unlocks, and exit.
         playButton.onClick.AddListener(() =>
@@ -89,8 +99,15 @@ public class MainMenu : MainMenuState
 
     public override void ExitState(MainMenuStateController m)
     {
-        Debug.Log("Exited Main Menu State");
-        // Clean up main menu UI elements here
+        playButton.onClick.RemoveAllListeners();
+        settingsButton.onClick.RemoveAllListeners();
+        unlocksButton.onClick.RemoveAllListeners();
+        exitButton.onClick.RemoveAllListeners();
+
+        playerSelectButton.onClick.RemoveAllListeners();
+        informationButton.onClick.RemoveAllListeners();
+        codexButton.onClick.RemoveAllListeners();
+        requirementsButton.onClick.RemoveAllListeners();
 
         mainMenuPanel.SetActive(false);
     }

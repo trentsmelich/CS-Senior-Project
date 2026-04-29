@@ -12,6 +12,14 @@ public class LevelSelect : MainMenuState
     GameObject levelSelectPanel;
     private const string PREF_TUTORIAL_DONE = "Tutorial_Completed";
 
+    // Find main mneu buttons in main mneu panel
+    private Button mainMenuButton;
+    private Button tutorialButton;
+    private Button level1Button;
+    private Button level2Button;
+    private Button level3Button;
+    private Button levelBossButton;
+
     public override void EnterState(MainMenuStateController m)
     {
         // Get and set panel
@@ -20,12 +28,12 @@ public class LevelSelect : MainMenuState
         levelSelectPanel.SetActive(true);
 
         // Find main mneu buttons in main mneu panel
-        Button mainMenuButton = levelSelectPanel.transform.Find("MainMenu_Button").GetComponent<Button>();
-        Button tutorialButton = levelSelectPanel.transform.Find("Tutorial_Button").GetComponent<Button>();
-        Button level1Button = levelSelectPanel.transform.Find("Level_1_Button").GetComponent<Button>();
-        Button level2Button = levelSelectPanel.transform.Find("Level_2_Button").GetComponent<Button>();
-        Button level3Button = levelSelectPanel.transform.Find("Level_3_Button").GetComponent<Button>();
-        Button levelBossButton = levelSelectPanel.transform.Find("Level_Boss_Button").GetComponent<Button>();
+        mainMenuButton = levelSelectPanel.transform.Find("MainMenu_Button").GetComponent<Button>();
+        tutorialButton = levelSelectPanel.transform.Find("Tutorial_Button").GetComponent<Button>();
+        level1Button = levelSelectPanel.transform.Find("Level_1_Button").GetComponent<Button>();
+        level2Button = levelSelectPanel.transform.Find("Level_2_Button").GetComponent<Button>();
+        level3Button = levelSelectPanel.transform.Find("Level_3_Button").GetComponent<Button>();
+        levelBossButton = levelSelectPanel.transform.Find("Level_Boss_Button").GetComponent<Button>();
 
         // Give each button functionalities for level 1, level 2, level 3, main menu, and tutorial
         level1Button.onClick.AddListener(() =>
@@ -81,6 +89,13 @@ public class LevelSelect : MainMenuState
     public override void ExitState(MainMenuStateController m)
     {
         // Clean up main menu UI elements here
+        mainMenuButton.onClick.RemoveAllListeners();
+        tutorialButton.onClick.RemoveAllListeners();
+        level1Button.onClick.RemoveAllListeners();
+        level2Button.onClick.RemoveAllListeners();
+        level3Button.onClick.RemoveAllListeners();
+        levelBossButton.onClick.RemoveAllListeners();
+       
         m.levelSelectPanel.SetActive(false);
         Debug.Log("Exited Level select State");
     }

@@ -7,6 +7,15 @@ using UnityEngine.UI;
 public class Information : MainMenuState
 {
     GameObject informationPanel;
+
+    private Button cancelButton;
+    private Button teamButton;
+    private Button teamPanelXButton;
+    private Button assetsButton;
+    private Button assetsPanelXButton;
+    private Button aboutButton;
+    private Button aboutPanelXButton;
+
     public override void EnterState(MainMenuStateController m)
     {
         informationPanel = m.GetInformationPanel();
@@ -14,7 +23,7 @@ public class Information : MainMenuState
         informationPanel.SetActive(true);
 
         // Find Cancel button in information panel
-        Button cancelButton = informationPanel.transform.Find("Info_XButton").GetComponent<Button>();
+        cancelButton = informationPanel.transform.Find("Info_XButton").GetComponent<Button>();
 
         // Set the buttons with the functionalities
         cancelButton.onClick.AddListener(() =>
@@ -25,8 +34,8 @@ public class Information : MainMenuState
         });
 
         // Find all the small panels in the information panel
-        Button teamButton = informationPanel.transform.Find("Team_Button").GetComponent<Button>();
-        Button teamPanelXButton = informationPanel.transform.Find("Team_Screen/Team_XButton").GetComponent<Button>();
+        teamButton = informationPanel.transform.Find("Team_Button").GetComponent<Button>();
+        teamPanelXButton = informationPanel.transform.Find("Team_Screen/Team_XButton").GetComponent<Button>();
 
         // Set the buttons with the functionalities
         teamButton.onClick.AddListener(() =>
@@ -41,8 +50,8 @@ public class Information : MainMenuState
             informationPanel.transform.Find("Team_Screen").gameObject.SetActive(false);
         });
 
-        Button assetsButton = informationPanel.transform.Find("Assets_Button").GetComponent<Button>();
-        Button assetsPanelXButton = informationPanel.transform.Find("Assets_Screen/Assets_XButton").GetComponent<Button>();
+        assetsButton = informationPanel.transform.Find("Assets_Button").GetComponent<Button>();
+        assetsPanelXButton = informationPanel.transform.Find("Assets_Screen/Assets_XButton").GetComponent<Button>();
 
         // Set the buttons with the functionalities
         assetsButton.onClick.AddListener(() =>
@@ -57,9 +66,9 @@ public class Information : MainMenuState
             informationPanel.transform.Find("Assets_Screen").gameObject.SetActive(false);
         });
 
-        Button aboutButton = informationPanel.transform.Find("About_Button").GetComponent<Button>();
-        Button aboutPanelXButton = informationPanel.transform.Find("About_Screen/About_XButton").GetComponent<Button>();
-        
+        aboutButton = informationPanel.transform.Find("About_Button").GetComponent<Button>();
+        aboutPanelXButton = informationPanel.transform.Find("About_Screen/About_XButton").GetComponent<Button>();
+
         // Set the buttons with the functionalities
         aboutButton.onClick.AddListener(() =>
         {
@@ -77,6 +86,14 @@ public class Information : MainMenuState
 
     public override void ExitState(MainMenuStateController m)
     {
+        cancelButton.onClick.RemoveAllListeners();;
+        teamButton.onClick.RemoveAllListeners();
+        teamPanelXButton.onClick.RemoveAllListeners();
+        assetsButton.onClick.RemoveAllListeners();
+        assetsPanelXButton.onClick.RemoveAllListeners();
+        aboutButton.onClick.RemoveAllListeners();
+        aboutPanelXButton.onClick.RemoveAllListeners();
+
         informationPanel.SetActive(false);
         m.DisplayMainMenu(true);
         Debug.Log("Exited Information State");

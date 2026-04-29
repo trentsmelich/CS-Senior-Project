@@ -53,6 +53,7 @@ public class Codex : MainMenuState
 
             // Find the button in the codex panel corresponding to the current enemy, +1 for Button_1, Button_2, etc.
             Button btn = codexPanel.transform.Find("Enemy_Buttons/Button_" + i).GetComponent<Button>();
+            btn.onClick.RemoveAllListeners();
 
             btn.onClick.AddListener(() =>
             {

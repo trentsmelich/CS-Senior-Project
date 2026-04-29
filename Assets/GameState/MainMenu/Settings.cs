@@ -9,6 +9,9 @@ public class Settings : MainMenuState
     // Declare the verable for the settings panel
     GameObject settingsPanel;
 
+    private Button backButton;
+    private Button keybindsButton;
+
     public override void EnterState(MainMenuStateController Main)
     {
         // Set the new panel variable from the controller
@@ -16,8 +19,8 @@ public class Settings : MainMenuState
         settingsPanel.SetActive(true);
 
         // Find the options close button
-        Button backButton = settingsPanel.transform.Find("Options_XButton").GetComponent<Button>();
-        Button keybindsButton = settingsPanel.transform.Find("Keybinds_Button").GetComponent<Button>();
+        backButton = settingsPanel.transform.Find("Options_XButton").GetComponent<Button>();
+        keybindsButton = settingsPanel.transform.Find("Keybinds_Button").GetComponent<Button>();
 
         // Set the functionality for the back button
         backButton.onClick.AddListener(() =>
@@ -38,6 +41,8 @@ public class Settings : MainMenuState
     public override void ExitState(MainMenuStateController Main)
     {
         //Close the panel
+        backButton.onClick.RemoveAllListeners();
+        keybindsButton.onClick.RemoveAllListeners();
         settingsPanel.SetActive(false);
     }
     
