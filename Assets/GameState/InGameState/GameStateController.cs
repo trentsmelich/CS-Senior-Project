@@ -607,5 +607,9 @@ public class GameStateController : MonoBehaviour
     {
         return currentState;
     }
+    public bool waveInProgress()
+    {
+        return waveManager.IsWaveInProgress();
+    }
 
 }
