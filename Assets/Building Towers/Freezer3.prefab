@@ -247,8 +247,10 @@ MonoBehaviour:
   unlocked: 1
   health: 750
   currentPlacedTowers: 0
-  placedTowers: 0
+  placedTowers: 1
   maxTowersCount: 100
+  upgradeTextPrefabs: {fileID: 1689535135779482725, guid: 1cb04e6b350c851408cbd256b1fd247b, type: 3}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
   freezeDuration: 15
 --- !u!114 &2741714989543973554
 MonoBehaviour:

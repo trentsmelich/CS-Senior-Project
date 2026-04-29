@@ -214,6 +214,8 @@ MonoBehaviour:
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 100
+  upgradeTextPrefabs: {fileID: 1689535135779482725, guid: 1cb04e6b350c851408cbd256b1fd247b, type: 3}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
 --- !u!208 &7769129708212230012
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -609,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 9707fbbd3bf87db44b440d17322c1dc0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1160356261127867848, guid: 9707fbbd3bf87db44b440d17322c1dc0, type: 3}
       propertyPath: m_Controller

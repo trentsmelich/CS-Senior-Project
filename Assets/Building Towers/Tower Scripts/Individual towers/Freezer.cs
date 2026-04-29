@@ -78,15 +78,19 @@ public class Freezer : TowerParent
         {
             case 0:
                 towerDamage += Mathf.RoundToInt(towerDamage * upgradeAmount);
+                DisplayUpgrade("Tower Damage Upgraded", upgradeAmount);
                 break;
             case 1:
                 towerRange += Mathf.RoundToInt(towerRange * upgradeAmount);
+                DisplayUpgrade("Tower Range Upgraded", upgradeAmount);
                 break;
             case 2:
                 speed += speed * upgradeAmount;
+                DisplayUpgrade("Tower Speed Upgraded", upgradeAmount);
                 break;
             case 3:
                 attackCooldown -= attackCooldown * upgradeAmount;
+                DisplayUpgrade("Tower Cooldown Upgraded", upgradeAmount);
                 break;
         }
         //display upgrade text above tower for 2 seconds

@@ -694,8 +694,10 @@ MonoBehaviour:
   unlocked: 1
   health: 500
   currentPlacedTowers: 0
-  placedTowers: 2
+  placedTowers: 0
   maxTowersCount: 100
+  upgradeTextPrefabs: {fileID: 1689535135779482725, guid: 1cb04e6b350c851408cbd256b1fd247b, type: 3}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
 --- !u!61 &5159145958060091897
 BoxCollider2D:
   m_ObjectHideFlags: 0

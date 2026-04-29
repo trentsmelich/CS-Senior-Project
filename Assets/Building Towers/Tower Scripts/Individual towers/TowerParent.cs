@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using TMPro;
 //Author:Trent and Luis
 //Description: Abstract class for all towers
 public abstract class TowerParent : MonoBehaviour
@@ -26,6 +28,9 @@ public abstract class TowerParent : MonoBehaviour
     [SerializeField] protected int currentPlacedTowers;
     [SerializeField] protected int placedTowers;
     [SerializeField] protected int maxTowersCount;
+
+    [SerializeField] protected GameObject upgradeTextPrefabs;
+    [SerializeField] private Vector3 upgradeTextOffset = new Vector3(0, 1f, 0);
 
     protected int kills;
     protected int requiredKills = 10;
@@ -111,5 +116,33 @@ public abstract class TowerParent : MonoBehaviour
             UpgradeTower();
         }
 
+    }
+
+    public void DisplayUpgrade(string upgradeText, float upgradeAmount)
+    {
+        // Instantiate the upgrade text prefab at the specified position
+        GameObject textObj = Instantiate(upgradeTextPrefabs, transform.position + upgradeTextOffset, Quaternion.identity);
+        // Set the text of the TextMeshProUGUI component to show the upgrade information
+        TextMeshProUGUI text = textObj.GetComponentInChildren<TextMeshProUGUI>();
+        int percent = Mathf.RoundToInt(upgradeAmount * 100f);
+        text.text = upgradeText + " +" + percent + "%";
+        // Start the coroutine to float the text upwards and destroy it after a few seconds
+        StartCoroutine(FloatText(textObj));
+    }
+
+    IEnumerator FloatText(GameObject textObj)
+    {
+        // Float the text upwards for 3 seconds and then destroy it
+        float duration = 3f;
+        float speed = 1f;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            textObj.transform.position += Vector3.up * speed * Time.deltaTime;
+            time += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(textObj);
     }
 }
