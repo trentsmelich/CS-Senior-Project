@@ -147,8 +147,8 @@ public class WavesState : GameState
 
         // Increase difficulty for next wave
         numEnemiesMultiplier += 0.5f;
-        enemyDamageMultiplier *= 1.3f;
-        healthMultiplier *= 1.3f;
+        enemyDamageMultiplier *= 1.25f;
+        healthMultiplier *= 1.25f;
         speedMultiplier *= 1.1f;
     }
 

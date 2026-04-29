@@ -164,7 +164,7 @@ public class TutorialState : GameState
         + "* Speed Power Up: increase the player's movement speed." + "\n";
 
         step12Text = "Game Over Screen" + "\n\n"
-        + "* After the player dies in the game, a game over screen will display for showing the player has lost the game." + "\n"
+        + "* After the player dies or the center house is destroyed in the game, a game over screen will display for showing the player has lost the game." + "\n"
         + "* Player will see the total time and the total enemies killed." + "\n"
         + "* Player will able to choose go back to main menu or restart the level." + "\n";
 
