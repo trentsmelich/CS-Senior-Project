@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-//Author:Trent and Jia
+//Author:Trent and Jia and Luis
 //Description: Manages the collection of coins by the player, including playing sound effects and updating the player's coin count.
 public class CoinScript : MonoBehaviour
 {
@@ -16,14 +16,26 @@ public class CoinScript : MonoBehaviour
     private float currentCoinSpeed;
     private float currAttractRange;
     bool playerMagnetActive;
+    
+
+    [Header("Lifetime")]
+    [SerializeField] private float lifetime = 15f;
+    [SerializeField] private float blinkStart = 3f;
+    [SerializeField] private float blinkInt = 0.2f;
+
+    private bool collected = false;
+    private SpriteRenderer sr;
 
     void Start()
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
         coinSFX = GameObject.Find("SFX/Coin_SFX").GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
 
         // Get the player's transform for coin attraction
         playerTransform = GameObject.FindWithTag("Player").transform;
+
+        StartCoroutine(LifetimeRoutine());
     }
 
     // Update is called once per frame
@@ -64,8 +76,25 @@ public class CoinScript : MonoBehaviour
             // Play the coin sound effect and add a coin to the player's total coins
             coinSFX.Play();
             playerStats.AddCoins(1);
+            collected = true;
             // Destroy the coin object to remove it from the game
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator LifetimeRoutine()
+    {
+        yield return new WaitForSeconds(lifetime - blinkStart);
+
+        float elapsed = 0f;
+        while (elapsed < blinkStart)
+        {
+            sr.enabled = !sr.enabled;
+
+            yield return new WaitForSeconds(blinkInt);
+            elapsed += blinkInt;
+        }
+
+        Destroy(gameObject);
     }
 }

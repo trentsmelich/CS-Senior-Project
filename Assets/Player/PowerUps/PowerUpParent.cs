@@ -7,10 +7,14 @@ public abstract class PowerUpParent : MonoBehaviour
     [SerializeField] protected float moveHeight = 0.2f;
     [SerializeField] protected float moveSpeed = 2f;
 
+    [Header("Attract")]
+    [SerializeField] protected float attractRange = 1f;
+    [SerializeField] protected float attractSpeed = 7.5f;
+
     [Header("Lifetime")]
     [SerializeField] protected float lifetime = 15f;
-    [SerializeField] protected float blinkStartTime = 5f;
-    [SerializeField] protected float blinkInterval = 0.2f;
+    [SerializeField] protected float blinkStart = 5f;
+    [SerializeField] protected float blinkInt = 0.2f;
 
     protected Vector3 startPos;
     protected SpriteRenderer spriteRenderer;
@@ -18,6 +22,7 @@ public abstract class PowerUpParent : MonoBehaviour
 
     protected PlayerStats player;
     protected AudioSource powerUpSFX;
+    protected Transform playerTransform;
 
   
     void Start()
@@ -25,12 +30,23 @@ public abstract class PowerUpParent : MonoBehaviour
         startPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         powerUpSFX = GameObject.Find("SFX/PowerUp_SFX").GetComponent<AudioSource>();
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTransform = playerObject.transform;
+        }
+
         StartCoroutine(LifetimeRoutine());
     }
 
     
     void Update()
     {
+        if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= attractRange)
+        {
+            startPos = Vector3.MoveTowards(startPos, playerTransform.position, attractSpeed * Time.deltaTime);
+        }
+
         float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * moveHeight;
         transform.position = new Vector3(startPos.x, newY, startPos.z);
     }
@@ -52,16 +68,15 @@ public abstract class PowerUpParent : MonoBehaviour
 
     private IEnumerator LifetimeRoutine()
     {
-        yield return new WaitForSeconds(lifetime - blinkStartTime);
+        yield return new WaitForSeconds(lifetime - blinkStart);
 
         float elapsed = 0f;
-        while (elapsed < blinkStartTime)
+        while (elapsed < blinkStart)
         {
-            if (spriteRenderer != null)
-                spriteRenderer.enabled = !spriteRenderer.enabled;
+            spriteRenderer.enabled = !spriteRenderer.enabled;
 
-            yield return new WaitForSeconds(blinkInterval);
-            elapsed += blinkInterval;
+            yield return new WaitForSeconds(blinkInt);
+            elapsed += blinkInt;
         }
 
         Destroy(gameObject);
