@@ -7,9 +7,11 @@ public class ExplosiveProj : MonoBehaviour
     [SerializeField] private float lifetime = 3f;
     [SerializeField] private float explosionRadius = 4f;
     [SerializeField] private float explosionDuration = 0.5f;
-    [SerializeField] private float poisonDamage = 3f;
+    [Header("Poison Settings")]
     [SerializeField] private int poisonTicks = 3;
     [SerializeField] private float poisonTickInterval = 1f;
+
+    private float poisonDamage;
 
     private float damage;
 
@@ -90,6 +92,7 @@ public class ExplosiveProj : MonoBehaviour
     public void SetDamage(float newDamage)
     {
         damage = newDamage;
+        poisonDamage = damage * 0.1f;
     }
 
     public void SetPoison(bool value)

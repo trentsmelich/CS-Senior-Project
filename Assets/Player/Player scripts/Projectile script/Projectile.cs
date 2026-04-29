@@ -7,9 +7,11 @@ public class Projectile : MonoBehaviour
     private float lifetime = 3f; // How long before the projectile is destroyed
     private float damage; // Damage dealt by the projectile
     private bool canPoison = false;
-    [SerializeField] private float poisonDamage = 3f;
+
+    [Header("Poison Settings")]
     [SerializeField] private int poisonTicks = 3;
     [SerializeField] private float poisonTickInterval = 1f;
+    float poisonDamage;
     private SpriteRenderer sr;
 
     private void Awake()
@@ -56,6 +58,7 @@ public class Projectile : MonoBehaviour
     public void SetDamage(float newDamage)
     {
         damage = newDamage;
+        poisonDamage = damage * 0.1f;
     }
 
     public void SetPoison(bool x)
