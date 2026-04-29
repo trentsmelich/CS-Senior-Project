@@ -35238,7 +35238,7 @@ MonoBehaviour:
   cinemaCamera: {fileID: 1328176970}
   playerBase: {fileID: 2088322303}
   enemiesPerWave: 20
-  waveTimer: 5
+  waveTimer: 2
   waveCountdown: 0
   enemyList:
   - {fileID: 8377360111276220878, guid: 2e473cc14c8fdbb468354ddfda3493af, type: 3}
@@ -86224,6 +86224,8 @@ MonoBehaviour:
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 0
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &2091520046
 GameObject:
   m_ObjectHideFlags: 0

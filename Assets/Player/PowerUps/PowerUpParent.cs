@@ -12,7 +12,7 @@ public abstract class PowerUpParent : MonoBehaviour
     [SerializeField] protected float attractSpeed = 7.5f;
 
     [Header("Lifetime")]
-    [SerializeField] protected float lifetime = 15f;
+    [SerializeField] protected float lifetime = 45f;
     [SerializeField] protected float blinkStart = 5f;
     [SerializeField] protected float blinkInt = 0.2f;
 

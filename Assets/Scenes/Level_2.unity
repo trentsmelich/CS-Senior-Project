@@ -61646,7 +61646,7 @@ MonoBehaviour:
   cinemaCamera: {fileID: 986137148}
   playerBase: {fileID: 866857887}
   enemiesPerWave: 20
-  waveTimer: 5
+  waveTimer: 2
   waveCountdown: 0
   enemyList:
   - {fileID: 8181663554138463540, guid: d886e2fe89d57e04fbeec075d7bd34d8, type: 3}

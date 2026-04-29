@@ -19,7 +19,7 @@ public class CoinScript : MonoBehaviour
     
 
     [Header("Lifetime")]
-    [SerializeField] private float lifetime = 15f;
+    [SerializeField] private float lifetime = 45f;
     [SerializeField] private float blinkStart = 3f;
     [SerializeField] private float blinkInt = 0.2f;
 

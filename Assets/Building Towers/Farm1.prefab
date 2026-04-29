@@ -359,7 +359,7 @@ MonoBehaviour:
   attackTimer: 0
   speed: 0
   towerImage: {fileID: 3706471016571915744, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
-  towerCost: 20
+  towerCost: 15
   towerType: Farm
   towerName: Farm
   unlocked: 1
@@ -367,6 +367,8 @@ MonoBehaviour:
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 100
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
   sprites:
   - {fileID: 8369948372191450990, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   - {fileID: -3402868906910896487, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
