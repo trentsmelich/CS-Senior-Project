@@ -23,7 +23,6 @@ public class CoinScript : MonoBehaviour
     [SerializeField] private float blinkStart = 3f;
     [SerializeField] private float blinkInt = 0.2f;
 
-    private bool collected = false;
     private SpriteRenderer sr;
 
     void Start()
@@ -76,7 +75,6 @@ public class CoinScript : MonoBehaviour
             // Play the coin sound effect and add a coin to the player's total coins
             coinSFX.Play();
             playerStats.AddCoins(1);
-            collected = true;
             // Destroy the coin object to remove it from the game
             Destroy(gameObject);
         }
