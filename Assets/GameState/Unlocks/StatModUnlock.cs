@@ -33,17 +33,14 @@ public class StatModUnlock : UnlockParent
                 if(towerParent.Level == 1)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(statModLvl1, 0) == 1);
-                    Debug.Log("Stat Modifier level 1 unlock state: " + (PlayerPrefs.GetInt(statModLvl1, 0) == 1));
                 }
                 else if(towerParent.Level == 2)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(statModLvl2, 0) == 1);
-                    Debug.Log("Stat Modifier level 2 unlock state: " + (PlayerPrefs.GetInt(statModLvl2, 0) == 1));
                 }
                 else if(towerParent.Level == 3)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(statModLvl3, 0) == 1);
-                    Debug.Log("Stat Modifier level 3 unlock state: " + (PlayerPrefs.GetInt(statModLvl3, 0) == 1));
                 }
             }
         }
@@ -52,19 +49,19 @@ public class StatModUnlock : UnlockParent
     // Check and unlock towers based on the conditions and tower counts
     public override void Unlock(UnlockController unlockController, PlayerStats playerStats)
     {
-        if (!lvl1Unlocked && playerStats.GetEnemiesDefeated() >= 500)
+        if (!lvl1Unlocked && playerStats.GetEnemiesDefeated() >= 300)
         {
             PlayerPrefs.SetInt(statModLvl1, 1);
             lvl1Unlocked = true;
         }
 
-        if (!lvl2Unlocked && unlockController.GetNumTowers("StatModifier", 1) >= 10)
+        if (!lvl2Unlocked && unlockController.GetNumTowers("StatModifier", 1) >= 3)
         {
             PlayerPrefs.SetInt(statModLvl2, 1);
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && unlockController.GetNumTowers("StatModifier", 2) >= 10)
+        if (!lvl3Unlocked && unlockController.GetNumTowers("StatModifier", 2) >= 3)
         {
             PlayerPrefs.SetInt(statModLvl3, 1);
             lvl3Unlocked = true;
