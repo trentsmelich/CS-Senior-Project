@@ -4,7 +4,6 @@ using System.Collections.Generic;
 //Description: This script manages the DEAD state for all enemies
 public class EnemyDeadState : EnemyState
 {
-    float dropChance;
     public override void EnterState(EnemyAI enemy)
     {
         enemy.GetAnimator().SetTrigger("Dying");
@@ -19,6 +18,7 @@ public class EnemyDeadState : EnemyState
         GameObject[] powerUpList = enemy.GetPowerUpList();
         if (powerUpList != null && powerUpList.Length > 0)
         {
+            List<GameObject> eligibleList = new List<GameObject>();
             foreach (GameObject powerUp in powerUpList)
             {
                 if (powerUp == null)
@@ -26,28 +26,28 @@ public class EnemyDeadState : EnemyState
                     continue;
                 }
 
-                if (powerUp.GetComponent<HealPowerUp>() != null || powerUp.GetComponent<SpeedPowerup>() != null || powerUp.GetComponent<CooldownPowerUp>() != null)
+                if (!CanDropPowerUp(powerUp, enemy))
                 {
-                    dropChance = 0.1f;
+                    continue;
+                }
+
+                eligibleList.Add(powerUp);
+            }
+
+            Shuffle(eligibleList);
+
+            foreach (GameObject powerUp in eligibleList)
+            {
+                PowerUpParent powerUpParent = powerUp.GetComponent<PowerUpParent>();
+                float dropChance;
+
+                if (powerUpParent != null)
+                {
+                    dropChance = powerUpParent.GetDropChance();
                 }
                 else
                 {
-                    dropChance = 0.05f;
-                }
-
-                if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDrop())
-                {
-                    continue;
-                }
-
-                if (powerUp == enemy.GetPoisonPrefab() && !PoisonPowerUp.CanDrop())
-                {
-                    continue;
-                }
-
-                if (powerUp == enemy.GetMagnetPrefab() && !MagnetPowerUp.CanDrop())
-                {
-                    continue;
+                    dropChance = 0.01f;
                 }
 
                 if (Random.value > dropChance)
@@ -56,21 +56,8 @@ public class EnemyDeadState : EnemyState
                 }
 
                 Object.Instantiate(powerUp, enemy.transform.position, Quaternion.identity);
-
-                if (powerUp == enemy.GetShieldPrefab())
-                {
-                    ShieldPowerUp.MarkDropped();
-                }
-
-                if (powerUp == enemy.GetPoisonPrefab())
-                {
-                    PoisonPowerUp.MarkDropped();
-                }
-
-                if (powerUp == enemy.GetMagnetPrefab())
-                {
-                    MagnetPowerUp.MarkDropped();
-                }
+                MarkPowerUpDropped(powerUp);
+                break;
             }
         }
 
@@ -82,4 +69,53 @@ public class EnemyDeadState : EnemyState
 
     public override void UpdateState(EnemyAI enemy) { }
     public override void ExitState(EnemyAI enemy) { }
+
+    private bool CanDropPowerUp(GameObject powerUp, EnemyAI enemy)
+    {
+        if (powerUp == enemy.GetShieldPrefab())
+        {
+            return ShieldPowerUp.CanDrop();
+        }
+
+        if (powerUp == enemy.GetPoisonPrefab())
+        {
+            return PoisonPowerUp.CanDrop();
+        }
+
+        if (powerUp == enemy.GetMagnetPrefab())
+        {
+            return MagnetPowerUp.CanDrop();
+        }
+
+        return true;
+    }
+
+    private void MarkPowerUpDropped(GameObject powerUp)
+    {
+        if (powerUp.GetComponent<ShieldPowerUp>() != null)
+        {
+            ShieldPowerUp.MarkDropped();
+        }
+
+        if (powerUp.GetComponent<PoisonPowerUp>() != null)
+        {
+            PoisonPowerUp.MarkDropped();
+        }
+
+        if (powerUp.GetComponent<MagnetPowerUp>() != null)
+        {
+            MagnetPowerUp.MarkDropped();
+        }
+    }
+
+    private void Shuffle(List<GameObject> powerUps)
+    {
+        for (int i = powerUps.Count - 1; i > 0; i--)
+        {
+            int randomInd = Random.Range(0, i + 1);
+            GameObject temp = powerUps[i];
+            powerUps[i] = powerUps[randomInd];
+            powerUps[randomInd] = temp;
+        }
+    }
 }
