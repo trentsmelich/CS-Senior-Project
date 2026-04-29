@@ -240,6 +240,7 @@ MonoBehaviour:
   shieldCooldown: 10
   shieldImage: {fileID: 7856958071365086446}
   maxShieldHits: 3
+  magnetCooldown: 60
   game: {fileID: 0}
 --- !u!114 &4101581576624506369
 MonoBehaviour:
@@ -363,7 +364,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 16
   m_Sprite: {fileID: -6518134988340795977, guid: 2e2da264d73ee6a4291d088452742ee6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5372549}
   m_FlipX: 0
