@@ -198,6 +198,8 @@ MonoBehaviour:
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 100
+  upgradeTextPrefabs: {fileID: 1689535135779482725, guid: 1cb04e6b350c851408cbd256b1fd247b, type: 3}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &996062315310669796
 MonoBehaviour:
   m_ObjectHideFlags: 0

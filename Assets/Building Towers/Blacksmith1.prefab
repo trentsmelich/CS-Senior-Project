@@ -329,8 +329,11 @@ MonoBehaviour:
   unlocked: 1
   health: 250
   currentPlacedTowers: 0
-  placedTowers: 0
+  placedTowers: 1
   maxTowersCount: 3
+  upgradeTextPrefab: {fileID: 4940686807075013592, guid: b4b648fc687f65c4fb707b250b69fbeb, type: 3}
+  floatSpeed: 1
+  floatDuration: 1
   statToModify: Damage
   modificationAmount: 10
 --- !u!61 &-8856103883279618278

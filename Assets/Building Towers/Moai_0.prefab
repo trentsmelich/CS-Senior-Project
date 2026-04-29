@@ -251,11 +251,13 @@ MonoBehaviour:
   towerCost: 100
   towerType: Stat
   towerName: StatModifier
-  unlocked: 0
+  unlocked: 1
   health: 250
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 3
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 2, z: 0}
   statToModify: Speed
   modificationAmount: 10
 --- !u!61 &-8856103883279618278

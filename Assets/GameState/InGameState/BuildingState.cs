@@ -216,6 +216,13 @@ public class BuildingState : GameState
             
 
             }
+
+            if(checkCatapultPowerUp(buildingPlaced))
+            {
+                //find the catapult tower and set it to super mode
+                buildingPlaced.GetComponent<Catapult>().SetSuperMode();
+                Debug.Log("Super Catapult Activated!");
+            }
         }
         if(buildingPlaced.GetComponent<StatModifier>() != null)
         {
@@ -232,7 +239,12 @@ public class BuildingState : GameState
                         hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
                         Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
                     }
-                
+                    if(checkCatapultPowerUp(hit.gameObject))
+                    {
+                    //find the slingshot tower and set it to super mode
+                        hit.gameObject.GetComponent<Catapult>().SetSuperMode();
+                        Debug.Log("Super catapult Activated by Damage Stat Modifier!");
+                    }
 
                 }
             }
@@ -249,14 +261,35 @@ public class BuildingState : GameState
                         hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
                         Debug.Log("Super Slingshot Activated by Speed Stat Modifier!");
                     }
+                    if(checkCatapultPowerUp(hit.gameObject))
+                    {
+                        //find the slingshot tower and set it to super mode
+                        hit.gameObject.GetComponent<Catapult>().SetSuperMode();
+                        Debug.Log("Super Catapult Activated by speed Stat Modifier!");
+                    }
                 
 
                 }
             }
-            Debug.Log("Passed the super stuff...");
+            
         }
-        
-        
+        if(buildingPlaced.GetComponent<TowerParent>().TowerName == "Freezer" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
+        {
+            Debug.Log("Checking by Freezer");
+            Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(-2, 0, 0), 0.1f, buildingLayer);
+            if(hit != null)
+            {
+                if(checkCatapultPowerUp(hit.gameObject))
+                {
+                    //find the slingshot tower and set it to super mode
+                    hit.gameObject.GetComponent<Catapult>().SetSuperMode();
+                    Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
+                }
+            
+
+            }
+        }
+        Debug.Log("Passed the super stuff...");
 
         
         
@@ -331,7 +364,66 @@ public class BuildingState : GameState
         }
         return (one && two && three);
     }
+    private bool checkCatapultPowerUp(GameObject buildingPlaced)
+    {
+        bool one = false;
+        bool two = false;
+        bool three = false;
+
+        if(buildingPlaced.GetComponent<TowerParent>().TowerName  == "Catapult" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
+        {
+
+            //check up, up right, and right for catapult super building
+            Collider2D hit1 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(0, -2, 0), 0.1f, buildingLayer);
+            Collider2D hit2 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, -2, 0), 0.1f, buildingLayer);
+            Collider2D hit3 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, 0, 0), 0.1f, buildingLayer);
+
+            Debug.Log("Checking hit123 positions: " + (buildingPlaced.transform.position + new Vector3(0, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, 0, 0)));
+            
+
+
+            //debug log all positions of buildings placed and hit123
+            Debug.Log("Checking for buildings at: " + buildingPlaced.transform.position + " with offsets (0, -2), (2, -2), (2, 0)");
+            Debug.Log("Hit1: " + (hit1 != null ? hit1.gameObject.name : "None") + " at " + (hit1 != null ? hit1.transform.position.ToString() : "N/A"));
+            Debug.Log("Hit2: " + (hit2 != null ? hit2.gameObject.name : "None") + " at " + (hit2 != null ? hit2.transform.position.ToString() : "N/A"));
+            Debug.Log("Hit3: " + (hit3 != null ? hit3.gameObject.name : "None") + " at " + (hit3 != null ? hit3.transform.position.ToString() : "N/A"));
+            
+            if(hit1 != null && hit2 != null && hit3 != null)
+            {
+                //check if hit1 has component of statmodifier return bool
+                Debug.Log("Hit1: " + hit1.gameObject.name + " at " + hit1.transform.position);
+                Debug.Log("Hit2: " + hit2.gameObject.name + " at " + hit2.transform.position);
+                Debug.Log("Hit3: " + hit3.gameObject.name + " at " + hit3.transform.position);
+                if(hit1.GetComponent<StatModifier>() != null)
+                {
+                    if(hit1.GetComponent<StatModifier>().getStatModifier() == "Damage")
+                    {
+                        one = true; 
+                    }
+                }
+                if(hit2.GetComponent<StatModifier>() != null)
+                {
+                    if(hit2.GetComponent<StatModifier>().getStatModifier() == "Speed")
+                    {
+                        two = true; 
+                    }
+                }
+                if(hit3.GetComponent<Freezer>() != null)
+                {
+                    if(hit3.GetComponent<Freezer>().Level == 3)
+                    {
+                        three = true;
+                    }
+                }
+                
+
+                
+            }
+            
+        }
+        return (one && two && three);
 
     
 
+    }
 }

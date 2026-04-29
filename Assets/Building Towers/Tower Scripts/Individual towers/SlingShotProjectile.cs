@@ -12,16 +12,21 @@ public class SlingShotProjectile : MonoBehaviour
     private Vector2 direction;
     private float lifetime = 3f;
 
+
+    private TowerParent towerOwner; // Reference to the tower that fired this projectile
     private EnemyHealth enemyTarget;
-    public void Begin(Vector2 direction, Transform enemyTarget)
+    public void Begin(Vector2 direction, Transform enemyTarget, TowerParent towerOwner)
     {
         //set direction of ball and enemy target
         this.direction = direction;
+        this.towerOwner = towerOwner;
+        
         this.enemyTarget = enemyTarget.GetComponent<EnemyHealth>();
     }
 
     public void Start()
     {
+            
         //destroy ball after 3 seconds
         Destroy(gameObject, lifetime);
     }
@@ -43,16 +48,16 @@ public class SlingShotProjectile : MonoBehaviour
                 enemyTarget.TakeDamage((int)damage);
                 if(enemyTarget.GetCurrentHealth() <= 0)
                 {
-                    //increment kills for tower
-                    TowerParent tower = GetComponentInParent<TowerParent>();
-                    if (tower != null)
-                    {
-                        tower.increaseKills();
+                    //increment kills for tower get component in parent of parent
+                    if (towerOwner != null){
+                        //increment kills for the tower that fired this projectile
+                        Debug.Log("Incrementing kills for tower");
+                        towerOwner.increaseKills();
                     }
+                           
                 }
-                Destroy(gameObject);
-            }
             
+            }
         }
     }
 

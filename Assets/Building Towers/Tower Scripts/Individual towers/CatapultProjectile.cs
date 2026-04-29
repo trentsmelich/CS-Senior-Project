@@ -13,14 +13,16 @@ public class CatapultProjectile : MonoBehaviour
     [SerializeField] float explosionRadius; // Radius of the explosion
     private Vector2 direction; // Direction of the projectile
     private Animator anim; // Animator for explosion animation
-    private float lifetime = 3f; //How long the projectile lasts before disappearing
+    private float lifetime = 5f; //How long the projectile lasts before disappearing
 
     private EnemyHealth enemyTarget; // Target enemy to apply damage to
+    TowerParent towerOwner;
 
     // Initialize the projectile with direction and target enemy
-    public void Begin(Vector2 direction, Transform enemyTarget)
+    public void Begin(Vector2 direction, Transform enemyTarget, TowerParent towerOwner)
     {
         this.direction = direction;
+        this.towerOwner = towerOwner;
         this.enemyTarget = enemyTarget.GetComponent<EnemyHealth>();
         anim = GetComponent<Animator>();
     }
@@ -49,23 +51,21 @@ public class CatapultProjectile : MonoBehaviour
             {
                 // Apply damage to the enemy
                 enemyTarget.TakeDamage((int)damage);
+                if(enemyTarget.GetCurrentHealth() <= 0)
+                {
+                    //increment kills for tower
+                    if (towerOwner != null)
+                    {
+                        towerOwner.increaseKills();
+                    }
+                }
                 // Play explosion animation
-                if(level == 2)
-                {
-                    //scale ball a little for explosion
-                    transform.localScale += new Vector3(2f, 2f, 1);
-                }
-                if(level == 3)
-                {
-                    //scale ball more for bigger explosion
-                    transform.localScale += new Vector3(3f, 3f, 1);
-                }
                 anim.SetTrigger("Explode");
                 //wait .3 seconds then destroy projectile
                 //velocity = Vector2.zero;
                 speed = 0;
                 ExplodeBall(); //Call the explode function to damage nearby enemies
-                Destroy(gameObject, 0.3f); // Destroy after animation plays
+                
             }
             
         }
@@ -84,6 +84,7 @@ public class CatapultProjectile : MonoBehaviour
     // Create an explosion that damages all enemies within the explosion radius
     public void ExplodeBall()
     {
+
         //create area around ball that damages all enemies
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         
@@ -97,13 +98,26 @@ public class CatapultProjectile : MonoBehaviour
                 if(enemy.GetCurrentHealth() <= 0)
                 {
                     //increment kills for tower
-                    TowerParent tower = GetComponentInParent<TowerParent>();
-                    if (tower != null)
+                    if (towerOwner != null)
                     {
-                        tower.increaseKills();
+                        towerOwner.increaseKills();
                     }
                 }
             }
         }
+        //check if tower owner is catapult and in super mode
+        if(towerOwner != null && towerOwner.TowerName == "Catapult")
+        {
+            Debug.Log("CHECKING SUPER MODE WITH FREEZER BLAST");
+            if(towerOwner.GetComponent<Catapult>().IsSuperMode())
+            {
+                //make freeezer blast prefab
+                //freezer blast is child under the catapult projectile prefab in the hierarchy
+                GameObject blast = transform.Find("FreezerBlast").gameObject;
+                blast.GetComponent<FreezeBlast>().setStats(explosionRadius, damage, 2f, towerOwner);
+                blast.SetActive(true);
+            }
+        }
+        Destroy(gameObject, 0.4f); // Destroy after animation plays
     }
 }

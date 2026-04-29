@@ -96438,6 +96438,8 @@ MonoBehaviour:
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 0
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 2, z: 0}
 --- !u!114 &1188910858
 MonoBehaviour:
   m_ObjectHideFlags: 0
