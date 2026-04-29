@@ -55,7 +55,6 @@ public class EnemyHealth : MonoBehaviour
         // Play hurt sound effect and reduce current health
         enemyHurtSFX.Play();
         currentHealth -= damage;
-        Debug.Log("Enemy took " + damage + " damage, current health: " + currentHealth);
 
         // Flash red to indicate damage taken
         StartCoroutine(FlashRed());

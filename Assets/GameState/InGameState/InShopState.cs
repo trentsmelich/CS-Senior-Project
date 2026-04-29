@@ -50,6 +50,9 @@ public class InShopState : GameState
         Button damageButton = shopScreen.transform.Find("Filter/Damage_Button").GetComponent<Button>();
         Button farmButton = shopScreen.transform.Find("Filter/Farm_Button").GetComponent<Button>();
         Button statButton = shopScreen.transform.Find("Filter/Stat_Button").GetComponent<Button>();
+        farmButton.onClick.RemoveAllListeners();
+        statButton.onClick.RemoveAllListeners();
+        damageButton.onClick.RemoveAllListeners();
 
         damageButton.onClick.AddListener(() =>
         {
@@ -106,7 +109,6 @@ public class InShopState : GameState
                     button.GetComponent<Button>().onClick.AddListener(() =>
                     {
                 
-                        Debug.Log("Tower Button Clicked: ");
                         //Play Button Sound
                         Game.PlayButtonClickSound();
 
@@ -150,7 +152,6 @@ public class InShopState : GameState
                                 }
                                 else
                                 {
-                                    Debug.Log("Purchasing tower");
                                     shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
                                     shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_MaxTowersReached").gameObject.SetActive(false);
                                     playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;
@@ -202,6 +203,10 @@ public class InShopState : GameState
     public override void ExitState(GameStateController Game)
     {
         // close shop UI
+        //remove all event listensers from buttons to prevent multiple triggers when entering shop again
+        
+        
+
         shopScreen.SetActive(false);
         // resume time
         Time.timeScale = 1;

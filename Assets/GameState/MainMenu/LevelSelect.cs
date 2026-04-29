@@ -23,7 +23,6 @@ public class LevelSelect : MainMenuState
     public override void EnterState(MainMenuStateController m)
     {
         // Get and set panel
-        Debug.Log("Go to level select");
         levelSelectPanel = m.GetLevel();
         levelSelectPanel.SetActive(true);
 
@@ -38,7 +37,6 @@ public class LevelSelect : MainMenuState
         // Give each button functionalities for level 1, level 2, level 3, main menu, and tutorial
         level1Button.onClick.AddListener(() =>
         {
-            Debug.Log("Level 1 Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
@@ -46,7 +44,6 @@ public class LevelSelect : MainMenuState
         // Level 2 button
         level2Button.onClick.AddListener(() =>
         {
-            Debug.Log("Level 2 Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         });
@@ -54,7 +51,6 @@ public class LevelSelect : MainMenuState
         // Level 3 button
         level3Button.onClick.AddListener(() =>
         {
-            Debug.Log("Level 3 Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         });
@@ -62,7 +58,6 @@ public class LevelSelect : MainMenuState
         // Level Boss button
         levelBossButton.onClick.AddListener(() =>
         {
-            Debug.Log("Level Boss Button Clicked");
             m.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
         });
@@ -72,7 +67,6 @@ public class LevelSelect : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new MainMenu());
-            Debug.Log("Main Menu Button Clicked");
         });
 
         // Tutorial button
@@ -82,7 +76,6 @@ public class LevelSelect : MainMenuState
             PlayerPrefs.SetInt(PREF_TUTORIAL_DONE, 0);
             PlayerPrefs.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Debug.Log("Tutorial Button Clicked");
         });
     }
 
@@ -97,7 +90,6 @@ public class LevelSelect : MainMenuState
         levelBossButton.onClick.RemoveAllListeners();
        
         m.levelSelectPanel.SetActive(false);
-        Debug.Log("Exited Level select State");
     }
     
 

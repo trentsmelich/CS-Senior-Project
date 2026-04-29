@@ -18,7 +18,6 @@ public class GameOverState : GameState
         Game.ShowPlayerUI(false);
 
         Game.GetUnlockController().CheckUnlocks();
-        Debug.Log("Number of Level 1 Slingshot Towers: " + Game.GetUnlockController().GetNumTowers("SlingShot", 1));
         // Open pause UI
         gameOverScreen.SetActive(true);
         // Pause time
@@ -36,7 +35,6 @@ public class GameOverState : GameState
             // Load main menu scene
             Time.timeScale = 1;
             SceneManager.LoadScene(0);
-            Debug.Log("Main Menu Button Clicked");
         });
 
         //Restart Button
@@ -45,7 +43,6 @@ public class GameOverState : GameState
             Game.PlayButtonClickSound();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Time.timeScale = 1;
-            Debug.Log("Restart Button Clicked");
         });
 
 

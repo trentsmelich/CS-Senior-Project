@@ -115,7 +115,6 @@ public class WavesState : GameState
     // Coroutine to spawn a wave of enemies
     private IEnumerator SpawnWave()
     {   
-        Debug.Log("Spawning Wave!");
 
         // Set spawning flag to true and increment wave number
         spawning = true;
@@ -123,8 +122,6 @@ public class WavesState : GameState
         // Calculate enemies for this wave based on multiplier
         int enemiesThisWave = Mathf.RoundToInt(initialEnemiesPerWave * numEnemiesMultiplier);
         countdownText.text = "Spawning Wave!";
-
-        Debug.Log($"Wave {waveNumber}: base {initialEnemiesPerWave}, multiplier {numEnemiesMultiplier}, enemies {enemiesThisWave}");
 
         // Spawn enemies with a delay between each spawn
         for (int i = 0; i < enemiesThisWave; i++)

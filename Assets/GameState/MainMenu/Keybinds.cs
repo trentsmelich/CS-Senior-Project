@@ -24,7 +24,6 @@ public class Keybinds : MainMenuState
         {
             Main.PlayButtonClickSound();
             Main.SetState(new Settings());
-            Debug.Log("Back Button Clicked");
         });
     }
     public override void ExitState(MainMenuStateController Main)

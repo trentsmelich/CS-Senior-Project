@@ -108,7 +108,6 @@ public class CatapultProjectile : MonoBehaviour
         //check if tower owner is catapult and in super mode
         if(towerOwner != null && towerOwner.TowerName == "Catapult")
         {
-            Debug.Log("CHECKING SUPER MODE WITH FREEZER BLAST");
             if(towerOwner.GetComponent<Catapult>().IsSuperMode())
             {
                 //make freeezer blast prefab

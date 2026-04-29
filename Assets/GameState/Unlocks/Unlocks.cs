@@ -37,7 +37,6 @@ public class Unlocks : MainMenuState
         {
             Main.PlayButtonClickSound();
             Main.SetState(new MainMenu());
-            Debug.Log("Back Button Clicked");
         });
 
         // Find the button

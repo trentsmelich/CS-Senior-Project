@@ -33,17 +33,14 @@ public class FarmUnlock : UnlockParent
                 if(towerParent.Level == 1)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(farmLvl1, 0) == 1);
-                    Debug.Log("Farm level 1 unlock state: " + (PlayerPrefs.GetInt(farmLvl1, 0) == 1));
                 }
                 else if(towerParent.Level == 2)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(farmLvl2, 0) == 1);
-                    Debug.Log("Farm level 2 unlock state: " + (PlayerPrefs.GetInt(farmLvl2, 0) == 1));
                 }
                 else if(towerParent.Level == 3)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(farmLvl3, 0) == 1);
-                    Debug.Log("Farm level 3 unlock state: " + (PlayerPrefs.GetInt(farmLvl3, 0) == 1));
                 }
             }
         }

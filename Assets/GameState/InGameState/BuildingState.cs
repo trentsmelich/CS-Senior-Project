@@ -165,7 +165,6 @@ public class BuildingState : GameState
 
         if (box == null)
         {
-            Debug.LogWarning("Tower prefab missing BoxCollider2D.");
             return false;
         }
 
@@ -189,21 +188,17 @@ public class BuildingState : GameState
     //If they are then find building to be powered up and make it powerful idk wtf to do here yet. 
     private void CheckForSuperBuilding(GameObject buildingPlaced)
     {
-        Debug.Log("Checking for Super Building...");
         if(buildingPlaced.GetComponent<TowerParent>().TowerName == "SlingShot" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
         {
-            Debug.Log("Checking by SlingShot");
             if(checkSlingShotPowerUp(buildingPlaced))
             {
                 
                 //find the slingshot tower and set it to super mode
                 buildingPlaced.GetComponent<SlingShotTower>().SetSuperMode();
-                Debug.Log("Super Slingshot Activated!");
             }
         }
         if(buildingPlaced.GetComponent<TowerParent>().TowerName == "Catapult" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
         {
-            Debug.Log("Checking by catapult");
             Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(-2, 0, 0), 0.1f, buildingLayer);
             if(hit != null)
             {
@@ -211,7 +206,6 @@ public class BuildingState : GameState
                 {
                     //find the slingshot tower and set it to super mode
                     hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
-                    Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
                 }
             
 
@@ -221,14 +215,12 @@ public class BuildingState : GameState
             {
                 //find the catapult tower and set it to super mode
                 buildingPlaced.GetComponent<Catapult>().SetSuperMode();
-                Debug.Log("Super Catapult Activated!");
             }
         }
         if(buildingPlaced.GetComponent<StatModifier>() != null)
         {
             if(buildingPlaced.GetComponent<StatModifier>().getStatModifier() == "Damage")
             {
-                Debug.Log("Checking by damager");
 
                 Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(0, 2, 0), 0.1f, buildingLayer);
                 if(hit != null)
@@ -237,20 +229,17 @@ public class BuildingState : GameState
                     {
                         //find the slingshot tower and set it to super mode
                         hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
-                        Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
                     }
                     if(checkCatapultPowerUp(hit.gameObject))
                     {
                     //find the slingshot tower and set it to super mode
                         hit.gameObject.GetComponent<Catapult>().SetSuperMode();
-                        Debug.Log("Super catapult Activated by Damage Stat Modifier!");
                     }
 
                 }
             }
             if(buildingPlaced.GetComponent<StatModifier>().getStatModifier() == "Speed")
             {
-                Debug.Log("Checking by speeder");
 
                 Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(-2, 2, 0), 0.1f, buildingLayer);
                 if(hit != null)
@@ -259,13 +248,11 @@ public class BuildingState : GameState
                     {
                         //find the slingshot tower and set it to super mode
                         hit.gameObject.GetComponent<SlingShotTower>().SetSuperMode();
-                        Debug.Log("Super Slingshot Activated by Speed Stat Modifier!");
                     }
                     if(checkCatapultPowerUp(hit.gameObject))
                     {
                         //find the slingshot tower and set it to super mode
                         hit.gameObject.GetComponent<Catapult>().SetSuperMode();
-                        Debug.Log("Super Catapult Activated by speed Stat Modifier!");
                     }
                 
 
@@ -275,7 +262,6 @@ public class BuildingState : GameState
         }
         if(buildingPlaced.GetComponent<TowerParent>().TowerName == "Freezer" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
         {
-            Debug.Log("Checking by Freezer");
             Collider2D hit = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(-2, 0, 0), 0.1f, buildingLayer);
             if(hit != null)
             {
@@ -283,28 +269,17 @@ public class BuildingState : GameState
                 {
                     //find the slingshot tower and set it to super mode
                     hit.gameObject.GetComponent<Catapult>().SetSuperMode();
-                    Debug.Log("Super Slingshot Activated by Damage Stat Modifier!");
                 }
             
 
             }
         }
-        Debug.Log("Passed the super stuff...");
-
-        
-        
-        
-
-        
     }
     private bool checkSlingShotPowerUp(GameObject buildingPlaced)
     {
-        Debug.Log("Checking slingshot Power up...");
         bool one = false;
         bool two = false;
         bool three = false;
-        Debug.Log("SlingShotBuilding at " + buildingPlaced.transform.position);
-        Debug.Log("Building placed: " + buildingPlaced.GetComponent<TowerParent>().TowerName + " at " + buildingPlaced.transform.position);
 
         if(buildingPlaced.GetComponent<TowerParent>().TowerName  == "SlingShot" && buildingPlaced.GetComponent<TowerParent>().Level == 3)
         {
@@ -313,30 +288,15 @@ public class BuildingState : GameState
             Collider2D hit1 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(0, -2, 0), 0.1f, buildingLayer);
             Collider2D hit2 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, -2, 0), 0.1f, buildingLayer);
             Collider2D hit3 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, 0, 0), 0.1f, buildingLayer);
-            //debug log all world positions checked by hit123
-            Debug.Log("Checking hit123 positions: " + (buildingPlaced.transform.position + new Vector3(0, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, 0, 0)));
             
 
-
-            //debug log all positions of buildings placed and hit123
-            Debug.Log("Checking for buildings at: " + buildingPlaced.transform.position + " with offsets (0, -2), (2, -2), (2, 0)");
-            Debug.Log("Hit1: " + (hit1 != null ? hit1.gameObject.name : "None") + " at " + (hit1 != null ? hit1.transform.position.ToString() : "N/A"));
-            Debug.Log("Hit2: " + (hit2 != null ? hit2.gameObject.name : "None") + " at " + (hit2 != null ? hit2.transform.position.ToString() : "N/A"));
-            Debug.Log("Hit3: " + (hit3 != null ? hit3.gameObject.name : "None") + " at " + (hit3 != null ? hit3.transform.position.ToString() : "N/A"));
-            
             if(hit1 != null && hit2 != null && hit3 != null)
             {
-                Debug.Log("Hit1: " + hit1.gameObject.name + " at " + hit1.transform.position);
-                Debug.Log("Hit2: " + hit2.gameObject.name + " at " + hit2.transform.position);
-                Debug.Log("Hit3: " + hit3.gameObject.name + " at " + hit3.transform.position);
-                //debug log all positions of buildings placed and hit123
-                
                 //check if hit1 has component of statmodifier return bool
                 if(hit1.GetComponent<StatModifier>() != null)
                 {
                     if(hit1.GetComponent<StatModifier>().getStatModifier() == "Damage")
                     {
-                        Debug.Log("one true");
                         one = true; 
                     }
                 }
@@ -344,7 +304,6 @@ public class BuildingState : GameState
                 {
                     if(hit2.GetComponent<StatModifier>().getStatModifier() == "Speed")
                     {
-                        Debug.Log("two true");
                         two = true; 
                     }
                 }
@@ -352,7 +311,6 @@ public class BuildingState : GameState
                 {
                     if(hit3.GetComponent<Catapult>().Level == 3)
                     {
-                        Debug.Log("three true");
                         three = true;
                     }
                 }
@@ -377,23 +335,10 @@ public class BuildingState : GameState
             Collider2D hit1 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(0, -2, 0), 0.1f, buildingLayer);
             Collider2D hit2 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, -2, 0), 0.1f, buildingLayer);
             Collider2D hit3 = Physics2D.OverlapCircle(buildingPlaced.transform.position + new Vector3(2, 0, 0), 0.1f, buildingLayer);
-
-            Debug.Log("Checking hit123 positions: " + (buildingPlaced.transform.position + new Vector3(0, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, -2, 0)) + ", " + (buildingPlaced.transform.position + new Vector3(2, 0, 0)));
             
 
-
-            //debug log all positions of buildings placed and hit123
-            Debug.Log("Checking for buildings at: " + buildingPlaced.transform.position + " with offsets (0, -2), (2, -2), (2, 0)");
-            Debug.Log("Hit1: " + (hit1 != null ? hit1.gameObject.name : "None") + " at " + (hit1 != null ? hit1.transform.position.ToString() : "N/A"));
-            Debug.Log("Hit2: " + (hit2 != null ? hit2.gameObject.name : "None") + " at " + (hit2 != null ? hit2.transform.position.ToString() : "N/A"));
-            Debug.Log("Hit3: " + (hit3 != null ? hit3.gameObject.name : "None") + " at " + (hit3 != null ? hit3.transform.position.ToString() : "N/A"));
-            
             if(hit1 != null && hit2 != null && hit3 != null)
             {
-                //check if hit1 has component of statmodifier return bool
-                Debug.Log("Hit1: " + hit1.gameObject.name + " at " + hit1.transform.position);
-                Debug.Log("Hit2: " + hit2.gameObject.name + " at " + hit2.transform.position);
-                Debug.Log("Hit3: " + hit3.gameObject.name + " at " + hit3.transform.position);
                 if(hit1.GetComponent<StatModifier>() != null)
                 {
                     if(hit1.GetComponent<StatModifier>().getStatModifier() == "Damage")

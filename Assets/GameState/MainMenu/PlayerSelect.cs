@@ -41,7 +41,6 @@ public class PlayerSelect : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new MainMenu());
-            Debug.Log("Player Select Cancel Button Clicked");
         });
 
         leftArrowButton.onClick.AddListener(() =>

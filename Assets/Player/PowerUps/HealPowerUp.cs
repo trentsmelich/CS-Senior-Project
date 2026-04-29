@@ -6,6 +6,7 @@ public class HealPowerUp : PowerUpParent
 {
     [Header("Heal Settings")]
     [SerializeField] private float healAmount = 20;
+    [SerializeField] private int buildHeal = 50;
 
     protected override void ApplyEffect(PlayerStats player)
     {
@@ -14,6 +15,12 @@ public class HealPowerUp : PowerUpParent
         player.currentHealth += healAmount;
         if (player.currentHealth > player.maxHealth) {
             player.currentHealth = player.maxHealth;
+        }
+
+        MainBuilding mainBuilding = FindFirstObjectByType<MainBuilding>();
+        if (mainBuilding != null)
+        {
+            mainBuilding.Heal(buildHeal);
         }
     }
 

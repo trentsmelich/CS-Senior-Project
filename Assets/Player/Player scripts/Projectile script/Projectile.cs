@@ -49,7 +49,6 @@ public class Projectile : MonoBehaviour
                     enemyHealth.Poison(poisonDamage, poisonTicks, poisonTickInterval);
                 }
                 Destroy(gameObject);
-                Debug.Log("Projectile hit enemy for " + damage + " damage.");
             }
         }
     }

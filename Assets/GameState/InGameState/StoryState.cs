@@ -26,11 +26,11 @@ public class StoryState : GameState
 
         // Set Skip Story Button
         Button skipButton = Game.GetStoryUI().transform.Find("Skip_Button").GetComponent<Button>();
+        skipButton.onClick.RemoveAllListeners();
         skipButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();
             Game.SetState(new gameIdleState());
-            Debug.Log("Skip Button Clicked");
         });
 
         // Show the story UI and hide the player UI, and pause the game time

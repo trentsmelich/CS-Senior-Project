@@ -19,7 +19,6 @@ public class MainMenu : MainMenuState
     private Button requirementsButton;
     public override void EnterState(MainMenuStateController m)
     {
-        Debug.Log("Entered Main Menu State");
         // Initialize main menu UI elements here
 
         // make main menu appear
@@ -43,21 +42,18 @@ public class MainMenu : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new LevelSelect());
-            Debug.Log("Play Button Clicked");
         });
 
         settingsButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();
             m.SetState(new Settings());
-            Debug.Log("Settings Button Clicked");
         });
 
         unlocksButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();
             m.SetState(new Unlocks());
-            Debug.Log("Unlocks Button Clicked");
         });
         
         exitButton.onClick.AddListener(() =>
@@ -70,28 +66,24 @@ public class MainMenu : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new PlayerSelect());
-            Debug.Log("Player Select Button Clicked");
         });
 
         informationButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();
             m.SetState(new Information());
-            Debug.Log("Information Button Clicked");
         });
 
         codexButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();
             m.SetState(new Codex());
-            Debug.Log("Codex Button Clicked");
         });
 
         requirementsButton.onClick.AddListener(() =>
         {
             m.PlayButtonClickSound();
             m.SetState(new Requirements());
-            Debug.Log("Requirements Button Clicked");
         });
 
     }

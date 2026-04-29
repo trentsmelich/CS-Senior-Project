@@ -27,7 +27,6 @@ public class TowerHealth : MonoBehaviour
             return;
 
         towerHealth -= damageAmount;
-        Debug.Log("Tower took " + damageAmount + " damage. Current health: " + towerHealth);
 
         if (towerHealth <= 0)
         {
@@ -38,7 +37,6 @@ public class TowerHealth : MonoBehaviour
 
     private void DestroyTower()
     {
-        Debug.Log("Tower destroyed!");
         // Implement tower destruction logic here (e.g., play animation, remove from game, etc.)
     }
     

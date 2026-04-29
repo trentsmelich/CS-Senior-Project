@@ -12,7 +12,6 @@ public class StatModifier : TowerParent
     void Start()
     {
         //get player stats from player object
-        Debug.Log("Stat Modifier Tower Created");
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         ApplyStatModification();
     }
@@ -26,7 +25,6 @@ public class StatModifier : TowerParent
     private void ApplyStatModification()
     {
         playerStats.ModifyStat(statToModify, modificationAmount);
-        Debug.Log("Modified Player Stat: " + statToModify + " by " + modificationAmount);
     }
 
     public override string GetName()

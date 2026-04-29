@@ -85,14 +85,12 @@ public abstract class TowerParent : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
-        Debug.Log($"{towerName} took {damage} damage!");
         health -= damage;
         if (health <= 0)
         {
             DecreasePlacedTowers();
             if(towerName == "Main Building")
             {
-                Debug.Log("Main building destroyed, killing player");
                 // Trigger game over state
                 GameStateController gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
                 PlayerStats playerStats = gameStateController.GetPlayerStats();
@@ -100,6 +98,16 @@ public abstract class TowerParent : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    public void Heal(int healNum)
+    {
+        if (healNum <= 0)
+        {
+            return;
+        }
+
+        health += healNum;
     }
 
     public void IncreasePlacedTowers()

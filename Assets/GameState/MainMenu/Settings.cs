@@ -27,7 +27,6 @@ public class Settings : MainMenuState
         {
             Main.PlayButtonClickSound();
             Main.SetState(new MainMenu());
-            Debug.Log("Back Button Clicked");
         });
 
         // Set the functionality for the keybinds button
@@ -35,7 +34,6 @@ public class Settings : MainMenuState
         {
             Main.PlayButtonClickSound();
             Main.SetState(new Keybinds());
-            Debug.Log("Keybinds Button Clicked");
         });
     }
     public override void ExitState(MainMenuStateController Main)

@@ -63,7 +63,6 @@ public class Goblin : EnemyParent
             playerLayers
         );
         /*
-        Debug.Log("Enemy is attacking!");
         //if hit Enemies is not empty, deal damage to player
         if (hitEnemies.Length > 0)
         {
@@ -74,7 +73,6 @@ public class Goblin : EnemyParent
                 //deal damage to player
                 playerStats.TakeDamage(enemyDamage);
             }
-            Debug.Log("Player hit by enemy attack!");
         }
         */
         foreach (Collider2D hit in hitEnemies)
@@ -87,7 +85,6 @@ public class Goblin : EnemyParent
                 //deal damage to building
                 TowerParent tower = hit.GetComponent<TowerParent>();
                 tower.TakeDamage((int)enemyDamage);
-                Debug.Log("Building hit by enemy attack!");
                 break; // Only attack one building at a time
 
             }
@@ -97,7 +94,6 @@ public class Goblin : EnemyParent
                 PlayerStats playerStats = hit.GetComponent<PlayerStats>();
                 playerStats.TakeDamage(enemyDamage);
                 
-                Debug.Log("Player hit by enemy attack!");
                 break; // Only attack one player at a time
             }
         }

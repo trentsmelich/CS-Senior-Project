@@ -30,7 +30,6 @@ public class Information : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new MainMenu());
-            Debug.Log("Information Cancel Button Clicked");
         });
 
         // Find all the small panels in the information panel
@@ -96,6 +95,5 @@ public class Information : MainMenuState
 
         informationPanel.SetActive(false);
         m.DisplayMainMenu(true);
-        Debug.Log("Exited Information State");
     }
 }

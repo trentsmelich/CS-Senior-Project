@@ -112,7 +112,6 @@ public class Catapult : TowerParent
     }
     public void SetSuperMode()
     {
-        Debug.Log("Catapult Super Mode Activated!");
         superMode = true;
         // Implement logic to set the tower to super mode, which could involve increasing its stats or changing its behavior
         towerDamage *= 2;
