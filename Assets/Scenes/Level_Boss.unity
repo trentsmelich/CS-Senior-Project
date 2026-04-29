@@ -49687,10 +49687,12 @@ MonoBehaviour:
   towerType: Main Building
   towerName: Main Building
   unlocked: 0
-  health: 1000
+  health: 2000
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 0
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &586973654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104729,6 +104731,7 @@ MonoBehaviour:
   - {fileID: 7055142749614219433, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
   - {fileID: 8462084815223475226, guid: 8f661dd34023dfd4ebe060156d3e4b51, type: 3}
   - {fileID: 5700829142607638950, guid: 2985c9eafde7b5f4393fcb5de0fe63fd, type: 3}
+  - {fileID: 6883571558850643441, guid: 57437fc2412094e4a8e465ef5b3ee6bf, type: 3}
   bossList:
   - {fileID: 8610489642223863417, guid: f14923bef180af04c84ff650f015581f, type: 3}
   - {fileID: 6082407367751296504, guid: 50ff28d71bf2ceb44a7cb8a90157479a, type: 3}

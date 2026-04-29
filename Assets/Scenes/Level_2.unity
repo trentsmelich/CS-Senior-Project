@@ -12853,7 +12853,7 @@ MonoBehaviour:
   towerType: Main Building
   towerName: Main Building
   unlocked: 0
-  health: 1000
+  health: 2000
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 0
