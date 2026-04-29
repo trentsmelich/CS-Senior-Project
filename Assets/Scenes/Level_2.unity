@@ -12857,6 +12857,8 @@ MonoBehaviour:
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 0
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &866857892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61649,6 +61651,7 @@ MonoBehaviour:
   enemyList:
   - {fileID: 8181663554138463540, guid: d886e2fe89d57e04fbeec075d7bd34d8, type: 3}
   - {fileID: 4636911474501418465, guid: 448eff5edb834564392b6ef0cb148bc3, type: 3}
+  - {fileID: 919114048276854430, guid: eac7a6065a2c393419ccb73a29264b27, type: 3}
   bossList:
   - {fileID: 6337119327731695134, guid: 486e27da43950194e99e1725bfbd198a, type: 3}
   - {fileID: 7055142749614219433, guid: 0d941de1fa22add4eb5761f1f5bd00e8, type: 3}
