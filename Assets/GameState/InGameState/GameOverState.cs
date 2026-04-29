@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 //Description: This script manages the game over state, including displaying the game over screen and handling user input for restarting or returning to the main menu.
 public class GameOverState : GameState
 {
-    GameObject gameOverScreen;
+    private GameObject gameOverScreen;
+
+    private Button mainMenuButton;
+    private Button restartButton;
 
     public override void EnterState(GameStateController Game)
     {
@@ -24,8 +27,8 @@ public class GameOverState : GameState
         Time.timeScale = 0; 
 
         // Find main menu buttons in main menu panel
-        Button mainMenuButton = gameOverScreen.transform.Find("MainMenu_Button").GetComponent<Button>();
-        Button restartButton = gameOverScreen.transform.Find("Restart_Button").GetComponent<Button>();
+        mainMenuButton = gameOverScreen.transform.Find("MainMenu_Button").GetComponent<Button>();
+        restartButton = gameOverScreen.transform.Find("Restart_Button").GetComponent<Button>();
     
 
         //Main Menu Button
@@ -55,6 +58,8 @@ public class GameOverState : GameState
 
     public override void ExitState(GameStateController Game)
     {
+        mainMenuButton.onClick.RemoveAllListeners();
+        restartButton.onClick.RemoveAllListeners();
         //resume time
         Time.timeScale = 1;
     }
