@@ -84,6 +84,7 @@ public abstract class TowerParent : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            DecreasePlacedTowers();
             if(towerName == "Main Building")
             {
                 Debug.Log("Main building destroyed, killing player");
@@ -99,6 +100,10 @@ public abstract class TowerParent : MonoBehaviour
     public void IncreasePlacedTowers()
     {
         placedTowers++;
+    }
+    public void DecreasePlacedTowers()
+    {
+        placedTowers--;
     }
 
     public void ResetPlacedTowers()
