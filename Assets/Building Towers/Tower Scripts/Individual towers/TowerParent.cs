@@ -102,6 +102,16 @@ public abstract class TowerParent : MonoBehaviour
         }
     }
 
+    public void Heal(int healNum)
+    {
+        if (healNum <= 0)
+        {
+            return;
+        }
+
+        health += healNum;
+    }
+
     public void IncreasePlacedTowers()
     {
         placedTowers++;
