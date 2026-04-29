@@ -13,12 +13,14 @@ public class Farm : TowerParent
     private float harvestTimer; // Timer to track time since last harvest
     private float spriteTimer; // Timer to track sprite animation timing
 
+    GameStateController gameStateController;
+
     // Start is called before the first frame update
     void Start()
     {
         // Get reference to PlayerStats
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-
+        gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
 
         // Initialize timers for harvesting to control animation and profit generation
         harvestTimer = Time.realtimeSinceStartup;
@@ -46,34 +48,40 @@ public class Farm : TowerParent
     // UpdateTower is called every frame to update tower behavior
     public override void UpdateTower(Transform enemy)
     {
-        // Farms do not attack
-        //farms update timer and when timer reaches cooldown, play animation and reset timer
-
-        // Calculate time since last harvest
-        float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;
-        
-        // Determine which sprite to show based on time since last harvest
-        int spriteIndex = (int)(timeSinceLastHarvest / spriteTimer);
-        spriteIndex %= sprites.Length;
-
-        // Update all child SpriteRenderers to the current sprite for animation
-        for (int i = 0; i < spriteRenderers.Length; i++)
+        if (gameStateController.waveInProgress())
         {
-            if (spriteRenderers[i] != null)
+                // Farms do not attack
+            //farms update timer and when timer reaches cooldown, play animation and reset timer
+
+            // Calculate time since last harvest
+            float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;
+            
+            // Determine which sprite to show based on time since last harvest
+            int spriteIndex = (int)(timeSinceLastHarvest / spriteTimer);
+            spriteIndex %= sprites.Length;
+
+            // Update all child SpriteRenderers to the current sprite for animation
+            for (int i = 0; i < spriteRenderers.Length; i++)
             {
-                spriteRenderers[i].sprite = sprites[spriteIndex];
+                if (spriteRenderers[i] != null)
+                {
+                    spriteRenderers[i].sprite = sprites[spriteIndex];
+                }
             }
-        }
 
-        // If cooldown has not been reached, do not harvest yet
-        if (timeSinceLastHarvest < attackCooldown)
-        {
-            return;
+            // If cooldown has not been reached, do not harvest yet
+            if (timeSinceLastHarvest < attackCooldown)
+            {
+                return;
+            }
+            harvestTimer = Time.realtimeSinceStartup;
+            //anim.SetTrigger("Harvest");
+            attackTimer = 0f;
+            playerStats.AddCoins(profit * (int)playerStats.GetProfitMultiplier());
         }
-        harvestTimer = Time.realtimeSinceStartup;
-        //anim.SetTrigger("Harvest");
-        attackTimer = 0f;
-        playerStats.AddCoins(profit * (int)playerStats.GetProfitMultiplier());
+        
+            
+        
     }
     
     public override string GetName()
