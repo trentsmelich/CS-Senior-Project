@@ -113,7 +113,7 @@ MonoBehaviour:
   towerDamage: 45
   attackCooldown: 0.5
   attackTimer: 0
-  speed: 60
+  speed: 50
   towerImage: {fileID: -3178151490746570464, guid: bbae540420036f24fac2477ed4c19e62, type: 3}
   towerCost: 120
   towerType: Damage

@@ -59,10 +59,19 @@ public class CatapultProjectile : MonoBehaviour
                         towerOwner.increaseKills();
                     }
                 }
+                if(level == 2)
+                {
+                    transform.localScale = new Vector3(2f, 2f, 1); // Increase the size of the explosion for level 2
+                }
+                if(level == 3)
+                {
+                    transform.localScale = new Vector3(10f, 10f, 1); // Increase the size of the explosion for level 3
+                    transform.position = new Vector3(transform.position.x, transform.position.y - 0.45f, transform.position.z);
+                }
                 // Play explosion animation
                 anim.SetTrigger("Explode");
                 //wait .3 seconds then destroy projectile
-                //velocity = Vector2.zero;
+                
                 speed = 0;
                 ExplodeBall(); //Call the explode function to damage nearby enemies
                 
@@ -110,6 +119,10 @@ public class CatapultProjectile : MonoBehaviour
         {
             if(towerOwner.GetComponent<Catapult>().IsSuperMode())
             {
+                //decrease scale of catapult blast after blasting to then show freezer blast
+                    transform.localScale = new Vector3(4f, 4f, 1); // Decrease the size of the explosion for super mode
+                    
+                
                 //make freeezer blast prefab
                 //freezer blast is child under the catapult projectile prefab in the hierarchy
                 GameObject blast = transform.Find("FreezerBlast").gameObject;
