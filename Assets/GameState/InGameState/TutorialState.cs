@@ -40,6 +40,8 @@ public class TutorialState : GameState
         nextButton = Game.GetTutorialNextButton();
         backButton = Game.GetTutorialBackButton();
         GameTutorialObject = Game.GetGameTutorialObject();
+        nextButton.onClick.RemoveAllListeners();
+        backButton.onClick.RemoveAllListeners();
 
         // If tutorial was already completed, skip showing in level 1
         if (PlayerPrefs.GetInt(PREF_TUTORIAL_DONE, 0) == 1)
@@ -51,8 +53,10 @@ public class TutorialState : GameState
         }
 
         // Assign every button the same functionality of next step
+
         nextButton.onClick.AddListener(NextFunctionality);
         backButton.onClick.AddListener(BackFunctionality);
+    
 
         //Set all the texts for the tutorial
         SetTexts();

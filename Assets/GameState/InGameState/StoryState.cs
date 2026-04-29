@@ -26,6 +26,7 @@ public class StoryState : GameState
 
         // Set Skip Story Button
         Button skipButton = Game.GetStoryUI().transform.Find("Skip_Button").GetComponent<Button>();
+        skipButton.onClick.RemoveAllListeners();
         skipButton.onClick.AddListener(() =>
         {
             Game.PlayButtonClickSound();
