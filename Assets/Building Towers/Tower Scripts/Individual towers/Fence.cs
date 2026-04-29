@@ -5,6 +5,9 @@ public class Fence : TowerParent
     
     // Start is called before the first frame update
     private bool up, down, left, right;
+
+    private static int placedFences = 0;
+
     
     
 
@@ -41,10 +44,47 @@ public class Fence : TowerParent
     private void checkAroundFence()
     {
         float gridSize = 1f; // Distance between fence positions
-        float checkRadius = 0.5f; // Small radius to check
+        float checkRadius = 0.2f; // Small radius to check
         int fenceLayer = LayerMask.GetMask("Default");
     
         // Check each direction - store the collider result to avoid multiple calls
+        //check for multiple colliders and then loops through colliders to find if there is a fence in that direction
+        up = down = left = right = false; // Reset connections before checking
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + Vector3.up * gridSize, checkRadius, fenceLayer);
+        foreach (Collider2D hit in hits){
+            if (hit.GetComponent<Fence>() != null)
+            {
+                up = true;
+                break;
+            }
+        }
+        Collider2D[] hits2 = Physics2D.OverlapCircleAll(transform.position + Vector3.down * gridSize, checkRadius, fenceLayer);
+        foreach (Collider2D hit in hits2){
+            if (hit.GetComponent<Fence>() != null)
+            {
+                down = true;
+                break;
+            }
+        }
+        Collider2D[] hits3 = Physics2D.OverlapCircleAll(transform.position + Vector3.left * gridSize, checkRadius, fenceLayer);
+        foreach (Collider2D hit in hits3){
+            if (hit.GetComponent<Fence>() != null)
+            {
+                left = true;
+                break;
+            }
+        }
+        Collider2D[] hits4 = Physics2D.OverlapCircleAll(transform.position + Vector3.right * gridSize, checkRadius, fenceLayer);
+        foreach (Collider2D hit in hits4){
+            if (hit.GetComponent<Fence>() != null )
+            {
+                right = true;
+                break;
+            }
+        }
+        
+
+        /*
         Collider2D upCollider = Physics2D.OverlapCircle(transform.position + Vector3.up * gridSize, checkRadius, fenceLayer);
         up = upCollider != null && upCollider.GetComponent<Fence>() != null;
     
@@ -58,7 +98,7 @@ public class Fence : TowerParent
     
         Collider2D rightCollider = Physics2D.OverlapCircle(transform.position + Vector3.right * gridSize, checkRadius, fenceLayer);
         right = rightCollider != null && rightCollider.GetComponent<Fence>() != null;
-        
+        */
     }
     private void AdjustFenceSprite()
     {
@@ -110,11 +150,11 @@ public class Fence : TowerParent
         // update fences around this fence to adjust their sprites when this fence is destroyed
         checkAroundFence();
         float gridSize = 1f; // Distance between fence positions
-        float checkRadius = 0.5f; // Small radius to check
+        float checkRadius = 0.2f; // Small radius to check
         int fenceLayer = LayerMask.GetMask("Default");
     
         // Check each direction - store the collider result to avoid multiple calls
-        
+        /*
         if(up)
         {
             Collider2D upCollider = Physics2D.OverlapCircle(transform.position + Vector3.up * gridSize, checkRadius, fenceLayer);
@@ -135,7 +175,66 @@ public class Fence : TowerParent
             Collider2D rightCollider = Physics2D.OverlapCircle(transform.position + Vector3.right * gridSize, checkRadius, fenceLayer);
             rightCollider.GetComponent<Fence>().AdjustFenceSprite();
         }
+        */
+        if(up)
+        {
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + Vector3.up * gridSize, checkRadius, fenceLayer);
+            foreach (Collider2D hit in hits){
+                if (hit.GetComponent<Fence>() != null)
+                {
+                   
+                    hit.GetComponent<Fence>().AdjustFenceSprite();
+                    break;
+                }
+            }
+        }
         
+        if(down)
+        {
+            Collider2D[] hits2 = Physics2D.OverlapCircleAll(transform.position + Vector3.down * gridSize, checkRadius, fenceLayer);
+            foreach (Collider2D hit in hits2){
+                if (hit.GetComponent<Fence>() != null)
+                {
+                    
+                    hit.GetComponent<Fence>().AdjustFenceSprite();
+                    break;
+                }
+            }
+        }
+        if(left)
+        {
+            Collider2D[] hits3 = Physics2D.OverlapCircleAll(transform.position + Vector3.left * gridSize, checkRadius, fenceLayer);
+            foreach (Collider2D hit in hits3){
+                if (hit.GetComponent<Fence>() != null)
+                {
+                    
+                    hit.GetComponent<Fence>().AdjustFenceSprite();
+                    break;
+                }
+            }
+        }
+        if(right)
+        {
+            Collider2D[] hits4 = Physics2D.OverlapCircleAll(transform.position + Vector3.right * gridSize, checkRadius, fenceLayer);
+            foreach (Collider2D hit in hits4){
+                if (hit.GetComponent<Fence>() != null)
+                {
+                    
+                    hit.GetComponent<Fence>().AdjustFenceSprite();
+                    break;
+                }
+            }
+        }
+        
+        
+    }
+    public int GetPlacedFences()
+    {
+        return placedFences;
+    }
+    public void IncreasePlacedFences()
+    {
+        placedFences++;
     }
 
 }

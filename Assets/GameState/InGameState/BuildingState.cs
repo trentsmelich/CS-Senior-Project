@@ -98,8 +98,14 @@ public class BuildingState : GameState
 
             // placed building must be in Buildings layer
             placedTower.layer = 0;
-
+            
             placedTower.GetComponent<TowerParent>().increaseCount();
+            if (placedTower.CompareTag("Fence"))
+            {
+                placedTower.GetComponent<Fence>().IncreasePlacedFences();
+                Debug.Log($"Placed fences: {placedTower.GetComponent<Fence>().GetPlacedFences()}");
+            }
+            
 
             SpriteRenderer[] towerRenderers = placedTower.GetComponentsInChildren<SpriteRenderer>();
             int num = 0;
@@ -113,21 +119,31 @@ public class BuildingState : GameState
             //if placed tower is a fence allow player to immediately place another tower without having to go back to shop state
             if (placedTower.CompareTag("Fence"))
             {
-                PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-                if(Game.GetCurrentBuildingCost() <= playerStats.coins)
+                if(placedTower.GetComponent<Fence>().GetPlacedFences() < placedTower.GetComponent<TowerParent>().MaxTowersCount)
                 {
-                    Game.PlayPlaceBuildingSFX();
-                    playerStats.coins -= Game.GetCurrentBuildingCost();
-                    GameObject.Destroy(previewTower);
-                    EnterState(Game);
+                    PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+                    if(Game.GetCurrentBuildingCost() <= playerStats.coins)
+                    {
+                        Game.PlayPlaceBuildingSFX();
+                        playerStats.coins -= Game.GetCurrentBuildingCost();
+                        GameObject.Destroy(previewTower);
+                        EnterState(Game);
 
+                    }
+                    else
+                    {
+                        Game.SetPlaceTower(null);
+                        Game.SetState(new gameIdleState());
+                        
+                    }
                 }
                 else
                 {
+                    // Set the game state back to idle
                     Game.SetPlaceTower(null);
                     Game.SetState(new gameIdleState());
-                    
                 }
+                
                 
 
             }
