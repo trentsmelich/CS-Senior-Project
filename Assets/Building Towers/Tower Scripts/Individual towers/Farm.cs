@@ -16,9 +16,6 @@ public class Farm : TowerParent
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Farm Tower Created");
-        //anim = GetComponent<Animator>();
-
         // Get reference to PlayerStats
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
 
@@ -51,8 +48,6 @@ public class Farm : TowerParent
     {
         // Farms do not attack
         //farms update timer and when timer reaches cooldown, play animation and reset timer
-        //Debug.Log("Farm Updating");
-
 
         // Calculate time since last harvest
         float timeSinceLastHarvest = Time.realtimeSinceStartup - harvestTimer;
@@ -73,16 +68,12 @@ public class Farm : TowerParent
         // If cooldown has not been reached, do not harvest yet
         if (timeSinceLastHarvest < attackCooldown)
         {
-            //Debug.Log("Farm Timer: " + timeSinceLastHarvest + " / " + attackCooldown);
             return;
         }
         harvestTimer = Time.realtimeSinceStartup;
         //anim.SetTrigger("Harvest");
         attackTimer = 0f;
         playerStats.AddCoins(profit * (int)playerStats.GetProfitMultiplier());
-        //Debug.Log("Farm Generated Profit: " + (profit * (int)playerStats.GetProfitMultiplier()));
-
-
     }
     
     public override string GetName()

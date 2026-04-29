@@ -51,7 +51,6 @@ public class SlingShotProjectile : MonoBehaviour
                     //increment kills for tower get component in parent of parent
                     if (towerOwner != null){
                         //increment kills for the tower that fired this projectile
-                        Debug.Log("Incrementing kills for tower");
                         towerOwner.increaseKills();
                     }
                            

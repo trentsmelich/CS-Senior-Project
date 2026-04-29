@@ -25,19 +25,15 @@ public class FreezeUnlock : UnlockParent
             {
                 if(towerParent.Level == 1)
                 {
-                    towerParent.SetUnlock(true);
+                    towerParent.SetUnlock(PlayerPrefs.GetInt(freezeLvl1, 0) == 1);
                 }
                 else if(towerParent.Level == 2)
                 {
-                    // towerParent.SetUnlock(PlayerPrefs.GetInt(freezeLvl2, 0) == 1);
-                    // Debug.Log("Freezer level 2 unlock state: " + (PlayerPrefs.GetInt(freezeLvl2, 0) == 1));
-                    towerParent.SetUnlock(true);
+                    towerParent.SetUnlock(PlayerPrefs.GetInt(freezeLvl2, 0) == 1);
                 }
                 else if(towerParent.Level == 3)
                 {
-                    // towerParent.SetUnlock(PlayerPrefs.GetInt(freezeLvl3, 0) == 1);
-                    // Debug.Log("Freezer level 3 unlock state: " + (PlayerPrefs.GetInt(freezeLvl3, 0) == 1));
-                    towerParent.SetUnlock(true);
+                    towerParent.SetUnlock(PlayerPrefs.GetInt(freezeLvl3, 0) == 1);
                 }
             }
         }
@@ -52,17 +48,15 @@ public class FreezeUnlock : UnlockParent
             lvl1Unlocked = true;
         }
 
-        if (!lvl2Unlocked && unlockController.GetNumTowers("Freezer", 1) >= 1)
+        if (!lvl2Unlocked && unlockController.GetNumTowers("Freezer", 1) >= 3)
         {
             PlayerPrefs.SetInt(freezeLvl2, 1);
-            Debug.Log("Freezer level 2 unlocked");
             lvl2Unlocked = true;
         }
 
-        if (!lvl3Unlocked && unlockController.GetNumTowers("Freezer", 2) >= 1)
+        if (!lvl3Unlocked && unlockController.GetNumTowers("Freezer", 2) >= 3)
         {
             PlayerPrefs.SetInt(freezeLvl3, 1);
-            Debug.Log("Freezer level 3 unlocked");
             lvl3Unlocked = true;
         }
 

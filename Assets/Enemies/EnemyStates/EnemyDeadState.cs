@@ -13,7 +13,6 @@ public class EnemyDeadState : EnemyState
         enemy.GetPlayer().GetComponent<PlayerStats>().AddExperience();
         //initialize coin prefab at enemy position
         Object.Instantiate(enemy.GetCoinPrefab(), enemy.transform.position, Quaternion.identity);
-        Debug.Log("Enemy defeated. Experience added to player.");
 
         GameObject[] powerUpList = enemy.GetPowerUpList();
         if (powerUpList != null && powerUpList.Length > 0)

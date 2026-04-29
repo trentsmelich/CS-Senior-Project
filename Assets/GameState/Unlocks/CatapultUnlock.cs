@@ -33,17 +33,14 @@ public class CatapultUnlock : UnlockParent
                 if(towerParent.Level == 1)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(catapultLvl1, 0) == 1);
-                    Debug.Log("Catapult level 1 unlock state: " + (PlayerPrefs.GetInt(catapultLvl1, 0) == 1));
                 }
                 else if(towerParent.Level == 2)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(catapultLvl2, 0) == 1);
-                    Debug.Log("Catapult level 2 unlock state: " + (PlayerPrefs.GetInt(catapultLvl2, 0) == 1));
                 }
                 else if(towerParent.Level == 3)
                 {
                     towerParent.SetUnlock(PlayerPrefs.GetInt(catapultLvl3, 0) == 1);
-                    Debug.Log("Catapult level 3 unlock state: " + (PlayerPrefs.GetInt(catapultLvl3, 0) == 1));
                 }
             }
         }

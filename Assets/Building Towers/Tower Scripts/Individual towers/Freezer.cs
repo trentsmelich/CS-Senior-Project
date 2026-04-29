@@ -36,7 +36,6 @@ public class Freezer : TowerParent
     private void Fire()
     {
         // Implement firing logic here
-        Debug.Log("Freezer tower making blast");
         GameObject blast = Instantiate(freezerBlast, freezerCharge.transform.position, freezerCharge.transform.rotation);
         blast.GetComponent<FreezeBlast>().setStats(towerRange, towerDamage, freezeDuration, this);
         blast.SetActive(true);

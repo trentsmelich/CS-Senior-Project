@@ -43,7 +43,6 @@ public class Codex : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new MainMenu());
-            Debug.Log("Codex Cancel Button Clicked");
         });
 
         // Assign the enemy information to the buttons in the codex panel, and set the button listeners to display the corresponding information when clicked
@@ -73,6 +72,5 @@ public class Codex : MainMenuState
     {
         codexPanel.SetActive(false);
         m.DisplayMainMenu(true);
-        Debug.Log("Exited Codex State");
     }
 }

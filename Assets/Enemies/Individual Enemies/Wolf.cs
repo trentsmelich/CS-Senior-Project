@@ -78,7 +78,6 @@ public class Wolf : EnemyParent
                 playerStats.TakeDamage(enemyDamage);
             }
 
-            Debug.Log("Player hit by wolf attack!");
         }
         
     }

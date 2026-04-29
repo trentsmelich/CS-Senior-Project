@@ -47,7 +47,6 @@ public class PauseState : GameState
             Game.PlayButtonClickSound();
             Game.SetState(new gameIdleState());
             Game.ShowPlayerUI(true);
-            Debug.Log("resume Button Clicked");
         });
 
         //options button
@@ -55,7 +54,6 @@ public class PauseState : GameState
         {
             Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(true);
-            Debug.Log("options Button Clicked");
         });
 
         //quit button
@@ -66,7 +64,6 @@ public class PauseState : GameState
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);  
             EnemyHealth.resetEnemyCounts();
             
-            Debug.Log("quit Button Clicked");
         });
         
         //options X button (close the options panel)
@@ -74,7 +71,6 @@ public class PauseState : GameState
         {
             Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel").gameObject.SetActive(false);
-            Debug.Log("options X Button Clicked");
         });
 
         //keybinds button in options panel
@@ -82,7 +78,6 @@ public class PauseState : GameState
         {
             Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel/Keybinds_Setting").gameObject.SetActive(true);
-            Debug.Log("keybinds Button Clicked");
         });
 
         //keybinds settings back button
@@ -90,7 +85,6 @@ public class PauseState : GameState
         {
             Game.PlayButtonClickSound();
             pauseMenu.transform.Find("Options_Panel/Keybinds_Setting").gameObject.SetActive(false);
-            Debug.Log("keybinds settings back Button Clicked");
         });
 
     }

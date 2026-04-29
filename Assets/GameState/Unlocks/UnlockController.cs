@@ -51,7 +51,6 @@ public class UnlockController : MonoBehaviour
         //inside each unlock, loop trhoug tower name is == to level I am in 
         foreach (UnlockParent unlock in unlocks)
         {
-            Debug.Log("Loading unlock states");
             unlock.LoadUnlockState(this);
         }
     }
@@ -64,7 +63,6 @@ public class UnlockController : MonoBehaviour
         {
             if (level == 1)
             {
-                Debug.Log("Increasing Slingshot Level 1 Count");
                 numSlingshot1++;
             }
             else if (level == 2)

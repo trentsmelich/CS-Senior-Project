@@ -6,7 +6,6 @@ public class TowerUpgradingState : TowerState
 {
     public override void EnterState(TowerAI tower)
     {
-        Debug.Log("Tower entered Upgrading State.");
         // Initialize upgrading state (e.g., play upgrade animation)
     }
 
@@ -18,7 +17,6 @@ public class TowerUpgradingState : TowerState
 
     public override void ExitState(TowerAI tower)
     {
-        Debug.Log("Tower exiting Upgrading State.");
         // Cleanup after upgrading
     }
 }

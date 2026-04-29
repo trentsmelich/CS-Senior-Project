@@ -109,7 +109,6 @@ public class InShopState : GameState
                     button.GetComponent<Button>().onClick.AddListener(() =>
                     {
                 
-                        Debug.Log("Tower Button Clicked: ");
                         //Play Button Sound
                         Game.PlayButtonClickSound();
 
@@ -153,7 +152,6 @@ public class InShopState : GameState
                                 }
                                 else
                                 {
-                                    Debug.Log("Purchasing tower");
                                     shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_NotEnoughCoins").gameObject.SetActive(false);
                                     shopScreen.transform.Find("Tower_Info_Screen/Tower_Texts/Text_MaxTowersReached").gameObject.SetActive(false);
                                     playerStats.coins -= tower.GetComponent<TowerParent>().TowerCost;

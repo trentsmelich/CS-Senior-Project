@@ -107,7 +107,6 @@ public class LevelUpState : GameState
             {
                 Game.SetState(new gameIdleState());
             }
-            Debug.Log("Offer 1 Selected");
         });
         offer2.onClick.AddListener(() =>
         {
@@ -125,7 +124,6 @@ public class LevelUpState : GameState
             {
                 Game.SetState(new gameIdleState());
             }
-            Debug.Log("Offer 2 Selected");
         });
         offer3.onClick.AddListener(() =>
         {
@@ -143,7 +141,6 @@ public class LevelUpState : GameState
             {
                 Game.SetState(new gameIdleState());
             }
-            Debug.Log("Offer 3 Selected");
         });
         
         // Pause the Time after the countdown done

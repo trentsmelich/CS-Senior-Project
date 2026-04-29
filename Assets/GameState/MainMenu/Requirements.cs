@@ -45,7 +45,6 @@ public class Requirements : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new MainMenu());
-            Debug.Log("Requirements Cancel Button Clicked");
         });
 
         // If the player has unlocked a building, the corresponding requirement will show a green box
@@ -70,7 +69,6 @@ public class Requirements : MainMenuState
     {
         requirementsPanel.SetActive(false);
         m.DisplayMainMenu(true);
-        Debug.Log("Exiting Requirements State");
     }
     
 }

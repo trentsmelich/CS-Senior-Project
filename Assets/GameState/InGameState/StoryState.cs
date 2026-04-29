@@ -31,7 +31,6 @@ public class StoryState : GameState
         {
             Game.PlayButtonClickSound();
             Game.SetState(new gameIdleState());
-            Debug.Log("Skip Button Clicked");
         });
 
         // Show the story UI and hide the player UI, and pause the game time

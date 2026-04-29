@@ -10,7 +10,6 @@ public class Fence : TowerParent
 
     void Start()
     {
-        Debug.Log("Fence Tower Created");
         //Once fence is placed check up, down, left, right for adjacent fences
         //If adjacent fence found, adjust this fence's sprite to connect with adjacent fence
         AdjustFenceSprite();
@@ -68,50 +67,41 @@ public class Fence : TowerParent
         {
             //get child in fence and activate game object FenceUp
             transform.Find("FenceUp").gameObject.SetActive(true);
-            Debug.Log("Activated FenceUp");
-
         }
         else
         {
             //get child in fence and deactivate game object FenceUp
             transform.Find("FenceUp").gameObject.SetActive(false);
-            Debug.Log("Deactivated FenceUp");
         }
         if (down)
         {
             //get child in fence and activate game object FenceDown
             transform.Find("FenceDown").gameObject.SetActive(true);
-            Debug.Log("Activated FenceDown");
         }
         else
         {
             //get child in fence and deactivate game object FenceDown
             transform.Find("FenceDown").gameObject.SetActive(false);
-            Debug.Log("Deactivated FenceDown");
         }
         if (left)
         {
             //get child in fence and activate game object FenceLeft
             transform.Find("FenceLeft").gameObject.SetActive(true);
-            Debug.Log("Activated FenceLeft");
         }
         else
         {
             //get child in fence and deactivate game object FenceLeft
             transform.Find("FenceLeft").gameObject.SetActive(false);
-            Debug.Log("Deactivated FenceLeft");
         }
         if (right)
         {
             //get child in fence and activate game object FenceRight
             transform.Find("FenceRight").gameObject.SetActive(true);
-            Debug.Log("Activated FenceRight");
         }
         else
         {
             //get child in fence and deactivate game object FenceRight
             transform.Find("FenceRight").gameObject.SetActive(false);
-            Debug.Log("Deactivated FenceRight");
         }
     }
 

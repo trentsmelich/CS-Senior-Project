@@ -36,7 +36,6 @@ public class PlayerSelect : MainMenuState
         {
             m.PlayButtonClickSound();
             m.SetState(new MainMenu());
-            Debug.Log("Player Select Cancel Button Clicked");
         });
 
         leftArrowButton.onClick.AddListener(() =>
@@ -74,7 +73,6 @@ public class PlayerSelect : MainMenuState
     {
         playerSelectPanel.SetActive(false);
         m.DisplayMainMenu(true);
-        Debug.Log("Exited Player Select State");
     }
 
     private void UpdatePlayerSelectPanel()
