@@ -84,6 +84,6 @@ public abstract class PowerUpParent : MonoBehaviour
 
     public virtual float GetDropChance()
     {
-        return 0.01f;
+        return 0.005f;
     }
 }

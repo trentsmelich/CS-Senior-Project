@@ -108,7 +108,7 @@ public class PlayerStats : MonoBehaviour
             // Level up
             gameStateController.SetState(new LevelUpState());
             currentExperience -= experienceToNextLevel;
-            experienceToNextLevel *= 2.0f; // Increase the threshold for next level
+            experienceToNextLevel *= 1.5f; // Increase the threshold for next level
             // Trigger level-up state in the game (implementation depends on your game structure)
         }
     }

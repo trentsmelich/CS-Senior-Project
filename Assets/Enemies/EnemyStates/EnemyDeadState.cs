@@ -14,56 +14,48 @@ public class EnemyDeadState : EnemyState
         //initialize coin prefab at enemy position
         Object.Instantiate(enemy.GetCoinPrefab(), enemy.transform.position, Quaternion.identity);
 
+
         GameObject[] powerUpList = enemy.GetPowerUpList();
         if (powerUpList != null && powerUpList.Length > 0)
         {
             List<GameObject> eligibleList = new List<GameObject>();
+
             foreach (GameObject powerUp in powerUpList)
             {
-                if (powerUp == null)
-                {
+                if (powerUp == null) {
                     continue;
                 }
 
-                if (!CanDropPowerUp(powerUp, enemy))
-                {
+                if (!CanDropPowerUp(powerUp, enemy)) {
                     continue;
                 }
 
                 eligibleList.Add(powerUp);
             }
 
-            Shuffle(eligibleList);
-
-            foreach (GameObject powerUp in eligibleList)
+            if (eligibleList.Count > 0)
             {
-                PowerUpParent powerUpParent = powerUp.GetComponent<PowerUpParent>();
-                float dropChance;
+                float overallDropChance = 0.02f;
 
-                if (powerUpParent != null)
+                if (Random.value <= overallDropChance)
                 {
-                    dropChance = powerUpParent.GetDropChance();
-                }
-                else
-                {
-                    dropChance = 0.01f;
-                }
+                    Shuffle(eligibleList);
 
-                if (Random.value > dropChance)
-                {
-                    continue;
-                }
+                    GameObject chosenPowerUp = eligibleList[0];
 
-                Object.Instantiate(powerUp, enemy.transform.position, Quaternion.identity);
-                MarkPowerUpDropped(powerUp);
-                break;
+                    Object.Instantiate(
+                        chosenPowerUp,
+                        enemy.transform.position,
+                        Quaternion.identity
+                    );
+
+                    MarkPowerUpDropped(chosenPowerUp);
+                }
             }
         }
 
-        
-        //Add a defeated enemy count to the player's stats
+        // Add defeated enemy count
         enemy.GetPlayer().GetComponent<PlayerStats>().AddDefeatedEnemyCount();
-        
     }
 
     public override void UpdateState(EnemyAI enemy) { }

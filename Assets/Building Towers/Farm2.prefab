@@ -621,10 +621,12 @@ MonoBehaviour:
   towerType: Farm
   towerName: Farm
   unlocked: 0
-  health: 250
+  health: 400
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 100
+  upgradeTextPrefabs: {fileID: 0}
+  upgradeTextOffset: {x: 0, y: 1, z: 0}
   sprites:
   - {fileID: -1800126058511640119, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}
   - {fileID: -1957658871821922118, guid: a2deb4aef7916a547a2f3fb1f0175888, type: 3}

@@ -363,7 +363,7 @@ MonoBehaviour:
   towerType: Farm
   towerName: Farm
   unlocked: 1
-  health: 250
+  health: 400
   currentPlacedTowers: 0
   placedTowers: 0
   maxTowersCount: 100
