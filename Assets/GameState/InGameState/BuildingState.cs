@@ -65,6 +65,11 @@ public class BuildingState : GameState
         // Check if the cell is overllapping with other buildings
         bool blocked = IsBlocked(cellCenter);
 
+
+        if (towerToPlace.CompareTag("Fence"))
+        {
+            validTile = true;
+        }
         bool canBuild = validTile && !blocked;
 
         // Change color based on if the cell is valid or not (green = valid, red = not valid)

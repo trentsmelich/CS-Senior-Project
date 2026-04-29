@@ -1,23 +1,49 @@
 using UnityEngine;
 
+
 public class MainBuilding : TowerParent
 {
     private GameStateController gameStateController;
     private PlayerStats playerStats;
+    private int healthTemp;
+    private float healthTimer = 0;
     void Start()
     {
         gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
         playerStats = gameStateController.GetPlayerStats();
+        healthTemp = GetHealth();
     }
 
     void Update()
     {
-        // Check if the main building's health has reached 0
-        if (GetHealth() <= 0 && playerStats.GetHealth() > 0)
+        
+        if(healthTemp > GetHealth())
         {
-            // Trigger game over state
-            playerStats.KillPlayer();
+            //make sprite renderer more transparent an set to 150
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            Color c = sr.color;
+            c.a = 0.5f;
+            sr.color = c;
+            healthTemp = GetHealth();
+            healthTimer = 0;
+
         }
+        //after 5 seconds of taking damage make sprite renderer normal
+        if(healthTemp == GetHealth())
+        {
+            healthTimer += Time.deltaTime;
+            if(healthTimer >= 5f)
+            {
+                SpriteRenderer sr = GetComponent<SpriteRenderer>();
+                Color c = sr.color;
+                c.a = 1f;
+                sr.color = c;
+                healthTimer = 0;
+            }
+        }
+
+        // Check if the main building's health has reached 0
+        
     }
 
     public override void UpdateTower(Transform enemy)
@@ -36,4 +62,6 @@ public class MainBuilding : TowerParent
     {
         return "";
     }
+        
 }
+

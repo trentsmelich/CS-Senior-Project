@@ -51,7 +51,11 @@ public class EnemyAI : MonoBehaviour
 
         if (GetComponent<Goblin>())
         {
-            targetPlayer = false;
+            //75% chance to not target player
+                if (Random.value < 0.75f)
+                {
+                    targetPlayer = false;
+                }
 
         }
         //DOES NOT WORK WITH EVERYTHING JUST TESTING GOBLIN FOR NOW NO TARGETING PLAYER
