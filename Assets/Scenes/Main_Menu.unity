@@ -13811,8 +13811,8 @@ MonoBehaviour:
   - 3
   - 3
   enemyLevels:
-  - 1
-  - 1
+  - 1, 3, Boss
+  - 1, 2
   - 1
   - 1
   - 2
