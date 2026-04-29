@@ -28,11 +28,11 @@ public class EnemyDeadState : EnemyState
 
                 if (powerUp.GetComponent<HealPowerUp>() != null || powerUp.GetComponent<SpeedPowerup>() != null || powerUp.GetComponent<CooldownPowerUp>() != null)
                 {
-                    dropChance = 0.1f;
+                    dropChance = 0.05f;
                 }
                 else
                 {
-                    dropChance = 0.05f;
+                    dropChance = 0.01f;
                 }
 
                 if (powerUp == enemy.GetShieldPrefab() && !ShieldPowerUp.CanDrop())
@@ -71,6 +71,8 @@ public class EnemyDeadState : EnemyState
                 {
                     MagnetPowerUp.MarkDropped();
                 }
+                
+                break;
             }
         }
 

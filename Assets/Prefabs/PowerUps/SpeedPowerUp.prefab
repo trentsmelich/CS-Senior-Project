@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpeedPowerup
   moveHeight: 0.2
   moveSpeed: 2
+  attractRange: 2
+  attractSpeed: 7.5
   lifetime: 15
   blinkStartTime: 5
   blinkInterval: 0.2
