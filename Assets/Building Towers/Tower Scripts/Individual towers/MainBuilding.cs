@@ -7,11 +7,13 @@ public class MainBuilding : TowerParent
     private PlayerStats playerStats;
     private int healthTemp;
     private float healthTimer = 0;
+    private AudioSource MainHouseSFX;
     void Start()
     {
         gameStateController = GameObject.Find("Game_State").GetComponent<GameStateController>();
         playerStats = gameStateController.GetPlayerStats();
         healthTemp = GetHealth();
+        MainHouseSFX = GameObject.Find("SFX/MainHouseHit_SFX").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -19,6 +21,7 @@ public class MainBuilding : TowerParent
         
         if(healthTemp > GetHealth())
         {
+            MainHouseSFX.Play();
             //make sprite renderer more transparent an set to 150
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             Color c = sr.color;
