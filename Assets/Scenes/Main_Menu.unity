@@ -12055,7 +12055,7 @@ MonoBehaviour:
     Attack Speed: Normal
 
 
-    Damage: 15
+    Damage: 10
 
 
     Ability:
@@ -21439,7 +21439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ShotGun Shooter
+  m_text: 'Shotgun Shooter
 
 
     Health: 100
@@ -21449,7 +21449,7 @@ MonoBehaviour:
 
 
     Damage:
-    5 (Each Bullet, 5 Total)
+    5 (each bullet, 5 total)
 
 
     Ability: shoot multiple bullets at a time'
@@ -28573,7 +28573,7 @@ MonoBehaviour:
 
 
     Damage:
-    20 (Area Damage)
+    20 (area damage)
 
 
     Ability: shoot a bomb that creates area damage'
