@@ -29,6 +29,10 @@ public class GameOverState : GameState
         // Find main menu buttons in main menu panel
         mainMenuButton = gameOverScreen.transform.Find("MainMenu_Button").GetComponent<Button>();
         restartButton = gameOverScreen.transform.Find("Restart_Button").GetComponent<Button>();
+        //reset placed fences
+        
+        Fence.ResetPlacedFences();
+
     
 
         //Main Menu Button

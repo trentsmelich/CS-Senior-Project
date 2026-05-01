@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Catapult
   level: 3
   towerRange: 24
-  towerDamage: 2
+  towerDamage: 60
   attackCooldown: 1.6
   attackTimer: 0
   speed: 30

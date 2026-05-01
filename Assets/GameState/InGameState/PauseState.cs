@@ -63,6 +63,7 @@ public class PauseState : GameState
             Game.SetState(new gameIdleState());
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);  
             EnemyHealth.resetEnemyCounts();
+            Fence.ResetPlacedFences();
             
         });
         

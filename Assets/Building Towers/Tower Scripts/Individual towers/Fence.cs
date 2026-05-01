@@ -236,5 +236,9 @@ public class Fence : TowerParent
     {
         placedFences++;
     }
+    public static void ResetPlacedFences()
+    {
+        placedFences = 0;
+    }
 
 }

@@ -61,7 +61,7 @@ public class CatapultProjectile : MonoBehaviour
                 }
                 if(level == 2)
                 {
-                    transform.localScale = new Vector3(2f, 2f, 1); // Increase the size of the explosion for level 2
+                    transform.localScale = new Vector3(5f, 5f, 1); // Increase the size of the explosion for level 2
                 }
                 if(level == 3)
                 {
