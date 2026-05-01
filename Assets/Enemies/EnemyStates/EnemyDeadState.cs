@@ -35,9 +35,7 @@ public class EnemyDeadState : EnemyState
 
             if (eligibleList.Count > 0)
             {
-                float dropChance = 0.05f;
-
-                if (Random.value <= dropChance)
+                if (Random.value <= 0.02f)
                 {
                     Shuffle(eligibleList);
 
